@@ -120,3 +120,36 @@ reassessment.
 Privacy: no ZIP codes are recorded anywhere, matching the convention the other sessions adopted.
 Properties are referred to as **Property A** (Cupertino, Santa Clara County, CA) and
 **Property B** (San Francisco, CA).
+
+---
+
+## Household decision dashboard (session `arena/d8a9b67c-cupertino3`)
+
+A fifth, separate analysis lives in `pages/` (served at `/pages/` of the same Pages site). It follows the
+same privacy and sourcing rules (city/neighborhood references only — no ZIP codes, names, addresses or
+parcel identifiers). Every table row carries an official source link, or is left blank and flagged;
+25 items are listed on its Flagged for Review page.
+
+| Path | What it is |
+|---|---|
+| `pages/` | 13-page static site: dashboard landing, executive summary, property data, estate/property tax, insurance & utilities, rental rules, projections, live·rent·sell analysis, inheritance process, law watchlist, Flagged for Review, sources. |
+| `site/src/` | HTML fragments (source of truth for `pages/`). |
+| `site/build.py` | Wraps fragments with shared header/nav/footer into `pages/`. |
+| `assets/style.css` | Stylesheet for the `pages/` site. |
+| `tools/check_links.py` | Internal-link/anchor checker + external-link inventory (PASS: 13 pages, 188 external links). |
+| `docs/research/*.md` | Research notes: federal tax, CA law, property tax, insurance, utilities, rental law, projections + `notes.md` audit log. |
+| `research/notes.md` | Master verification log (sources, line-by-line audit, dead ends). |
+| `docs/research/build_projections.py` | Deterministic projection model; writes `projections*.csv`. |
+
+Rebuild:
+
+```bash
+python3 site/build.py
+python3 tools/check_links.py
+python3 docs/research/build_projections.py
+```
+
+Standard library only. Headline: federal estate exclusion $15,000,000 (2026) with no California estate or
+inheritance tax; Prop 19 reassessment is the dominant cost lever on Property A (modeled 2040 jump from
+~$9.7k/yr status quo to ~$59.7k–$73.6k/yr depending on occupancy). Projections are assumption-based,
+not forecasts. Not legal, tax or investment advice.

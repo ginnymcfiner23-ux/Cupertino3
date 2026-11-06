@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Insurance & Utilities — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="index.html">Dashboard</a>
+  <a href="summary.html">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html">Estate & Gift Tax</a>
+  <a href="property-tax.html">Property Tax</a>
+  <a href="costs.html" class="active">Insurance & Utilities</a>
+  <a href="rental.html">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Insurance &amp; Utilities</h2>
+<p class="lede">What it costs to run both houses. Official rate schedules where they exist; user estimates clearly
+labeled; anything we couldn't confirm is left blank and flagged.</p>
+
+<h3>Insurance</h3>
+<div class="tablewrap"><table>
+  <caption>California Department of Insurance statewide averages (VERIFIED from CDI data files, fetched 2026-11-06).
+  Pooled 2008–2023 — <strong>understates current-year premiums</strong> (flagged).
+  Source page: <a href="https://www.insurance.ca.gov/0400-news/0200-studies-reports/0250-homeowners-study/">CDI Homeowners Study</a>.</caption>
+  <tr><th>Policy form</th><th class="num">Statewide avg written premium (pooled)</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Homeowners Multi-Peril (Property A type)</td><td class="num">$1,176</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.insurance.ca.gov/0400-news/0200-studies-reports/0250-homeowners-study/">CDI Part I data</a></td></tr>
+  <tr><td>Dwelling Fire — Tenant-Occupied (Property B landlord policy type)</td><td class="num">$601</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Dwelling Fire — Owner-Occupied</td><td class="num">$798</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Condo</td><td class="num">$537</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Renters/Tenant</td><td class="num">$190</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+</table></div>
+
+<div class="tablewrap"><table>
+  <caption>Statewide trend from CDI SB 824 workbook (VERIFIED, summary sheet).</caption>
+  <tr><th>Year</th><th class="num">Statewide earned premium</th><th class="num">Exposures</th><th class="num">Avg Coverage A</th><th class="num">Avg Coverage C</th><th>Status</th></tr>
+  <tr><td>2018</td><td class="num">$8.33B</td><td class="num">11.38M</td><td class="num">$230,138</td><td class="num">$76,762</td><td><span class="badge b-ok">VERIFIED</span></td></tr>
+  <tr><td>2023</td><td class="num">$14.22B</td><td class="num">12.58M</td><td class="num">$324,973</td><td class="num">$93,927</td><td><span class="badge b-ok">VERIFIED</span></td></tr>
+</table></div>
+
+<div class="tablewrap"><table>
+  <caption>Property-specific insurance inputs.</caption>
+  <tr><th>Item</th><th>Property A (Cupertino ZIP)</th><th>Property B (Sunset ZIP)</th><th>Status</th><th>Source</th></tr>
+  <tr><td>ZIP-level average premium (CDI report)</td><td>—</td><td>—</td><td><span class="badge b-blank">BLANK + FLAG</span> (ZIP rows not extracted)</td><td class="src"><a href="https://www.insurance.ca.gov/0400-news/0200-studies-reports/0250-homeowners-study/">CDI study — manual review</a></td></tr>
+  <tr><td>User estimate</td><td class="num">~$1,500/yr</td><td class="num">~$1,500/yr</td><td><span class="badge b-user">USER GUESS</span> <span class="badge b-flag">unverified</span></td><td class="src">internal</td></tr>
+  <tr><td>Official quote comparison</td><td colspan="2">CDI 2026 comparison tool (wildfire surcharges 15%–300%+ NOT included in tool)</td><td><span class="badge b-ok">VERIFIED tool</span></td><td class="src"><a href="https://interactive.web.insurance.ca.gov/apex_extprd/f?p=111:20">interactive.web.insurance.ca.gov</a></td></tr>
+</table></div>
+
+<h3>Water &amp; sewer</h3>
+<h4>Property A — Cupertino (provider depends on location; official map)</h4>
+<div class="tablewrap"><table>
+  <tr><th>Item</th><th>Value</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Provider map (water)</td><td>California Water Service (purple) / San Jose Water (green)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.cupertino.gov/Residents/Utilities">City of Cupertino Utilities</a> · <a href="https://gis.cupertino.org/servicefinder/?varname=waterS">water map</a></td></tr>
+  <tr><td>Provider (sewer)</td><td>Cupertino Sanitary District or Sunnyvale Sanitary (by location)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>SJW tier 1 (0–6 CCF)</td><td class="num">$4.9692/CCF eff. 2026-07-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sjwater.com/media/oycbyo3o/adv-628-web.pdf">SJW Advice Letter 628</a></td></tr>
+  <tr><td>SJW tier 2 (6–12 CCF)</td><td class="num">$7.4167/CCF eff. 2026-07-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>SJW tier 3 (12+ CCF)</td><td class="num">$14.1659/CCF eff. 2026-07-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>SJW average bill (10 CCF, ¾" meter)</td><td class="num">$141.73/mo eff. 2026-07-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Cal Water tier 1 (Los Altos/Santa Clara territory)</td><td class="num">$2.7015/CCF eff. 2026-01-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.calwater.com/wp-content/uploads/2025/12/20260101_Residential_Metered_Service_LAS.pdf">Cal Water tariff</a></td></tr>
+  <tr><td>Cal Water tier 2 (7–20 CCF)</td><td class="num">$10.7870/CCF</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>User water bill</td><td class="num">$100–150/mo</td><td><span class="badge b-user">USER</span> <span class="badge b-ok">consistent with SJW avg $141.73</span></td><td class="src">internal vs SJW above</td></tr>
+  <tr><td>Sewer district rate schedule</td><td>—</td><td><span class="badge b-blank">BLANK + FLAG</span> (not fetched)</td><td class="src"><a href="https://www.cupertinosanitarydistrict.org/">cupertinosanitarydistrict.org</a></td></tr>
+</table></div>
+
+<h4>Property B — San Francisco (SFPUC official schedules)</h4>
+<div class="tablewrap"><table>
+  <tr><th>Item</th><th class="num">FY2025-26 (eff. 2025-07-01)</th><th class="num">FY2026-27 proposed (eff. 2026-07-01)</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Single-family water Tier 1 (first 4 units)</td><td class="num">$11.40/CCF</td><td class="num">$12.20/CCF</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026/proposition-218-notice">SFPUC Prop 218 notice</a></td></tr>
+  <tr><td>Single-family water Tier 2 (additional units)</td><td class="num">$12.66/CCF</td><td class="num">$13.05/CCF</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Multi-family water, first 3 units/dwelling</td><td class="num">$11.24/CCF</td><td class="num">see notice</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Single-family wastewater volumetric</td><td class="num">$18.72/CCF</td><td class="num">see notice</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Wastewater fixed service charge</td><td class="num">$5.76/mo</td><td class="num">see notice</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>User water+sewer bill (3 units)</td><td colspan="2" class="num">$330–400/mo</td><td><span class="badge b-user">USER</span> <span class="badge b-flag">unverified (usage-dependent)</span></td><td class="src">internal; calculator: <a href="https://www.sfpuc.gov/">sfpuc.gov</a></td></tr>
+</table></div>
+
+<h3>Electric &amp; solar</h3>
+<div class="tablewrap"><table>
+  <tr><th>Item</th><th>Property A</th><th>Property B</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Providers</td><td>Silicon Valley Clean Energy + PG&amp;E</td><td>PG&amp;E (SFPUC clean power)</td><td><span class="badge b-ok">VERIFIED (A)</span></td><td class="src"><a href="https://www.cupertino.gov/Residents/Utilities">Cupertino Utilities</a></td></tr>
+  <tr><td>Electric cost</td><td>≈ $0 net (solar covers usage)</td><td class="num">$30–70/mo</td><td><span class="badge b-user">USER</span> <span class="badge b-flag">unverified</span></td><td class="src">PG&amp;E tariff not fetched — <a href="flagged.html">FLAG</a></td></tr>
+  <tr><td>Solar credit</td><td class="num">+$10–20/mo</td><td>none stated</td><td><span class="badge b-user">USER</span> <span class="badge b-flag">unverified (NEM rules not fetched)</span></td><td class="src">—</td></tr>
+</table></div>
+
+<h3>Maintenance &amp; other recurring costs</h3>
+<div class="tablewrap"><table>
+  <tr><th>Cost</th><th>Property A</th><th>Property B</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Maintenance reserve</td><td>—</td><td>—</td><td><span class="badge b-blank">BLANK + FLAG</span> (user said A is "lower than SF" but gave no figure)</td><td class="src">—</td></tr>
+  <tr><td>Property tax (2025 actual)</td><td class="num">$7,207</td><td class="num">$2,439</td><td><span class="badge b-user">USER</span> <span class="badge b-flag">B rate discrepancy flagged</span></td><td class="src">vs <a href="https://sftreasurer.org/property/secured-property-taxes">SF TTC</a> / <a href="https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf">SCC rate book</a></td></tr>
+</table></div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>

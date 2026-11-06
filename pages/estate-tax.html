@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Estate & Gift Tax — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="index.html">Dashboard</a>
+  <a href="summary.html">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html" class="active">Estate & Gift Tax</a>
+  <a href="property-tax.html">Property Tax</a>
+  <a href="costs.html">Insurance & Utilities</a>
+  <a href="rental.html">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Inheritance &amp; Estate Tax Thresholds</h2>
+<p class="lede">Federal, state, and local death-tax layers for this estate — with the future-law watchlist.
+Every figure below is read from an official source or explicitly marked.</p>
+
+<h3>Thresholds at a glance (2026)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Layer</th><th>Threshold</th><th>Rate</th><th>Status</th><th>Official source</th></tr>
+  <tr><td><strong>Federal estate tax</strong></td><td class="num">$15,000,000 per person (2026 deaths); $30M per couple via portability</td><td class="num">40% top rate</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax">IRS — Estate tax</a></td></tr>
+  <tr><td><strong>Federal gift tax</strong></td><td class="num">$15,000,000 lifetime; $19,000/yr annual exclusion per donee (2026)</td><td class="num">40% top rate</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax">IRS — What's new, estate &amp; gift</a></td></tr>
+  <tr><td><strong>Federal GST tax</strong></td><td class="num">$15,000,000 (2026)</td><td class="num">40%</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32 §2.14</a></td></tr>
+  <tr><td><strong>California estate tax</strong></td><td class="num">None — no CA return required for deaths on/after 2005-01-01</td><td class="num">0%</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sco.ca.gov/ardtax_estate_tax.html">State Controller's Office</a></td></tr>
+  <tr><td><strong>California inheritance tax</strong></td><td class="num">None for deaths after 1982-06-08 (legacy cases only)</td><td class="num">0%</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sco.ca.gov/ardtax_estate_tax.html">SCO</a></td></tr>
+  <tr><td><strong>Local (county/city) death tax</strong></td><td class="num">None in California</td><td class="num">0%</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sco.ca.gov/ardtax_estate_tax.html">SCO (state-administered only)</a></td></tr>
+</table></div>
+
+<h3>Does this estate file? (decision inputs)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Question</th><th>Answer</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Is a federal Form 706 required?</td><td>Only if gross estate + adjusted taxable gifts &gt; $15,000,000 (2026), or to elect portability</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/businesses/small-businesses-self-employed/frequently-asked-questions-on-estate-taxes">IRS estate tax FAQ</a></td></tr>
+  <tr><td>Is a CA estate tax return required?</td><td>No (deaths on/after 2005-01-01)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sco.ca.gov/ardtax_estate_tax.html">SCO</a></td></tr>
+  <tr><td>Is there CA income tax on inherited cash?</td><td>No — inheritance is not CA taxable income (federal basis rules apply)</td><td><span class="badge b-ok">VERIFIED</span> (general rule)</td><td class="src"><a href="https://www.irs.gov/publications/p551">IRS Pub 551</a> (federal); FTB conforms to federal gross income</td></tr>
+  <tr><td>Is there federal tax on inherited cash itself?</td><td>No — cash basis carries over; tax only on subsequent earnings/gains</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/forms-pubs/about-publication-551">IRS Pub 551</a></td></tr>
+  <tr><td>When is the cash "over the amount allowed"?</td><td>When combined taxable estate exceeds $15M/person (2026); 40% applies above that</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/instructions/i706">Instructions for Form 706</a></td></tr>
+</table></div>
+
+<h3>Modeled federal estate tax if taxable estate exceeds the threshold</h3>
+<div class="note model">Simplified model: tax = $5,945,800 credit-equivalent + 40% × (estate − $15M).
+Ignores deductions/adjustments — <span class="badge b-model">PROJECTION</span> arithmetic on
+<span class="badge b-ok">VERIFIED</span> rates (<a href="https://www.irs.gov/instructions/i706">i706</a>).
+CA column = $0 (VERIFIED).</div>
+<div class="tablewrap"><table>
+  <tr><th class="num">Taxable estate</th><th class="num">Federal estate tax (simplified)</th><th class="num">Effective rate</th><th class="num">CA estate/inheritance tax</th><th>Status</th></tr>
+  <tr><td class="num">$10,000,000</td><td class="num">$0</td><td class="num">0%</td><td class="num">$0</td><td><span class="badge b-model">MODEL</span></td></tr>
+  <tr><td class="num">$15,000,000</td><td class="num">$0</td><td class="num">0%</td><td class="num">$0</td><td><span class="badge b-model">MODEL</span></td></tr>
+  <tr><td class="num">$20,000,000</td><td class="num">$7,945,800</td><td class="num">39.7%</td><td class="num">$0</td><td><span class="badge b-model">MODEL</span></td></tr>
+  <tr><td class="num">$30,000,000</td><td class="num">$11,945,800</td><td class="num">39.8%</td><td class="num">$0</td><td><span class="badge b-model">MODEL</span></td></tr>
+  <tr><td class="num">$40,000,000</td><td class="num">$15,945,800</td><td class="num">39.9%</td><td class="num">$0</td><td><span class="badge b-model">MODEL</span></td></tr>
+</table></div>
+
+<h3>Basis &amp; capital-gains consequences of inheriting</h3>
+<div class="tablewrap"><table>
+  <tr><th>Rule</th><th>Effect here</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Stepped-up basis at death (IRC §1014)</td><td>House/cash basis = date-of-death FMV; pre-death gain erased</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/forms-pubs/about-publication-551">IRS Pub 551</a></td></tr>
+  <tr><td>Community property full step-up (CA)</td><td>Entire property steps up at first spouse's death</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">IRC §1014(b)(6); Pub 551</td></tr>
+  <tr><td>Sale soon after inheritance</td><td>Federal gain ≈ post-death appreciation only → 0/15/20% + 3.8% NIIT; CA taxes gain as ordinary income to 13.3%</td><td><span class="badge b-ok">VERIFIED rates</span> <span class="badge b-model">MODEL gain</span></td><td class="src"><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32</a> (2026 LTCG), <a href="https://www.ftb.ca.gov/about-ftb/data-reports-plans/summary-of-federal-income-tax-changes/index.html">FTB</a></td></tr>
+  <tr><td>2026 LTCG 0% ceiling (single / MFJ)</td><td class="num">$49,450 / $98,900; 15% to $545,500 / $613,700; 20% above</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32 §4.03</a></td></tr>
+  <tr><td>SALT deduction cap (property tax deductibility)</td><td class="num">$40,000 (2025) → $40,400 (2026); floors at $10,000 for high incomes; reverts after 2029</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.irs.gov/publications/p530">IRS Pub 530</a>; Rev. Proc. 2025-32</td></tr>
+</table></div>
+
+<h3>Future law-change watchlist</h3>
+<p class="small">Detail and status on the <a href="watchlist.html">Watchlist page</a>. Summary:</p>
+<div class="tablewrap"><table>
+  <tr><th>Proposal</th><th>Would change</th><th>Status</th><th>Source</th></tr>
+  <tr><td>S.587 / H.R.1301 — Death Tax Repeal Act of 2025</td><td>Repeal federal estate &amp; GST taxes entirely</td><td><span class="badge b-flag">PENDING — introduced only</span></td><td class="src"><a href="https://www.congress.gov/bill/119th-congress/senate-bill/587">congress.gov S.587</a></td></tr>
+  <tr><td>H.R.25 — FairTax Act</td><td>Repeal income + estate/gift taxes</td><td><span class="badge b-flag">PENDING — introduced only</span></td><td class="src"><a href="https://www.congress.gov/bill/119th-congress/house-bill/25">congress.gov H.R.25</a></td></tr>
+  <tr><td>CA SB-284 (2025-26)</td><td>Amend Prop 19 parent-child transfer rules (R&amp;T §63.2)</td><td><span class="badge b-flag">PENDING — held in Assembly committee since 2025-07-14</span></td><td class="src"><a href="https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB284">leginfo SB-284</a></td></tr>
+  <tr><td>Prop 19 repeal initiative (SOS memo #26138, initiative #1994)</td><td>Restore old parent-child exclusions</td><td><span class="badge b-flag">FAILED to qualify — petition insufficient</span> (SOS memo verified 2026-11-06)</td><td class="src"><a href="https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf">CA SOS memo</a></td></tr>
+  <tr><td>OBBBA (P.L. 119-21, enacted)</td><td>$15M exclusion permanent + CPI-indexed from 2027</td><td><span class="badge b-ok">LAW</span></td><td class="src"><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32</a></td></tr>
+</table></div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>

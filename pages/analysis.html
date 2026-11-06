@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Live·Rent·Sell — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="index.html">Dashboard</a>
+  <a href="summary.html">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html">Estate & Gift Tax</a>
+  <a href="property-tax.html">Property Tax</a>
+  <a href="costs.html">Insurance & Utilities</a>
+  <a href="rental.html">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html" class="active">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Live vs Rent vs Sell — Decision Analysis</h2>
+<p class="lede">The decision: what to do with Property A once inherited (~2040–2050), keeping Property B's
+role as home + income engine in view. Economics are modeled; law is verified; unknowable inputs stay blank.</p>
+
+<h3>The three options at inheritance (Property A)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Dimension</th><th>① Live in A (heir occupies)</th><th>② Rent A (heir stays in B)</th><th>③ Sell A, invest proceeds</th></tr>
+  <tr><td><strong>Property tax after transfer</strong></td>
+    <td>Prop 19 exclusion possible → new base = FMV − $1,044,586 → <strong>≈$59.7k/yr (2040)</strong></td>
+    <td>No exclusion (not owner-occupied) → full FMV → <strong>≈$73.6k/yr (2040)</strong></td>
+    <td>None after sale</td></tr>
+  <tr><td><strong>Law basis</strong></td>
+    <td><span class="badge b-ok">VERIFIED</span> <a href="https://www.boe.ca.gov/prop19/">BOE Prop 19</a> (requires transferor PR + heir PR + BOE-19-P + exemption within 1 yr)</td>
+    <td><span class="badge b-ok">VERIFIED</span> <a href="https://www.boe.ca.gov/proptaxes/pdf/lta20061.pdf">BOE LTA 2006/17</a> — rental = full reassessment</td>
+    <td><span class="badge b-ok">VERIFIED</span> stepped-up basis <a href="https://www.irs.gov/forms-pubs/about-publication-551">IRC §1014 / Pub 551</a></td></tr>
+  <tr><td><strong>Rental income</strong></td>
+    <td>None from A; B continues ≈$7,150/mo (user) + owner lives in B's 3rd unit</td>
+    <td>Market rent for A: <span class="badge b-blank">BLANK — no official source</span> (cannot net against $73.6k tax without it)</td>
+    <td>—</td></tr>
+  <tr><td><strong>Rent-control exposure</strong></td>
+    <td>n/a</td>
+    <td>AB 1482 5%+CPI ≤10% + Cupertino Ord. 19-2194 (text unverified → flag); turnover resets to market (Costa-Hawkins)</td>
+    <td>—</td></tr>
+  <tr><td><strong>Tax on gains</strong></td>
+    <td>None until sale; then LTCG on post-death appreciation only (fed 0/15/20% + NIIT 3.8% + CA ≤13.3%)</td>
+    <td>Rental income taxed as ordinary income (fed + CA ≤13.3%) after deductions; depreciation recapture 25% on sale of depreciable rental (flag: confirm Pub 527)</td>
+    <td>Same LTCG stack on post-death appreciation only; selling costs ≈6% (assumption)</td></tr>
+  <tr><td><strong>Modelled cash path</strong></td>
+    <td>Status-quo-equivalent outflow $9.7k tax + user utilities (water $100–150, ~$0 electric); $5.5M equity stays in housing (base 2040)</td>
+    <td>Tax $73.6k + costs; income column unknowable → <strong>cannot rank without market rent</strong></td>
+    <td>Net $5.18M invested @7% → ≈$10.2M in 10y (assumptions flagged); loses asset + Prop 13 base permanently</td></tr>
+  <tr><td><strong>Key risk</strong></td>
+    <td>Exclusion denied (transferor PR unconfirmed → FLAG); later moving out can trigger re-assessment</td>
+    <td>Highest tax drag; vacancy/management; CA rate stack on rental income</td>
+    <td>Market timing; 6%/7% are assumptions; irreversibility</td></tr>
+</table></div>
+
+<h3>Property B stays the anchor (common to all options)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Factor</th><th>Value</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Rent from 2 units</td><td class="num">≈$7,150/mo</td><td><span class="badge b-user">USER</span></td><td class="src">internal</td></tr>
+  <tr><td>3rd unit</td><td>Owner-occupied — living there costs no rent and doesn't reduce other units' rent</td><td><span class="badge b-user">USER</span></td><td class="src">internal</td></tr>
+  <tr><td>Annual rent growth (current law)</td><td class="num">1.6% (2026-03-01→2027-02-28)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.sf.gov/learn-about-rent-increases-san-francisco">SF Rent Board</a></td></tr>
+  <tr><td>At turnover</td><td>Reset to market rent (Costa-Hawkins vacancy decontrol)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">Civ. Code §1954.53</td></tr>
+  <tr><td>Status-quo property tax</td><td class="num">≈$1.4k/yr (2026, official rate)</td><td><span class="badge b-model">MODEL on VERIFIED rate</span></td><td class="src"><a href="https://sftreasurer.org/property/secured-property-taxes">SF TTC</a></td></tr>
+  <tr><td>Implied rate discrepancy in user data</td><td>2.135% vs 1.18162182%</td><td><span class="badge b-flag">FLAGGED</span></td><td class="src">reconcile against bill internally</td></tr>
+</table></div>
+
+<h3>Cross-option comparison at 2040 (base case)</h3>
+<div class="tablewrap"><table>
+  <caption>Model, not recommendation. "?" = input deliberately blank (no official source).</caption>
+  <tr><th>Metric</th><th class="num">① Live in A</th><th class="num">② Rent A</th><th class="num">③ Sell A</th></tr>
+  <tr><td>A property tax/yr</td><td class="num">$59,674</td><td class="num">$73,619</td><td class="num">$0</td></tr>
+  <tr><td>A rental income/yr</td><td class="num">$0</td><td class="num">?</td><td class="num">$0</td></tr>
+  <tr><td>Proceeds deployed</td><td class="num">$0</td><td class="num">$0</td><td class="num">≈$5,183,673 (after 6% costs)</td></tr>
+  <tr><td>10-yr investment value of proceeds</td><td class="num">$0</td><td class="num">$0</td><td class="num">≈$10,197,070 @7% (assumption)</td></tr>
+  <tr><td>Occupancy benefit</td><td>housing worth $5.5M occupied (imputed rent)</td><td>lives in B (already owned)</td><td>lives in B</td></tr>
+  <tr><td>B income/yr (all options)</td><td colspan="3" class="num">≈$85,800 gross (user $7,150/mo), grows 2.5% (assumption); SF cap 1.6% on occupied units</td></tr>
+</table></div>
+
+<div class="note"><strong>Why no single "winner" is declared:</strong> option ②'s income side has no official
+market-rent source (HUD FMR is a voucher benchmark, not market rent), and option ①/③ hinge on assumptions
+(6% selling cost, 7% return) plus one unresolved fact — whether Property A will be the transferor's principal
+residence (Prop 19 eligibility). Declaring a winner would require inventing inputs, which this project forbids.
+The verified levers above are the decision: <strong>Prop 19 eligibility &gt; rent-control drag &gt; assumption sensitivity.</strong></div>
+
+<h3>Sensitivity: what moves the answer most</h3>
+<div class="tablewrap"><table>
+  <tr><th>Lever</th><th>Swing</th><th>Verified?</th></tr>
+  <tr><td>Prop 19 exclusion vs not (2040)</td><td class="num">$13,945/yr tax difference</td><td><span class="badge b-ok">law VERIFIED</span> / occupancy unknown → flag</td></tr>
+  <tr><td>Value CAGR 2.5% vs 6.0% (2040 FMV)</td><td class="num">$2.63M swing in A's value</td><td><span class="badge b-model">assumption</span></td></tr>
+  <tr><td>Investment return 5% vs 7% (10y on $5.18M)</td><td class="num">≈$1.9M swing</td><td><span class="badge b-model">assumption</span></td></tr>
+  <tr><td>Selling cost 4% vs 7%</td><td class="num">≈$166k swing</td><td><span class="badge b-model">assumption</span></td></tr>
+  <tr><td>Federal estate tax if estate &gt; $15M</td><td class="num">40% on the excess (≈$7.9M per $5M above $15M)</td><td><span class="badge b-ok">VERIFIED</span></td></tr>
+</table></div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>

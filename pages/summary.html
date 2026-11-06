@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Executive Summary — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="index.html">Dashboard</a>
+  <a href="summary.html" class="active">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html">Estate & Gift Tax</a>
+  <a href="property-tax.html">Property Tax</a>
+  <a href="costs.html">Insurance & Utilities</a>
+  <a href="rental.html">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Executive Summary</h2>
+<p class="lede">Decision context: two properties today; one inherited house (Property A, Cupertino) plus cash expected
+around 2040–2050; the SF house (Property B) is the current home and income engine.</p>
+
+<h3>The five things that matter most</h3>
+<ol class="steps">
+  <li><strong>California has no estate or inheritance tax.</strong> For deaths on/after 2005-01-01 no CA estate tax
+  return is even required; local death taxes don't exist in CA.
+  <span class="badge b-ok">VERIFIED</span> <a href="https://www.sco.ca.gov/ardtax_estate_tax.html">SCO — California Estate Tax</a></li>
+
+  <li><strong>Federal estate tax starts at $15,000,000 per person for 2026 deaths</strong> (40% top rate;
+  $30M per couple with portability). The cash portion of the inheritance is the only thing likely to touch this.
+  <span class="badge b-ok">VERIFIED</span> <a href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax">IRS Estate Tax</a></li>
+
+  <li><strong>Proposition 19 is the biggest single money lever on Property A.</strong> If the heir does <em>not</em>
+  move in (or the house wasn't the transferor's principal residence), the house is reassessed to full market value:
+  modeled 2040 tax jumps from ~$9,700/yr (status quo) to <strong>~$73,600/yr</strong> without the exclusion, or
+  <strong>~$59,700/yr</strong> even with it (FMV − $1,044,586 cap).
+  <span class="badge b-ok">VERIFIED law</span> <span class="badge b-model">PROJECTION numbers</span>
+  <a href="https://www.boe.ca.gov/prop19/">BOE Proposition 19</a></li>
+
+  <li><strong>Inheriting resets the cost basis to date-of-death value (federal §1014)</strong>, so a sale soon after
+  inheritance owes tax only on post-death appreciation — at 0/15/20% federal + 3.8% NIIT + up to 13.3% CA on that
+  slice. <span class="badge b-ok">VERIFIED</span>
+  <a href="https://www.irs.gov/forms-pubs/about-publication-551">IRS Pub 551</a></li>
+
+  <li><strong>Property B's rental rules are stable and verified:</strong> SF allows 1.6% increases on occupied
+  units for 2026-03-01→2027-02-28; Costa-Hawkins lets market rent be reset at turnover; AB 1482 backstops at
+  5%+CPI (max 10%) statewide.
+  <span class="badge b-ok">VERIFIED</span>
+  <a href="https://www.sf.gov/learn-about-rent-increases-san-francisco">SF Rent Board</a></li>
+</ol>
+
+<h3>Data health at a glance</h3>
+<div class="tablewrap"><table>
+  <caption>Line-by-line verification status of user-provided tables (audit run 2026-11-06).</caption>
+  <tr><th>Dataset</th><th>Check</th><th>Result</th><th>Status</th></tr>
+  <tr><td>A: assessment 2014→2026</td><td>YoY change vs official BOE inflation-factor table</td><td>All 11 years match exactly (±$1)</td><td><span class="badge b-ok">VERIFIED consistency</span></td></tr>
+  <tr><td>A: tax history YoY %</td><td>printed % vs computed %</td><td>2017 and 2019 printed values don't match arithmetic</td><td><span class="badge b-flag">FLAGGED</span></td></tr>
+  <tr><td>B: assessment 2016→2025</td><td>vs BOE factors</td><td>2021→2022 grew 1.96% vs 2.0% (≈$45)</td><td><span class="badge b-flag">FLAGGED minor</span></td></tr>
+  <tr><td>B: tax history YoY %</td><td>printed % vs computed %</td><td>2022 printed +2% but computed −6.2%; 2023 printed +1% but computed +3.4%</td><td><span class="badge b-flag">FLAGGED</span></td></tr>
+  <tr><td>B: implied effective rate 2025</td><td>$2,439 ÷ $114,248 = 2.135% vs official SF rate 1.18162182%</td><td>≈1.8× discrepancy — unresolvable without parcel ID (withheld)</td><td><span class="badge b-flag">FLAGGED</span></td></tr>
+  <tr><td>Insurance ZIP-level (Cupertino/Sunset ZIPs)</td><td>CDI ZIP data extraction</td><td>not extracted — left blank</td><td><span class="badge b-blank">BLANK + FLAG</span></td></tr>
+  <tr><td>Property A market rent</td><td>official market-rent source</td><td>none exists (HUD FMR ≠ market rent) — left blank</td><td><span class="badge b-blank">BLANK + FLAG</span></td></tr>
+</table></div>
+
+<div class="note"><strong>Privacy:</strong> this site publishes city/ZIP-level data only. No names, street addresses,
+parcel numbers, or account identifiers appear anywhere in the repo or site.</div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>
