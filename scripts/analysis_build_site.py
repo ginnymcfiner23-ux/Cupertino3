@@ -256,7 +256,7 @@ Assessed value shown is the Prop 13 factored base year value (AV), not market va
  ["<b>2019</b>", money(2134), money(102465), "2.08%", "User-provided (flag)"],
  ["<b>2018</b>", money(2061), money(100456), "2.05%", "User-provided (flag)"],
  ["<b>2017</b>", money(1740), money(98488), "1.77%", "User-provided (flag)"],
- ["<b>2016</b>", money(1675), money(96557), "1.74%", "User-provided (flag)"],
+ ["<b>2016</b>", money(1675), money(96_557), "1.74%", "User-provided (flag)"],
 ], ["", "num", "num", "num", ""])}
 {src(("SF Treasurer & Tax Collector — secured property taxes (official)", "https://sftreasurer.org/property/secured-property-taxes"))}
 <div class="callout"><h4>Irregularity</h4><p>Implied effective rate 1.73%–2.14% exceeds the published SF secured rate of 1.18% (FY 2026-27: 1.18162182%). Likely cause: SF direct charges (sewer capacity charge based on land value/ERU) and special assessments. Verify on the official bill.</p></div>

@@ -263,7 +263,7 @@ Working branch (fixed): `arena/41b64714-cupertino3` · Session ID: `session-41b6
 - Cross-link added to `docs/index.html` ("Additional analysis" tile → `analysis/index.html`).
 - Re-verified: analysis section links checked (OK); `docs/index.html` cross-link OK; root site served at Pages `/`; `/docs/` and `/guide/` analyses on the same site.
 - This session's findings are consistent with the other analyses: sell-at-inheritance is the strongest modeled plan; Prop 19 full reassessment of the rental is the main cost driver; stepped-up basis means $0 capital gains on immediate sale. This session additionally preserved the full 2014–2026 tax/assessment history and quantified the rate-gap irregularities (Cupertino implied 1.32–1.41% vs published ~1.15–1.22%; SF implied 1.73–2.14% vs published 1.18% secured).
-- Pages deployment: root site live at `https://ginnymcfiner23-ux.github.io/Cupertino3/`. Legacy `pages-build-deployment` shows `errored` (known GitHub-side legacy build state, documented by session 64308d3a); deploys succeed through `.github/workflows/pages.yml`.
+- Pages deployment: root site live at `<pages-url>/Cupertino3/` (see Pages settings for the canonical URL). Legacy `pages-build-deployment` shows `errored` (known GitHub-side legacy build state, documented by session 64308d3a); deploys succeed through `.github/workflows/pages.yml`.
 
 ## Privacy
 
