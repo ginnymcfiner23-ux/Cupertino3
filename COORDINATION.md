@@ -29,5 +29,7 @@ Checked source content against official BOE, county assessor, IRS and California
 
 - PR #1: https://github.com/ginnymcfiner23-ux/Cupertino3/pull/1
 - Merged to `main` with a merge commit on 2026-11-06.
-- GitHub Pages workflow run: https://github.com/ginnymcfiner23-ux/Cupertino3/actions/runs/42223506923 — queued when checked; successful deployment is not yet confirmed.
-- No PR checks were reported before merge. Static HTML navigation was checked locally; data claims remain limited to the cited official-source statements. GitHub Pages must be enabled for the repository if workflow deployment does not proceed.
+- GitHub Pages site: https://ginnymcfiner23-ux.github.io/Cupertino3/
+- GitHub Pages workflow run: https://github.com/ginnymcfiner23-ux/Cupertino3/actions/runs/42223506923 — completed successfully; deploy step passed.
+- No PR checks were reported before merge. Static HTML navigation was checked locally; data claims remain limited to the cited official-source statements.
+- GitHub Actions emitted non-blocking Node.js 20 deprecation and `ubuntu-latest` migration warnings for the workflow.
