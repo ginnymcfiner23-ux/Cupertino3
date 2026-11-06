@@ -1,14 +1,14 @@
 """Projection model for Property A (Cupertino) and Property B (San Francisco).
 
-Inputs: data/assumptions.json (user inputs are UNVERIFIED and labelled as such).
-Outputs: data/projections.json and CSV files in data/projections/.
+Inputs: data/guide/assumptions.json (user inputs are UNVERIFIED and labelled as such).
+Outputs: data/guide/projections.json and CSV files in data/guide/projections/.
 All numbers are projections under stated assumptions, not facts.
-Run:  python3 model/project.py
+Run:  python3 model/guide_project.py
 """
 import json, csv, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-A = {x["id"]: x["value"] for x in json.load(open(os.path.join(ROOT, "data/assumptions.json")))["inputs"]}
+A = {x["id"]: x["value"] for x in json.load(open(os.path.join(ROOT, "data/guide/assumptions.json")))["inputs"]}
 
 BASE = 2026
 END = 2050
@@ -189,14 +189,14 @@ def main():
                          "exclusion_at_Y": r["estate"]["exclusion"][Y], "combined_fmv_at_Y": r["estate"]["combined_fmv_A_plus_B"][Y]})
     payload = {"generated_by": "model/project.py", "note": "Projections only. Inputs labelled UNVERIFIED are client-provided. Not facts.",
                "default_case": to_str_keys(default), "sensitivity": sens}
-    os.makedirs(os.path.join(ROOT, "data/projections"), exist_ok=True)
-    json.dump(payload, open(os.path.join(ROOT, "data/projections.json"), "w"), indent=2)
+    os.makedirs(os.path.join(ROOT, "data/guide/projections"), exist_ok=True)
+    json.dump(payload, open(os.path.join(ROOT, "data/guide/projections.json"), "w"), indent=2)
 
     # CSVs for the default case
     d = default
     ya = ["year", "A_fmv", "A_assessed_parent_prop13", "A_tax_parent", "A_tax_prop19_after_Y", "A_tax_reassessed_after_Y",
           "A_insurance", "A_water", "A_solar_credit", "A_maintenance", "A_annual_cost_parent", "A_annual_cost_heir_prop19"]
-    with open(os.path.join(ROOT, "data/projections/property_A_default.csv"), "w", newline="") as f:
+    with open(os.path.join(ROOT, "data/guide/projections/property_A_default.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(ya)
         for t in d["years"]:
             w.writerow([t, round(d["A"]["fmv"][t]), round(d["A"]["assessed_parent_prop13"][t]), round(d["A"]["tax_parent"][t]),
@@ -206,7 +206,7 @@ def main():
                         round(d["A"]["maintenance"][t]), round(d["A"]["annual_cost_parent"][t]),
                         round(d["A"]["annual_cost_heir_prop19"].get(t, 0)) if t in d["A"]["annual_cost_heir_prop19"] else ""])
     yb = ["year", "B_fmv", "B_assessed_parent_prop13", "B_tax_parent", "B_tax_b1_reassessed", "B_rent", "B_water", "B_elec", "B_insurance", "B_maintenance", "B_noi_b1_rental", "B_tax_b3_occupy_one_unit", "B_noi_b3"]
-    with open(os.path.join(ROOT, "data/projections/property_B_default.csv"), "w", newline="") as f:
+    with open(os.path.join(ROOT, "data/guide/projections/property_B_default.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(yb)
         for t in d["years"]:
             B = d["B"]

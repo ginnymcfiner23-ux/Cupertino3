@@ -1,5 +1,5 @@
 {
-  "note": "Every row is either VERIFIED (official source linked) or UNVERIFIED (value left blank in the verified column). Client-provided numbers appear only in data/property_tax_history.json and data/assumptions.json, labelled UNVERIFIED.",
+  "note": "Every row is either VERIFIED (official source linked) or UNVERIFIED (value left blank in the verified column). Client-provided numbers appear only in data/guide/property_tax_history.json and data/guide/assumptions.json, labelled UNVERIFIED.",
   "rows": [
     {
       "id": "PT01",

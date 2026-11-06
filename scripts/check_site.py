@@ -1,8 +1,8 @@
-"""Validate the built site and the data behind it.
+"""Validate the built guide site (guide/) and the data behind it (data/guide/).
 
 Checks:
   1. Every <tbody> row in every table contains at least one link.
-  2. Every internal link resolves to a file in docs/.
+  2. Every internal link resolves to a file in guide/.
   3. No external CDN / remote resources (stylesheets, scripts, images, fonts, @import).
   4. Every VERIFIED data row cites source IDs that exist; UNVERIFIED rows have blank values.
   5. Privacy scan: flags ZIP-like numbers, APN-like patterns, and personal location words.
@@ -12,7 +12,7 @@ import glob, json, os, re, sys
 from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOCS = os.path.join(ROOT, "docs")
+DOCS = os.path.join(ROOT, "guide")
 fail = []
 
 
@@ -54,7 +54,7 @@ class P(HTMLParser):
 
 pages = sorted(glob.glob(os.path.join(DOCS, "*.html")))
 if not pages:
-    fail.append("no pages in docs/")
+    fail.append("no pages in guide/")
 for pg in pages:
     name = os.path.basename(pg)
     text = open(pg, encoding="utf-8").read()
@@ -86,8 +86,8 @@ for pg in pages:
             fail.append(f"{name}: privacy scan {label}: '{m.group(0)}' in ...{ctx}...")
 
 # data checks
-sources = {s["id"] for s in json.load(open(os.path.join(ROOT, "data/sources.json")))["sources"]}
-facts = json.load(open(os.path.join(ROOT, "data/facts.json")))["rows"]
+sources = {s["id"] for s in json.load(open(os.path.join(ROOT, "data/guide/sources.json")))["sources"]}
+facts = json.load(open(os.path.join(ROOT, "data/guide/facts.json")))["rows"]
 for r in facts:
     if r["status"] == "VERIFIED":
         if not r["sources"]:
@@ -100,7 +100,7 @@ for r in facts:
     for s in r["sources"]:
         if s not in sources:
             fail.append(f"fact {r['id']} cites unknown source {s}")
-for f in glob.glob(os.path.join(ROOT, "data/*.json")):
+for f in glob.glob(os.path.join(ROOT, "data/guide/*.json")):
     for s in re.findall(r'"S\d\d"', open(f).read()):
         if s.strip('"') not in sources:
             fail.append(f"{os.path.basename(f)} cites unknown source {s}")
