@@ -7,7 +7,7 @@ Anonymized analysis and GitHub Pages site comparing two ways of holding a home o
 
 Covers property tax and assessment history (checked against BOE factors), insurance, water, electricity and solar, maintenance, federal / California / local law, the inheritance threshold, pending law changes, the live / rent / sell decision, and an inheritance process checklist.
 
-**Published site:** GitHub Pages, served from the `docs/` folder on `main`.
+**Published site:** this analysis is served by GitHub Pages at the `/docs/` path of the Pages site (the repository root hosts a separate dashboard from another session, which is left unchanged).
 
 ## Layout
 

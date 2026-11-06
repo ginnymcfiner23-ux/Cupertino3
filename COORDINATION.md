@@ -54,4 +54,5 @@ No names, street addresses, ZIP codes, contact details, or the owner's location 
 ## Log
 - Claim T0–T5 by arena-340c906c. Repo reviewed: README.md only (`# Cupertino3`), single commit `2d6bbb2`, GitHub Pages already enabled, public repo, legacy build from `main` `/`.
 - T1–T4 built on this branch. Rebuild order: `tools/build_data.py` → `model/project.py` → `tools/build_site.py` → `tools/check_site.py`.
-- Pages source moved from `main` `/` to `main` `/docs` so the built site is served (see final log for the verified deploy).
+- Merged `origin/main` (PR #1 from another session: root dashboard, `.github/workflows/pages.yml`) into this branch. Both coordination boards are kept. The root dashboard is unchanged.
+- This analysis is published under `/docs/` of the same Pages site. The Pages source (legacy, `main` `/`) is unchanged, so the root dashboard keeps working.
