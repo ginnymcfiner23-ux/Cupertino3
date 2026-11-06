@@ -1,0 +1,16 @@
+{
+  "note": "Practical sequence for the trust. Deadlines are from the cited sources. Confirm with a qualified professional.",
+  "steps": [
+    {"step": 1, "when": "At date of death", "action": "The transfer is treated as occurring on the date of death. Obtain a date-of-death fair market value appraisal, which sets the income-tax basis.", "source_ids": ["S04", "S10"]},
+    {"step": 2, "when": "Within 9 months of death", "action": "File Form 706 if the gross estate exceeds $15,000,000 (2026). Extension: Form 4768 (6 months). Payment is also due within 9 months. Filing on time is required to elect portability.", "source_ids": ["S09", "S14"]},
+    {"step": 3, "when": "Before occupancy", "action": "Decide whether a beneficiary will occupy Property A as principal residence. Only that arrangement can keep the base value plus the add-on. Rentals, vacation homes and LLC-held property do not qualify.", "source_ids": ["S03"]},
+    {"step": 4, "when": "Within 1 year of transfer", "action": "The occupying beneficiary files the homeowners' exemption claim (BOE-266) with the county assessor. A claim filed by February 15 gets the full exemption for that year.", "source_ids": ["S03", "S05"]},
+    {"step": 5, "when": "Within 3 years of transfer, or before any third-party transfer", "action": "File the Prop 19 change-in-ownership statement (BOE-19-P).", "source_ids": ["S03", "S04"]},
+    {"step": 6, "when": "Ongoing", "action": "Keep the home as the beneficiary's principal residence. If it stops being the principal residence, it is reassessed at the next lien date (value = market value at inheritance, adjusted yearly by the inflation factor).", "source_ids": ["S04"]},
+    {"step": 7, "when": "Each year", "action": "Check the assessment against the BOE factor (2% cap; 2026-27 factor 1.02) and the value-limit add-on ($1,044,586 through Feb 15, 2027; adjusted every two years).", "source_ids": ["S01", "S02"]},
+    {"step": 8, "when": "At transfer and each year", "action": "Insurance: confirm owner-occupied dwelling coverage. FAIR Plan dwelling is an option if the broker's search finds no private market (1-4 unit owner-occupied and rental dwellings are eligible).", "source_ids": ["S20", "S21"]},
+    {"step": 9, "when": "At transfer", "action": "Transfer utility accounts. Check the solar interconnection date and the tariff (NEM 2.0 terms run 20 years from interconnection).", "source_ids": ["S22", "S23"]},
+    {"step": 10, "when": "If the property is sold", "action": "Income tax on the gain: federal long-term rates, NIIT (3.8%) above the threshold, and California tax at ordinary rates (no separate capital-gains rate). Basis = date-of-death value (plus improvements).", "source_ids": ["S08", "S12", "S16", "S10"]},
+    {"step": 11, "when": "If Property B is rented", "action": "Check rent-control status and Rent Board requirements before each lease increase (allowable increase 1.6% from 3/1/2026 to 2/28/2027 for rent-controlled units).", "source_ids": ["S27"]}
+  ]
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Overview | Inheritance analysis (Property A and B)</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header><div class="wrap"><h1>Inheritance analysis: Property A and Property B</h1>
+<p class="sub">Anonymized. Property A = Cupertino, Santa Clara County, CA. Property B = San Francisco, CA. Beneficiary and trust shown as [Beneficiary] and [Trust].</p>
+<nav><a href="index.html" class="on">Overview</a><a href="property-tax.html" class="">Property tax</a><a href="costs.html" class="">Costs</a><a href="tax-law.html" class="">Tax law</a><a href="inheritance-threshold.html" class="">Inheritance threshold</a><a href="projections.html" class="">Projections</a><a href="decision.html" class="">Live / rent / sell</a><a href="process.html" class="">Process</a><a href="flagged-for-review.html" class="">Flagged for Review</a><a href="sources.html" class="">Sources</a></nav></div></header>
+<main class="wrap">
+<h2>Overview</h2>
+
+<section class="card">
+<h3>What this site answers</h3>
+<p>Inheriting Property A (Cupertino) through [Trust] around 2040-2050, compared with holding Property B (San Francisco). It covers property tax, assessment history, insurance, water, electricity, maintenance, federal and California law, the inheritance threshold, and the live / rent / sell decision.</p>
+<ul>
+<li><strong>Federal estate tax:</strong> the 2026 exclusion is $15,000,000 per person (verified, IRS). Projected to $19,792,181 in 2040 and $24,126,559 in 2050 at a 2% inflation assumption.</li>
+<li><strong>California:</strong> no estate or inheritance tax (historic sources; current confirmation pending).</li>
+<li><strong>Prop 19 is the main driver for Property A.</strong> In the 2045 base case, property tax is about $52,264 a year if the beneficiary occupies the home as a principal residence, and about $72,583 a year if not.</li>
+<li><strong>Live / rent / sell (base case, 2045 inheritance, 10-year horizon, 3% appreciation, 4% investment return):</strong> keeping the home beats selling only if its rent (or imputed rent) is above about $11,024 a month with occupancy, or $12,647 without. With a 7% return, no rent level in the search range makes keeping better.</li>
+<li><strong>Property B</strong> returns about 3.27% net of costs in 2026 at the user's rent, before income tax and before appreciation.</li>
+</ul>
+<p class="note">Figures in this summary come from data/projections.json and are only as reliable as the inputs flagged on the <a href="flagged-for-review.html">Flagged for Review</a> page.</p>
+</section>
+<section class="grid">
+<a class="tile" href="property-tax.html"><h3>Property tax and assessment history</h3><p>Both properties, year by year, with BOE factor checks.</p></a>
+<a class="tile" href="costs.html"><h3>Costs</h3><p>Water, electricity and solar, insurance, maintenance and rent.</p></a>
+<a class="tile" href="tax-law.html"><h3>Tax law</h3><p>Federal, California and local rules, and pending changes.</p></a>
+<a class="tile" href="inheritance-threshold.html"><h3>Inheritance threshold</h3><p>Federal exemption by year, 2026-2050.</p></a>
+<a class="tile" href="projections.html"><h3>Projections</h3><p>Property A and B annual projections and assumptions.</p></a>
+<a class="tile" href="decision.html"><h3>Live / rent / sell</h3><p>Break-even rent and what would change the answer.</p></a>
+<a class="tile" href="process.html"><h3>Inheritance process</h3><p>Steps and deadlines, with sources.</p></a>
+<a class="tile warn" href="flagged-for-review.html"><h3>Flagged for Review</h3><p>24 items: 4 high, 17 to review, 3 info.</p></a>
+</section>
+<section class="card"><h3>How to read the site</h3>
+<p><span class="badge ok">Verified</span> read from an official page. <span class="badge part">Partly verified</span> official URL or partial document read; re-check before relying on it. <span class="badge pend">Pending</span> identified but not read; not used in any figure. <span class="badge user">User figure (unverified)</span> supplied by the owner; used only in labelled projections. <span class="badge assume">Assumption</span> model input, not a sourced fact. Blank = not verified.</p></section>
+
+</main>
+<footer class="wrap"><p>Not legal, tax or investment advice. Projections are labelled assumptions, not forecasts. Figures are sourced to official pages where noted; anything not verified is blank and listed on the <a href="flagged-for-review.html">Flagged for Review</a> page. Built from data/*.json on 2026-11-06.</p></footer>
+</body></html>

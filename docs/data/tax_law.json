@@ -1,0 +1,399 @@
+{
+  "note": "Each row cites an official source ID from data/sources.json. Status: verified / partially_verified / pending / unverified. Blank value = not verified and therefore not stated.",
+  "federal": [
+    {
+      "id": "FED-01",
+      "item": "Federal estate tax basic exclusion (per person), 2026",
+      "value": "$15,000,000",
+      "effective": "Decedents dying in 2026",
+      "status": "verified",
+      "source_ids": [
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "source_url": "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+      "note": "Rev. Proc. 2025-32 s.2.14 also gives $15,000,000 for 2026, indexed from 2027."
+    },
+    {
+      "id": "FED-02",
+      "item": "Basic exclusion after 2026 (indexing)",
+      "value": "Indexed for inflation from 2027 (method and 2040-2050 amounts are a projection; see inheritance-threshold page)",
+      "effective": "2027 onward",
+      "status": "verified",
+      "source_ids": [
+        "S08"
+      ],
+      "source_url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "note": "The index method (for example, chained CPI) was not verified; the projection uses a labelled inflation assumption."
+    },
+    {
+      "id": "FED-03",
+      "item": "Estate tax filing threshold, 2026 (gross estate)",
+      "value": "$15,000,000",
+      "effective": "2026",
+      "status": "verified",
+      "source_ids": [
+        "S09"
+      ],
+      "source_url": "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax",
+      "note": "Form 706 is needed above this threshold, and also for portability of a deceased spouse's unused exclusion."
+    },
+    {
+      "id": "FED-04",
+      "item": "Federal estate tax top rate",
+      "value": "40%",
+      "effective": "Current law",
+      "status": "partially_verified",
+      "source_ids": [
+        "S14"
+      ],
+      "source_url": "https://www.irs.gov/instructions/i706",
+      "note": "The 40% figure was seen in secondary text. Confirm the rate in the current Form 706 instructions before relying on it."
+    },
+    {
+      "id": "FED-05",
+      "item": "Form 706 due date",
+      "value": "9 months after date of death (automatic 6-month extension on Form 4768; payment due 9 months)",
+      "effective": "Decedents dying after 12/31/2025 (current form instructions)",
+      "status": "partially_verified",
+      "source_ids": [
+        "S14"
+      ],
+      "source_url": "https://www.irs.gov/instructions/i706",
+      "note": "Portability election must be filed on time (within 9 months or within the extension period)."
+    },
+    {
+      "id": "FED-06",
+      "item": "Annual gift tax exclusion, 2026",
+      "value": "$19,000 per donee",
+      "effective": "2026",
+      "status": "verified",
+      "source_ids": [
+        "S07"
+      ],
+      "source_url": "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+      "note": ""
+    },
+    {
+      "id": "FED-07",
+      "item": "Basis of inherited property",
+      "value": "Fair market value on date of death (or alternate valuation date, if elected)",
+      "effective": "Current law (IRC s.1014)",
+      "status": "verified",
+      "source_ids": [
+        "S10",
+        "S13"
+      ],
+      "source_url": "https://www.irs.gov/publications/p551",
+      "note": "Pub 551 also covers the special-use valuation and conservation-easement adjustments."
+    },
+    {
+      "id": "FED-08",
+      "item": "Long-term capital gain rates, single (2026): 0% up to $49,450; 15% up to $545,500; 20% above",
+      "value": "0% / 15% / 20%",
+      "effective": "Tax year 2026",
+      "status": "verified",
+      "source_ids": [
+        "S08"
+      ],
+      "source_url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "note": "Married filing jointly: 0% to $98,900; 15% to $613,700. Used for the sale analysis."
+    },
+    {
+      "id": "FED-09",
+      "item": "Net investment income tax (NIIT)",
+      "value": "3.8% above $200,000 MAGI (single / head of household); $250,000 (married filing jointly)",
+      "effective": "Current law",
+      "status": "verified",
+      "source_ids": [
+        "S12"
+      ],
+      "source_url": "https://www.irs.gov/taxtopics/tc559",
+      "note": "Applies to net gains from the sale of real estate."
+    },
+    {
+      "id": "FED-10",
+      "item": "Collectibles gain maximum rate; unrecaptured s.1250 gain maximum rate",
+      "value": "28%; 25%",
+      "effective": "Current law",
+      "status": "partially_verified",
+      "source_ids": [
+        "S11"
+      ],
+      "source_url": "https://www.irs.gov/taxtopics/tc409",
+      "note": "Statutory maximum rates. Not used in the model, since the property is not a collectible."
+    },
+    {
+      "id": "FED-11",
+      "item": "Federal estate repeal proposal (Death Tax Repeal Act, S.587 / H.R.1301)",
+      "value": "Would repeal the estate and GST taxes",
+      "effective": "Not law. Introduced 02/13/2025; referred to committee; no further action listed.",
+      "status": "verified",
+      "source_ids": [
+        "S31",
+        "S32"
+      ],
+      "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/587/all-info",
+      "note": "Status as shown on congress.gov. Not modelled."
+    }
+  ],
+  "california": [
+    {
+      "id": "CA-01",
+      "item": "California estate tax",
+      "value": "None (pickup estate tax inapplicable after 2005; no state estate tax in effect)",
+      "effective": "Since 2005",
+      "status": "partially_verified",
+      "source_ids": [
+        "S18",
+        "S19"
+      ],
+      "source_url": "https://lao.ca.gov/2007/tax_primer/tax_primer_040907.aspx",
+      "note": "Historic sources. Confirm the current law before relying on it (pending)."
+    },
+    {
+      "id": "CA-02",
+      "item": "California inheritance tax",
+      "value": "None (repealed by Prop 6, June 1982)",
+      "effective": "Since 1982",
+      "status": "partially_verified",
+      "source_ids": [
+        "S19"
+      ],
+      "source_url": "https://arev.assembly.ca.gov/sites/arev.assembly.ca.gov/files/publications/Chapter_8.pdf",
+      "note": "Historic source. Confirm current status."
+    },
+    {
+      "id": "CA-03",
+      "item": "California income tax on capital gains",
+      "value": "Taxed as ordinary income; no separate capital-gains rate",
+      "effective": "Current law",
+      "status": "partially_verified",
+      "source_ids": [
+        "S16"
+      ],
+      "source_url": "https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html",
+      "note": "Applies to the gain on sale of inherited California real estate."
+    },
+    {
+      "id": "CA-04",
+      "item": "California personal income tax rate range",
+      "value": "1% to 12.3% (graduated)",
+      "effective": "Current law",
+      "status": "partially_verified",
+      "source_ids": [
+        "S17"
+      ],
+      "source_url": "https://www.ftb.ca.gov/about-ftb/data-reports-plans/summary-of-federal-income-tax-changes/index.html",
+      "note": "The 2026 bracket table (Form 540 schedules) is pending and is NOT used here."
+    },
+    {
+      "id": "CA-05",
+      "item": "California 2026 Form 540 tax-rate schedules",
+      "value": "",
+      "effective": "2026",
+      "status": "pending",
+      "source_ids": [
+        "S15"
+      ],
+      "source_url": "https://www.ftb.ca.gov/forms/2026/2026-540-tax-rate-schedules.pdf",
+      "note": "Not read. Bracket amounts are left blank until verified."
+    }
+  ],
+  "property_tax_california": [
+    {
+      "id": "PT-01",
+      "item": "Prop 13 base-year value; annual inflation factor capped at 2%",
+      "value": "2% cap; 2026-27 factor = 1.02",
+      "effective": "Each roll year",
+      "status": "verified",
+      "source_ids": [
+        "S01"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta26002.pdf",
+      "note": "Calculated CCPI for 2026-27 was 3.307%, capped at 2%."
+    },
+    {
+      "id": "PT-02",
+      "item": "Homeowners' exemption (reduces taxable value of owner-occupied principal residence)",
+      "value": "$7,000 reduction (about $93 of tax at the derived Property A rate)",
+      "effective": "Lien date January 1; file BOE-266 with the assessor",
+      "status": "partially_verified",
+      "source_ids": [
+        "S05"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/homeowners_exemption.htm",
+      "note": "A new owner must file. Filing by February 15 gives the full exemption for the year."
+    },
+    {
+      "id": "PT-03",
+      "item": "Prop 19 parent-child exclusion: transferee must occupy the home as principal residence within 1 year",
+      "value": "Required",
+      "effective": "Transfers on or after 2/16/2021",
+      "status": "verified",
+      "source_ids": [
+        "S03",
+        "S04"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "note": "Rentals, vacation homes and LLC-held property do not qualify."
+    },
+    {
+      "id": "PT-04",
+      "item": "Prop 19: homeowners' exemption claim after the transfer",
+      "value": "Due within 1 year",
+      "effective": "After transfer",
+      "status": "verified",
+      "source_ids": [
+        "S03"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "note": "Late claims get prospective relief only."
+    },
+    {
+      "id": "PT-05",
+      "item": "Prop 19: change-in-ownership statement BOE-19-P",
+      "value": "Within 3 years of transfer, or before any transfer to a third party",
+      "effective": "After transfer",
+      "status": "verified",
+      "source_ids": [
+        "S03",
+        "S04"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "note": ""
+    },
+    {
+      "id": "PT-06",
+      "item": "Prop 19 value limit ($1 million add-on)",
+      "value": "$1,044,586 for transfers 2/16/2025 - 2/15/2027; adjusted every two years using the FHFA House Price Index for California",
+      "effective": "2025-2027",
+      "status": "verified",
+      "source_ids": [
+        "S02",
+        "S06"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "note": "Projections after 2027 assume the add-on grows with inflation (assumption)."
+    },
+    {
+      "id": "PT-07",
+      "item": "Prop 19 value-limit formula",
+      "value": "If market value <= factored base-year value + add-on, the base-year value is kept. If market value is higher, the excess over (base-year value + add-on) is added to the base-year value; so taxable value = market value - add-on. BOE example (FAQ 6): base-year value $300,000, market value $1,500,000 -> excluded $1,300,000; $200,000 added -> adjusted base-year value $500,000.",
+      "effective": "Transfers on or after 2/16/2021",
+      "status": "verified",
+      "source_ids": [
+        "S04"
+      ],
+      "source_url": "https://www.boe.ca.gov/prop19/",
+      "note": "Read directly from BOE FAQ 6 (verified). The earlier project note was checked against this text."
+    },
+    {
+      "id": "PT-08",
+      "item": "Prop 19 for multi-unit property",
+      "value": "Only the unit occupied as the principal residence qualifies; other units are reassessed to full cash value",
+      "effective": "Transfers on or after 2/16/2021",
+      "status": "verified",
+      "source_ids": [
+        "S03"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "note": "Relevant to Property B (3 units) if it were ever inherited."
+    },
+    {
+      "id": "PT-09",
+      "item": "Trusts for Prop 19",
+      "value": "Trust is looked through; the rules apply to the beneficiary's occupancy, not the vehicle",
+      "effective": "Current law",
+      "status": "verified",
+      "source_ids": [
+        "S03"
+      ],
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "note": ""
+    },
+    {
+      "id": "PT-10",
+      "item": "Continuing occupancy after the transfer",
+      "value": "If the transferee stops occupying the home, the exclusion ends and the home is reassessed as of the lien date after the move-out. The new taxable value is the market value on the date of inheritance, adjusted each year by the inflation factor (BOE FAQ 3). A different eligible transferee occupying within one year can keep the exclusion.",
+      "effective": "After transfer",
+      "status": "verified",
+      "source_ids": [
+        "S04"
+      ],
+      "source_url": "https://www.boe.ca.gov/prop19/",
+      "note": "BOE FAQ 3 (verified)."
+    },
+    {
+      "id": "PT-11",
+      "item": "Prop 19 repeal initiative (for the Nov 2026 ballot)",
+      "value": "Reported as failed to qualify (signature deadline May 2026)",
+      "effective": "",
+      "status": "unverified",
+      "source_ids": [
+        "S30"
+      ],
+      "source_url": "https://www.sos.ca.gov/elections/ballot-measures/initiative-and-referendum-status/failed-qualify",
+      "note": "The SOS list shows only the last 60 days, so the May 2026 notice is not on it. Left blank; flagged for manual check."
+    },
+    {
+      "id": "PT-12",
+      "item": "SB 974 (Seyarto): special-needs trusts included in the Prop 19 'transfer' definition",
+      "value": "Pending (amended March 25, 2026; BOE analysis April 17, 2026)",
+      "effective": "Would take effect on enactment",
+      "status": "verified",
+      "source_ids": [
+        "S06"
+      ],
+      "source_url": "https://boe.ca.gov/legdiv/pdf/0974sb032526rd.pdf",
+      "note": "Current legislative status not checked; BOE analysis only."
+    }
+  ],
+  "san_francisco_local": [
+    {
+      "id": "SF-01",
+      "item": "SF Rent Board allowable annual increase (rent-controlled units), 3/1/2026 - 2/28/2027",
+      "value": "1.6%",
+      "effective": "3/1/2026 - 2/28/2027",
+      "status": "verified",
+      "source_ids": [
+        "S27"
+      ],
+      "source_url": "https://www.sf.gov/news--annual-rent-increase-3126-22827-announced",
+      "note": "Prior period (2025-26): 1.4%. Applies only if the units are rent-controlled."
+    },
+    {
+      "id": "SF-02",
+      "item": "SF Empty Homes Tax (Prop M, 3+ unit buildings)",
+      "value": "",
+      "effective": "",
+      "status": "unverified",
+      "source_ids": [],
+      "source_url": "https://www.sf.gov/departments--assessor-recorder",
+      "note": "Reported (secondary) as enjoined and held preempted by the Ellis Act by the First District Court of Appeal on Sept 11, 2026. The primary opinion has not been read. Flagged; value left blank."
+    },
+    {
+      "id": "SF-03",
+      "item": "SF water and sewer rates (SFPUC)",
+      "value": "Proposed: +$21/month (FY2027) and +$23/month (FY2028) for an average household, about 12.6% and 12.5% per year",
+      "effective": "Proposal to take effect 7/1/2026 if approved",
+      "status": "partially_verified",
+      "source_ids": [
+        "S24"
+      ],
+      "source_url": "https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026/what-proposition-218",
+      "note": "Adoption status not confirmed on the SFPUC site."
+    },
+    {
+      "id": "SF-04",
+      "item": "Documentary transfer tax (SF, and Santa Clara County)",
+      "value": "",
+      "effective": "",
+      "status": "unverified",
+      "source_ids": [],
+      "source_url": "https://www.sf.gov/departments--assessor-recorder",
+      "note": "Not researched. Left blank; flagged. The sale analysis uses a separate selling-cost assumption."
+    }
+  ]
+}

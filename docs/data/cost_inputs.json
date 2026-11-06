@@ -1,0 +1,305 @@
+{
+  "note": "Verified value columns are blank where no official figure was read. The user-supplied column is NOT verified; it is used only in labelled projections. Model assumptions are listed separately in data/projections.json.",
+  "rows": [
+    {
+      "id": "W-A1",
+      "category": "Water",
+      "property": "A",
+      "item": "Residential water tiers, per 100 cu ft (Ccf): 0-6 Ccf; 6-12 Ccf; over 12 Ccf",
+      "verified_value": "$5.0355; $7.5156; $14.3548 per Ccf (July 2026 tariff sheet)",
+      "verified_status": "partially_verified",
+      "source_ids": [
+        "S23"
+      ],
+      "source_url": "https://www.sjwater.com/media/2ubbkexp/schedule-1b-al629a-july-2026.pdf",
+      "user_input": "$100-150 per month (midpoint $125 used)",
+      "user_status": "unverified",
+      "flags": [
+        "FLAG-WATER-A"
+      ],
+      "note": "Tiers apply to the water provider's tariff. Monthly service charges are not read and left blank."
+    },
+    {
+      "id": "W-A2",
+      "category": "Water",
+      "property": "A",
+      "item": "Monthly service charge and surcharges (San Jose Water)",
+      "verified_value": "",
+      "verified_status": "pending",
+      "source_ids": [
+        "S23"
+      ],
+      "source_url": "https://www.sjwater.com/media/2ubbkexp/schedule-1b-al629a-july-2026.pdf",
+      "user_input": "",
+      "user_status": "",
+      "flags": [
+        "FLAG-WATER-A"
+      ],
+      "note": "Not yet read from the tariff sheet."
+    },
+    {
+      "id": "W-B1",
+      "category": "Water and sewer",
+      "property": "B",
+      "item": "SFPUC water and sewer rate proposal (average household, per month)",
+      "verified_value": "Proposed +$21 (FY2027) and +$23 (FY2028); about 12.6% and 12.5% per year; effective 7/1/2026 if approved",
+      "verified_status": "partially_verified",
+      "source_ids": [
+        "S24"
+      ],
+      "source_url": "https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026/what-proposition-218",
+      "user_input": "$330-400 per month for 3 units (midpoint $365 used)",
+      "user_status": "unverified",
+      "flags": [
+        "FLAG-WATER-B"
+      ],
+      "note": "Adoption not confirmed. Secondary reports of a 10.5% first-year change are not used."
+    },
+    {
+      "id": "E-A1",
+      "category": "Electricity and solar",
+      "property": "A",
+      "item": "Legacy solar tariff term (NEM 2.0)",
+      "verified_value": "Customers may stay on NEM 2.0 for 20 years from interconnection (D.14-03-041)",
+      "verified_status": "partially_verified",
+      "source_ids": [
+        "S22"
+      ],
+      "source_url": "https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing",
+      "user_input": "Net solar credit $10-20 per month (midpoint -$15 used)",
+      "user_status": "unverified",
+      "flags": [
+        "FLAG-SOLAR"
+      ],
+      "note": "Interconnection date is unknown. A 20-year term from an interconnection in about 2020-2026 would end around 2040-2046, inside the inheritance window."
+    },
+    {
+      "id": "E-A2",
+      "category": "Electricity and solar",
+      "property": "A",
+      "item": "Export compensation rate under the net billing tariff (NEM 3.0)",
+      "verified_value": "",
+      "verified_status": "pending",
+      "source_ids": [
+        "S22"
+      ],
+      "source_url": "https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing",
+      "user_input": "",
+      "user_status": "",
+      "flags": [
+        "FLAG-SOLAR"
+      ],
+      "note": "Third-party averages (about 3.9 cents per kWh for 2025-2026 applicants) are not verified and not shown."
+    },
+    {
+      "id": "E-B1",
+      "category": "Electricity",
+      "property": "B",
+      "item": "Electricity price escalation (US city average electricity index, 12 months to Sept 2026)",
+      "verified_value": "+4.4%",
+      "verified_status": "verified",
+      "source_ids": [
+        "S25"
+      ],
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "user_input": "$30-70 per month (midpoint $50 used)",
+      "user_status": "unverified",
+      "flags": [],
+      "note": "BLS is a national index, not a Santa Clara County or SF rate."
+    },
+    {
+      "id": "I-A1",
+      "category": "Insurance",
+      "property": "A",
+      "item": "Homeowners premium (owner-occupied)",
+      "verified_value": "",
+      "verified_status": "pending",
+      "source_ids": [
+        "S20"
+      ],
+      "source_url": "https://www.insurance.ca.gov/01-consumers/105-type/5-residential/index.cfm",
+      "user_input": "$1,500 per year (estimate)",
+      "user_status": "unverified",
+      "flags": [
+        "FLAG-INSURANCE"
+      ],
+      "note": "The CDI page links to tools but shows no premium figure. No official Cupertino or statewide figure was found."
+    },
+    {
+      "id": "I-B1",
+      "category": "Insurance",
+      "property": "B",
+      "item": "Dwelling premium for a 3-unit building with rentals",
+      "verified_value": "",
+      "verified_status": "pending",
+      "source_ids": [
+        "S21"
+      ],
+      "source_url": "https://www.cfpnet.com/policies/dwelling/",
+      "user_input": "$1,500 per year (estimate)",
+      "user_status": "unverified",
+      "flags": [
+        "FLAG-INSURANCE"
+      ],
+      "note": "FAIR Plan dwelling policy covers owner-occupied 1-4 unit dwellings and 1-4 unit rentals (verified). Premium not published on the page."
+    },
+    {
+      "id": "I-REF1",
+      "category": "Insurance",
+      "property": "A and B",
+      "item": "FAIR Plan dwelling eligibility",
+      "verified_value": "Owner-occupied 1-4 unit dwellings and 1-4 unit rentals are eligible; named perils (fire, lightning, internal explosion, smoke); extra coverages optional",
+      "verified_status": "verified",
+      "source_ids": [
+        "S21"
+      ],
+      "source_url": "https://www.cfpnet.com/policies/dwelling/",
+      "user_input": "",
+      "user_status": "",
+      "flags": [
+        "FLAG-INSURANCE"
+      ],
+      "note": "Eligibility depends on a broker's diligent search (see S21)."
+    },
+    {
+      "id": "M-A1",
+      "category": "Maintenance",
+      "property": "A",
+      "item": "Annual repair and maintenance cost",
+      "verified_value": "",
+      "verified_status": "unverified",
+      "source_ids": [
+        "S25"
+      ],
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "user_input": "Not provided. Model assumption: 0.5% of market value per year",
+      "user_status": "assumption",
+      "flags": [
+        "FLAG-ASSUMPTIONS"
+      ],
+      "note": "No official maintenance-cost figure was found. Linked to BLS CPI (official inflation reference) for context only. No official source. The assumption drives a large part of the carrying cost, so it is tested in the sensitivity grid."
+    },
+    {
+      "id": "M-B1",
+      "category": "Maintenance",
+      "property": "B",
+      "item": "Annual repair and maintenance cost",
+      "verified_value": "",
+      "verified_status": "unverified",
+      "source_ids": [
+        "S25"
+      ],
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "user_input": "Not provided. Model assumption: 1.0% of market value per year",
+      "user_status": "assumption",
+      "flags": [
+        "FLAG-ASSUMPTIONS"
+      ],
+      "note": "No official maintenance-cost figure was found. Linked to BLS CPI (official inflation reference) for context only. No official source. Owner stated Property B costs more to maintain than Property A; the model uses a higher rate for B."
+    },
+    {
+      "id": "R-B1",
+      "category": "Rent",
+      "property": "B",
+      "item": "Allowable annual rent increase, rent-controlled units (3/1/2026 - 2/28/2027)",
+      "verified_value": "1.6%",
+      "verified_status": "verified",
+      "source_ids": [
+        "S27"
+      ],
+      "source_url": "https://www.sf.gov/news--annual-rent-increase-3126-22827-announced",
+      "user_input": "$7,150 per month for two rented units",
+      "user_status": "unverified",
+      "flags": [
+        "FLAG-RENT"
+      ],
+      "note": "Applies only to rent-controlled units. Rent-control status of each unit is not verified."
+    },
+    {
+      "id": "R-A1",
+      "category": "Rent",
+      "property": "A",
+      "item": "Market rent for Property A if rented",
+      "verified_value": "",
+      "verified_status": "pending",
+      "source_ids": [
+        "S34"
+      ],
+      "source_url": "https://www.huduser.gov/portal/datasets/fmr.html",
+      "user_input": "",
+      "user_status": "",
+      "flags": [
+        "FLAG-RENT"
+      ],
+      "note": "No verified local rent figure. Official HUD Fair Market Rent portal linked for a future check (not read; not used). The decision analysis gives a break-even rent instead of assuming one."
+    },
+    {
+      "id": "INF-1",
+      "category": "Inflation",
+      "property": "Both",
+      "item": "Long-run inflation goal (PCE)",
+      "verified_value": "2% (Federal Reserve longer-run goal)",
+      "verified_status": "partially_verified",
+      "source_ids": [
+        "S26"
+      ],
+      "source_url": "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-statement.htm",
+      "user_input": "",
+      "user_status": "",
+      "flags": [],
+      "note": "Used as the base-case inflation assumption."
+    },
+    {
+      "id": "INF-2",
+      "category": "Inflation",
+      "property": "Both",
+      "item": "CPI-U, all items, 12 months ending September 2026 (US city average, not seasonally adjusted)",
+      "verified_value": "3.7%",
+      "verified_status": "verified",
+      "source_ids": [
+        "S25"
+      ],
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "user_input": "",
+      "user_status": "",
+      "flags": [],
+      "note": "Used as the high-inflation stress case."
+    },
+    {
+      "id": "T-A1",
+      "category": "Property tax rate",
+      "property": "A",
+      "item": "Effective rate on assessed value, 2025 (tax / assessed value)",
+      "verified_value": "1.335% (derived from the user's 2025 tax and assessed value; not an official rate)",
+      "verified_status": "derived",
+      "source_ids": [
+        "S29"
+      ],
+      "source_url": "https://asr.santaclaracounty.gov/home",
+      "user_input": "",
+      "user_status": "",
+      "flags": [
+        "FLAG-TAXRATIO"
+      ],
+      "note": "Check against the county tax bill."
+    },
+    {
+      "id": "T-B1",
+      "category": "Property tax rate",
+      "property": "B",
+      "item": "Effective rate on assessed value, 2025 (tax / assessed value)",
+      "verified_value": "2.135% (derived from the user's 2025 tax and assessed value; not an official rate)",
+      "verified_status": "derived",
+      "source_ids": [
+        "S28"
+      ],
+      "source_url": "https://www.sf.gov/departments--assessor-recorder",
+      "user_input": "",
+      "user_status": "",
+      "flags": [
+        "FLAG-TAXRATIO"
+      ],
+      "note": "About 60% above Property A's rate. May include direct assessments or bonds; check against the bill."
+    }
+  ]
+}

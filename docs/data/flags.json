@@ -1,0 +1,277 @@
+{
+  "note": "Flags do not block the merge. Each item needs manual review or an official check. Severity: high = could change a decision; review = should be checked; info = noted for completeness.",
+  "flags": [
+    {
+      "id": "FLAG-SOLAR",
+      "severity": "high",
+      "property": "A",
+      "topic": "Solar tariff and interconnection date",
+      "detail": "The installation (interconnection) date is unknown. NEM 2.0 terms run 20 years from interconnection, so the legacy credit may end near the inheritance window (about 2040-2046). The user's $10-20/month credit and any NEM 3.0 export rate are unverified.",
+      "action": "Check the interconnection date and tariff on the PG&E bill. Confirm whether NEM 2.0 or the net billing tariff applies.",
+      "source_ids": [
+        "S22"
+      ]
+    },
+    {
+      "id": "FLAG-PROP19-SCOPE",
+      "severity": "high",
+      "property": "A and B",
+      "topic": "Prop 19 occupancy outcome",
+      "detail": "The model shows two results: a beneficiary who occupies within one year keeps the base plus the value-limit add-on; a non-occupying beneficiary is reassessed to market value. This is the largest driver of Property A's carrying cost. It depends on the beneficiary actually occupying the home and filing BOE-266.",
+      "action": "Confirm the occupancy plan with a tax professional before the transfer.",
+      "source_ids": [
+        "S03",
+        "S04"
+      ]
+    },
+    {
+      "id": "FLAG-BENEFICIARY-STATUS",
+      "severity": "high",
+      "property": "A",
+      "topic": "Beneficiary tax residency not stated",
+      "detail": "Results assume a US tax-resident individual. Non-resident status could change withholding, income tax and treatment of rent. Not researched and not modelled.",
+      "action": "Obtain professional advice if residency is not US.",
+      "source_ids": [],
+      "source_url": "https://www.irs.gov/"
+    },
+    {
+      "id": "FLAG-MARKET-VALUE",
+      "severity": "high",
+      "property": "A and B",
+      "topic": "Market values are user estimates",
+      "detail": "$3,100,000 (A) and $1,800,000 (B) are estimates with no official valuation. Assessed values are Prop 13 figures, not market values. The Prop 19 result and the sell/hold result both depend on market value.",
+      "action": "Obtain a current appraisal for each property.",
+      "source_ids": [
+        "S29",
+        "S28"
+      ]
+    },
+    {
+      "id": "FLAG-SF-EMPTY-HOMES",
+      "severity": "review",
+      "property": "B",
+      "topic": "SF Empty Homes Tax (Prop M)",
+      "detail": "Reported (secondary source) as enjoined and held preempted by the Ellis Act by the First District Court of Appeal, Sept 11, 2026 (Debbane v. City & County of SF). Secondary sources disagree on the unit threshold (3+ vs more than two). The primary opinion and the ordinance text were not read. No tax is included in the model.",
+      "action": "Read the opinion and the ordinance on sf.gov or courts.ca.gov before relying on this.",
+      "source_ids": [],
+      "source_url": "https://www.sf.gov/"
+    },
+    {
+      "id": "FLAG-PROP19-REPEAL",
+      "severity": "review",
+      "property": "A and B",
+      "topic": "Prop 19 repeal initiative status",
+      "detail": "Secondary sources say the 2026 repeal initiative (Initiative 25-0017) failed to qualify (signature deadline May 2026; SOS notice May 4, 2026). The SOS list shows only the last 60 days, so the notice is not on it.",
+      "action": "Check the SOS failed-to-qualify notice for the initiative directly.",
+      "source_ids": [
+        "S30"
+      ]
+    },
+    {
+      "id": "FLAG-SB974",
+      "severity": "review",
+      "property": "A",
+      "topic": "SB 974 (Seyarto) pending",
+      "detail": "Would add special-needs trusts to the Prop 19 definition of 'transfer' (BOE analysis, April 17, 2026). Legislative status after that date not checked.",
+      "action": "Check the bill status on leginfo.legislature.ca.gov before the transfer.",
+      "source_ids": [
+        "S06"
+      ]
+    },
+    {
+      "id": "FLAG-AV-SF-2022",
+      "severity": "review",
+      "property": "B",
+      "topic": "SF 2022 assessed value differs from BOE factor",
+      "detail": "SF 2022 assessed value 107,662 differs from 2021 value 105,595 x BOE factor 1.02 (= 107,707) by -$45. The stated +2% is consistent at one decimal, so this is a small unexplained difference.",
+      "action": "Check the 2022-23 roll notice on sf.gov.",
+      "source_ids": [
+        "S01",
+        "S28"
+      ]
+    },
+    {
+      "id": "FLAG-TAX-A-IDENTICAL",
+      "severity": "review",
+      "property": "A",
+      "topic": "Identical tax values in consecutive years",
+      "detail": "Cupertino property tax is 6,383 in both 2017 and 2018, and 6,565 in both 2019 and 2020, with no change shown. This is unusual because the assessed value rose each year.",
+      "action": "Check the 2018 and 2020 tax bills against the county record.",
+      "source_ids": [
+        "S29"
+      ]
+    },
+    {
+      "id": "FLAG-TAX-A-2026",
+      "severity": "review",
+      "property": "A",
+      "topic": "2026 tax not billed",
+      "detail": "The 2026 property tax is shown as '--' in the user's table. The projection's 2026 tax (about $7,351) is a model estimate, not a bill.",
+      "action": "Use the 2026-27 bill when issued.",
+      "source_ids": [
+        "S29"
+      ]
+    },
+    {
+      "id": "FLAG-AV-A-2026",
+      "severity": "review",
+      "property": "A",
+      "topic": "2026 assessed value is a user projection",
+      "detail": "$550,537 equals 2025 value 539,743 x 1.02 (BOE factor, within $1). It is the user's figure, not the certified roll.",
+      "action": "Confirm the 2026-27 roll value on the county assessor site.",
+      "source_ids": [
+        "S01",
+        "S29"
+      ]
+    },
+    {
+      "id": "FLAG-TAXRATIO",
+      "severity": "review",
+      "property": "B",
+      "topic": "SF tax-to-assessed-value ratio is high",
+      "detail": "SF's 2025 tax is 2.135% of assessed value; Cupertino's is 1.335%. The difference may come from direct assessments or bonds, which are not part of the Prop 13 rate.",
+      "action": "Check the SF bill line items.",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "id": "FLAG-SF-TAX-SPIKES",
+      "severity": "review",
+      "property": "B",
+      "topic": "Large one-year tax changes in SF",
+      "detail": "SF tax rose 18.4% in 2018 (1,740 to 2,061) and fell 5.9% in 2021 (2,197 to 2,066). The assessed-value factor (2%) does not explain either change.",
+      "action": "Check whether a direct assessment, bond or exemption applied.",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "id": "FLAG-AV-LABEL-2021",
+      "severity": "info",
+      "property": "A and B",
+      "topic": "2021 '+1%' labels",
+      "detail": "The 2021 assessed-value labels read +1%. BOE factor 1.01036 (1.036%) rounds to 1.0% at one decimal, so the label is consistent with the BOE factor. The values match the factor within $5.",
+      "action": "No action needed. The two-decimal calculation (1.04%) is a rounding presentation difference.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "FLAG-INSURANCE",
+      "severity": "review",
+      "property": "A and B",
+      "topic": "No official premium figure",
+      "detail": "No official Cupertino or statewide premium figure was found. The user estimate of $1,500/yr is unverified for both properties. Secondary reproductions of an NAIC 2023 figure ($1,655, California HO-3) and a CDI 2025 data-call figure ($2,339.99) were found, but not on official sites, so they are not used in tables. FAIR Plan dwelling eligibility is verified.",
+      "action": "Get quotes. Check the CDI Compare Premiums tool and the NAIC report directly.",
+      "source_ids": [
+        "S20",
+        "S21"
+      ]
+    },
+    {
+      "id": "FLAG-WATER-A",
+      "severity": "review",
+      "property": "A",
+      "topic": "Water provider for the parcel",
+      "detail": "San Jose Water serves portions of Cupertino (secondary source). Confirm the provider for the specific parcel. The user's $100-150/month estimate is unverified.",
+      "action": "Check the provider on the water bill; compare monthly usage with the tariff tiers.",
+      "source_ids": [
+        "S23"
+      ]
+    },
+    {
+      "id": "FLAG-WATER-B",
+      "severity": "review",
+      "property": "B",
+      "topic": "SF water and sewer rate adoption",
+      "detail": "The SFPUC increase is a Prop 218 proposal; adoption not confirmed. The user's $330-400/month estimate for 3 units is unverified.",
+      "action": "Check the SFPUC rate page and the bill.",
+      "source_ids": [
+        "S24"
+      ]
+    },
+    {
+      "id": "FLAG-RENT",
+      "severity": "review",
+      "property": "B",
+      "topic": "Rent-control status and rent levels",
+      "detail": "The 1.6% allowance applies only to rent-controlled units. Rent-control status of the two rented units is not verified. The $7,150/month income is the user's figure. Cupertino market rent is not verified.",
+      "action": "Check each unit's Rent Board status and lease amounts.",
+      "source_ids": [
+        "S27"
+      ]
+    },
+    {
+      "id": "FLAG-ASSUMPTIONS",
+      "severity": "review",
+      "property": "A and B",
+      "topic": "Model assumptions",
+      "detail": "Appreciation (2%, 3%, 5%), maintenance (0.5% A, 1.0% B), selling costs (6%), investment returns (4%, 7%), value-limit growth after 2027 and the inflation rate are assumptions, not forecasts. The maintenance assumption is a large part of Property A's carrying cost.",
+      "action": "Change the assumptions in model/project.py and rebuild.",
+      "source_ids": [
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "FLAG-FED-40",
+      "severity": "review",
+      "property": "A and B",
+      "topic": "Federal estate tax top rate",
+      "detail": "The 40% rate appeared in secondary text. The IRS Form 706 instructions were found but the rate was not read.",
+      "action": "Confirm in the current Form 706 instructions.",
+      "source_ids": [
+        "S14"
+      ]
+    },
+    {
+      "id": "FLAG-FED-PROPOSALS",
+      "severity": "review",
+      "property": "A and B",
+      "topic": "Federal proposals beyond S.587 / H.R.1301",
+      "detail": "Secondary articles mention other proposals (for example, lowering the exemption to $3.5 million or new trust taxes). Their status was not verified on congress.gov, so they are not modelled. The Death Tax Repeal Act is listed with its verified status.",
+      "action": "Check congress.gov before any decision.",
+      "source_ids": [
+        "S31",
+        "S32"
+      ]
+    },
+    {
+      "id": "FLAG-CA-HISTORIC",
+      "severity": "info",
+      "property": "A and B",
+      "topic": "California estate and inheritance tax sources are historic",
+      "detail": "The LAO (2007) and the Assembly glossary confirm no state estate or inheritance tax. Current-year confirmation is still pending.",
+      "action": "Confirm with the FTB or a tax professional.",
+      "source_ids": [
+        "S18",
+        "S19"
+      ]
+    },
+    {
+      "id": "FLAG-TRANSFER-TAX",
+      "severity": "review",
+      "property": "A and B",
+      "topic": "Documentary transfer tax not researched",
+      "detail": "SF and Santa Clara County documentary transfer tax rates were not verified. Left blank. The selling-cost assumption (6%) is not a sourced figure. Santa Clara County rate: see https://www.santaclaracounty.gov/ (not yet read).",
+      "action": "Verify the rate with the county recorder before any sale.",
+      "source_ids": [],
+      "source_url": "https://www.sf.gov/"
+    },
+    {
+      "id": "FLAG-CPA",
+      "severity": "info",
+      "property": "A and B",
+      "topic": "Income tax on rent and sale not modelled",
+      "detail": "The model does not compute income tax on rent (depreciation, deductions) or on investment income. Sale gains are reduced to near zero by the stepped-up basis (IRS Pub 551), but any post-death appreciation is taxable.",
+      "action": "Have a CPA model the after-tax figures.",
+      "source_ids": [
+        "S10",
+        "S08",
+        "S12",
+        "S16"
+      ]
+    }
+  ]
+}
