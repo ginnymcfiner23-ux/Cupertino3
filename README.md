@@ -1,66 +1,81 @@
 # Cupertino3
 
-Decision-support dashboard for a planned California property inheritance in the 2040–2050 window:
-one house to be inherited in Cupertino (ZIP 95014) and one currently owned three-unit building in
-San Francisco (ZIP 94122).
+Anonymized analysis and GitHub Pages site comparing two ways of holding a home over 2040–2050:
 
-Live site: **https://ginnymcfiner23-ux.github.io/Cupertino3/**
+- **Property A** — Cupertino, Santa Clara County, CA (to be inherited through [Trust] by [Beneficiary]).
+- **Property B** — San Francisco, CA (held).
 
-## What it does
+Covers property tax and assessment history (checked against BOE factors), insurance, water, electricity and solar, maintenance, federal / California / local law, the inheritance threshold, pending law changes, the live / rent / sell decision, and an inheritance process checklist.
 
-- Collects the **verified** property tax, estate tax, insurance, utility and rental rules that govern
-  the decision, each linked to the official document it was read from.
-- Projects property values, assessed values, property tax, carrying costs and the federal estate tax
-  exclusion from 2026 to 2055.
-- Models three options — live in the inherited house, rent it, or sell it and reinvest — and compares
-  them over a twenty-year horizon, with a twelve-run sensitivity table.
-- Publishes everything that could **not** be verified on a Flagged for Review page, with source links.
+**Published sites (one GitHub Pages site, two analyses):**
 
-## The verification rule
+- **Root site** (`index.html` and folders `facts/`, `property/`, `costs/`, `projections/`, `decision/`, `process/`, `law/`, `flagged/`, `sources/`, shared `assets/`). Built by `scripts/build_site.py` from `data/ia/*.json`. Checked by `scripts/validate.py`. Session c1b5796b.
+- **`/docs/` site** (`docs/`). Built by `tools/build_site.py` from `data/*.json`. Checked by `tools/check_site.py`. Session 340c906c.
 
-> If a value cannot be confirmed from an official source, leave it blank and flag it as unverified.
-> Never infer or fill in values.
-
-A row is published as **Verified** only if it was read directly off an official government, agency or
-utility document, and the row links to that document. Secondary sources (law-firm blogs, rate
-aggregators, news coverage) are used only to *locate* primary documents, never to populate a value.
-
-`node tools/check.js` enforces this and fails the build if:
-- an internal link is broken,
-- a `verified` row has no source URL or a blank value,
-- an `unverified` row carries any value at all,
-- a page contains `undefined`, `NaN`, `[object Object]` or an unreplaced `${`,
-- a page matches a street-address, APN or SSN pattern (privacy scan).
+The two analyses use different assumptions and do not yet agree on every figure. Neither is verified; both are labelled as assumption-based projections. See FL-25 on the root site's Flagged for Review page and the cross-session note in `COORDINATION.md`. The earlier dashboard (session aed145d8) is archived unchanged in `archive/previous-dashboard/`.
 
 ## Layout
 
-```
-data/           one JSON file per topic; one row per fact, each with source + status
-research/       verification log: what was checked, against what, and what was left blank
-tools/model.js  deterministic projection and scenario engine
-tools/build.js  renders 16 static pages from data/*.json into the repo root
-tools/check.js  pre-publish verification gate
-assets/         CSS and a small amount of progressive-enhancement JS
-*.html          generated output, committed so GitHub Pages needs no build step
+| Path | What it is |
+|------|-----------|
+| `docs/` | The published site (static HTML, CSS, and downloadable CSV/JSON). |
+| `data/` | Files for the `/docs/` site (session 340c906c): sources, tax law, cost inputs, flags, process steps, projections. |
+| `data/ia/` | Files for the root site (session c1b5796b): sources, facts, client inputs, history, flags, projections. |
+| `scripts/model.py` | Projection model for the root site. Writes `data/ia/projections.json`. |
+| `scripts/build_site.py` | Generates the root site from `data/ia/`. |
+| `scripts/validate.py` | Checks the root site: sourcing, links, personal-information scan, projection sanity. |
+| `index.html`, category folders | The root site (landing page and category pages). |
+| `model/project.py` | Projection model. Writes `data/projections.json`. All assumptions are labelled. |
+| `tools/build_data.py` | Builds the property tax history and BOE factor checks from the user tables. |
+| `tools/build_site.py` | Generates `docs/` from `data/`. No numbers are typed into the HTML by hand. |
+| `tools/check_site.py` | Checks: JSON parses; every table row links to an official domain; internal links resolve; every flag and row cites a source; privacy patterns absent. |
+| `COORDINATION.md` | Task board and session log. |
+
+## Rebuild
+
+```bash
+python3 tools/build_data.py
+python3 model/project.py
+python3 tools/build_site.py
+python3 tools/check_site.py
+python3 scripts/model.py
+python3 scripts/build_site.py
+python3 scripts/validate.py
 ```
 
-## Rebuilding
+Root site: `scripts/model.py` → `scripts/build_site.py` → `scripts/validate.py`.
 
-```sh
-node tools/build.js   # regenerate *.html from data/*.json
-node tools/check.js   # verify before publishing
-```
+Standard library only; no packages to install.
 
-No dependencies, no network access required to build. Node only.
+## Status rules
+
+- **Verified**: read from an official page. **Partly verified**: official URL or partial read. **Pending**: identified, not read, not used. **UNVERIFIED / user figure**: supplied by the owner; blank in verified columns and used only in labelled projections. **Assumption**: a model input, not a fact.
+- Anything not verified is left blank and listed on the *Flagged for Review* page. Flagged items do not block publication.
 
 ## Privacy
 
-No personal information is published. Properties are referred to as **Property C** (Cupertino, 95014)
-and **Property S** (San Francisco, 94122). ZIP codes and round-number market estimates are retained
-because rate research requires them and neither is individually identifying. Names, street addresses,
-assessor parcel numbers, trust names and tenant details are never recorded.
+Only the anonymized references above are used. No names, addresses, ZIP codes or the owner's location appear in the repository, and `tools/check_site.py` enforces this. This is not legal, tax or investment advice.
 
-## Not advice
+---
 
-This is a research dashboard, not tax, legal or investment advice. Every projection on the site is
-labelled as such and depends on assumptions listed on the Methodology page.
+## Inheritance decision guide (session 64308d3a)
+
+A second, separate analysis lives in `guide/` (served at `/guide/` of the same Pages site). It covers the same two properties with a different scope: verified facts with official links (`data/guide/facts.json`), client inputs (UNVERIFIED, labelled), a 2026-2050 projection model (`model/guide_project.py`), inheritance steps, pending law, and a Flagged for Review page. Unverified values are blank.
+
+| Path | What it is |
+|---|---|
+| `guide/` | Generated static site: landing page, category pages, Flagged for Review, sources. Inline styles; no external resources. |
+| `data/guide/` | Facts, sources, client inputs, irregularities, legislation, inheritance steps, projections. |
+| `model/guide_project.py` | Projection model. Writes `data/guide/projections.json` and CSVs. |
+| `scripts/guide_build_site.py` | Builds `guide/` from `data/guide/`. |
+| `scripts/guide_check_site.py` | Checks internal links, rows with official links, no external resources, verified rows have sources, privacy patterns. |
+
+Rebuild:
+
+```bash
+python3 model/guide_project.py
+python3 scripts/guide_build_site.py
+python3 scripts/guide_check_site.py
+```
+
+Standard library only. Privacy rule: no personal information in the repo or site. Properties are referred to by city and county only. This is informational analysis, not legal or tax advice.
