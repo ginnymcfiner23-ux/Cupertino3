@@ -29,12 +29,12 @@ Started: 2026-11-06
 | T5 | Research: home insurance Cupertino 95014 & SF 94122 rental (official/regulatory sources) | in progress | d8a9b67c | docs/research/insurance.md | CA Dept of Insurance; quotes = unverified estimates |
 | T6 | Research: utilities (water/electric/solar) & recurring costs | in progress | d8a9b67c | docs/research/utilities.md | cityofcupertino.org, sfpuc.org, cpuc.ca.gov |
 | T7 | Research: SF rent control/AB 1482 & rental income rules | in progress | d8a9b67c | docs/research/rental-law.md | sfrb.org, leginfo |
-| T8 | Projections: value, taxes, costs, sell-vs-rent-vs-live models | unclaimed | — | docs/research/projections.md, site data | Model outputs flagged as projections |
-| T9 | Step-by-step inheritance process guide (trust, CA steps) | unclaimed | — | site pages | courts.ca.gov, BOE forms |
-| T10 | Pending law changes watchlist (federal + CA, 2025–2026 session) | unclaimed | — | site pages | congress.gov, leginfo |
-| T11 | Site build: landing page, subpages, tables, navigation | unclaimed | — | index.html, assets/, pages/ | Dashboard-style UI |
-| T12 | Verification pass: every row → official source link or flagged | unclaimed | — | all site data + Flagged page | No inferred values |
-| T13 | Integration, line-by-line re-verify, link check, PR → main, merge, GitHub Pages deploy | unclaimed | — | whole repo | Record PR + deploy result below |
+| T8 | Projections: value, taxes, costs, sell-vs-rent-vs-live models | in progress | d8a9b67c | docs/research/projections.md, site data | Model outputs flagged as projections |
+| T9 | Step-by-step inheritance process guide (trust, CA steps) | in progress | d8a9b67c | site pages | courts.ca.gov, BOE forms |
+| T10 | Pending law changes watchlist (federal + CA, 2025–2026 session) | in progress | d8a9b67c | site pages | congress.gov, leginfo |
+| T11 | Site build: landing page, subpages, tables, navigation | in progress | d8a9b67c | index.html, assets/, pages/ | Dashboard-style UI |
+| T12 | Verification pass: every row → official source link or flagged | in progress | d8a9b67c | all site data + Flagged page | No inferred values |
+| T13 | Integration, line-by-line re-verify, link check, PR → main, merge, GitHub Pages deploy | in progress | d8a9b67c | whole repo | Record PR + deploy result below |
 
 ## Request log (cross-session change requests)
 
