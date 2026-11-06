@@ -7,14 +7,24 @@ Anonymized analysis and GitHub Pages site comparing two ways of holding a home o
 
 Covers property tax and assessment history (checked against BOE factors), insurance, water, electricity and solar, maintenance, federal / California / local law, the inheritance threshold, pending law changes, the live / rent / sell decision, and an inheritance process checklist.
 
-**Published site:** this analysis is served by GitHub Pages at the `/docs/` path of the Pages site (the repository root hosts a separate dashboard from another session, which is left unchanged).
+**Published sites (one GitHub Pages site, two analyses):**
+
+- **Root site** (`index.html` and folders `facts/`, `property/`, `costs/`, `projections/`, `decision/`, `process/`, `law/`, `flagged/`, `sources/`, shared `assets/`). Built by `scripts/build_site.py` from `data/ia/*.json`. Checked by `scripts/validate.py`. Session c1b5796b.
+- **`/docs/` site** (`docs/`). Built by `tools/build_site.py` from `data/*.json`. Checked by `tools/check_site.py`. Session 340c906c.
+
+The two analyses use different assumptions and do not yet agree on every figure. Neither is verified; both are labelled as assumption-based projections. See FL-25 on the root site's Flagged for Review page and the cross-session note in `COORDINATION.md`. The earlier dashboard (session aed145d8) is archived unchanged in `archive/previous-dashboard/`.
 
 ## Layout
 
 | Path | What it is |
 |------|-----------|
 | `docs/` | The published site (static HTML, CSS, and downloadable CSV/JSON). |
-| `data/` | Source register, user-supplied figures, law rows, cost rows, flags, process steps, projections. |
+| `data/` | Files for the `/docs/` site (session 340c906c): sources, tax law, cost inputs, flags, process steps, projections. |
+| `data/ia/` | Files for the root site (session c1b5796b): sources, facts, client inputs, history, flags, projections. |
+| `scripts/model.py` | Projection model for the root site. Writes `data/ia/projections.json`. |
+| `scripts/build_site.py` | Generates the root site from `data/ia/`. |
+| `scripts/validate.py` | Checks the root site: sourcing, links, personal-information scan, projection sanity. |
+| `index.html`, category folders | The root site (landing page and category pages). |
 | `model/project.py` | Projection model. Writes `data/projections.json`. All assumptions are labelled. |
 | `tools/build_data.py` | Builds the property tax history and BOE factor checks from the user tables. |
 | `tools/build_site.py` | Generates `docs/` from `data/`. No numbers are typed into the HTML by hand. |
@@ -28,7 +38,12 @@ python3 tools/build_data.py
 python3 model/project.py
 python3 tools/build_site.py
 python3 tools/check_site.py
+python3 scripts/model.py
+python3 scripts/build_site.py
+python3 scripts/validate.py
 ```
+
+Root site: `scripts/model.py` → `scripts/build_site.py` → `scripts/validate.py`.
 
 Standard library only; no packages to install.
 
