@@ -1,0 +1,1567 @@
+{
+ "assumptions": {
+  "market_growth": {
+   "conservative": 0.02,
+   "moderate": 0.035,
+   "aggressive": 0.05
+  },
+  "prop13_growth": 0.02,
+  "prop19_cap_2026": 1044586,
+  "prop19_cap_growth": 0.02,
+  "sc_tax_rate": 0.012,
+  "sc_special": 730,
+  "sf_tax_rate": 0.0118162182,
+  "sf_direct_charges": 1100,
+  "estate_exemption_2026": 15000000,
+  "estate_exemption_growth": 0.025,
+  "portfolio_return": 0.06,
+  "portfolio_tax_drag": 0.331,
+  "stock_yield": 0.02,
+  "manager_pct": 0.08,
+  "vacancy_pct": 0.05,
+  "inflation": 0.025
+ },
+ "value_table": [
+  {
+   "growth": "conservative",
+   "year": 2026,
+   "cup_mv": 3100000,
+   "sf_mv": 1800000,
+   "cup_av": 550537,
+   "sf_av": 116532
+  },
+  {
+   "growth": "conservative",
+   "year": 2027,
+   "cup_mv": 3162000,
+   "sf_mv": 1836000,
+   "cup_av": 561548,
+   "sf_av": 118863
+  },
+  {
+   "growth": "conservative",
+   "year": 2028,
+   "cup_mv": 3225240,
+   "sf_mv": 1872720,
+   "cup_av": 572779,
+   "sf_av": 121240
+  },
+  {
+   "growth": "conservative",
+   "year": 2029,
+   "cup_mv": 3289745,
+   "sf_mv": 1910174,
+   "cup_av": 584234,
+   "sf_av": 123665
+  },
+  {
+   "growth": "conservative",
+   "year": 2030,
+   "cup_mv": 3355540,
+   "sf_mv": 1948378,
+   "cup_av": 595919,
+   "sf_av": 126138
+  },
+  {
+   "growth": "conservative",
+   "year": 2031,
+   "cup_mv": 3422650,
+   "sf_mv": 1987345,
+   "cup_av": 607837,
+   "sf_av": 128661
+  },
+  {
+   "growth": "conservative",
+   "year": 2032,
+   "cup_mv": 3491103,
+   "sf_mv": 2027092,
+   "cup_av": 619994,
+   "sf_av": 131234
+  },
+  {
+   "growth": "conservative",
+   "year": 2033,
+   "cup_mv": 3560926,
+   "sf_mv": 2067634,
+   "cup_av": 632394,
+   "sf_av": 133859
+  },
+  {
+   "growth": "conservative",
+   "year": 2034,
+   "cup_mv": 3632144,
+   "sf_mv": 2108987,
+   "cup_av": 645042,
+   "sf_av": 136536
+  },
+  {
+   "growth": "conservative",
+   "year": 2035,
+   "cup_mv": 3704787,
+   "sf_mv": 2151167,
+   "cup_av": 657943,
+   "sf_av": 139267
+  },
+  {
+   "growth": "conservative",
+   "year": 2036,
+   "cup_mv": 3778883,
+   "sf_mv": 2194190,
+   "cup_av": 671102,
+   "sf_av": 142052
+  },
+  {
+   "growth": "conservative",
+   "year": 2037,
+   "cup_mv": 3854460,
+   "sf_mv": 2238074,
+   "cup_av": 684524,
+   "sf_av": 144893
+  },
+  {
+   "growth": "conservative",
+   "year": 2038,
+   "cup_mv": 3931550,
+   "sf_mv": 2282835,
+   "cup_av": 698214,
+   "sf_av": 147791
+  },
+  {
+   "growth": "conservative",
+   "year": 2039,
+   "cup_mv": 4010181,
+   "sf_mv": 2328492,
+   "cup_av": 712178,
+   "sf_av": 150747
+  },
+  {
+   "growth": "conservative",
+   "year": 2040,
+   "cup_mv": 4090384,
+   "sf_mv": 2375062,
+   "cup_av": 726422,
+   "sf_av": 153761
+  },
+  {
+   "growth": "conservative",
+   "year": 2041,
+   "cup_mv": 4172192,
+   "sf_mv": 2422563,
+   "cup_av": 740950,
+   "sf_av": 156837
+  },
+  {
+   "growth": "conservative",
+   "year": 2042,
+   "cup_mv": 4255636,
+   "sf_mv": 2471014,
+   "cup_av": 755769,
+   "sf_av": 159973
+  },
+  {
+   "growth": "conservative",
+   "year": 2043,
+   "cup_mv": 4340748,
+   "sf_mv": 2520435,
+   "cup_av": 770885,
+   "sf_av": 163173
+  },
+  {
+   "growth": "conservative",
+   "year": 2044,
+   "cup_mv": 4427563,
+   "sf_mv": 2570843,
+   "cup_av": 786302,
+   "sf_av": 166436
+  },
+  {
+   "growth": "conservative",
+   "year": 2045,
+   "cup_mv": 4516115,
+   "sf_mv": 2622260,
+   "cup_av": 802028,
+   "sf_av": 169765
+  },
+  {
+   "growth": "conservative",
+   "year": 2046,
+   "cup_mv": 4606437,
+   "sf_mv": 2674705,
+   "cup_av": 818069,
+   "sf_av": 173160
+  },
+  {
+   "growth": "conservative",
+   "year": 2047,
+   "cup_mv": 4698566,
+   "sf_mv": 2728199,
+   "cup_av": 834430,
+   "sf_av": 176624
+  },
+  {
+   "growth": "conservative",
+   "year": 2048,
+   "cup_mv": 4792537,
+   "sf_mv": 2782763,
+   "cup_av": 851119,
+   "sf_av": 180156
+  },
+  {
+   "growth": "conservative",
+   "year": 2049,
+   "cup_mv": 4888388,
+   "sf_mv": 2838419,
+   "cup_av": 868141,
+   "sf_av": 183759
+  },
+  {
+   "growth": "conservative",
+   "year": 2050,
+   "cup_mv": 4986155,
+   "sf_mv": 2895187,
+   "cup_av": 885504,
+   "sf_av": 187434
+  },
+  {
+   "growth": "conservative",
+   "year": 2051,
+   "cup_mv": 5085879,
+   "sf_mv": 2953091,
+   "cup_av": 903214,
+   "sf_av": 191183
+  },
+  {
+   "growth": "conservative",
+   "year": 2052,
+   "cup_mv": 5187596,
+   "sf_mv": 3012153,
+   "cup_av": 921279,
+   "sf_av": 195007
+  },
+  {
+   "growth": "conservative",
+   "year": 2053,
+   "cup_mv": 5291348,
+   "sf_mv": 3072396,
+   "cup_av": 939704,
+   "sf_av": 198907
+  },
+  {
+   "growth": "conservative",
+   "year": 2054,
+   "cup_mv": 5397175,
+   "sf_mv": 3133844,
+   "cup_av": 958498,
+   "sf_av": 202885
+  },
+  {
+   "growth": "conservative",
+   "year": 2055,
+   "cup_mv": 5505119,
+   "sf_mv": 3196520,
+   "cup_av": 977668,
+   "sf_av": 206943
+  },
+  {
+   "growth": "moderate",
+   "year": 2026,
+   "cup_mv": 3100000,
+   "sf_mv": 1800000,
+   "cup_av": 550537,
+   "sf_av": 116532
+  },
+  {
+   "growth": "moderate",
+   "year": 2027,
+   "cup_mv": 3208500,
+   "sf_mv": 1863000,
+   "cup_av": 561548,
+   "sf_av": 118863
+  },
+  {
+   "growth": "moderate",
+   "year": 2028,
+   "cup_mv": 3320797,
+   "sf_mv": 1928205,
+   "cup_av": 572779,
+   "sf_av": 121240
+  },
+  {
+   "growth": "moderate",
+   "year": 2029,
+   "cup_mv": 3437025,
+   "sf_mv": 1995692,
+   "cup_av": 584234,
+   "sf_av": 123665
+  },
+  {
+   "growth": "moderate",
+   "year": 2030,
+   "cup_mv": 3557321,
+   "sf_mv": 2065541,
+   "cup_av": 595919,
+   "sf_av": 126138
+  },
+  {
+   "growth": "moderate",
+   "year": 2031,
+   "cup_mv": 3681828,
+   "sf_mv": 2137835,
+   "cup_av": 607837,
+   "sf_av": 128661
+  },
+  {
+   "growth": "moderate",
+   "year": 2032,
+   "cup_mv": 3810692,
+   "sf_mv": 2212660,
+   "cup_av": 619994,
+   "sf_av": 131234
+  },
+  {
+   "growth": "moderate",
+   "year": 2033,
+   "cup_mv": 3944066,
+   "sf_mv": 2290103,
+   "cup_av": 632394,
+   "sf_av": 133859
+  },
+  {
+   "growth": "moderate",
+   "year": 2034,
+   "cup_mv": 4082108,
+   "sf_mv": 2370256,
+   "cup_av": 645042,
+   "sf_av": 136536
+  },
+  {
+   "growth": "moderate",
+   "year": 2035,
+   "cup_mv": 4224982,
+   "sf_mv": 2453215,
+   "cup_av": 657943,
+   "sf_av": 139267
+  },
+  {
+   "growth": "moderate",
+   "year": 2036,
+   "cup_mv": 4372856,
+   "sf_mv": 2539078,
+   "cup_av": 671102,
+   "sf_av": 142052
+  },
+  {
+   "growth": "moderate",
+   "year": 2037,
+   "cup_mv": 4525906,
+   "sf_mv": 2627945,
+   "cup_av": 684524,
+   "sf_av": 144893
+  },
+  {
+   "growth": "moderate",
+   "year": 2038,
+   "cup_mv": 4684313,
+   "sf_mv": 2719924,
+   "cup_av": 698214,
+   "sf_av": 147791
+  },
+  {
+   "growth": "moderate",
+   "year": 2039,
+   "cup_mv": 4848264,
+   "sf_mv": 2815121,
+   "cup_av": 712178,
+   "sf_av": 150747
+  },
+  {
+   "growth": "moderate",
+   "year": 2040,
+   "cup_mv": 5017953,
+   "sf_mv": 2913650,
+   "cup_av": 726422,
+   "sf_av": 153761
+  },
+  {
+   "growth": "moderate",
+   "year": 2041,
+   "cup_mv": 5193581,
+   "sf_mv": 3015628,
+   "cup_av": 740950,
+   "sf_av": 156837
+  },
+  {
+   "growth": "moderate",
+   "year": 2042,
+   "cup_mv": 5375357,
+   "sf_mv": 3121175,
+   "cup_av": 755769,
+   "sf_av": 159973
+  },
+  {
+   "growth": "moderate",
+   "year": 2043,
+   "cup_mv": 5563494,
+   "sf_mv": 3230416,
+   "cup_av": 770885,
+   "sf_av": 163173
+  },
+  {
+   "growth": "moderate",
+   "year": 2044,
+   "cup_mv": 5758217,
+   "sf_mv": 3343481,
+   "cup_av": 786302,
+   "sf_av": 166436
+  },
+  {
+   "growth": "moderate",
+   "year": 2045,
+   "cup_mv": 5959754,
+   "sf_mv": 3460502,
+   "cup_av": 802028,
+   "sf_av": 169765
+  },
+  {
+   "growth": "moderate",
+   "year": 2046,
+   "cup_mv": 6168345,
+   "sf_mv": 3581620,
+   "cup_av": 818069,
+   "sf_av": 173160
+  },
+  {
+   "growth": "moderate",
+   "year": 2047,
+   "cup_mv": 6384238,
+   "sf_mv": 3706977,
+   "cup_av": 834430,
+   "sf_av": 176624
+  },
+  {
+   "growth": "moderate",
+   "year": 2048,
+   "cup_mv": 6607686,
+   "sf_mv": 3836721,
+   "cup_av": 851119,
+   "sf_av": 180156
+  },
+  {
+   "growth": "moderate",
+   "year": 2049,
+   "cup_mv": 6838955,
+   "sf_mv": 3971006,
+   "cup_av": 868141,
+   "sf_av": 183759
+  },
+  {
+   "growth": "moderate",
+   "year": 2050,
+   "cup_mv": 7078318,
+   "sf_mv": 4109991,
+   "cup_av": 885504,
+   "sf_av": 187434
+  },
+  {
+   "growth": "moderate",
+   "year": 2051,
+   "cup_mv": 7326059,
+   "sf_mv": 4253841,
+   "cup_av": 903214,
+   "sf_av": 191183
+  },
+  {
+   "growth": "moderate",
+   "year": 2052,
+   "cup_mv": 7582472,
+   "sf_mv": 4402725,
+   "cup_av": 921279,
+   "sf_av": 195007
+  },
+  {
+   "growth": "moderate",
+   "year": 2053,
+   "cup_mv": 7847858,
+   "sf_mv": 4556821,
+   "cup_av": 939704,
+   "sf_av": 198907
+  },
+  {
+   "growth": "moderate",
+   "year": 2054,
+   "cup_mv": 8122533,
+   "sf_mv": 4716310,
+   "cup_av": 958498,
+   "sf_av": 202885
+  },
+  {
+   "growth": "moderate",
+   "year": 2055,
+   "cup_mv": 8406822,
+   "sf_mv": 4881380,
+   "cup_av": 977668,
+   "sf_av": 206943
+  },
+  {
+   "growth": "aggressive",
+   "year": 2026,
+   "cup_mv": 3100000,
+   "sf_mv": 1800000,
+   "cup_av": 550537,
+   "sf_av": 116532
+  },
+  {
+   "growth": "aggressive",
+   "year": 2027,
+   "cup_mv": 3255000,
+   "sf_mv": 1890000,
+   "cup_av": 561548,
+   "sf_av": 118863
+  },
+  {
+   "growth": "aggressive",
+   "year": 2028,
+   "cup_mv": 3417750,
+   "sf_mv": 1984500,
+   "cup_av": 572779,
+   "sf_av": 121240
+  },
+  {
+   "growth": "aggressive",
+   "year": 2029,
+   "cup_mv": 3588638,
+   "sf_mv": 2083725,
+   "cup_av": 584234,
+   "sf_av": 123665
+  },
+  {
+   "growth": "aggressive",
+   "year": 2030,
+   "cup_mv": 3768069,
+   "sf_mv": 2187911,
+   "cup_av": 595919,
+   "sf_av": 126138
+  },
+  {
+   "growth": "aggressive",
+   "year": 2031,
+   "cup_mv": 3956473,
+   "sf_mv": 2297307,
+   "cup_av": 607837,
+   "sf_av": 128661
+  },
+  {
+   "growth": "aggressive",
+   "year": 2032,
+   "cup_mv": 4154296,
+   "sf_mv": 2412172,
+   "cup_av": 619994,
+   "sf_av": 131234
+  },
+  {
+   "growth": "aggressive",
+   "year": 2033,
+   "cup_mv": 4362011,
+   "sf_mv": 2532781,
+   "cup_av": 632394,
+   "sf_av": 133859
+  },
+  {
+   "growth": "aggressive",
+   "year": 2034,
+   "cup_mv": 4580112,
+   "sf_mv": 2659420,
+   "cup_av": 645042,
+   "sf_av": 136536
+  },
+  {
+   "growth": "aggressive",
+   "year": 2035,
+   "cup_mv": 4809117,
+   "sf_mv": 2792391,
+   "cup_av": 657943,
+   "sf_av": 139267
+  },
+  {
+   "growth": "aggressive",
+   "year": 2036,
+   "cup_mv": 5049573,
+   "sf_mv": 2932010,
+   "cup_av": 671102,
+   "sf_av": 142052
+  },
+  {
+   "growth": "aggressive",
+   "year": 2037,
+   "cup_mv": 5302052,
+   "sf_mv": 3078611,
+   "cup_av": 684524,
+   "sf_av": 144893
+  },
+  {
+   "growth": "aggressive",
+   "year": 2038,
+   "cup_mv": 5567155,
+   "sf_mv": 3232541,
+   "cup_av": 698214,
+   "sf_av": 147791
+  },
+  {
+   "growth": "aggressive",
+   "year": 2039,
+   "cup_mv": 5845512,
+   "sf_mv": 3394168,
+   "cup_av": 712178,
+   "sf_av": 150747
+  },
+  {
+   "growth": "aggressive",
+   "year": 2040,
+   "cup_mv": 6137788,
+   "sf_mv": 3563877,
+   "cup_av": 726422,
+   "sf_av": 153761
+  },
+  {
+   "growth": "aggressive",
+   "year": 2041,
+   "cup_mv": 6444677,
+   "sf_mv": 3742071,
+   "cup_av": 740950,
+   "sf_av": 156837
+  },
+  {
+   "growth": "aggressive",
+   "year": 2042,
+   "cup_mv": 6766911,
+   "sf_mv": 3929174,
+   "cup_av": 755769,
+   "sf_av": 159973
+  },
+  {
+   "growth": "aggressive",
+   "year": 2043,
+   "cup_mv": 7105257,
+   "sf_mv": 4125633,
+   "cup_av": 770885,
+   "sf_av": 163173
+  },
+  {
+   "growth": "aggressive",
+   "year": 2044,
+   "cup_mv": 7460520,
+   "sf_mv": 4331915,
+   "cup_av": 786302,
+   "sf_av": 166436
+  },
+  {
+   "growth": "aggressive",
+   "year": 2045,
+   "cup_mv": 7833546,
+   "sf_mv": 4548510,
+   "cup_av": 802028,
+   "sf_av": 169765
+  },
+  {
+   "growth": "aggressive",
+   "year": 2046,
+   "cup_mv": 8225223,
+   "sf_mv": 4775936,
+   "cup_av": 818069,
+   "sf_av": 173160
+  },
+  {
+   "growth": "aggressive",
+   "year": 2047,
+   "cup_mv": 8636484,
+   "sf_mv": 5014733,
+   "cup_av": 834430,
+   "sf_av": 176624
+  },
+  {
+   "growth": "aggressive",
+   "year": 2048,
+   "cup_mv": 9068308,
+   "sf_mv": 5265469,
+   "cup_av": 851119,
+   "sf_av": 180156
+  },
+  {
+   "growth": "aggressive",
+   "year": 2049,
+   "cup_mv": 9521724,
+   "sf_mv": 5528743,
+   "cup_av": 868141,
+   "sf_av": 183759
+  },
+  {
+   "growth": "aggressive",
+   "year": 2050,
+   "cup_mv": 9997810,
+   "sf_mv": 5805180,
+   "cup_av": 885504,
+   "sf_av": 187434
+  },
+  {
+   "growth": "aggressive",
+   "year": 2051,
+   "cup_mv": 10497700,
+   "sf_mv": 6095439,
+   "cup_av": 903214,
+   "sf_av": 191183
+  },
+  {
+   "growth": "aggressive",
+   "year": 2052,
+   "cup_mv": 11022585,
+   "sf_mv": 6400211,
+   "cup_av": 921279,
+   "sf_av": 195007
+  },
+  {
+   "growth": "aggressive",
+   "year": 2053,
+   "cup_mv": 11573715,
+   "sf_mv": 6720221,
+   "cup_av": 939704,
+   "sf_av": 198907
+  },
+  {
+   "growth": "aggressive",
+   "year": 2054,
+   "cup_mv": 12152400,
+   "sf_mv": 7056232,
+   "cup_av": 958498,
+   "sf_av": 202885
+  },
+  {
+   "growth": "aggressive",
+   "year": 2055,
+   "cup_mv": 12760020,
+   "sf_mv": 7409044,
+   "cup_av": 977668,
+   "sf_av": 206943
+  }
+ ],
+ "tax_table": [
+  {
+   "growth": "conservative",
+   "year": 2040,
+   "cap": 1378309,
+   "A": {
+    "cup_av": 4090384,
+    "sf_av": 996753,
+    "cup_tax": 49815,
+    "sf_tax": 12878,
+    "total_tax": 62693
+   },
+   "B": {
+    "cup_av": 2712075,
+    "sf_av": 2375062,
+    "cup_tax": 33275,
+    "sf_tax": 29164,
+    "total_tax": 62439
+   }
+  },
+  {
+   "growth": "conservative",
+   "year": 2045,
+   "cap": 1521765,
+   "A": {
+    "cup_av": 4516115,
+    "sf_av": 1100496,
+    "cup_tax": 54923,
+    "sf_tax": 14104,
+    "total_tax": 69027
+   },
+   "B": {
+    "cup_av": 2994350,
+    "sf_av": 2622260,
+    "cup_tax": 36662,
+    "sf_tax": 32085,
+    "total_tax": 68747
+   }
+  },
+  {
+   "growth": "conservative",
+   "year": 2050,
+   "cap": 1680151,
+   "A": {
+    "cup_av": 4986155,
+    "sf_av": 1215036,
+    "cup_tax": 60564,
+    "sf_tax": 15457,
+    "total_tax": 76021
+   },
+   "B": {
+    "cup_av": 3306004,
+    "sf_av": 2895187,
+    "cup_tax": 40402,
+    "sf_tax": 35310,
+    "total_tax": 75712
+   }
+  },
+  {
+   "growth": "moderate",
+   "year": 2040,
+   "cap": 1378309,
+   "A": {
+    "cup_av": 5017953,
+    "sf_av": 1535341,
+    "cup_tax": 60945,
+    "sf_tax": 19242,
+    "total_tax": 80187
+   },
+   "B": {
+    "cup_av": 3639644,
+    "sf_av": 2913650,
+    "cup_tax": 44406,
+    "sf_tax": 35528,
+    "total_tax": 79934
+   }
+  },
+  {
+   "growth": "moderate",
+   "year": 2045,
+   "cap": 1521765,
+   "A": {
+    "cup_av": 5959754,
+    "sf_av": 1938738,
+    "cup_tax": 72247,
+    "sf_tax": 24009,
+    "total_tax": 96256
+   },
+   "B": {
+    "cup_av": 4437990,
+    "sf_av": 3460502,
+    "cup_tax": 53986,
+    "sf_tax": 41990,
+    "total_tax": 95976
+   }
+  },
+  {
+   "growth": "moderate",
+   "year": 2050,
+   "cap": 1680151,
+   "A": {
+    "cup_av": 7078318,
+    "sf_av": 2429840,
+    "cup_tax": 85670,
+    "sf_tax": 29812,
+    "total_tax": 115482
+   },
+   "B": {
+    "cup_av": 5398167,
+    "sf_av": 4109991,
+    "cup_tax": 65508,
+    "sf_tax": 49665,
+    "total_tax": 115173
+   }
+  },
+  {
+   "growth": "aggressive",
+   "year": 2040,
+   "cap": 1378309,
+   "A": {
+    "cup_av": 6137788,
+    "sf_av": 2185568,
+    "cup_tax": 74383,
+    "sf_tax": 26925,
+    "total_tax": 101308
+   },
+   "B": {
+    "cup_av": 4759479,
+    "sf_av": 3563877,
+    "cup_tax": 57844,
+    "sf_tax": 43212,
+    "total_tax": 101056
+   }
+  },
+  {
+   "growth": "aggressive",
+   "year": 2045,
+   "cap": 1521765,
+   "A": {
+    "cup_av": 7833546,
+    "sf_av": 3026746,
+    "cup_tax": 94733,
+    "sf_tax": 36865,
+    "total_tax": 131598
+   },
+   "B": {
+    "cup_av": 6311781,
+    "sf_av": 4548510,
+    "cup_tax": 76471,
+    "sf_tax": 54846,
+    "total_tax": 131317
+   }
+  },
+  {
+   "growth": "aggressive",
+   "year": 2050,
+   "cap": 1680151,
+   "A": {
+    "cup_av": 9997810,
+    "sf_av": 4125029,
+    "cup_tax": 120704,
+    "sf_tax": 49842,
+    "total_tax": 170546
+   },
+   "B": {
+    "cup_av": 8317659,
+    "sf_av": 5805180,
+    "cup_tax": 100542,
+    "sf_tax": 69695,
+    "total_tax": 170237
+   }
+  }
+ ],
+ "estate_table": [
+  {
+   "year": 2026,
+   "exemption_person": 15000000,
+   "exemption_couple": 30000000
+  },
+  {
+   "year": 2027,
+   "exemption_person": 15375000,
+   "exemption_couple": 30750000
+  },
+  {
+   "year": 2028,
+   "exemption_person": 15759375,
+   "exemption_couple": 31518750
+  },
+  {
+   "year": 2029,
+   "exemption_person": 16153359,
+   "exemption_couple": 32306719
+  },
+  {
+   "year": 2030,
+   "exemption_person": 16557193,
+   "exemption_couple": 33114387
+  },
+  {
+   "year": 2031,
+   "exemption_person": 16971123,
+   "exemption_couple": 33942246
+  },
+  {
+   "year": 2032,
+   "exemption_person": 17395401,
+   "exemption_couple": 34790803
+  },
+  {
+   "year": 2033,
+   "exemption_person": 17830286,
+   "exemption_couple": 35660573
+  },
+  {
+   "year": 2034,
+   "exemption_person": 18276043,
+   "exemption_couple": 36552087
+  },
+  {
+   "year": 2035,
+   "exemption_person": 18732945,
+   "exemption_couple": 37465889
+  },
+  {
+   "year": 2036,
+   "exemption_person": 19201268,
+   "exemption_couple": 38402536
+  },
+  {
+   "year": 2037,
+   "exemption_person": 19681300,
+   "exemption_couple": 39362600
+  },
+  {
+   "year": 2038,
+   "exemption_person": 20173332,
+   "exemption_couple": 40346665
+  },
+  {
+   "year": 2039,
+   "exemption_person": 20677666,
+   "exemption_couple": 41355331
+  },
+  {
+   "year": 2040,
+   "exemption_person": 21194607,
+   "exemption_couple": 42389215
+  },
+  {
+   "year": 2041,
+   "exemption_person": 21724472,
+   "exemption_couple": 43448945
+  },
+  {
+   "year": 2042,
+   "exemption_person": 22267584,
+   "exemption_couple": 44535169
+  },
+  {
+   "year": 2043,
+   "exemption_person": 22824274,
+   "exemption_couple": 45648548
+  },
+  {
+   "year": 2044,
+   "exemption_person": 23394881,
+   "exemption_couple": 46789762
+  },
+  {
+   "year": 2045,
+   "exemption_person": 23979753,
+   "exemption_couple": 47959506
+  },
+  {
+   "year": 2046,
+   "exemption_person": 24579247,
+   "exemption_couple": 49158493
+  },
+  {
+   "year": 2047,
+   "exemption_person": 25193728,
+   "exemption_couple": 50387456
+  },
+  {
+   "year": 2048,
+   "exemption_person": 25823571,
+   "exemption_couple": 51647142
+  },
+  {
+   "year": 2049,
+   "exemption_person": 26469160,
+   "exemption_couple": 52938320
+  },
+  {
+   "year": 2050,
+   "exemption_person": 27130889,
+   "exemption_couple": 54261778
+  },
+  {
+   "year": 2051,
+   "exemption_person": 27809161,
+   "exemption_couple": 55618323
+  },
+  {
+   "year": 2052,
+   "exemption_person": 28504391,
+   "exemption_couple": 57008781
+  },
+  {
+   "year": 2053,
+   "exemption_person": 29217000,
+   "exemption_couple": 58434001
+  },
+  {
+   "year": 2054,
+   "exemption_person": 29947425,
+   "exemption_couple": 59894851
+  },
+  {
+   "year": 2055,
+   "exemption_person": 30696111,
+   "exemption_couple": 61392222
+  }
+ ],
+ "scenario_table": [
+  {
+   "growth": "conservative",
+   "year": 2040,
+   "cup_mv": 4090384,
+   "cap": 1378309,
+   "rent": {
+    "gross": 60000,
+    "tax": 49815,
+    "opex": 91355,
+    "noi": -31355
+   },
+   "sell": {
+    "proceeds": 4090384,
+    "net": 3844961,
+    "income": 230698,
+    "after_tax_income": 205244
+   }
+  },
+  {
+   "growth": "conservative",
+   "year": 2045,
+   "cup_mv": 4516115,
+   "cap": 1521765,
+   "rent": {
+    "gross": 60000,
+    "tax": 54923,
+    "opex": 96463,
+    "noi": -36463
+   },
+   "sell": {
+    "proceeds": 4516115,
+    "net": 4245148,
+    "income": 254709,
+    "after_tax_income": 226606
+   }
+  },
+  {
+   "growth": "conservative",
+   "year": 2050,
+   "cup_mv": 4986155,
+   "cap": 1680151,
+   "rent": {
+    "gross": 60000,
+    "tax": 60564,
+    "opex": 102104,
+    "noi": -42104
+   },
+   "sell": {
+    "proceeds": 4986155,
+    "net": 4686986,
+    "income": 281219,
+    "after_tax_income": 250191
+   }
+  },
+  {
+   "growth": "moderate",
+   "year": 2040,
+   "cup_mv": 5017953,
+   "cap": 1378309,
+   "rent": {
+    "gross": 60000,
+    "tax": 60945,
+    "opex": 102485,
+    "noi": -42485
+   },
+   "sell": {
+    "proceeds": 5017953,
+    "net": 4716876,
+    "income": 283013,
+    "after_tax_income": 251787
+   }
+  },
+  {
+   "growth": "moderate",
+   "year": 2045,
+   "cup_mv": 5959754,
+   "cap": 1521765,
+   "rent": {
+    "gross": 60000,
+    "tax": 72247,
+    "opex": 113787,
+    "noi": -53787
+   },
+   "sell": {
+    "proceeds": 5959754,
+    "net": 5602169,
+    "income": 336130,
+    "after_tax_income": 299044
+   }
+  },
+  {
+   "growth": "moderate",
+   "year": 2050,
+   "cup_mv": 7078318,
+   "cap": 1680151,
+   "rent": {
+    "gross": 60000,
+    "tax": 85670,
+    "opex": 127210,
+    "noi": -67210
+   },
+   "sell": {
+    "proceeds": 7078318,
+    "net": 6653619,
+    "income": 399217,
+    "after_tax_income": 355170
+   }
+  },
+  {
+   "growth": "aggressive",
+   "year": 2040,
+   "cup_mv": 6137788,
+   "cap": 1378309,
+   "rent": {
+    "gross": 60000,
+    "tax": 74383,
+    "opex": 115923,
+    "noi": -55923
+   },
+   "sell": {
+    "proceeds": 6137788,
+    "net": 5769521,
+    "income": 346171,
+    "after_tax_income": 307977
+   }
+  },
+  {
+   "growth": "aggressive",
+   "year": 2045,
+   "cup_mv": 7833546,
+   "cap": 1521765,
+   "rent": {
+    "gross": 60000,
+    "tax": 94733,
+    "opex": 136273,
+    "noi": -76273
+   },
+   "sell": {
+    "proceeds": 7833546,
+    "net": 7363533,
+    "income": 441812,
+    "after_tax_income": 393065
+   }
+  },
+  {
+   "growth": "aggressive",
+   "year": 2050,
+   "cup_mv": 9997810,
+   "cap": 1680151,
+   "rent": {
+    "gross": 60000,
+    "tax": 120704,
+    "opex": 162244,
+    "noi": -102244
+   },
+   "sell": {
+    "proceeds": 9997810,
+    "net": 9397941,
+    "income": 563876,
+    "after_tax_income": 501662
+   }
+  }
+ ],
+ "cost_table": [
+  {
+   "year": 2026,
+   "cup_water": 120,
+   "cup_ins": 1300,
+   "cup_maint": 31000,
+   "sf_water": 365,
+   "sf_elec": 50,
+   "sf_ins": 2235,
+   "sf_maint": 18000,
+   "sf_rent": 7150
+  },
+  {
+   "year": 2027,
+   "cup_water": 123,
+   "cup_ins": 1332,
+   "cup_maint": 31775,
+   "sf_water": 374,
+   "sf_elec": 51,
+   "sf_ins": 2291,
+   "sf_maint": 18450,
+   "sf_rent": 7329
+  },
+  {
+   "year": 2028,
+   "cup_water": 126,
+   "cup_ins": 1366,
+   "cup_maint": 32569,
+   "sf_water": 383,
+   "sf_elec": 53,
+   "sf_ins": 2348,
+   "sf_maint": 18911,
+   "sf_rent": 7512
+  },
+  {
+   "year": 2029,
+   "cup_water": 129,
+   "cup_ins": 1400,
+   "cup_maint": 33384,
+   "sf_water": 393,
+   "sf_elec": 54,
+   "sf_ins": 2407,
+   "sf_maint": 19384,
+   "sf_rent": 7700
+  },
+  {
+   "year": 2030,
+   "cup_water": 132,
+   "cup_ins": 1435,
+   "cup_maint": 34218,
+   "sf_water": 403,
+   "sf_elec": 55,
+   "sf_ins": 2467,
+   "sf_maint": 19869,
+   "sf_rent": 7892
+  },
+  {
+   "year": 2031,
+   "cup_water": 136,
+   "cup_ins": 1471,
+   "cup_maint": 35074,
+   "sf_water": 413,
+   "sf_elec": 57,
+   "sf_ins": 2529,
+   "sf_maint": 20365,
+   "sf_rent": 8090
+  },
+  {
+   "year": 2032,
+   "cup_water": 139,
+   "cup_ins": 1508,
+   "cup_maint": 35950,
+   "sf_water": 423,
+   "sf_elec": 58,
+   "sf_ins": 2592,
+   "sf_maint": 20874,
+   "sf_rent": 8292
+  },
+  {
+   "year": 2033,
+   "cup_water": 143,
+   "cup_ins": 1545,
+   "cup_maint": 36849,
+   "sf_water": 434,
+   "sf_elec": 59,
+   "sf_ins": 2657,
+   "sf_maint": 21396,
+   "sf_rent": 8499
+  },
+  {
+   "year": 2034,
+   "cup_water": 146,
+   "cup_ins": 1584,
+   "cup_maint": 37770,
+   "sf_water": 445,
+   "sf_elec": 61,
+   "sf_ins": 2723,
+   "sf_maint": 21931,
+   "sf_rent": 8712
+  },
+  {
+   "year": 2035,
+   "cup_water": 150,
+   "cup_ins": 1624,
+   "cup_maint": 38715,
+   "sf_water": 456,
+   "sf_elec": 62,
+   "sf_ins": 2791,
+   "sf_maint": 22480,
+   "sf_rent": 8929
+  },
+  {
+   "year": 2036,
+   "cup_water": 154,
+   "cup_ins": 1664,
+   "cup_maint": 39683,
+   "sf_water": 467,
+   "sf_elec": 64,
+   "sf_ins": 2861,
+   "sf_maint": 23042,
+   "sf_rent": 9153
+  },
+  {
+   "year": 2037,
+   "cup_water": 157,
+   "cup_ins": 1706,
+   "cup_maint": 40675,
+   "sf_water": 479,
+   "sf_elec": 66,
+   "sf_ins": 2933,
+   "sf_maint": 23618,
+   "sf_rent": 9381
+  },
+  {
+   "year": 2038,
+   "cup_water": 161,
+   "cup_ins": 1748,
+   "cup_maint": 41692,
+   "sf_water": 491,
+   "sf_elec": 67,
+   "sf_ins": 3006,
+   "sf_maint": 24208,
+   "sf_rent": 9616
+  },
+  {
+   "year": 2039,
+   "cup_water": 165,
+   "cup_ins": 1792,
+   "cup_maint": 42734,
+   "sf_water": 503,
+   "sf_elec": 69,
+   "sf_ins": 3081,
+   "sf_maint": 24813,
+   "sf_rent": 9856
+  },
+  {
+   "year": 2040,
+   "cup_water": 170,
+   "cup_ins": 1837,
+   "cup_maint": 43802,
+   "sf_water": 516,
+   "sf_elec": 71,
+   "sf_ins": 3158,
+   "sf_maint": 25434,
+   "sf_rent": 10103
+  },
+  {
+   "year": 2041,
+   "cup_water": 174,
+   "cup_ins": 1883,
+   "cup_maint": 44897,
+   "sf_water": 529,
+   "sf_elec": 72,
+   "sf_ins": 3237,
+   "sf_maint": 26069,
+   "sf_rent": 10355
+  },
+  {
+   "year": 2042,
+   "cup_water": 178,
+   "cup_ins": 1930,
+   "cup_maint": 46020,
+   "sf_water": 542,
+   "sf_elec": 74,
+   "sf_ins": 3318,
+   "sf_maint": 26721,
+   "sf_rent": 10614
+  },
+  {
+   "year": 2043,
+   "cup_water": 183,
+   "cup_ins": 1978,
+   "cup_maint": 47170,
+   "sf_water": 555,
+   "sf_elec": 76,
+   "sf_ins": 3401,
+   "sf_maint": 27389,
+   "sf_rent": 10880
+  },
+  {
+   "year": 2044,
+   "cup_water": 187,
+   "cup_ins": 2028,
+   "cup_maint": 48349,
+   "sf_water": 569,
+   "sf_elec": 78,
+   "sf_ins": 3486,
+   "sf_maint": 28074,
+   "sf_rent": 11152
+  },
+  {
+   "year": 2045,
+   "cup_water": 192,
+   "cup_ins": 2078,
+   "cup_maint": 49558,
+   "sf_water": 584,
+   "sf_elec": 80,
+   "sf_ins": 3573,
+   "sf_maint": 28776,
+   "sf_rent": 11430
+  },
+  {
+   "year": 2046,
+   "cup_water": 197,
+   "cup_ins": 2130,
+   "cup_maint": 50797,
+   "sf_water": 598,
+   "sf_elec": 82,
+   "sf_ins": 3662,
+   "sf_maint": 29495,
+   "sf_rent": 11716
+  },
+  {
+   "year": 2047,
+   "cup_water": 202,
+   "cup_ins": 2183,
+   "cup_maint": 52067,
+   "sf_water": 613,
+   "sf_elec": 84,
+   "sf_ins": 3754,
+   "sf_maint": 30232,
+   "sf_rent": 12009
+  },
+  {
+   "year": 2048,
+   "cup_water": 207,
+   "cup_ins": 2238,
+   "cup_maint": 53369,
+   "sf_water": 628,
+   "sf_elec": 86,
+   "sf_ins": 3848,
+   "sf_maint": 30988,
+   "sf_rent": 12309
+  },
+  {
+   "year": 2049,
+   "cup_water": 212,
+   "cup_ins": 2294,
+   "cup_maint": 54703,
+   "sf_water": 644,
+   "sf_elec": 88,
+   "sf_ins": 3944,
+   "sf_maint": 31763,
+   "sf_rent": 12617
+  },
+  {
+   "year": 2050,
+   "cup_water": 217,
+   "cup_ins": 2351,
+   "cup_maint": 56071,
+   "sf_water": 660,
+   "sf_elec": 90,
+   "sf_ins": 4043,
+   "sf_maint": 32557,
+   "sf_rent": 12932
+  },
+  {
+   "year": 2051,
+   "cup_water": 222,
+   "cup_ins": 2410,
+   "cup_maint": 57472,
+   "sf_water": 677,
+   "sf_elec": 93,
+   "sf_ins": 4144,
+   "sf_maint": 33371,
+   "sf_rent": 13256
+  },
+  {
+   "year": 2052,
+   "cup_water": 228,
+   "cup_ins": 2470,
+   "cup_maint": 58909,
+   "sf_water": 694,
+   "sf_elec": 95,
+   "sf_ins": 4247,
+   "sf_maint": 34205,
+   "sf_rent": 13587
+  },
+  {
+   "year": 2053,
+   "cup_water": 234,
+   "cup_ins": 2532,
+   "cup_maint": 60382,
+   "sf_water": 711,
+   "sf_elec": 97,
+   "sf_ins": 4353,
+   "sf_maint": 35060,
+   "sf_rent": 13927
+  },
+  {
+   "year": 2054,
+   "cup_water": 240,
+   "cup_ins": 2595,
+   "cup_maint": 61891,
+   "sf_water": 729,
+   "sf_elec": 100,
+   "sf_ins": 4462,
+   "sf_maint": 35937,
+   "sf_rent": 14275
+  },
+  {
+   "year": 2055,
+   "cup_water": 246,
+   "cup_ins": 2660,
+   "cup_maint": 63439,
+   "sf_water": 747,
+   "sf_elec": 102,
+   "sf_ins": 4574,
+   "sf_maint": 36835,
+   "sf_rent": 14632
+  }
+ ]
+}
