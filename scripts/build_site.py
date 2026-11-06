@@ -115,6 +115,7 @@ def page(title, depth, active, body, desc=""):
 </main>
 <footer>
   <p>Anonymized planning dashboard. No names, addresses, parcel numbers or precise ZIP codes are published. Client figures are labeled as client inputs and are unverified. Projections are modeled outcomes, not forecasts. Not legal, tax, insurance or investment advice; confirm with qualified professionals.</p>
+  <p>Other analyses in this repository (separate sessions, different assumptions, not reconciled): <a href="{prefix}docs/index.html">/docs/ analysis</a> · <a href="{prefix}guide/index.html">guide analysis</a>.</p>
   <p>Built from <code>data/ia/*.json</code> by <code>scripts/build_site.py</code>. Model: <code>scripts/model.py</code>. Checks: <code>scripts/validate.py</code>.</p>
 </footer>
 <script src="{prefix}assets/site.js"></script>

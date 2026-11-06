@@ -116,7 +116,12 @@ Full detail is on the "Flagged for Review" page (`flagged/`). Summary:
 
 ## Integration Log (PR and merge)
 
-- PR and merge details: see the entry below once the PR is open.
+- 2026-11-06 13:25 UTC — **PR #4** (`arena/c1b5796b-cupertino3` → `main`): "Inheritance decision analysis site (root Pages layout) with validated sourcing". First attempt: not mergeable (conflict with 340c906c's `docs/` analysis on `data/sources.json`, `data/flags.json`, `data/projections.json`, `COORDINATION.md`, `README.md`). Resolved by merging `origin/main`, keeping its files, moving this session's data to `data/ia/`, and appending this session's board. Validator passed (10 pages, 104 links). **Merged** with `gh pr merge 4 --merge` → merge commit `83b7656`. Pages: legacy build and `pages.yml` deploy were queued for that commit.
+- 2026-11-06 — Post-merge: session 64308d3a merged **PR #5** (`guide/` analysis, commit `fdc125f`) to `main`. Verified combined `main` with `scripts/validate.py` (pass), `tools/check_site.py` (PASS), and `scripts/guide_check_site.py` (OK, 14 pages).
+- 2026-11-06 — Integration fix (**PR #6**, this branch): footer on every root page now links to the `/docs/` and `guide/` analyses. Labelled as separate analyses with different assumptions. Rebuilt and re-validated. Merged after the checks above passed.
+- Pages deployment: see the Pages build status recorded in PR #6. Live URL: https://ginnymcfiner23-ux.github.io/Cupertino3/ (root site); `/docs/` and `/guide/` are on the same Pages site.
+- Note: a `git pull --rebase` during the integration flattened a merge commit and stopped with a conflict. It was aborted (`git rebase --abort`), and the branch was confirmed equal to its remote. Merges from `origin/main` should use `git merge`, not rebase.
+
 
 
 ---
