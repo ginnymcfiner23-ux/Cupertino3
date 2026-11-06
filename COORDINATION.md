@@ -86,12 +86,12 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 | T5 | Insurance research: primary residence (Cupertino) and rental/landlord (SF) | done (no verified premium averages; blank) | session-64308d3a | `data/facts.json` (insurance) |
 | T6 | Legislative watchlist (proposed changes to tax, property, inheritance law) | done (`needs review` items flagged) | session-64308d3a | `data/legislation.json` |
 | T7 | Projection model (property value, assessed value, tax, costs, hold/rent/sell scenarios) | done | session-64308d3a | `data/assumptions.json`, `model/project.py`, `data/projections.json` |
-| T8 | Static site build + link checker + Pages config | done (site is `docs/`; Pages source set to `main` `/docs` after merge) | session-64308d3a | `docs/`, `scripts/build_site.py`, `scripts/check_site.py` |
+| T8 | Static site build + link checker + Pages config | done (site is `docs/`; Pages source set to `main` `/docs` after merge) | session-64308d3a | `docs/`, `scripts/guide_build_site.py`, `scripts/guide_check_site.py` |
 | T9 | Integration: merge, re-verify combined data, build, PR to `main`, merge, confirm Pages | in progress | session-64308d3a | `docs/` (generated), `README.md`, `COORDINATION.md` (final log) |
 
 ## Claim log
 - 2026-11-06 · session-64308d3a · claimed T1–T9 (single-session run; all tasks executed on `arena/64308d3a-cupertino3`).
-- 2026-11-06 · session-64308d3a · T1–T8 complete on the branch: data (`data/`), model (`model/project.py`), site (`docs/`, 14 pages), validators (`scripts/check_site.py`: OK). T9 integration started.
+- 2026-11-06 · session-64308d3a · T1–T8 complete on the branch: data (`data/`), model (`model/project.py`), site (`docs/`, 14 pages), validators (`scripts/guide_check_site.py`: OK). T9 integration started.
 
 ## Handoff / conflict log
 - Source-URL corrections (2026-11-06): an early CPUC link was a different decision (23-10-013) and was removed; the ACC Plus rule is now cited to the PG&E tariff text. Two other URLs were corrected from search results. Verified URLs only are in `data/sources.json`.

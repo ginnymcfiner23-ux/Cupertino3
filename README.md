@@ -52,15 +52,15 @@ A second, separate analysis lives in `guide/` (served at `/guide/` of the same P
 | `guide/` | Generated static site: landing page, category pages, Flagged for Review, sources. Inline styles; no external resources. |
 | `data/guide/` | Facts, sources, client inputs, irregularities, legislation, inheritance steps, projections. |
 | `model/guide_project.py` | Projection model. Writes `data/guide/projections.json` and CSVs. |
-| `scripts/build_site.py` | Builds `guide/` from `data/guide/`. |
-| `scripts/check_site.py` | Checks internal links, rows with official links, no external resources, verified rows have sources, privacy patterns. |
+| `scripts/guide_build_site.py` | Builds `guide/` from `data/guide/`. |
+| `scripts/guide_check_site.py` | Checks internal links, rows with official links, no external resources, verified rows have sources, privacy patterns. |
 
 Rebuild:
 
 ```bash
 python3 model/guide_project.py
-python3 scripts/build_site.py
-python3 scripts/check_site.py
+python3 scripts/guide_build_site.py
+python3 scripts/guide_check_site.py
 ```
 
 Standard library only. Privacy rule: no personal information in the repo or site. Properties are referred to by city and county only. This is informational analysis, not legal or tax advice.
