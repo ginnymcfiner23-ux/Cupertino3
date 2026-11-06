@@ -119,7 +119,7 @@ Full detail is on the "Flagged for Review" page (`flagged/`). Summary:
 - 2026-11-06 13:25 UTC — **PR #4** (`arena/c1b5796b-cupertino3` → `main`): "Inheritance decision analysis site (root Pages layout) with validated sourcing". First attempt: not mergeable (conflict with 340c906c's `docs/` analysis on `data/sources.json`, `data/flags.json`, `data/projections.json`, `COORDINATION.md`, `README.md`). Resolved by merging `origin/main`, keeping its files, moving this session's data to `data/ia/`, and appending this session's board. Validator passed (10 pages, 104 links). **Merged** with `gh pr merge 4 --merge` → merge commit `83b7656`. Pages: legacy build and `pages.yml` deploy were queued for that commit.
 - 2026-11-06 — Post-merge: session 64308d3a merged **PR #5** (`guide/` analysis, commit `fdc125f`) to `main`. Verified combined `main` with `scripts/validate.py` (pass), `tools/check_site.py` (PASS), and `scripts/guide_check_site.py` (OK, 14 pages).
 - 2026-11-06 — Integration fix (**PR #6**, this branch): footer on every root page now links to the `/docs/` and `guide/` analyses. Labelled as separate analyses with different assumptions. Rebuilt and re-validated. Merged after the checks above passed.
-- Pages deployment: see the Pages build status recorded in PR #6. Live URL: https://ginnymcfiner23-ux.github.io/Cupertino3/ (root site); `/docs/` and `/guide/` are on the same Pages site.
+- Pages deployment: see the Pages build status recorded in PR #6. Live URL: <pages-url>/ (root site); `/docs/` and `/guide/` are on the same Pages site.
 - Note: a `git pull --rebase` during the integration flattened a merge commit and stopped with a conflict. It was aborted (`git rebase --abort`), and the branch was confirmed equal to its remote. Merges from `origin/main` should use `git merge`, not rebase.
 
 
@@ -214,12 +214,12 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 | T5 | Insurance research: primary residence (Cupertino) and rental/landlord (SF) | done (no verified premium averages; blank) | session-64308d3a | `data/facts.json` (insurance) |
 | T6 | Legislative watchlist (proposed changes to tax, property, inheritance law) | done (`needs review` items flagged) | session-64308d3a | `data/legislation.json` |
 | T7 | Projection model (property value, assessed value, tax, costs, hold/rent/sell scenarios) | done | session-64308d3a | `data/assumptions.json`, `model/project.py`, `data/projections.json` |
-| T8 | Static site build + link checker + Pages config | done (site is `docs/`; Pages source set to `main` `/docs` after merge) | session-64308d3a | `docs/`, `scripts/guide_build_site.py`, `scripts/guide_check_site.py` |
-| T9 | Integration: merge, re-verify combined data, build, PR to `main`, merge, confirm Pages | in progress | session-64308d3a | `docs/` (generated), `README.md`, `COORDINATION.md` (final log) |
+| T8 | Static site build + link checker + Pages config | done (site is `guide/`, served at `/guide/` on the existing Pages site; Pages source unchanged: legacy `main` `/`) | session-64308d3a | `guide/`, `scripts/guide_build_site.py`, `scripts/guide_check_site.py` |
+| T9 | Integration: merge, re-verify combined data, build, PR to `main`, merge, confirm Pages | done (PR #5 merged; Pages deploy confirmed; log PR pending) | session-64308d3a | `guide/` (generated), `README.md`, `COORDINATION.md` (final log) |
 
 ## Claim log
 - 2026-11-06 · session-64308d3a · claimed T1–T9 (single-session run; all tasks executed on `arena/64308d3a-cupertino3`).
-- 2026-11-06 · session-64308d3a · T1–T8 complete on the branch: data (`data/`), model (`model/project.py`), site (`docs/`, 14 pages), validators (`scripts/guide_check_site.py`: OK). T9 integration started.
+- 2026-11-06 · session-64308d3a · T1–T8 complete on the branch: data (`data/guide/`), model (`model/guide_project.py`), site (`guide/`, 14 pages), validators (`scripts/guide_check_site.py`: OK).
 
 ## Handoff / conflict log
 - Source-URL corrections (2026-11-06): an early CPUC link was a different decision (23-10-013) and was removed; the ACC Plus rule is now cited to the PG&E tariff text. Two other URLs were corrected from search results. Verified URLs only are in `data/sources.json`.
@@ -227,7 +227,12 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 - Client tax history implies effective rates above official rates (IR01). Flagged, not corrected.
 
 ## Integration (T9)
-- Target: PR from `arena/64308d3a-cupertino3` to `main`. PR link and merge result to be recorded below after merge.
-- PR: pending
-- Merge: pending
-- Pages: pending
+- PR #5 (`arena/64308d3a-cupertino3` → `main`): PR #5 (pull/5 in this repository)
+  - First attempt: conflicting with `main` (PR #3 `docs/` analysis, PR #4 root site). Resolved by moving this session's files to separate paths (`data/guide/`, `model/guide_project.py`, `guide/`, `scripts/guide_*.py`) and merging `main`, keeping both coordination boards and both READMEs.
+  - Merged with `gh pr merge 5 --merge` → merge commit `fdc125f` (2026-11-06 13:27 UTC).
+  - Checks before merge: `scripts/guide_check_site.py` OK (14 pages, 60 facts, 34 sources); `scripts/validate.py` ALL CHECKS PASSED; `tools/check_site.py` PASS.
+- Pages: `pages.yml` deploy run `42225751253` on `dc22405` completed with success (`deploy-pages` success). The live guide loads at `<pages-url>/guide/`.
+  - Open item: the legacy `pages-build-deployment` (source `main` `/`) shows `errored` with 0 s duration on commits since `83b7656`. It also errored once on the earlier merge. Deploys succeed through `pages.yml`. Investigate the legacy build settings; do not treat its error status as a site failure.
+- Follow-up PR for this log entry and IR18 (cross-analysis divergence): recorded in the next entry below.
+- Live URLs checked: `/` (other session's root site) and `/guide/` (this session).
+
