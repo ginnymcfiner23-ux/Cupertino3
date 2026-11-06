@@ -25,6 +25,9 @@ This checkout has a single active Arena session on the fixed branch `arena/aed14
 
 Checked source content against official BOE, county assessor, IRS and California agency pages returned by search. The published dashboard has links on every populated factual table row; unsourced figures are blank. User-supplied property figures, rents, expenses, locations beyond generic city-area context, and personal data have been excluded from the public site. The user’s property-value and bill histories were not independently verified. No point forecast was fabricated for 2040–2050. Individual trust, title, ownership, multi-unit Prop 19 treatment and California inheritance-tax questions remain flagged for professional/official confirmation.
 
-## Deployment / integration note
+## Deployment / integration result
 
-Static GitHub Pages workflow added. It deploys on push to `main`; this session may not push to `main`, create another branch, or claim an untracked integration branch. No PR/merge/deployment success is claimed. Current session branch must be pushed and reviewed/merged through the repository’s normal integration process before Pages can deploy.
+- PR #1: https://github.com/ginnymcfiner23-ux/Cupertino3/pull/1
+- Merged to `main` with a merge commit on 2026-11-06.
+- GitHub Pages workflow run: https://github.com/ginnymcfiner23-ux/Cupertino3/actions/runs/42223506923 — queued when checked; successful deployment is not yet confirmed.
+- No PR checks were reported before merge. Static HTML navigation was checked locally; data claims remain limited to the cited official-source statements. GitHub Pages must be enabled for the repository if workflow deployment does not proceed.
