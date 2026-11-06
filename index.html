@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard — Household Decision Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="index.html" class="active">Dashboard</a>
+  <a href="pages/summary.html">Executive Summary</a>
+  <a href="pages/properties.html">Property Data</a>
+  <a href="pages/estate-tax.html">Estate & Gift Tax</a>
+  <a href="pages/property-tax.html">Property Tax</a>
+  <a href="pages/costs.html">Insurance & Utilities</a>
+  <a href="pages/rental.html">Rental Rules</a>
+  <a href="pages/projections.html">Projections</a>
+  <a href="pages/analysis.html">Live·Rent·Sell</a>
+  <a href="pages/process.html">Inheritance Process</a>
+  <a href="pages/watchlist.html">Law Watchlist</a>
+  <a href="pages/flagged.html">Flagged</a>
+  <a href="pages/sources.html">Sources</a>
+</nav>
+<main>
+<h2>Household Decision Dashboard</h2>
+<p class="lede">Two California properties, one inheritance decision (~2040–2050). Every table row links to an official
+source or is flagged as unverified. Nothing here is filled in by inference.</p>
+
+<div class="legend">
+  <span><span class="badge b-ok">VERIFIED</span> read from an official source</span>
+  <span><span class="badge b-user">USER-PROVIDED</span> your data, not independently confirmable</span>
+  <span><span class="badge b-model">PROJECTION</span> model output from stated assumptions</span>
+  <span><span class="badge b-flag">FLAGGED</span> irregular or unconfirmed — see <a href="pages/flagged.html">Flagged for Review</a></span>
+  <span><span class="badge b-blank">BLANK</span> could not verify — left empty on purpose</span>
+</div>
+
+<div class="cards">
+  <div class="card"><div class="k">Property A — Cupertino 95014</div><div class="v">$3.1M</div>
+    <div class="n">Nov 2026 estimate (user-provided). 2026 assessed value $550,537 (+2%, matches BOE factor).</div></div>
+  <div class="card"><div class="k">Property B — SF 94122</div><div class="v">$1.8M</div>
+    <div class="n">Nov 2026 estimate (user-provided). 3 units; ~$7,150/mo rent from 2 units; owner lives in 3rd.</div></div>
+  <div class="card"><div class="k">Federal estate exclusion 2026</div><div class="v">$15,000,000</div>
+    <div class="n"><span class="badge b-ok">VERIFIED</span> IRS · top rate 40% · CA estate tax = $0.</div></div>
+  <div class="card"><div class="k">SF rent increase 2026-27</div><div class="v">1.6%</div>
+    <div class="n"><span class="badge b-ok">VERIFIED</span> SF Rent Board, eff. 2026-03-01 → 2027-02-28.</div></div>
+  <div class="card"><div class="k">Prop 19 tax jump if NOT occupied</div><div class="v">$73.6k/yr</div>
+    <div class="n"><span class="badge b-model">PROJECTION</span> 2040 base case, full reassessment to FMV vs $9.7k status quo.</div></div>
+  <div class="card"><div class="k">Items flagged for review</div><div class="v" id="flagcount">25</div>
+    <div class="n">Data irregularities &amp; unverified values — <a href="pages/flagged.html">open list</a>.</div></div>
+</div>
+
+<div class="panel">
+  <h4>Where to start</h4>
+  <div class="tablewrap"><table>
+    <tr><th>Question</th><th>Page</th></tr>
+    <tr><td>What do we actually own/owe, year by year?</td><td><a href="pages/properties.html">Property Data &amp; Tax History</a></td></tr>
+    <tr><td>What does the law say about inheriting (federal, CA, local)?</td><td><a href="pages/estate-tax.html">Inheritance &amp; Estate Tax</a></td></tr>
+    <tr><td>What happens to property tax when the house is inherited?</td><td><a href="pages/property-tax.html">Property Tax &amp; Prop 19</a></td></tr>
+    <tr><td>What do insurance and utilities cost?</td><td><a href="pages/costs.html">Insurance &amp; Utilities</a></td></tr>
+    <tr><td>What rules govern the SF rental income?</td><td><a href="pages/rental.html">Rental &amp; Rent Control</a></td></tr>
+    <tr><td>What will values/taxes be in 2030–2050?</td><td><a href="pages/projections.html">Projections</a></td></tr>
+    <tr><td>Live there vs rent it out vs sell and invest?</td><td><a href="pages/analysis.html">Live · Rent · Sell analysis</a></td></tr>
+    <tr><td>How does the inheritance actually work, step by step?</td><td><a href="pages/process.html">Inheritance Process Guide</a></td></tr>
+    <tr><td>What laws might change?</td><td><a href="pages/watchlist.html">Law Change Watchlist</a></td></tr>
+    <tr><td>What couldn't be verified?</td><td><a href="pages/flagged.html">Flagged for Review</a></td></tr>
+    <tr><td>Every source used</td><td><a href="pages/sources.html">Sources Index</a></td></tr>
+  </table></div>
+</div>
+
+<div class="note model"><strong>Model, not prophecy.</strong> All forward-looking numbers are projections built from
+the assumption register on the <a href="pages/projections.html">Projections</a> page. Re-run
+<code>docs/research/build_projections.py</code> to regenerate them.</div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>

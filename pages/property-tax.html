@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Property Tax — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="../index.html">Dashboard</a>
+  <a href="summary.html">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html">Estate & Gift Tax</a>
+  <a href="property-tax.html" class="active">Property Tax</a>
+  <a href="costs.html">Insurance & Utilities</a>
+  <a href="rental.html">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Property Tax &amp; Proposition 19</h2>
+<p class="lede">How CA property tax works, the verified rates for both counties, and what happens to
+Property A's tax bill when it changes hands — the single largest financial lever in this decision.</p>
+
+<h3>Proposition 13 mechanics (verified)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Rule</th><th>Value</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Base rate</td><td class="num">1% of assessed value + voter-approved bonded debt</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://boe.ca.gov/proptaxes/pdf/lta25023.pdf">BOE LTA 2025/023</a></td></tr>
+  <tr><td>Annual assessment growth cap</td><td class="num">≤ 2% per year on factored base year value</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">Cal. Const. Art. XIII A §2(b); <a href="https://boe.ca.gov/proptaxes/pdf/rules/Rule460.pdf">BOE Rule 460</a></td></tr>
+  <tr><td>2025 roll inflation factor</td><td class="num">1.02 (CCPI +2.514%, capped)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://boe.ca.gov/proptaxes/pdf/lta24053.pdf">BOE LTA 2024/053</a></td></tr>
+  <tr><td>2026 roll inflation factor</td><td class="num">1.02</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://boe.ca.gov/proptaxes/pdf/lta26002.pdf">BOE LTA 2026/002</a></td></tr>
+  <tr><td>Reassessment triggers</td><td>Change of ownership or new construction ONLY</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://boe.ca.gov/proptaxes/pdf/lta25023.pdf">BOE LTA 2025/023</a></td></tr>
+  <tr><td>Decline-in-value relief (Prop 8)</td><td>Temporary reduction if market value &lt; factored base</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+</table></div>
+
+<h3>Verified local rates</h3>
+<div class="tablewrap"><table>
+  <tr><th>Area</th><th>Rate</th><th>Status</th><th>Source</th></tr>
+  <tr><td>San Francisco secured rate FY 2026-27</td><td class="num">1.18162182%</td><td><span class="badge b-ok">VERIFIED 2026-11-06</span></td><td class="src"><a href="https://sftreasurer.org/property/secured-property-taxes">SF Treasurer &amp; Tax Collector</a></td></tr>
+  <tr><td>San Francisco secured rate FY 2025-26</td><td class="num">1.18268325%</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same page</td></tr>
+  <tr><td>Santa Clara County TRA composite rates 2025-26 (range, sampled)</td><td class="num">1.039% – 1.241%</td><td><span class="badge b-ok">VERIFIED sample</span></td><td class="src"><a href="https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf">SCC Tax Rate Book 2025-2026</a></td></tr>
+  <tr><td>Property A exact TRA rate</td><td>—</td><td><span class="badge b-blank">BLANK + FLAG</span> (parcel ID withheld; use <a href="https://payments.sccgov.org/PropertyTaxAllocation/Home">SCC lookup</a> internally)</td><td class="src">—</td></tr>
+  <tr><td>Property A implied 2025 effective rate (user math)</td><td class="num">1.335%</td><td><span class="badge b-flag">FLAGGED — above TRA range; direct charges suspected</span></td><td class="src">user data ÷ official factor table</td></tr>
+  <tr><td>Property B implied 2025 effective rate (user math)</td><td class="num">2.135%</td><td><span class="badge b-flag">FLAGGED — ≈1.8× official SF rate</span></td><td class="src">user data vs SF TTC</td></tr>
+</table></div>
+
+<h3>Proposition 19 — what happens when Property A is inherited (verified law)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Element</th><th>Rule</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Effective date</td><td>Transfers on/after 2021-02-16</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/prop19/">BOE Prop 19</a></td></tr>
+  <tr><td>Exclusion requires ALL of:</td><td>(1) it was the <strong>transferor's principal residence</strong>; (2) <strong>heir occupies it as their principal residence</strong> within 1 year; (3) homeowner's exemption claimed within 1 year</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">BOE; <a href="https://www.boe.ca.gov/proptaxes/pdf/lta20061.pdf">BOE LTA 2006/17</a></td></tr>
+  <tr><td>Value cap</td><td>factored base + <strong>$1,044,586</strong> (transfers 2025-02-16 → 2027-02-15; indexed biennially)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/news/2025/nr-25-02.htm">BOE NR 2025-02</a></td></tr>
+  <tr><td>If FMV ≤ cap</td><td>new base year value = factored base (unchanged)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/proptaxes/pdf/rules/Rule462-520.pdf">BOE Rule 462.520</a></td></tr>
+  <tr><td>If FMV &gt; cap</td><td>new base = FMV − adjusted exclusion amount (excess added)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Rental / second home</td><td><strong>Full reassessment to FMV</strong> — no parent-child exclusion</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/prop19/">BOE Prop 19</a></td></tr>
+  <tr><td>Claim form</td><td>BOE-19-P within 3 years of death/transfer (or before 3rd-party transfer)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/prop19/">BOE Prop 19 checklist</a></td></tr>
+  <tr><td>Homeowners' exemption</td><td>File within 1 year of transfer</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Trust transfers</td><td>Transfer from parent's revocable trust at death = change in ownership; exclusion still available if family-home tests met</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/proptaxes/pdf/Prop19Intergenerational-Questions.pdf">BOE Prop 19 Q&amp;A</a></td></tr>
+  <tr><td>Heir stops living there</td><td>Taxable value may change at next lien date (must notify assessor)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.boe.ca.gov/proptaxes/pdf/lta20061.pdf">BOE LTA 2006/17</a></td></tr>
+</table></div>
+
+<div class="note"><strong>Critical unknown:</strong> whether Property A is (or will be) the transferor's principal
+residence at death. If it isn't, the exclusion is unavailable no matter what the heir does — full FMV reassessment.
+<span class="badge b-flag">FLAGGED for confirmation (internal)</span></div>
+
+<h3>Reassessment scenarios at inheritance (model)</h3>
+<div class="note model">Base case 4.2% value CAGR (FHFA anchor), Prop 13 2% AV growth, tax rate 1.335%
+(user-implied — flagged), exclusion held flat at $1,044,586 beyond 2027 (future amount unknown — flagged).
+<span class="badge b-model">PROJECTION</span> — inputs: <a href="projections.html">assumption register</a>.</div>
+<div class="tablewrap"><table>
+  <tr><th>Year</th><th class="num">Projected FMV</th><th class="num">Status-quo tax (never transferred)</th><th class="num">With Prop 19 exclusion (heir moves in): new base → tax</th><th class="num">Without exclusion (heir doesn't move in): new base → tax</th></tr>
+  <tr><td>2040</td><td class="num">$5,514,546</td><td class="num">$9,698</td><td class="num">$4,469,960 → <strong>$59,674/yr</strong></td><td class="num">$5,514,546 → <strong>$73,619/yr</strong></td></tr>
+  <tr><td>2050</td><td class="num">$8,321,219</td><td class="num">$11,821</td><td class="num">$7,276,633 → <strong>$97,143/yr</strong></td><td class="num">$8,321,219 → <strong>$111,088/yr</strong></td></tr>
+</table></div>
+<p class="small">Read: even <em>with</em> the exclusion, inheriting costs ~6–8× today's status-quo tax because the
+cap (FMV − $1.04M) still lands far above the $550k factored base. Without it, ~7.6–9.4×.</p>
+
+<h3>Official tools (internal verification)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Tool</th><th>Use</th><th>Link</th></tr>
+  <tr><td>SF tax bill / rate history</td><td>Confirm Property B rate &amp; bill components</td><td class="src"><a href="https://sftreasurer.org/property/secured-property-taxes">sftreasurer.org</a></td></tr>
+  <tr><td>Santa Clara tax rate lookup</td><td>Resolve Property A TRA composite rate (internally, using APN)</td><td class="src"><a href="https://payments.sccgov.org/PropertyTaxAllocation/Home">payments.sccgov.org</a></td></tr>
+  <tr><td>SCC Assessor</td><td>Assessed-value history</td><td class="src"><a href="https://asr.santaclaracounty.gov/home">sccassessor.org</a></td></tr>
+  <tr><td>SF Assessor-Recorder</td><td>Assessment roll / change of ownership</td><td class="src"><a href="https://www.sf.gov/departments--assessor-recorder">sf.gov Assessor-Recorder</a></td></tr>
+  <tr><td>BOE forms</td><td>BOE-19-P, BOE-100-H, BOE-502-D</td><td class="src"><a href="https://www.boe.ca.gov/forms/">boe.ca.gov/forms</a></td></tr>
+</table></div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Flagged — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="../index.html">Dashboard</a>
+  <a href="summary.html">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html">Estate & Gift Tax</a>
+  <a href="property-tax.html">Property Tax</a>
+  <a href="costs.html">Insurance & Utilities</a>
+  <a href="rental.html">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html" class="active">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Flagged for Review</h2>
+<p class="lede">Everything that could not be confirmed from an official source, plus every internal
+inconsistency found during the line-by-line audit. Values are left blank where the rule requires it —
+nothing here has been filled in by inference.</p>
+
+<h3>Data irregularities (in user-provided tables)</h3>
+<div class="tablewrap"><table>
+  <tr><th>#</th><th>Where</th><th>What's wrong</th><th>Action</th></tr>
+  <tr><td>1</td><td>Property A — 2017 tax Δ</td><td>Printed +2%; dollar amounts ($6,414→$6,383) compute to −0.48%</td><td>Reconcile against actual tax bill (internal)</td></tr>
+  <tr><td>2</td><td>Property A — 2019 tax Δ</td><td>Printed +2.8%; amounts ($6,540→$6,565) compute to +0.38%</td><td>Reconcile against actual tax bill (internal)</td></tr>
+  <tr><td>3</td><td>Property A — 2026 tax</td><td>Left blank in supplied data</td><td>Fill from FY2026-27 bill when available</td></tr>
+  <tr><td>4</td><td>Property A — implied 2025 rate</td><td>$7,207 ÷ $539,743 = 1.335%, above SCC TRA range 1.039–1.241% (direct/parcel charges suspected)</td><td>Resolve exact TRA via SCC lookup internally (APN withheld from site)</td></tr>
+  <tr><td>5</td><td>Property B — 2022 tax Δ</td><td>Printed +2%; amounts ($2,247→$2,107) compute to −6.23%</td><td>Reconcile against actual tax bill (internal)</td></tr>
+  <tr><td>6</td><td>Property B — 2023 tax Δ</td><td>Printed +1%; amounts ($2,107→$2,179) compute to +3.42%</td><td>Reconcile against actual tax bill (internal)</td></tr>
+  <tr><td>7</td><td>Property B — 2018 tax jump</td><td>+18.4% in one year while AV grew 2% — unexplained (possible supplemental)</td><td>Reconcile against bill history (internal)</td></tr>
+  <tr><td>8</td><td>Property B — 2021→2022 AV</td><td>Grew 1.96% vs official 1.02 factor applied to 2021 roll (≈$45 difference)</td><td>Minor; confirm exemption history (internal)</td></tr>
+  <tr><td>9</td><td>Property B — implied 2025 rate</td><td>$2,439 ÷ $114,248 = 2.135% vs official SF FY rate 1.18162182% — ≈1.8× discrepancy</td><td>Reconcile against actual bill; possible multi-parcel/direct charges (internal)</td></tr>
+</table></div>
+
+<h3>Unverified values (blank by rule)</h3>
+<div class="tablewrap"><table>
+  <tr><th>#</th><th>Item</th><th>Why blank</th><th>Where to verify</th></tr>
+  <tr><td>10</td><td>ZIP 95014 / 94122 average insurance premiums</td><td>CDI ZIP-level rows not extracted from workbook</td><td class="src"><a href="https://www.insurance.ca.gov/0400-news/0200-studies-reports/0250-homeowners-study/">CDI Homeowners Study</a> (Part II ZIP report)</td></tr>
+  <tr><td>11</td><td>Property A market rent (if let out)</td><td>No official market-rent source; HUD FMR ≠ market rent</td><td class="src">Comps / licensed PM quote (no official dataset exists)</td></tr>
+  <tr><td>12</td><td>Property A exact TRA composite tax rate</td><td>Parcel ID withheld from site by privacy rule</td><td class="src"><a href="https://payments.sccgov.org/PropertyTaxAllocation/Home">SCC Where-My-Taxes-Go</a> (internal)</td></tr>
+  <tr><td>13</td><td>Property A maintenance figure</td><td>User gave no number ("lower than SF")</td><td>Internal estimate needed</td></tr>
+  <tr><td>14</td><td>Property B PG&amp;E electric tariff</td><td>Not fetched this session</td><td class="src">pge.com rate schedules</td></tr>
+  <tr><td>15</td><td>Property A solar/NEM credit (+$10–20/mo)</td><td>User figure; NEM rules not fetched</td><td class="src">CPUC / PG&amp;E interconnection</td></tr>
+  <tr><td>16</td><td>Cupertino Sanitary District sewer rates</td><td>Not fetched</td><td class="src"><a href="https://www.cupertinosanitarydistrict.org/">cupertinosanitarydistrict.org</a></td></tr>
+  <tr><td>17</td><td>Cupertino Urgency Ordinance 19-2194 current text/scope</td><td>Record VERIFIED (Legistar fetch OK); full text not fetched</td><td class="src"><a href="https://cupertino.legistar.com/LegislationDetail.aspx?From=RSS&amp;ID=6034821&amp;GUID=AC936BDA-E677-499B-BA04-80C905979D6A">Legistar</a></td></tr>
+  <tr><td>18</td><td>AB 1482 2026-27 regional caps (8.8% / 8.6%)</td><td>Only non-official mirrors found — not cited as fact</td><td class="src">DCA / BLS CPI publications</td></tr>
+  <tr><td>19</td><td>Prop 19 exclusion amount after 2027-02-15</td><td>Biennial FHFA indexation — future amount unknown; model holds $1,044,586 flat</td><td class="src"><a href="https://www.boe.ca.gov/news/2025/nr-25-02.htm">BOE NR</a> when re-indexed</td></tr>
+  <tr><td>20</td><td>Property A transferor principal-residence status at death</td><td>Unknown — decides Prop 19 eligibility entirely</td><td>Internal family fact</td></tr>
+</table></div>
+
+<h3>Assumptions with no official source (flagged by rule)</h3>
+<div class="tablewrap"><table>
+  <tr><th>#</th><th>Assumption</th><th>Used in</th></tr>
+  <tr><td>21</td><td>Selling costs = 6%</td><td><a href="projections.html">Projections §5</a>, Sell option</td></tr>
+  <tr><td>22</td><td>Investment return = 7%/yr nominal</td><td>Sell-then-invest illustration</td></tr>
+  <tr><td>23</td><td>Long-run inflation = 2.5%/yr</td><td>General framing</td></tr>
+  <tr><td>24</td><td>Rent growth = 2.5%/yr beyond current SF window</td><td>Property B income framing</td></tr>
+  <tr><td>25</td><td>Home value CAGR spreads (2.5/4.2/6.0%)</td><td>All value projections (base anchored to FHFA)</td></tr>
+</table></div>
+
+<h3>Known non-official sources used only for corroboration (not cited as fact)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Claim</th><th>Non-official sources seen</th><th>Disposition</th></tr>
+  <tr><td>Historical SF rent increases pre-2026 (1.4/1.7/3.6/2.3%)</td><td>relisto, trimball, bancalsf, marinoak</td><td>Current-year 1.6% verified at sf.gov; history shown only as sf.gov-page-derived (page links official history PDF)</td></tr>
+  <tr><td>AB 1482 2026-27 caps</td><td>rzadvisors, alleastbayproperties, rentcheckme</td><td>NOT used as fact — see #18</td></tr>
+  <tr><td>CA HPI long-run CAGR via mirrors</td><td>housingalmanac.com</td><td>Base 4.2% anchored to official FHFA report (+320% since 1991Q1) instead</td></tr>
+  <tr><td>SF FY rate history</td><td>urbantaken, eonre, kinokorealestate</td><td>Official FY2026-27 rate taken from sftreasurer.org directly</td></tr>
+</table></div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>

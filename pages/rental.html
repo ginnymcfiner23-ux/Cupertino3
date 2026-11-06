@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rental Rules — Household Decision Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
+  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+</header>
+<nav class="top">
+  <a href="../index.html">Dashboard</a>
+  <a href="summary.html">Executive Summary</a>
+  <a href="properties.html">Property Data</a>
+  <a href="estate-tax.html">Estate & Gift Tax</a>
+  <a href="property-tax.html">Property Tax</a>
+  <a href="costs.html">Insurance & Utilities</a>
+  <a href="rental.html" class="active">Rental Rules</a>
+  <a href="projections.html">Projections</a>
+  <a href="analysis.html">Live·Rent·Sell</a>
+  <a href="process.html">Inheritance Process</a>
+  <a href="watchlist.html">Law Watchlist</a>
+  <a href="flagged.html">Flagged</a>
+  <a href="sources.html">Sources</a>
+</nav>
+<main>
+<h2>Rental Income &amp; Rent Control Rules</h2>
+<p class="lede">Property B's ~$7,150/mo income runs under San Francisco rent control plus the state backstop.
+Property A's potential rent is deliberately left blank — no official market-rent source exists.</p>
+
+<h3>San Francisco Rent Board — verified rules</h3>
+<div class="tablewrap"><table>
+  <tr><th>Rule</th><th>Value</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Allowed annual increase <strong>2026-03-01 → 2027-02-28</strong></td><td class="num"><strong>1.6%</strong> (60% of Bay Area CPI-U)</td><td><span class="badge b-ok">VERIFIED 2026-11-06</span></td><td class="src"><a href="https://www.sf.gov/learn-about-rent-increases-san-francisco">SF — Learn about rent increases</a></td></tr>
+  <tr><td>Basis</td><td>On base rent only; once per 12 months</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Notice (&lt;10% increase)</td><td>30 days (+5 if mailed)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Notice (&gt;10% increase)</td><td>90 days (+5 if mailed)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Banked increases</td><td>Permitted (unused increases accumulate)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Rent Increase License</td><td>Required (housing inventory reporting; condos &amp; 1–9-unit buildings since 2023-03-01)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Prior-year rates</td><td class="num">2025: 1.4% · 2024: 1.7% · 2023: 3.6% · 2022: 2.3%</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same page (history PDF "571 Allowable Annual Increases")</td></tr>
+  <tr><td>Coverage</td><td>Buildings with certificate of occupancy on/before 1979-06-13, 2+ units (Costa-Hawkins exempts SFR/condos)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same + Civ. Code §1954.52</td></tr>
+</table></div>
+
+<h3>Statewide backstop — AB 1482 (Tenant Protection Act)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Rule</th><th>Value</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Annual rent cap</td><td class="num">5% + local CPI, max 10% in any 12 months</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201920200AB1482">AB 1482 chaptered text (Ch. 597, Stats. 2019)</a></td></tr>
+  <tr><td>Just-cause eviction</td><td>After 12 months' occupancy (24 months if a new tenant is added during year one)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>No-fault relocation</td><td>1 month's rent (or written rent waiver)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>Sunset</td><td>Provisions set to repeal 2030-01-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>SFR/condo exemption</td><td>Owned by an individual — exempt from cap &amp; just cause (written notice required)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same; <a href="https://www.cupertino.gov/files/assets/city/v/2/departments/documents/community-development/housing/ps-flyer-ab-1482-new-ca-la.pdf">Cupertino AB 1482 flyer</a></td></tr>
+  <tr><td>Local law floor</td><td>More protective local ordinances supersede AB 1482</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">same</td></tr>
+  <tr><td>2026-27 AB 1482 caps (8.8% / 8.6%)</td><td>—</td><td><span class="badge b-flag">FLAG — non-official mirrors only; not cited as fact</span></td><td class="src">verify via DCA/BLS before use</td></tr>
+</table></div>
+
+<h3>Vacancy decontrol — Costa-Hawkins</h3>
+<div class="tablewrap"><table>
+  <tr><th>Rule</th><th>Effect</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Vacancy decontrol (Civ. Code §1954.53)</td><td>When a tenancy lawfully ends, the owner may set the next tenancy's initial rent at market — then the cap re-attaches</td><td><span class="badge b-ok">VERIFIED (statute)</span></td><td class="src"><a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&amp;sectionNum=1954.53">Civ. Code §§1954.50–1954.535 (leginfo)</a></td></tr>
+  <tr><td>Exempt from local caps</td><td>Separately alienable SFR/condo; units first occupied after 1995-02-01</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src">Civ. Code §1954.52</td></tr>
+</table></div>
+
+<h3>Cupertino local rules (Property A if rented out)</h3>
+<div class="tablewrap"><table>
+  <tr><th>Rule</th><th>Detail</th><th>Status</th><th>Source</th></tr>
+  <tr><td>Urgency Ordinance 19-2194 (adopted 2019-12-17)</td><td>Just-cause protections + limits on large rental-rate increases (pre-AB 1482 circumvention)</td><td><span class="badge b-ok">VERIFIED record exists</span></td><td class="src"><a href="https://cupertino.legistar.com/LegislationDetail.aspx?From=RSS&amp;ID=6034821&amp;GUID=AC936BDA-E677-499B-BA04-80C905979D6A">Cupertino Legistar</a></td></tr>
+  <tr><td>Current ordinance text/scope</td><td>—</td><td><span class="badge b-blank">BLANK + FLAG</span> (not fetched)</td><td class="src">verify at cupertino.org before relying</td></tr>
+  <tr><td>AB 1482 applies to Cupertino rentals</td><td>5%+CPI ≤10%, just cause after 12 months (unless SFR-exempt)</td><td><span class="badge b-ok">VERIFIED</span></td><td class="src"><a href="https://www.cupertino.gov/files/assets/city/v/2/departments/documents/community-development/housing/ps-flyer-ab-1482-new-ca-la.pdf">Cupertino flyer</a></td></tr>
+</table></div>
+
+<h3>Rental income inputs</h3>
+<div class="tablewrap"><table>
+  <tr><th>Item</th><th>Value</th><th>Status</th><th>Source / note</th></tr>
+  <tr><td>Property B rent (current)</td><td class="num">~$7,150/mo from 2 units</td><td><span class="badge b-user">USER-PROVIDED</span></td><td class="src">internal</td></tr>
+  <tr><td>Property B 3rd unit</td><td>Owner-occupied; can be lived in without losing rent from other 2</td><td><span class="badge b-user">USER-PROVIDED</span></td><td class="src">internal</td></tr>
+  <tr><td>Property B rent growth (model)</td><td>2.5%/yr assumption beyond current 1.6% window</td><td><span class="badge b-model">ASSUMPTION</span> <span class="badge b-flag">flagged</span></td><td class="src">current window VERIFIED at <a href="https://www.sf.gov/learn-about-rent-increases-san-francisco">sf.gov</a></td></tr>
+  <tr><td>Property A market rent (if let)</td><td>—</td><td><span class="badge b-blank">BLANK + FLAG</span></td><td class="src">No official market-rent source; HUD FMR (FY2026 Santa Clara 2BR $3,483, <a href="https://www.huduser.gov/portal/datasets/fmr.html">huduser.gov</a>) is a voucher benchmark, <strong>not</strong> market rent — deliberately not used as one</td></tr>
+</table></div>
+
+</main>
+<footer class="site">
+  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
+  Not tax/legal advice — verify every figure at the linked official source before acting.
+</footer>
+</body>
+</html>
