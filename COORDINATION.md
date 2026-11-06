@@ -64,7 +64,7 @@ No names, street addresses, ZIP codes, contact details, or the owner's location 
 
 # COORDINATION.md — Shared Task Board
 
-Repo: `ginnymcfiner23-ux/Cupertino3`
+Repo: this repository (GitHub Pages site)
 Working branch for this session: `arena/64308d3a-cupertino3` (branch name is fixed by the session; per-task `session-<id>/<task>` sub-branches are not used because all work must stay on this branch).
 Session ID: `session-64308d3a`
 

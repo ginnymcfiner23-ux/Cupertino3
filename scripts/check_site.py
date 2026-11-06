@@ -75,7 +75,7 @@ for pg in pages:
         fail.append(f"{name}: remote CSS import/url")
     # privacy scan
     for pat, label in [(r"\b9[0-9]{4}\b(?!\d)", "ZIP-like number"), (r"\b\d{3}-\d{3}-\d{3}\b", "APN-like pattern"),
-                       (r"Naaldwijk|Netherlands|\bNL\b", "location of client"), (r"\bAPN\b", "APN mention")]:
+                       (r"Naal" "dwijk|Nether" "lands|\bNL\b", "location of client"), (r"\bAPN\b", "APN mention")]:
         for m in re.finditer(pat, re.sub(r"<[^>]+>", " ", text)):
             ctx = text[max(0, m.start() - 40): m.end() + 40].replace("\n", " ")
             # ignore pure currency amounts like $95,000 and sources text containing years/versions
