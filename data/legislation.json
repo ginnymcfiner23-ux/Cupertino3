@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "id": "LG01",
+      "title": "Prop 19 repeal initiative (family-member transfers) failed to qualify",
+      "status": "Failed - signature shortfall (memo dated May 18, 2026)",
+      "effect": "Prop 19 family-home rules remain in force.",
+      "sources": [
+        "S26"
+      ],
+      "verified": true
+    },
+    {
+      "id": "LG02",
+      "title": "H.R. 1301 Death Tax Repeal Act (119th Congress)",
+      "status": "Introduced 02/13/2025; referred to Ways and Means; not law",
+      "effect": "No change in law. Monitor.",
+      "sources": [
+        "S27"
+      ],
+      "verified": true
+    },
+    {
+      "id": "LG03",
+      "title": "2026 federal basic exclusion set at $15,000,000 by P.L. 119-21 (Rev. Proc. 2025-32)",
+      "status": "In effect for 2026; indexed from 2027",
+      "effect": "Basis for federal exclusion projections.",
+      "sources": [
+        "S10"
+      ],
+      "verified": true
+    },
+    {
+      "id": "LG04",
+      "title": "SB 284 (2025) - Prop 19 family-home transfer clarifications (probate/sibling consolidation)",
+      "status": "Status not verified (BOE analysis of the bill as amended June 2025)",
+      "effect": "Could change the one-year move-in timing for multi-heir homes. Monitor.",
+      "sources": [
+        "S02"
+      ],
+      "verified": false
+    },
+    {
+      "id": "LG05",
+      "title": "CPUC net billing tariff (NEM 3.0) - ACC Plus eligibility",
+      "status": "Conflicting wording across sources; final decision not fetched",
+      "effect": "Affects Property A solar credits.",
+      "sources": [
+        "S24"
+      ],
+      "verified": false
+    },
+    {
+      "id": "LG06",
+      "title": "San Jose Water general rate case application (proposed rates 2028-2031)",
+      "status": "Proposed; not approved",
+      "effect": "Could raise Cupertino water costs.",
+      "sources": [
+        "S34"
+      ],
+      "verified": true
+    },
+    {
+      "id": "LG07",
+      "title": "Federal estate-tax proposals with higher or lower exemptions (secondary reporting; not verified via congress.gov)",
+      "status": "Unverified",
+      "effect": "Not modelled. Do not rely on these.",
+      "sources": [
+        "S27"
+      ],
+      "verified": false
+    }
+  ]
+}

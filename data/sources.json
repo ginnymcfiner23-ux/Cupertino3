@@ -1,0 +1,277 @@
+{
+  "accessed": "2026-11-06",
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "CA State Board of Equalization",
+      "title": "LTA 2025/009 - Intergenerational Transfer Exclusion, Adjustment of the $1 Million Amount ($1,044,586)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S02",
+      "publisher": "CA State Board of Equalization",
+      "title": "Publication 801 - Proposition 19 Fact Sheet",
+      "url": "https://www.boe.ca.gov/pdf/pub801.pdf",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S03",
+      "publisher": "CA State Board of Equalization",
+      "title": "LTA 2026/026 - Multi-unit property: each unit must qualify separately for the intergenerational exclusion",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "tier": "official",
+      "how": "search excerpt (official domain)"
+    },
+    {
+      "id": "S04",
+      "publisher": "CA State Board of Equalization",
+      "title": "Legal Entity Ownership Program - Exclusions from Reassessment (revocable trusts, Rule 462.160)",
+      "url": "https://www.boe.ca.gov/proptaxes/leopexclusions.htm",
+      "tier": "official",
+      "how": "search excerpt (official domain)"
+    },
+    {
+      "id": "S05",
+      "publisher": "CA State Board of Equalization",
+      "title": "LTA 2022/012 - Family home definition (principal place of residence / homeowners' exemption)",
+      "url": "https://boe.ca.gov/proptaxes/pdf/lta22012.pdf",
+      "tier": "official",
+      "how": "search excerpt (official domain)"
+    },
+    {
+      "id": "S06",
+      "publisher": "County of Santa Clara Controller-Treasurer",
+      "title": "Compilation of Tax Rates & Information FY 2025-26 (1% levy + voter bonds; sampled TRA totals 1.1258%-1.2409%)",
+      "url": "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf?VersionId=HHMZ1VmGwFXqVvpM36xuptkIcV2V8ctE",
+      "tier": "official",
+      "how": "fetched (pages 1-3 of 9)"
+    },
+    {
+      "id": "S07",
+      "publisher": "City & County of San Francisco Treasurer & Tax Collector",
+      "title": "Secured Property Taxes (FY 2026-27 secured rate 1.18162182%; due dates; penalties)",
+      "url": "https://sftreasurer.org/property/secured-property-taxes",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S08",
+      "publisher": "City & County of San Francisco Assessor-Recorder",
+      "title": "Learn about real property assessments (Prop 13: 1% base, 2% cap, reassessment on change in ownership)",
+      "url": "https://www.sf.gov/information--learn-about-real-property-assessments",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S09",
+      "publisher": "IRS",
+      "title": "Estate tax (filing threshold table: 2025 $13,990,000; 2026 $15,000,000)",
+      "url": "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S10",
+      "publisher": "IRS",
+      "title": "Rev. Proc. 2025-32 (2026 inflation adjustments: basic exclusion $15,000,000; annual gift exclusion $19,000; capital gains thresholds; tax brackets)",
+      "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "tier": "official",
+      "how": "fetched (pages 1-3, 5)"
+    },
+    {
+      "id": "S11",
+      "publisher": "Cornell LII (mirror of 26 U.S.C.)",
+      "title": "26 U.S.C. section 2001 - imposition and rate of tax (40% top rate)",
+      "url": "https://www.law.cornell.edu/uscode/text/26/2001",
+      "tier": "official-statute-mirror",
+      "how": "fetched"
+    },
+    {
+      "id": "S12",
+      "publisher": "Cornell LII (mirror of 26 U.S.C.)",
+      "title": "26 U.S.C. section 1014 - basis of property acquired from a decedent (fair market value at date of death)",
+      "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+      "tier": "official-statute-mirror",
+      "how": "fetched"
+    },
+    {
+      "id": "S13",
+      "publisher": "Cornell LII (mirror of 26 U.S.C.)",
+      "title": "26 U.S.C. section 121 - exclusion of gain from sale of principal residence ($250,000 / $500,000)",
+      "url": "https://www.law.cornell.edu/uscode/text/26/121",
+      "tier": "official-statute-mirror",
+      "how": "fetched"
+    },
+    {
+      "id": "S14",
+      "publisher": "IRS",
+      "title": "Net Investment Income Tax (3.8%; $200,000 single threshold)",
+      "url": "https://www.irs.gov/individuals/net-investment-income-tax",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S15",
+      "publisher": "CA Legislative Information",
+      "title": "Revenue and Taxation Code 13301 - no state gift, inheritance or estate tax",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=13301",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S16",
+      "publisher": "CA Legislative Information",
+      "title": "Revenue and Taxation Code 17043 - additional 1% tax on taxable income over $1,000,000",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=17043",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S17",
+      "publisher": "CA Franchise Tax Board",
+      "title": "2025 California Tax Rate Schedules (top rate 12.30% above $742,953 single)",
+      "url": "https://www.ftb.ca.gov/forms/2025/2025-540-tax-rate-schedules.pdf",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S18",
+      "publisher": "CA Franchise Tax Board",
+      "title": "Capital gains and losses - California does not have a lower capital gains rate",
+      "url": "https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S19",
+      "publisher": "CA Franchise Tax Board",
+      "title": "Gifts and inheritance (not income; income produced by inherited assets is taxable)",
+      "url": "https://www.ftb.ca.gov/file/personal/income-types/gifts-and-inheritance.html",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S20",
+      "publisher": "San Jose Water Company (CPUC advice letter 628-A, approved 6/30/2026)",
+      "title": "Schedule No. 1 General Metered Service - Portions of Cupertino; residential tiers effective 07/01/2026",
+      "url": "https://www.sjwater.com/media/dm3lribs/san-jose-water-company-al-628-a-approved.pdf",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S21",
+      "publisher": "San Jose Water Company (CPUC advice letter 621-A, approved)",
+      "title": "Advice Letter 621-A (12/05/2025): residential quantity rates under D.24-12-077, effective 01/01/2026",
+      "url": "https://www.sjwater.com/media/2zxdiui1/al621a_advice_letter_web-1.pdf",
+      "tier": "official",
+      "how": "search excerpt (official domain)"
+    },
+    {
+      "id": "S22",
+      "publisher": "SF Public Utilities Commission",
+      "title": "Rate Schedules and Fees for Water and Sewer Service FY 2026-27 (Schedules W-1A, W-1B, A sewer; effective 7/1/2026)",
+      "url": "https://www.sfpuc.gov/sites/default/files/accounts-and-services/Rates_Schedule_Water_Sewer_2026-7.pdf",
+      "tier": "official",
+      "how": "fetched (chunks 0-3)"
+    },
+    {
+      "id": "S23",
+      "publisher": "City of Cupertino",
+      "title": "Energy - gas and electric service provided by PG&E; SVCE is the default electricity generation provider",
+      "url": "https://www.cupertino.gov/Your-City/Divisions/Environment-Sustainability/Energy",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S24",
+      "publisher": "PG&E (CPUC-approved tariff text quoting D.22-12-056)",
+      "title": "Electric Schedule NBT / ACC Plus: ACC Plus credit available to residential NBT customers who interconnect during the first five years of the tariff (Advice 7155-E)",
+      "url": "https://www.pge.com/tariffs/assets/pdf/adviceletter/ELEC_7155-E.pdf",
+      "tier": "official-utility-tariff",
+      "how": "search excerpt (official domain)"
+    },
+    {
+      "id": "S25",
+      "publisher": "City & County of San Francisco Rent Board",
+      "title": "Rent Board - allowable rent increase 1.6% (3/1/2026-2/28/2027) for covered units",
+      "url": "https://www.sf.gov/departments--rent-board",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S26",
+      "publisher": "CA Secretary of State (County Clerk/ROV Memo #26138)",
+      "title": "Failure of initiative 1994 - repeals voter-enacted changes to property tax rules for transfers between family members (memo dated May 18, 2026)",
+      "url": "https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S27",
+      "publisher": "Library of Congress / congress.gov",
+      "title": "H.R.1301 - Death Tax Repeal Act (119th Congress; introduced 02/13/2025; referred to Ways and Means)",
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/1301",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S28",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "title": "Economy at a glance - Inflation (PCE): Fed seeks 2 percent over the longer run",
+      "url": "https://www.federalreserve.gov/economy-at-a-glance-inflation-pce.htm",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S29",
+      "publisher": "CA Legislative Information",
+      "title": "Revenue and Taxation Code 11911 - county documentary transfer tax $0.55 per $500 (= $1.10 per $1,000)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=11911",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S30",
+      "publisher": "California Department of Insurance",
+      "title": "Home/Residential Insurance - shop-around tools (Home Insurance Finder, Compare Premiums); no published average premium on this page",
+      "url": "https://www.insurance.ca.gov/01-consumers/105-type/5-residential/",
+      "tier": "official",
+      "how": "fetched"
+    },
+    {
+      "id": "S31",
+      "publisher": "CA State Board of Equalization (via LTA 2025/009)",
+      "title": "FHFA California House Price Index: 2024 change = 2.15% (used to set the $1,044,586 amount)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "tier": "official",
+      "how": "fetched (cited inside S01)"
+    },
+    {
+      "id": "S33",
+      "publisher": "City of Cupertino",
+      "title": "Clean Water and Storm Protection Fee (page exists; fee amount NOT verified - not used)",
+      "url": "https://www.cupertino.gov/Your-City/Divisions/Environment-Sustainability/Water/Stormwater-Pollution-Prevention/Clean-Water-and-Storm-Protection-Fee",
+      "tier": "official",
+      "how": "fetched (title/navigation only)"
+    },
+    {
+      "id": "S34",
+      "publisher": "California Public Utilities Commission (SJW application)",
+      "title": "San Jose Water general rate case application: proposed (NOT approved) rates 2028-2031",
+      "url": "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K607/604607298.PDF",
+      "tier": "official-proposal",
+      "how": "search excerpt (official domain)"
+    },
+    {
+      "id": "S35",
+      "publisher": "CA State Board of Equalization (letter 220.0821, 2002)",
+      "title": "Property Tax Rule 462.160 - sprinkle-power trusts and change in ownership (illustrative BOE letter)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/220_0821.pdf",
+      "tier": "official",
+      "how": "search excerpt (official domain)"
+    }
+  ]
+}
