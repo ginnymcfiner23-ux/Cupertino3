@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "note": "Property tax and assessment history as supplied by the owner. These are private records, not public data, so no official source link exists. The 'implied effective rate' column is computed by this repo's build script (tax / assessment) and is used only to sanity-check the inputs against the officially verified county rates.",
+    "computed_columns": ["implied_effective_rate_pct"]
+  },
+  "property_c": {
+    "label": "Property C — Cupertino, 95014 (Santa Clara County)",
+    "rows": [
+      { "year": 2026, "taxes": null, "assessment": 550537, "assessment_change_pct": 2.0 },
+      { "year": 2025, "taxes": 7207, "assessment": 539743, "taxes_change_pct": 2.9, "assessment_change_pct": 2.0 },
+      { "year": 2024, "taxes": 7003, "assessment": 529161, "taxes_change_pct": 1.2, "assessment_change_pct": 2.0 },
+      { "year": 2023, "taxes": 6917, "assessment": 518786, "taxes_change_pct": 2.4, "assessment_change_pct": 2.0 },
+      { "year": 2022, "taxes": 6755, "assessment": 508614, "taxes_change_pct": 1.4, "assessment_change_pct": 2.0 },
+      { "year": 2021, "taxes": 6662, "assessment": 498642, "taxes_change_pct": 1.5, "assessment_change_pct": 1.0 },
+      { "year": 2020, "taxes": 6565, "assessment": 493530, "taxes_change_pct": 0.0, "assessment_change_pct": 2.0 },
+      { "year": 2019, "taxes": 6565, "assessment": 483854, "taxes_change_pct": 2.8, "assessment_change_pct": 2.0 },
+      { "year": 2018, "taxes": 6383, "assessment": 474368, "taxes_change_pct": 0.0, "assessment_change_pct": 2.0 },
+      { "year": 2017, "taxes": 6383, "assessment": 465067, "taxes_change_pct": -0.5, "assessment_change_pct": 2.0 },
+      { "year": 2016, "taxes": 6414, "assessment": 455949, "taxes_change_pct": 4.6, "assessment_change_pct": 1.5 },
+      { "year": 2015, "taxes": 6130, "assessment": 449101, "taxes_change_pct": 2.8, "assessment_change_pct": 2.0 },
+      { "year": 2014, "taxes": 5965, "assessment": 440305, "assessment_change_pct": 0.5 }
+    ]
+  },
+  "property_s": {
+    "label": "Property S — San Francisco (Outer Sunset), 94122",
+    "rows": [
+      { "year": 2025, "taxes": 2439, "assessment": 114248, "taxes_change_pct": 5.3, "assessment_change_pct": 2.0 },
+      { "year": 2024, "taxes": 2315, "assessment": 112008, "taxes_change_pct": 6.2, "assessment_change_pct": 2.0 },
+      { "year": 2023, "taxes": 2179, "assessment": 109814, "taxes_change_pct": 3.4, "assessment_change_pct": 2.0 },
+      { "year": 2022, "taxes": 2107, "assessment": 107662, "taxes_change_pct": 2.0, "assessment_change_pct": 2.0 },
+      { "year": 2021, "taxes": 2066, "assessment": 105595, "taxes_change_pct": -5.9, "assessment_change_pct": 1.0 },
+      { "year": 2020, "taxes": 2197, "assessment": 104513, "taxes_change_pct": 3.0, "assessment_change_pct": 2.0 },
+      { "year": 2019, "taxes": 2134, "assessment": 102465, "taxes_change_pct": 3.5, "assessment_change_pct": 2.0 },
+      { "year": 2018, "taxes": 2061, "assessment": 100456, "taxes_change_pct": 18.4, "assessment_change_pct": 2.0 },
+      { "year": 2017, "taxes": 1740, "assessment": 98488, "taxes_change_pct": 3.9, "assessment_change_pct": 2.0 },
+      { "year": 2016, "taxes": 1675, "assessment": 96557, "assessment_change_pct": 1.5 }
+    ]
+  },
+  "official_rate_references": [
+    {
+      "id": "sf-rate",
+      "jurisdiction": "San Francisco",
+      "label": "Official combined secured ad valorem rate, FY2025-26",
+      "value": 1.18268325,
+      "unit": "percent",
+      "period": "FY2025-26",
+      "source_name": "SF Board of Supervisors Resolution No. 447-25",
+      "source_url": "https://sfbos.archive.sf.gov/sites/default/files/r0447-25.pdf",
+      "status": "verified",
+      "note": "Compare to the ~2.1% implied by the owner's Property S figures. See Flagged for Review."
+    },
+    {
+      "id": "scc-rate",
+      "jurisdiction": "Santa Clara County",
+      "label": "Official combined ad valorem rate for the Property C tax rate area",
+      "value": "",
+      "unit": "percent",
+      "period": "2025-26",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Not retrieved. County has no single rate; TRA-level rates are published in the Controller-Treasurer's annual Compilation of Tax Rates."
+    },
+    {
+      "id": "prop13-2pct",
+      "jurisdiction": "California (both)",
+      "label": "Maximum annual increase in factored base year value",
+      "value": 2.0,
+      "unit": "percent",
+      "period": "current",
+      "source_name": "California State Board of Equalization",
+      "source_url": "https://www.boe.ca.gov/proptaxes/faqs/changeinownership.htm",
+      "status": "verified",
+      "note": "The assessor's own data confirms the 2% cap applied for 2025-26 (California CPI was 2.514%, above the cap). Owner-supplied assessment histories for both properties grow at exactly 2% in most years, which is consistent."
+    },
+    {
+      "id": "scc-cpi-2025",
+      "jurisdiction": "Santa Clara County",
+      "label": "California Consumer Price Index used for the 2025-26 assessment year",
+      "value": 2.514,
+      "unit": "percent",
+      "period": "2025-26",
+      "source_name": "Office of the Assessor, County of Santa Clara, Annual Report 2025",
+      "source_url": "https://files.santaclaracounty.gov/exjcpb1521/2025-11/annual_report_2025-2026.pdf",
+      "status": "verified",
+      "note": "Because CCPI exceeded 2%, the 2% cap governed."
+    }
+  ]
+}

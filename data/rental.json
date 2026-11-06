@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "scope": "Rental-income rules that apply to Property S (San Francisco, 94122, three units, two rented) and that would apply to Property C if it were rented after inheritance.",
+    "privacy": "Rent roll is stated as an aggregate monthly figure only. No tenant names, unit identifiers, tenancy start dates, or lease terms are stored."
+  },
+  "rows": [
+    {
+      "id": "sf-annual-increase",
+      "jurisdiction": "San Francisco",
+      "topic": "Rent cap",
+      "label": "Allowable annual rent increase for rent-controlled units, effective 2026-03-01 through 2027-02-28",
+      "value": 1.6,
+      "unit": "percent",
+      "period": "2026-03-01 to 2027-02-28",
+      "source_name": "City and County of San Francisco (sf.gov), Rent Board announcement dated 2026-01-14",
+      "source_url": "https://www.sf.gov/news--annual-rent-increase-3126-22827-announced",
+      "status": "verified",
+      "note": "Calculated as 60% of the change in Bay Area CPI. The prior period (2025-03-01 to 2026-02-28) was 1.4%."
+    },
+    {
+      "id": "sf-annual-increase-prior",
+      "jurisdiction": "San Francisco",
+      "topic": "Rent cap",
+      "label": "Allowable annual rent increase for the prior period, 2025-03-01 through 2026-02-28",
+      "value": 1.4,
+      "unit": "percent",
+      "period": "2025-03-01 to 2026-02-28",
+      "source_name": "City and County of San Francisco (sf.gov)",
+      "source_url": "https://www.sf.gov/news--annual-rent-increase-3126-22827-announced",
+      "status": "verified",
+      "note": "Useful as a sense-check: recent San Francisco allowable increases have run roughly 1.4-1.7% a year."
+    },
+    {
+      "id": "sf-rent-control-coverage",
+      "jurisdiction": "San Francisco",
+      "topic": "Coverage",
+      "label": "Which units the 1.6% cap covers",
+      "value": "",
+      "unit": "text",
+      "period": "current",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Commonly described as buildings with a certificate of occupancy on or before 1979-06-13, with single-family homes and condos exempt under Costa-Hawkins. This session confirmed the 1.6% figure from an official source but did not retrieve the coverage rules from the San Francisco Rent Ordinance, so the field is left blank. Material: Property S is a three-unit building and its certificate-of-occupancy date determines whether the 1.6% cap or the AB 1482 cap governs."
+    },
+    {
+      "id": "ab1482-cap-formula",
+      "jurisdiction": "California",
+      "topic": "Rent cap",
+      "label": "Statewide annual rent increase cap formula (Tenant Protection Act of 2019, AB 1482)",
+      "value": "5 percent plus the percentage change in the cost of living, or 10 percent, whichever is lower",
+      "unit": "text",
+      "period": "current",
+      "source_name": "California Legislative Information, Civil Code section 1947.12(a)(1)",
+      "source_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1947.12",
+      "status": "verified",
+      "note": "Applies to the lowest gross rental rate charged in the prior 12 months. Also limits increases to two increments in any 12-month period. Civil Code 1947.12(d) exempts, among others, housing subject to a local ordinance that restricts annual increases to less than this amount, and housing with a certificate of occupancy issued within the previous 15 years."
+    },
+    {
+      "id": "ab1482-cap-rate",
+      "jurisdiction": "California",
+      "topic": "Rent cap",
+      "label": "Numeric AB 1482 cap currently in force for San Francisco",
+      "value": "",
+      "unit": "percent",
+      "period": "2026-08-01 to 2027-07-31",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "The statute gives the formula, not the annual number. Deriving the number requires the official regional CPI figure for the period. Aggregator sites published an 8.8% figure for the San Francisco-Oakland-Hayward region, but that was not confirmed against a BLS release, so the field is left blank. Retrieve from BLS CPI-U data for the San Francisco-Oakland-Hayward metropolitan area."
+    },
+    {
+      "id": "s-gross-rent",
+      "jurisdiction": "Property S",
+      "topic": "Income",
+      "label": "Current gross rent collected, two of three units",
+      "value": 7150,
+      "unit": "USD/mo",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "owner-input",
+      "note": "Equivalent to 85,800 USD/yr. Owner states they can live at the property as a primary residence without losing rental income, which implies the third unit is the owner's unit and is not rented."
+    },
+    {
+      "id": "s-third-unit-rent",
+      "jurisdiction": "Property S",
+      "topic": "Income",
+      "label": "Market rent achievable if the owner-occupied third unit were rented",
+      "value": "",
+      "unit": "USD/mo",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "This is the pivot number for the 'move to Cupertino' scenario: moving into Property C frees the Property S unit for rent. No official source publishes rent for a specific unit, and no appraisal was obtained. Obtain three comparable rentals or a broker opinion before acting."
+    },
+    {
+      "id": "c-market-rent",
+      "jurisdiction": "Property C",
+      "topic": "Income",
+      "label": "Market rent achievable for Property C if rented after inheritance",
+      "value": "",
+      "unit": "USD/mo",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "No official source publishes a rent for a specific single-family home. This is the single largest uncertainty in the rent-versus-sell comparison and it drives the answer. Obtain a broker opinion of rent before deciding."
+    },
+    {
+      "id": "s-pass-through",
+      "jurisdiction": "San Francisco",
+      "topic": "Rent cap",
+      "label": "Property tax pass-through to residential tenants",
+      "value": "San Francisco Administrative Code Chapter 37 establishes pass-through rates per $100 of assessed value set annually by the Board of Supervisors",
+      "unit": "text",
+      "period": "FY2025-26",
+      "source_name": "City and County of San Francisco Board of Supervisors, Resolution No. 447-25",
+      "source_url": "https://sfbos.archive.sf.gov/sites/default/files/r0447-25.pdf",
+      "status": "verified",
+      "note": "The resolution sets pass-through rates per $100 of assessed value by tenancy commencement date: $0.0008 for 2022-07-01 to 2023-06-30, $0.0015 for 2023-07-01 to 2024-06-30, and $0.0051 for 2024-07-01 to 2025-06-30. The rate for 2025-07-01 to 2026-06-30 appears in the resolution but was not legible in the retrieved text."
+    },
+    {
+      "id": "s-current-tax-on-rent",
+      "jurisdiction": "Property S",
+      "topic": "Cost",
+      "label": "Current property tax as a share of current gross rent",
+      "value": "",
+      "unit": "percent",
+      "period": "2025",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Left blank on purpose. It would be computed from the owner's tax figure (2,439 USD/yr) and rent (85,800 USD/yr), but the tax figure itself is flagged as inconsistent with San Francisco's official rate, so publishing a derived ratio would compound the error. Resolve the flag on the Flagged for Review page first."
+    }
+  ]
+}
