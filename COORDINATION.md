@@ -214,12 +214,12 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 | T5 | Insurance research: primary residence (Cupertino) and rental/landlord (SF) | done (no verified premium averages; blank) | session-64308d3a | `data/facts.json` (insurance) |
 | T6 | Legislative watchlist (proposed changes to tax, property, inheritance law) | done (`needs review` items flagged) | session-64308d3a | `data/legislation.json` |
 | T7 | Projection model (property value, assessed value, tax, costs, hold/rent/sell scenarios) | done | session-64308d3a | `data/assumptions.json`, `model/project.py`, `data/projections.json` |
-| T8 | Static site build + link checker + Pages config | done (site is `docs/`; Pages source set to `main` `/docs` after merge) | session-64308d3a | `docs/`, `scripts/guide_build_site.py`, `scripts/guide_check_site.py` |
-| T9 | Integration: merge, re-verify combined data, build, PR to `main`, merge, confirm Pages | in progress | session-64308d3a | `docs/` (generated), `README.md`, `COORDINATION.md` (final log) |
+| T8 | Static site build + link checker + Pages config | done (site is `guide/`, served at `/guide/` on the existing Pages site; Pages source unchanged: legacy `main` `/`) | session-64308d3a | `guide/`, `scripts/guide_build_site.py`, `scripts/guide_check_site.py` |
+| T9 | Integration: merge, re-verify combined data, build, PR to `main`, merge, confirm Pages | done (PR #5 merged; Pages deploy confirmed; log PR pending) | session-64308d3a | `guide/` (generated), `README.md`, `COORDINATION.md` (final log) |
 
 ## Claim log
 - 2026-11-06 · session-64308d3a · claimed T1–T9 (single-session run; all tasks executed on `arena/64308d3a-cupertino3`).
-- 2026-11-06 · session-64308d3a · T1–T8 complete on the branch: data (`data/`), model (`model/project.py`), site (`docs/`, 14 pages), validators (`scripts/guide_check_site.py`: OK). T9 integration started.
+- 2026-11-06 · session-64308d3a · T1–T8 complete on the branch: data (`data/guide/`), model (`model/guide_project.py`), site (`guide/`, 14 pages), validators (`scripts/guide_check_site.py`: OK).
 
 ## Handoff / conflict log
 - Source-URL corrections (2026-11-06): an early CPUC link was a different decision (23-10-013) and was removed; the ACC Plus rule is now cited to the PG&E tariff text. Two other URLs were corrected from search results. Verified URLs only are in `data/sources.json`.
@@ -227,7 +227,12 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 - Client tax history implies effective rates above official rates (IR01). Flagged, not corrected.
 
 ## Integration (T9)
-- Target: PR from `arena/64308d3a-cupertino3` to `main`. PR link and merge result to be recorded below after merge.
-- PR: pending
-- Merge: pending
-- Pages: pending
+- PR #5 (`arena/64308d3a-cupertino3` → `main`): https://github.com/ginnymcfiner23-ux/Cupertino3/pull/5
+  - First attempt: conflicting with `main` (PR #3 `docs/` analysis, PR #4 root site). Resolved by moving this session's files to separate paths (`data/guide/`, `model/guide_project.py`, `guide/`, `scripts/guide_*.py`) and merging `main`, keeping both coordination boards and both READMEs.
+  - Merged with `gh pr merge 5 --merge` → merge commit `fdc125f` (2026-11-06 13:27 UTC).
+  - Checks before merge: `scripts/guide_check_site.py` OK (14 pages, 60 facts, 34 sources); `scripts/validate.py` ALL CHECKS PASSED; `tools/check_site.py` PASS.
+- Pages: `pages.yml` deploy run `42225751253` on `dc22405` completed with success (`deploy-pages` success). The live guide loads at `https://ginnymcfiner23-ux.github.io/Cupertino3/guide/`.
+  - Open item: the legacy `pages-build-deployment` (source `main` `/`) shows `errored` with 0 s duration on commits since `83b7656`. It also errored once on the earlier merge. Deploys succeed through `pages.yml`. Investigate the legacy build settings; do not treat its error status as a site failure.
+- Follow-up PR for this log entry and IR18 (cross-analysis divergence): recorded in the next entry below.
+- Live URLs checked: `/` (other session's root site) and `/guide/` (this session).
+
