@@ -287,7 +287,7 @@ $${num(h2.netWorth)} for renting it. The margin is large enough to survive every
       + '<td class="num"><strong>$' + num(h.netWorth) + '</strong></td></tr>';
   };
   body += rowFor('Live in Property A', h1, '<div class="small">plus rent from the freed Property B unit</div>');
-  body += rowFor('Rent Property A', h2, '<div class="small">assumes $' + num(S.params.rentC) + '/mo market rent</div>');
+  body += rowFor('Rent Property A', h2, '<div class="small">assumes $' + num(S.params.rentA) + '/mo market rent</div>');
   body += rowFor('Sell and reinvest', h3, '<div class="small">after ' + S.params.sellingCosts + '% selling costs</div>');
   body += '</tbody></table></div>';
   body += `<p class="small">Projections. Base case: transfer in ${Y}, ${S.params.growth}% appreciation, ${S.params.rateA}% effective

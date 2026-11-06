@@ -172,13 +172,13 @@ const SCEN = {
   taxOnIncome: A['combined-tax-on-income'],
   taxOnGains: 33.3, // ASSUMPTION, flagged (F8): combined federal + CA long-term capital gains
   vacancy: A['vacancy'],
-  rentGrowthS: A['rent-growth-b'],
+  rentGrowthB: A['rent-growth-b'],
   thirdUnitRent: A['third-unit-rent'],
   rentA: A['rent-a'],
   insuranceA: A['insurance-a'],
   insuranceB: A['insurance-b'],
-  maintA: A['maintenance-a'],
-  maintB: A['maintenance-b'],
+  maintenanceA: A['maintenance-a'],
+  maintenanceB: A['maintenance-b'],
   waterA: A['water-a'],
   electricA: A['electric-a'],
   waterB: A['water-b'],
@@ -223,26 +223,26 @@ function runScenarios(overrides = {}) {
         waterMonthly: water, electricMonthly: electric
       });
 
-    const costB = costFn(taxableB, S.insuranceA, S.maintA, S.waterA, S.electricA);
-    const costC = costFn(taxableC, S.insuranceA, S.maintA, S.waterA, S.electricA);
+    const costMoveIn = costFn(taxableB, S.insuranceA, S.maintenanceA, S.waterA, S.electricA);
+    const costRentOut = costFn(taxableC, S.insuranceA, S.maintenanceA, S.waterA, S.electricA);
 
     // Property B holding cost (owner-occupied, two units rented)
-    const costS = holdingCost({
+    const costPropertyB = holdingCost({
       baseYear: Y, year, value: valueS, taxableValue: propertySFBYV(year),
-      ratePct: S.rateB, insuranceBase: S.insuranceB, maintenancePct: S.maintB,
+      ratePct: S.rateB, insuranceBase: S.insuranceB, maintenancePct: S.maintenanceB,
       waterMonthly: S.waterB, electricMonthly: S.electricB
     });
 
     // Rent rolls
-    const rentS2 = grow(7150, S.rentGrowthS, i) * 12;                    // two units, current tenancy
-    const rentS3 = rentS2 + grow(S.thirdUnitRent, S.rentGrowthS, i) * 12; // all three units
-    const rentC = grow(S.rentA, S.growth, i) * 12 * (1 - S.vacancy / 100);
+    const rentBTwoUnits = grow(7150, S.rentGrowthB, i) * 12;                    // two units, current tenancy
+    const rentBThreeUnits = rentBTwoUnits + grow(S.thirdUnitRent, S.rentGrowthB, i) * 12; // all three units
+    const rentA = grow(S.rentA, S.growth, i) * 12 * (1 - S.vacancy / 100);
 
     years.push({
       year, i, valueC, valueS,
       taxableA, taxableB, taxableC,
-      costB, costC, costS,
-      rentS2, rentS3, rentC
+      costMoveIn, costRentOut, costPropertyB,
+      rentBTwoUnits, rentBThreeUnits, rentA
     });
   }
 
@@ -251,16 +251,16 @@ function runScenarios(overrides = {}) {
   {
     let invested = 0;
     for (const y of years) {
-      const rentFreed = (y.rentS3 - y.rentS2);              // third unit only
+      const rentFreed = (y.rentBThreeUnits - y.rentBTwoUnits);              // third unit only
       const taxOnRent = Math.max(0, rentFreed) * (S.taxOnIncome / 100);
-      const cf = rentFreed - taxOnRent - y.costB.total;
+      const cf = rentFreed - taxOnRent - y.costMoveIn.total;
       invested = invested * (1 + netPortfolioGrowth(S) / 100) + cf;
       s1.rows.push({
         year: y.year,
         rentIncome: money(rentFreed),
         taxOnRent: money(taxOnRent),
-        holdingCost: y.costB.total,
-        propertyTax: y.costB.propertyTax,
+        holdingCost: y.costMoveIn.total,
+        propertyTax: y.costMoveIn.propertyTax,
         cashFlow: money(cf),
         invested: money(invested)
       });
@@ -290,7 +290,7 @@ function runScenarios(overrides = {}) {
     let invested = 0;
     let accumulatedDepreciation = 0;
     for (const y of years) {
-      const noi = y.rentC - y.costC.total;
+      const noi = y.rentA - y.costRentOut.total;
       accumulatedDepreciation = Math.min(depreciableBasis, accumulatedDepreciation + annualDepreciation);
       const taxable = Math.max(0, noi - annualDepreciation);
       const tax = taxable * (S.taxOnIncome / 100);
@@ -298,9 +298,9 @@ function runScenarios(overrides = {}) {
       invested = invested * (1 + netPortfolioGrowth(S) / 100) + cf;
       s2.rows.push({
         year: y.year,
-        rentIncome: money(y.rentC),
-        holdingCost: y.costC.total,
-        propertyTax: y.costC.propertyTax,
+        rentIncome: money(y.rentA),
+        holdingCost: y.costRentOut.total,
+        propertyTax: y.costRentOut.propertyTax,
         noi: money(noi),
         depreciation: money(annualDepreciation),
         tax: money(tax),
