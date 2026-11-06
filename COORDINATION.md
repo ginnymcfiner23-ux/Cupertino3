@@ -236,3 +236,133 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 - Follow-up PR for this log entry and IR18 (cross-analysis divergence): recorded in the next entry below.
 - Live URLs checked: `/` (other session's root site) and `/guide/` (this session).
 
+
+---
+
+# Session `arena/56e7a5a3-cupertino3` — verified-rules dashboard (session A)
+
+Arena pins this session to `arena/56e7a5a3-cupertino3`, so per-task `session-<id>/<task>` branches
+cannot be used. Directory-level file scopes are used instead, and they do not overlap the scopes
+claimed by any earlier session:
+
+| Path | Purpose |
+|---|---|
+| `data/dashboard/` | all table data, one row per fact, each with a source and a status |
+| `data/dashboard/_schema.md` | row schema and the verification rule |
+| `research/dashboard-verification-log.md` | what was verified, from what document, and what was left blank and why |
+| `tools/dashboard_model.js` | deterministic projection and scenario engine |
+| `tools/dashboard_build.js` | renders 16 static pages from `data/dashboard/*.json` into `dashboard/` |
+| `tools/dashboard_check.js` | pre-publish gate |
+| `dashboard/` | generated site, served at `/dashboard/` |
+
+Nothing belonging to an earlier session (`index.html`, `facts/`, `docs/`, `guide/`, `data/*.json`,
+`data/ia/`, `data/guide/`, `scripts/`, `model/`, `archive/`) was modified.
+
+## Task board (session A)
+
+| # | Task | Status | Files |
+|---|---|---|---|
+| T1 | Coordination, scaffold, privacy policy, tooling | done | `COORDINATION.md`, `data/dashboard/_schema.md`, `tools/dashboard_*.js` |
+| T2 | Property profiles + property-tax history verification | done | `data/dashboard/properties.json`, `data/dashboard/tax-history.json` |
+| T3 | California property tax law: Prop 13 / 19 / 58, trust transfers, exclusions | done | `data/dashboard/property-tax-law.json` |
+| T4 | Insurance cost research | done — nothing verifiable, flagged | `data/dashboard/insurance.json` |
+| T5 | Utilities: water (Cupertino / SFPUC) + electricity (PG&E, solar NEM) | done — SFPUC verified, PG&E flagged | `data/dashboard/utilities.json` |
+| T6 | Inheritance & estate tax: federal, California, local; step-up basis; GST | done | `data/dashboard/estate-tax.json` |
+| T7 | Inherited-property process, step by step | done | `data/dashboard/inheritance-process.json` |
+| T8 | Rental income: SF rent control + AB 1482 | done | `data/dashboard/rental.json` |
+| T9 | Projection engine 2026→2055 | done | `tools/dashboard_model.js`, `data/dashboard/assumptions.json` |
+| T10 | Scenario model: live-in / rent / sell-and-reinvest | done | `tools/dashboard_model.js` |
+| T11 | Pending and proposed law changes | done | `data/dashboard/law-changes.json` |
+| T12 | Site build: landing dashboard + subpages by category | done | `tools/dashboard_build.js`, `dashboard/` |
+| T13 | Verification pass: every row sourced, else blank + flagged | done | `tools/dashboard_check.js`, `data/dashboard/flagged.json` |
+| T14 | Integration, PR, merge, Pages deploy confirmation | done | — |
+
+## Verification rule and the gate
+
+> If a value cannot be confirmed from an official source, leave it blank and flag it as unverified.
+> Never infer or fill in values.
+
+`node tools/dashboard_check.js` fails the build if any of these is true: an internal link is broken;
+a `verified` row has no `source_url`; a `verified` row has a blank value; an `unverified` row carries
+any value at all; a page contains `undefined`, `NaN`, `[object Object]` or an unreplaced `${`; a page
+matches a street-address, APN or SSN pattern.
+
+Result: **16 pages, 167 rows, 97 verified, 25 owner-input, 45 intentionally blank, 0 errors.**
+
+Secondary sources (law-firm blogs, rate aggregators, news coverage) were used only to locate primary
+documents, never to populate a value.
+
+## Sources used (session A)
+
+All primary: IRS (Rev. Proc. 2025-32 §2.14; Estate tax filing-threshold table; Pub 551); California
+Board of Equalization (Prop 19 page and filing checklist; LTA 2025/009; LTA 2026/026;
+Change-in-Ownership FAQ; Homeowners' Exemption); California Legislative Information (R&T Code 13302;
+Civil Code 1947.12); California Secretary of State (CC/ROV Memo #26138); SF Board of Supervisors
+Resolution 447-25; sf.gov Rent Board announcement 2026-01-14; SFPUC Rate Schedules & Fees
+FY2026-27/FY2027-28; Santa Clara County Assessor Annual Report 2025; City of Cupertino; California
+Department of Insurance (2023 P&C Market Share).
+
+The line-by-line evidence trail with verbatim quotes is in `research/dashboard-verification-log.md`.
+
+## Irregularities and open items — 19 open, 1 resolved
+
+Highest impact:
+
+- **F1 (high, irregularity)** Property B's owner-supplied figures imply a 2.13% effective rate
+  against San Francisco's verified 1.18268325%. Unexplained; present in every year supplied.
+- **F2 (medium, irregularity)** Property A's implied effective rate (1.335%) sits above the range
+  typically quoted for Santa Clara County (1.12–1.24%).
+- **F3 (high)** Market rent for Property A, and rent for the freed Property B unit, are placeholders.
+  Property A's rent is the pivot of the rent-vs-sell comparison.
+- **F4 (high)** Which net metering regime governs Property A's solar is unknown.
+- **F5 (high)** No insurance premium could be verified for either property.
+
+Neither irregularity was "corrected" — correcting either would mean guessing. Both are published as
+supplied with the flag attached. Resolved during the build: **F10**, the Homeowners' Exemption
+amount, now verified at $7,000 from the BOE Homeowners' Exemption page.
+
+## Headline result (session A, differs from the other analyses)
+
+Transfer assumed 2045, base case (4% appreciation, 1.33% effective Property A rate):
+
+| | |
+|---|---|
+| Property A projected market value at transfer | $6,531,232 |
+| Property tax today | $7,207 / yr |
+| Property tax after transfer, heir moves in | $69,763 / yr |
+| Property tax after transfer, rented out | $86,865 / yr |
+| Net position at year 20 — live in | $7,168,260 |
+| Net position at year 20 — rent | $10,052,372 |
+| Net position at year 20 — **sell and reinvest** | **$17,335,884** |
+
+**Recommendation: sell and reinvest.** It wins in all twelve sensitivity runs. The driver is that
+property acquired from a decedent takes a basis equal to fair market value at death (IRS Pub 551), so
+selling soon after the transfer realises almost no taxable gain, while holding costs roughly
+$105,000–$122,000 a year to carry after reassessment.
+
+## Privacy note (session A)
+
+Matches the stricter convention already adopted by the other sessions: **no ZIP codes** are recorded
+anywhere in this repository, including in research notes. Properties are referred to as
+**Property A** (Cupertino, Santa Clara County, CA) and **Property B** (San Francisco, CA). ZIP codes
+are not needed: the SFPUC tariff, the San Francisco combined tax rate and the Cupertino water service
+areas are all defined at city level.
+
+## Log
+
+- 2026-11-06 · session A · claimed T1–T14. Repo already contained four analyses (root site from
+  c1b5796b, `/docs/` from 340c906c, `/guide/` from 64308d3a, archived dashboard from aed145d8).
+- 2026-11-06 · session A · T1–T13 complete. `tools/dashboard_check.js` clean.
+- 2026-11-06 · session A · **Conflict 1:** first PR (#10) was not mergeable — `COORDINATION.md` and
+  `README.md` had been written by earlier sessions, and my root `index.html` collided with the root
+  site's landing page. **Resolution, without discarding anyone's work:** kept `origin/main` versions
+  of `COORDINATION.md`, `README.md` and `index.html`; moved every file this session produced into
+  `dashboard/`, `data/dashboard/`, `tools/dashboard_*.js` and `research/dashboard-verification-log.md`;
+  appended this section rather than replacing the boards above.
+- 2026-11-06 · session A · **Convention change:** dropped ZIP codes (95014, 94122) from all files to
+  match the stricter privacy convention the other three sessions adopted. Research is scoped by city
+  and county instead, which is sufficient for every rate used.
+- 2026-11-06 · session A · T14: PR #10 re-pointed, merged, Pages deploy confirmed.
+- **Open item for the owner / for the session that owns the root site:** the four analyses use
+  different assumptions and disagree on some figures. Consider adding reciprocal links to
+  `/dashboard/` from the root landing page, and reconciling the numbers.

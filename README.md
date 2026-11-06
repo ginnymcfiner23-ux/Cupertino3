@@ -79,3 +79,44 @@ python3 scripts/guide_check_site.py
 ```
 
 Standard library only. Privacy rule: no personal information in the repo or site. Properties are referred to by city and county only. This is informational analysis, not legal or tax advice.
+
+---
+
+## Verified-rules dashboard (session `arena/56e7a5a3-cupertino3`)
+
+A fourth, separate analysis lives in `dashboard/` (served at `/dashboard/` of the same Pages site).
+It is built around a strict verification rule: **a row is published as Verified only if it was read
+directly off an official government, agency or utility document, and the row links to that
+document.** Anything that could not be confirmed is left blank and listed on the Flagged for Review
+page. Secondary sources were used only to locate primary documents, never to populate a value.
+
+| Path | What it is |
+|---|---|
+| `dashboard/` | Generated static site: 16 pages — landing dashboard, category pages, projections, scenarios, Flagged for Review, sources, methodology, privacy. |
+| `data/dashboard/` | One JSON file per topic; one row per fact, each with `source_name`, `source_url` and a status of `verified` / `owner-input` / `projection` / `unverified`. |
+| `research/dashboard-verification-log.md` | What was verified, from what document, with the verbatim text or table read — plus everything deliberately left blank and why. |
+| `tools/dashboard_model.js` | Deterministic projection and scenario engine. |
+| `tools/dashboard_build.js` | Renders `dashboard/` from `data/dashboard/`. |
+| `tools/dashboard_check.js` | Pre-publish gate (links, verified rows have sources, unverified rows are blank, no template artefacts, privacy scan). |
+
+Rebuild:
+
+```bash
+node tools/dashboard_build.js
+node tools/dashboard_check.js
+```
+
+Node only, no dependencies, no network access required to build.
+
+Result at the end of the session: **16 pages, 167 rows checked, 97 verified, 25 owner-input,
+45 intentionally blank, 0 errors.** 19 items remain open on the Flagged for Review page; 1 was
+resolved during the build.
+
+**Headline: sell and reinvest**, in all twelve sensitivity runs. Property acquired from a decedent
+takes a basis equal to fair market value at death (IRS Pub 551), so selling soon after transfer
+realises almost no taxable gain, while holding costs roughly $105k–$122k a year to carry after
+reassessment.
+
+Privacy: no ZIP codes are recorded anywhere, matching the convention the other sessions adopted.
+Properties are referred to as **Property A** (Cupertino, Santa Clara County, CA) and
+**Property B** (San Francisco, CA).

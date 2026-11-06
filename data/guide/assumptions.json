@@ -1,0 +1,285 @@
+{
+  "note": "Inputs for projections. 'user' = provided by the client, UNVERIFIED, used only as a labelled input. 'model' = modelling assumption, not a fact, adjustable. 'verified' = taken from a linked official source.",
+  "inputs": [
+    {
+      "id": "U_A_FMV",
+      "group": "Property A",
+      "label": "Market value estimate (Nov 2026)",
+      "value": 3100000,
+      "unit": "USD",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_A_FBYV",
+      "group": "Property A",
+      "label": "Assessed value 2026 (client table, +2%)",
+      "value": 550537,
+      "unit": "USD",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_A_WATER",
+      "group": "Property A",
+      "label": "Water cost, midpoint of client range $100-150/mo",
+      "value": 125,
+      "unit": "USD/month",
+      "kind": "user",
+      "source": "S-client",
+      "check": "Tariff check: 10 ccf/mo at S20 = $59.49 usage + $78.64 service = $138.13/mo"
+    },
+    {
+      "id": "U_A_SOLAR",
+      "group": "Property A",
+      "label": "Net electricity credit, midpoint of client range $10-20/mo (solar; credit not cash)",
+      "value": 15,
+      "unit": "USD/month",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_A_INS",
+      "group": "Property A",
+      "label": "Homeowners insurance (client estimate)",
+      "value": 1500,
+      "unit": "USD/year",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_B_FMV",
+      "group": "Property B",
+      "label": "Market value estimate (Nov 2026)",
+      "value": 1800000,
+      "unit": "USD",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_B_FBYV",
+      "group": "Property B",
+      "label": "Assessed value 2026 (2025 client value x 1.02 Prop 13 cap)",
+      "value": 116533,
+      "unit": "USD",
+      "kind": "user",
+      "source": "S-client (2025 value) + model (2% cap)"
+    },
+    {
+      "id": "U_B_RENT",
+      "group": "Property B",
+      "label": "Rent from 2 rented units",
+      "value": 7150,
+      "unit": "USD/month",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_B_WATER",
+      "group": "Property B",
+      "label": "Water cost, midpoint of client range $330-400/mo (3 units)",
+      "value": 365,
+      "unit": "USD/month",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_B_ELEC",
+      "group": "Property B",
+      "label": "Electricity, midpoint of client range $30-70/mo",
+      "value": 50,
+      "unit": "USD/month",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "U_B_INS",
+      "group": "Property B",
+      "label": "Insurance (client estimate, same as A)",
+      "value": 1500,
+      "unit": "USD/year",
+      "kind": "user",
+      "source": "S-client"
+    },
+    {
+      "id": "M_APPREC",
+      "group": "All",
+      "label": "Base property appreciation (nominal)",
+      "value": 0.0215,
+      "unit": "per year",
+      "kind": "model",
+      "source": "S01 (FHFA CA HPI 2024 = 2.15%) used as a reference only"
+    },
+    {
+      "id": "M_APPREC_LO",
+      "group": "All",
+      "label": "Low appreciation scenario",
+      "value": 0.0,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model"
+    },
+    {
+      "id": "M_APPREC_HI",
+      "group": "All",
+      "label": "High appreciation scenario",
+      "value": 0.04,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model"
+    },
+    {
+      "id": "M_PT_CAP",
+      "group": "All",
+      "label": "Prop 13 annual assessed growth (upper bound)",
+      "value": 0.02,
+      "unit": "per year",
+      "kind": "verified",
+      "source": "S08"
+    },
+    {
+      "id": "M_PT_RATE_A",
+      "group": "Property A",
+      "label": "Planning effective tax rate (1% + bonds; not parcel-verified)",
+      "value": 0.0118,
+      "unit": "fraction",
+      "kind": "model",
+      "source": "S06 sampled TRA totals 1.1258%-1.2409% (midpoint used)"
+    },
+    {
+      "id": "M_PT_RATE_B",
+      "group": "Property B",
+      "label": "San Francisco secured rate FY 2026-27",
+      "value": 0.0118162182,
+      "unit": "fraction",
+      "kind": "verified",
+      "source": "S07"
+    },
+    {
+      "id": "M_PROP19_CAP",
+      "group": "All",
+      "label": "Prop 19 amount above FBYV (held flat for projections; the statute adjusts every two years)",
+      "value": 1044586,
+      "unit": "USD",
+      "kind": "verified",
+      "source": "S01"
+    },
+    {
+      "id": "M_INS_GROWTH",
+      "group": "All",
+      "label": "Insurance cost growth",
+      "value": 0.03,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model (no source)"
+    },
+    {
+      "id": "M_WATER_GROWTH",
+      "group": "All",
+      "label": "Water cost growth",
+      "value": 0.03,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model (no source)"
+    },
+    {
+      "id": "M_ELEC_GROWTH",
+      "group": "All",
+      "label": "Electricity cost growth",
+      "value": 0.03,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model (no source)"
+    },
+    {
+      "id": "M_MAINT_A",
+      "group": "Property A",
+      "label": "Maintenance and repairs (share of market value)",
+      "value": 0.005,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model (client said 'less than SF'; no figure given)"
+    },
+    {
+      "id": "M_MAINT_B",
+      "group": "Property B",
+      "label": "Maintenance and repairs (share of market value)",
+      "value": 0.01,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model (no source)"
+    },
+    {
+      "id": "M_RENT_GROWTH",
+      "group": "Property B",
+      "label": "Rent growth (covered units capped at 1.6% for the current period)",
+      "value": 0.016,
+      "unit": "per year",
+      "kind": "verified-cap",
+      "source": "S25"
+    },
+    {
+      "id": "M_SALE_COST",
+      "group": "All",
+      "label": "Selling costs (agent and closing, excl. transfer tax)",
+      "value": 0.05,
+      "unit": "fraction of price",
+      "kind": "model",
+      "source": "model (no source)"
+    },
+    {
+      "id": "M_TRANSFER",
+      "group": "All",
+      "label": "County documentary transfer tax on sale",
+      "value": 0.0011,
+      "unit": "fraction",
+      "kind": "verified",
+      "source": "S29 ($1.10 per $1,000); city taxes excluded (unverified)"
+    },
+    {
+      "id": "M_INVEST_RET",
+      "group": "All",
+      "label": "After-tax return on invested sale proceeds",
+      "value": 0.04,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model (not a forecast)"
+    },
+    {
+      "id": "M_FED_EXCL_2026",
+      "group": "Estate",
+      "label": "Federal basic exclusion 2026",
+      "value": 15000000,
+      "unit": "USD",
+      "kind": "verified",
+      "source": "S10"
+    },
+    {
+      "id": "M_FED_INDEX",
+      "group": "Estate",
+      "label": "Federal exclusion indexing after 2026 (illustrative)",
+      "value": 0.02,
+      "unit": "per year",
+      "kind": "model",
+      "source": "model; statute indexes annually, index base not fetched"
+    },
+    {
+      "id": "M_INHERIT_YEAR",
+      "group": "All",
+      "label": "Inheritance year (default; range 2040-2050)",
+      "value": 2045,
+      "unit": "year",
+      "kind": "model",
+      "source": "client planning range"
+    },
+    {
+      "id": "M_CG_RATE",
+      "group": "Tax",
+      "label": "Illustrative combined tax on a sale gain (15% federal + 3.8% NIIT + 12.3% CA)",
+      "value": 0.311,
+      "unit": "fraction",
+      "kind": "verified-components",
+      "source": "S10, S14, S17 (components; heir bracket unknown)"
+    }
+  ]
+}

@@ -1,84 +1,62 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Executive Summary — Cupertino &amp; San Francisco Property Decision Support</title>
-<meta name="description" content="Verified, source-linked analysis of a planned California property inheritance: property tax reassessment, estate tax thresholds, carrying costs, projections and scenarios.">
-<link rel="stylesheet" href="assets/css/site.css">
-
-</head>
-<body>
-<header class="topbar">
-  <button class="menu-btn" type="button" aria-label="Toggle navigation">Menu</button>
-  <div class="brand">Property Decision Support <small>Cupertino 95014 &middot; San Francisco 94122</small></div>
-  <div class="spacer"></div>
-  <div class="tagline">Every row carries its source. Unverified values are left blank.</div>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Inheritance decision analysis for two anonymized California properties: sources, projections, and recommendation.">
+<title>Overview · Inheritance Decision Analysis</title>
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<header class="top">
+  <div class="brand"><span class="mark">IDA</span><span>Inheritance Decision Analysis<small>Two California properties · source-linked · anonymized</small></span></div>
+  <span class="asof">Data as of 2026-11-06</span>
 </header>
-<div class="layout">
-  <nav class="sidebar" aria-label="Site navigation"><h3>Overview</h3><a class="nav active" href="index.html">Executive Summary</a><a class="nav" href="properties.html">Properties</a><a class="nav" href="privacy.html">Privacy &amp; Anonymisation</a><h3>Taxes &amp; Transfer</h3><a class="nav" href="tax-history.html">Property Tax History</a><a class="nav" href="property-tax-law.html">Property Tax Law</a><a class="nav" href="inheritance-process.html">Inheritance Process</a><a class="nav" href="estate-tax.html">Inheritance &amp; Estate Tax</a><a class="nav" href="law-changes.html">Pending Law Changes</a><h3>Carrying Costs</h3><a class="nav" href="insurance.html">Insurance</a><a class="nav" href="utilities.html">Water &amp; Electricity</a><a class="nav" href="rental.html">Rental Income</a><h3>Analysis</h3><a class="nav" href="projections.html">Projections</a><a class="nav" href="scenarios.html">Scenarios &amp; Recommendation</a><h3>Governance</h3><a class="nav" href="methodology.html">Methodology</a><a class="nav" href="sources.html">Sources</a><a class="nav" href="flagged.html">Flagged for Review</a></nav>
-  <main>
-<h1>Executive summary</h1>
-<p class="lede">Two California properties, one inheritance expected in the 2040&ndash;2050 window, and three options:
-live in the inherited house, rent it, or sell it and reinvest. This dashboard assembles the verified rules,
-the verified rates, and the owner's own numbers, and then projects them forward. The headline conclusion is
-stable across every sensitivity tested.</p><div class="grid g4"><div class="stat"><div class="k">Property C value at transfer (2045, base case)</div><div class="v">$6,531,232</div><div class="sub">4%/yr from the $3,100,000 Nov-2026 estimate</div></div><div class="stat"><div class="k">Property tax today</div><div class="v">$7,207 / yr</div><div class="sub">Owner-supplied, 2025</div></div><div class="stat"><div class="k">Property tax after transfer, moves in</div><div class="v">$69,763 / yr</div><div class="sub">Prop 19 partial exclusion</div></div><div class="stat"><div class="k">Property tax after transfer, rented out</div><div class="v">$86,865 / yr</div><div class="sub">Full reassessment to market value</div></div></div><div class="callout bad">
-<p><strong>The property tax reassessment is the whole story.</strong> Proposition 13 has kept Property C's assessed
-value at roughly $802,028 while its market value is projected to reach about $6,531,232.
-On a change in ownership the assessed value resets toward market. Annual property tax goes from about $7,200 today to
-about $69,763 if the heir moves in, or about $86,865 if the heir does not.
-That increase happens whether or not the exclusion is claimed &mdash; the exclusion only narrows the gap by about
-$17,103 a year.</p>
-</div><h2>Recommendation</h2><div class="callout ok">
-<p><strong>Sell and reinvest</strong> produces the highest projected after-tax position 20 years after the transfer,
-at roughly <strong>$17,335,884</strong>, versus $7,168,260 for living in it and
-$10,052,372 for renting it. The margin is large enough to survive every sensitivity tested on the
-<a href="scenarios.html">Scenarios</a> page.</p>
-</div><div class="tablewrap"><table><thead><tr><th>Scenario</th><th class="num">Cash flow, year 1</th><th class="num">Cash flow, year 20</th><th class="num">Asset value at year 20</th><th class="num">Tax if liquidated</th><th class="num">Net position, year 20</th></tr></thead><tbody><tr><td class="label"><strong>Live in Property C</strong><div class="small">plus rent from the freed Property S unit</div></td><td class="num">($84,959)</td><td class="num">($151,981)</td><td class="num">$14,310,735</td><td class="num">($2,590,574)</td><td class="num"><strong>$7,168,260</strong></td></tr><tr><td class="label"><strong>Rent Property C</strong><div class="small">assumes $9,000/mo market rent</div></td><td class="num">($19,742)</td><td class="num">$19,557</td><td class="num">$14,310,735</td><td class="num">($3,919,241)</td><td class="num"><strong>$10,052,372</strong></td></tr><tr style="background:var(--ok-soft)"><td class="label"><strong>Sell and reinvest</strong><div class="small">after 6% selling costs</div></td><td class="num">$63,735</td><td class="num">$223,526</td><td class="num">$22,925,753</td><td class="num">($5,589,869)</td><td class="num"><strong>$17,335,884</strong></td></tr></tbody></table></div><p class="small">Projections. Base case: transfer in 2045, 4% appreciation, 1.33% effective
-  Property C tax rate, 7% portfolio return. See <a href="scenarios.html">Scenarios</a> for the
-  full model and <a href="methodology.html">Methodology</a> for every assumption.</p><h2>Why selling wins, in one paragraph</h2><p>Property acquired from a decedent takes an income tax basis equal to its fair market value at the date of
-  death (<a href="https://www.irs.gov/pub/irs-pdf/p551.pdf">IRS Publication 551</a>). That wipes out, permanently, all the
-  gain that accrued during the decedent's lifetime. Selling soon after the transfer therefore realises almost no taxable
-  gain, so the federal and California capital gains tax on decades of appreciation is never paid. Holding instead
-  converts the asset into a position that pays roughly 1.33% of assessed value every year in
-  property tax, plus insurance, maintenance and utilities, in exchange for rent or housing that does not cover it.
-  Reinvested proceeds compound at an assumed 7% with tax deferred on the appreciation
-  component. Over twenty years that difference is worth about $7,283,512.</p><h2>Important details, in brief</h2><div class="grid g2"><div class="card"><h3>Property tax: Prop 19 governs</h3><p>Transfers on or after 2021-02-16 are governed by Proposition 19, not Proposition 58. The exclusion is available
-    <strong>only</strong> for the transferor's principal residence, <strong>only</strong> if the heir makes it their own
-    principal residence within one year, and <strong>only</strong> up to the factored base year value plus an indexed
-    $1,000,000 (currently <strong>$1,044,586</strong> for transfers through 2027-02-15). There is no exclusion at all for
-    inherited rental property.</p>
-    <p class="small"><a href="property-tax-law.html">Property Tax Law &rarr;</a></p></div><div class="card"><h3>Holding title in a trust does not help</h3><p>The Board of Equalization defines a qualifying transfer as one "whether within or outside a trust." A revocable
-    trust becoming irrevocable on the trustor's death <em>is</em> a change in ownership, and the date of death is the
-    date of change in ownership. The residence, occupancy, value and filing tests all still apply.</p>
-    <p class="small"><a href="inheritance-process.html">Inheritance Process &rarr;</a></p></div><div class="card"><h3>California has no death tax that collects anything</h3><p>Revenue and Taxation Code section 13302 imposes a California estate tax only to the extent of the federal Credit
-    for State Death Taxes. Congress repealed that credit, so the California tax computes to zero. Beneficiaries owe
-    nothing to California for receiving the inheritance.</p>
-    <p class="small"><a href="estate-tax.html">Inheritance &amp; Estate Tax &rarr;</a></p></div><div class="card"><h3>Federal threshold is $15,000,000 for 2026, permanent</h3><p>OBBBA section 70106 set the basic exclusion amount at <strong>$15,000,000</strong> per person for calendar year
-    2026 and removed the sunset. It is indexed for inflation from 2027. The generation-skipping transfer exemption
-    matches it. A surviving spouse can use a deceased spouse's unused exclusion, but only if a timely Form 706 is filed.</p>
-    <p class="small"><a href="estate-tax.html">Inheritance &amp; Estate Tax &rarr;</a></p></div><div class="card"><h3>Two deadlines decide thousands a year</h3><p>File the Homeowners' Exemption (BOE-266) within <strong>one year</strong> of the transfer, and file BOE-19-P
-    within <strong>three years</strong>, or before transfer to a third party if earlier. Miss either and the exclusion is
-    lost. Separately, Santa Clara County requires a Death Statement within <strong>150 days</strong>.</p>
-    <p class="small"><a href="inheritance-process.html">Inheritance Process &rarr;</a></p></div><div class="card"><h3>Moving out later removes the exclusion</h3><p>Prop 19 requires <em>continual</em> use as a family home. If the heir moves in, claims the exclusion, and later
-    rents the house out, the exclusion is removed and the new base year value is enrolled. The "move in for a year, then
-    rent it" strategy does not work.</p>
-    <p class="small"><a href="property-tax-law.html">Property Tax Law &rarr;</a></p></div></div><div class="callout warn">
-<p><strong>19 items are open for review, 4 of them high severity.</strong> The two that most affect
-the numbers: the owner-supplied Property S tax figure implies an effective rate of about 2.13% against San Francisco's
-verified 1.18268325%, which is unexplained; and Property C's market rent &mdash; the pivot of the rent-versus-sell
-comparison &mdash; is a placeholder with no appraisal behind it.
-<a href="flagged.html">Flagged for Review &rarr;</a></p>
-</div><h2>What is on this site</h2><div class="grid g3"><div class="card"><h3>Overview</h3><ul style="margin:0;padding-left:18px"><li style="margin-bottom:4px"><a href="index.html">Executive Summary</a></li><li style="margin-bottom:4px"><a href="properties.html">Properties</a></li><li style="margin-bottom:4px"><a href="privacy.html">Privacy &amp; Anonymisation</a></li></ul></div><div class="card"><h3>Taxes &amp; Transfer</h3><ul style="margin:0;padding-left:18px"><li style="margin-bottom:4px"><a href="tax-history.html">Property Tax History</a></li><li style="margin-bottom:4px"><a href="property-tax-law.html">Property Tax Law</a></li><li style="margin-bottom:4px"><a href="inheritance-process.html">Inheritance Process</a></li><li style="margin-bottom:4px"><a href="estate-tax.html">Inheritance &amp; Estate Tax</a></li><li style="margin-bottom:4px"><a href="law-changes.html">Pending Law Changes</a></li></ul></div><div class="card"><h3>Carrying Costs</h3><ul style="margin:0;padding-left:18px"><li style="margin-bottom:4px"><a href="insurance.html">Insurance</a></li><li style="margin-bottom:4px"><a href="utilities.html">Water &amp; Electricity</a></li><li style="margin-bottom:4px"><a href="rental.html">Rental Income</a></li></ul></div><div class="card"><h3>Analysis</h3><ul style="margin:0;padding-left:18px"><li style="margin-bottom:4px"><a href="projections.html">Projections</a></li><li style="margin-bottom:4px"><a href="scenarios.html">Scenarios &amp; Recommendation</a></li></ul></div><div class="card"><h3>Governance</h3><ul style="margin:0;padding-left:18px"><li style="margin-bottom:4px"><a href="methodology.html">Methodology</a></li><li style="margin-bottom:4px"><a href="sources.html">Sources</a></li><li style="margin-bottom:4px"><a href="flagged.html">Flagged for Review</a></li></ul></div></div>
-  </main>
-</div>
-<footer class="site">
-  <p><strong>Not tax, legal, or investment advice.</strong> This is a research dashboard. Every verified value links to the
-  official document it was read from; anything that could not be confirmed from an official source is blank and listed on
-  <a href="flagged.html">Flagged for Review</a>.</p>
-  <p>Properties are referred to as Property C and Property S. No personal information is published on this site. See
-  <a href="privacy.html">Privacy &amp; Anonymisation</a>. Sources last checked 2026-11-06.</p>
+<nav class="nav"><a href="index.html" class=active>Overview</a><a href="facts/index.html">Facts</a><a href="property/index.html">Property</a><a href="costs/index.html">Costs</a><a href="projections/index.html">Projections</a><a href="decision/index.html">Decision</a><a href="process/index.html">Process</a><a href="law/index.html">Law</a><a href="flagged/index.html">Flagged</a><a href="sources/index.html">Sources</a></nav>
+<main>
+
+<section class="hero">
+  <p class="eyebrow">Executive summary</p>
+  <h1>Sell at inheritance is the strongest modeled plan for both properties</h1>
+  <p class="lede">Two California properties may pass through a trust around 2040–2050. Under current law the
+  state takes no inheritance tax, and federal estate tax applies only above a large threshold. The main choices are
+  to sell, keep and rent, or keep and live in the home. In the base case, selling and investing the proceeds beats
+  keeping either property in every inheritance year and stress case tested. The gap is wide for Property A and narrower for Property B in the low-growth case.</p>
+  <div class="cta">
+    <a class="btn" href="decision/">See the decision analysis</a>
+    <a class="btn ghost" href="flagged/">Flagged for review (25 items)</a>
+  </div>
+</section>
+
+<section class="stats">
+  <article><small>Federal estate and gift exclusion (2026)</small><strong>$15,000,000</strong><span class="src-line"><a class="src official" href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" target="_blank" rel="noopener" title="IRS releases tax inflation adjustments for tax year 2026 (IR-2025-103)">IRS <span class="sid">S01</span></a> <a class="src official" href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax" target="_blank" rel="noopener" title="Estate tax (filing thresholds, portability, Form 706)">IRS <span class="sid">S02</span></a></span></article>
+  <article><small>California inheritance or estate tax</small><strong>None</strong><span class="src-line"><a class="src official" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=13301" target="_blank" rel="noopener" title="Revenue and Taxation Code section 13301 (no state gift, inheritance, estate, or death-transfer tax)">California Legislature <span class="sid">S09</span></a></span></article>
+  <article><small>Prop 19 value limit (family-home transfers)</small><strong>$1,044,586</strong><span class="src-line"><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2025/009: Proposition 19 value limit $1,044,586">California State Board of Equalization <span class="sid">S04</span></a></span></article>
+  <article><small>Prop 19 repeal initiative (May 2026)</small><strong>Failed to qualify</strong><span class="src-line"><a class="src official" href="https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf" target="_blank" rel="noopener" title="Initiative 25-0017 (Prop 19 repeal) certification memo, May 18, 2026">California Secretary of State <span class="sid">S07</span></a></span></article>
+</section>
+
+<section class="panel">
+  <h2>Base-case result (inheritance in 2045, end value in 2026 dollars at 2060)</h2>
+  <div class="tablewrap"><table class=""><thead><tr><th>Property</th><th>Option</th><th>End value (real 2026 $)</th><th>Note</th><th>Source</th></tr></thead><tbody><tr><td>A · Cupertino</td><td>Sell and invest net proceeds</td><td>$4,494,502</td><td>Net proceeds at 2045: $4,702,573</td><td><a class="src official" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=11911" target="_blank" rel="noopener" title="Revenue and Taxation Code section 11911 (county documentary transfer tax, $0.55 per $500)">California Legislature <span class="sid">S25</span></a> <a class="flagref" href="flagged/#FL-15">FL-15</a> <a class="flagref" href="flagged/#FL-13">FL-13</a></td></tr><tr><td>A · Cupertino</td><td>Live in the home (Prop 19 path)</td><td>$2,130,211</td><td>Net annual economic cost of living there: $205,363 (base, 2045)</td><td><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2025/009: Proposition 19 value limit $1,044,586">California State Board of Equalization <span class="sid">S04</span></a> <a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)">California State Board of Equalization <span class="sid">S06</span></a> <a class="src official" href="https://www.boe.ca.gov/proptaxes/homeowners_exemption.htm" target="_blank" rel="noopener" title="Homeowners&#x27; exemption ($7,000 reduction; BOE-266 deadlines)">California State Board of Equalization <span class="sid">S13</span></a> <a class="flagref" href="flagged/#FL-01">FL-01</a> <a class="flagref" href="flagged/#FL-02">FL-02</a> <a class="flagref" href="flagged/#FL-05">FL-05</a></td></tr><tr><td>B · San Francisco</td><td>Sell and invest net proceeds</td><td>$2,609,711</td><td>Modeled wealth from net proceeds</td><td><a class="src official" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=11911" target="_blank" rel="noopener" title="Revenue and Taxation Code section 11911 (county documentary transfer tax, $0.55 per $500)">California Legislature <span class="sid">S25</span></a> <a class="flagref" href="flagged/#FL-01">FL-01</a> <a class="flagref" href="flagged/#FL-13">FL-13</a></td></tr><tr><td>B · San Francisco</td><td>Heir lives in 1 unit; rent 2 units</td><td>$2,006,999</td><td>Prop 19 on one unit is worth about $175,583 vs. no occupancy</td><td><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)">California State Board of Equalization <span class="sid">S06</span></a> <a class="src official" href="https://www.sf.gov/reports--current-rates-including-rent-increase-relocation-sec-deposit" target="_blank" rel="noopener" title="Current rates: allowable rent increase 1.6% (3/1/2026 to 2/28/2027)">City and County of San Francisco <span class="sid">S15</span></a> <a class="flagref" href="flagged/#FL-03">FL-03</a> <a class="flagref" href="flagged/#FL-16">FL-16</a> <a class="flagref" href="flagged/#FL-17">FL-17</a></td></tr><tr><td>B · San Francisco</td><td>Keep renting 2 units; no occupancy</td><td>$1,831,416</td><td>Full reassessment of the whole property</td><td><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)">California State Board of Equalization <span class="sid">S06</span></a> <a class="flagref" href="flagged/#FL-17">FL-17</a></td></tr></tbody></table></div>
+  <p class="muted">Client figures (market values, tax history, water, electricity, insurance, rent) are unverified inputs. Assumptions are labeled on the Projections page. See the <a href="flagged/">Flagged for Review</a> list before relying on any number.</p>
+</section>
+
+<section class="panel">
+  <h2>Where to look</h2>
+  <div class="cards">
+    <a class="card" href="facts/"><b>Facts register</b><span>39 verified rows, 12 unverified rows. Each row links to its official source.</span></a>
+    <a class="card" href="property/"><b>Property data</b><span>Anonymized profiles, tax history, and what Prop 19 does to each property.</span></a>
+    <a class="card" href="costs/"><b>Carrying costs</b><span>Property tax, water, electricity, insurance, upkeep, with utility sources.</span></a>
+    <a class="card" href="projections/"><b>Projections 2026–2050</b><span>Inflation, appreciation, and tax-law assumptions with three stress cases.</span></a>
+    <a class="card" href="decision/"><b>Decision</b><span>Live, rent, or sell at 2040, 2045 and 2050, with break-even rent and recommendation.</span></a>
+    <a class="card" href="process/"><b>Inheritance process</b><span>Step-by-step trust administration, filings and deadlines with sources.</span></a>
+    <a class="card" href="law/"><b>Law changes</b><span>Enacted, pending and failed measures that could change the answer.</span></a>
+    <a class="card warn" href="flagged/"><b>Flagged for review</b><span>25 items, 7 high severity: irregularities, unverified values, and what would resolve them.</span></a>
+  </div>
+</section>
+
+</main>
+<footer>
+  <p>Anonymized planning dashboard. No names, addresses, parcel numbers or precise ZIP codes are published. Client figures are labeled as client inputs and are unverified. Projections are modeled outcomes, not forecasts. Not legal, tax, insurance or investment advice; confirm with qualified professionals.</p>
+  <p>Other analyses in this repository (separate sessions, different assumptions, not reconciled): <a href="docs/index.html">/docs/ analysis</a> · <a href="guide/index.html">guide analysis</a>.</p>
+  <p>Built from <code>data/ia/*.json</code> by <code>scripts/build_site.py</code>. Model: <code>scripts/model.py</code>. Checks: <code>scripts/validate.py</code>.</p>
 </footer>
-<script src="assets/js/site.js"></script>
-</body>
-</html>
+<script src="assets/site.js"></script>
+</body></html>
