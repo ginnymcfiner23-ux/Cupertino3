@@ -1,86 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Dashboard — Household Decision Dashboard</title>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<header class="site">
-  <h1>Cupertino ↔ SF Household Decision Dashboard</h1>
-  <span class="sub">City/ZIP-level data only · every row sourced or flagged · verified 2026-11-06</span>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Inheritance decision analysis for two anonymized California properties: sources, projections, and recommendation.">
+<title>Overview · Inheritance Decision Analysis</title>
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<header class="top">
+  <div class="brand"><span class="mark">IDA</span><span>Inheritance Decision Analysis<small>Two California properties · source-linked · anonymized</small></span></div>
+  <span class="asof">Data as of 2026-11-06</span>
 </header>
-<nav class="top">
-  <a href="index.html" class="active">Dashboard</a>
-  <a href="pages/summary.html">Executive Summary</a>
-  <a href="pages/properties.html">Property Data</a>
-  <a href="pages/estate-tax.html">Estate & Gift Tax</a>
-  <a href="pages/property-tax.html">Property Tax</a>
-  <a href="pages/costs.html">Insurance & Utilities</a>
-  <a href="pages/rental.html">Rental Rules</a>
-  <a href="pages/projections.html">Projections</a>
-  <a href="pages/analysis.html">Live·Rent·Sell</a>
-  <a href="pages/process.html">Inheritance Process</a>
-  <a href="pages/watchlist.html">Law Watchlist</a>
-  <a href="pages/flagged.html">Flagged</a>
-  <a href="pages/sources.html">Sources</a>
-</nav>
+<nav class="nav"><a href="index.html" class=active>Overview</a><a href="facts/index.html">Facts</a><a href="property/index.html">Property</a><a href="costs/index.html">Costs</a><a href="projections/index.html">Projections</a><a href="decision/index.html">Decision</a><a href="process/index.html">Process</a><a href="law/index.html">Law</a><a href="flagged/index.html">Flagged</a><a href="sources/index.html">Sources</a></nav>
 <main>
-<h2>Household Decision Dashboard</h2>
-<p class="lede">Two California properties, one inheritance decision (~2040–2050). Every table row links to an official
-source or is flagged as unverified. Nothing here is filled in by inference.</p>
 
-<div class="legend">
-  <span><span class="badge b-ok">VERIFIED</span> read from an official source</span>
-  <span><span class="badge b-user">USER-PROVIDED</span> your data, not independently confirmable</span>
-  <span><span class="badge b-model">PROJECTION</span> model output from stated assumptions</span>
-  <span><span class="badge b-flag">FLAGGED</span> irregular or unconfirmed — see <a href="pages/flagged.html">Flagged for Review</a></span>
-  <span><span class="badge b-blank">BLANK</span> could not verify — left empty on purpose</span>
-</div>
+<section class="hero">
+  <p class="eyebrow">Executive summary</p>
+  <h1>Sell at inheritance is the strongest modeled plan for both properties</h1>
+  <p class="lede">Two California properties may pass through a trust around 2040–2050. Under current law the
+  state takes no inheritance tax, and federal estate tax applies only above a large threshold. The main choices are
+  to sell, keep and rent, or keep and live in the home. In the base case, selling and investing the proceeds beats
+  keeping either property in every inheritance year and stress case tested. The gap is wide for Property A and narrower for Property B in the low-growth case.</p>
+  <div class="cta">
+    <a class="btn" href="decision/">See the decision analysis</a>
+    <a class="btn ghost" href="flagged/">Flagged for review (25 items)</a>
+  </div>
+</section>
 
-<div class="cards">
-  <div class="card"><div class="k">Property A — Cupertino 95014</div><div class="v">$3.1M</div>
-    <div class="n">Nov 2026 estimate (user-provided). 2026 assessed value $550,537 (+2%, matches BOE factor).</div></div>
-  <div class="card"><div class="k">Property B — SF 94122</div><div class="v">$1.8M</div>
-    <div class="n">Nov 2026 estimate (user-provided). 3 units; ~$7,150/mo rent from 2 units; owner lives in 3rd.</div></div>
-  <div class="card"><div class="k">Federal estate exclusion 2026</div><div class="v">$15,000,000</div>
-    <div class="n"><span class="badge b-ok">VERIFIED</span> IRS · top rate 40% · CA estate tax = $0.</div></div>
-  <div class="card"><div class="k">SF rent increase 2026-27</div><div class="v">1.6%</div>
-    <div class="n"><span class="badge b-ok">VERIFIED</span> SF Rent Board, eff. 2026-03-01 → 2027-02-28.</div></div>
-  <div class="card"><div class="k">Prop 19 tax jump if NOT occupied</div><div class="v">$73.6k/yr</div>
-    <div class="n"><span class="badge b-model">PROJECTION</span> 2040 base case, full reassessment to FMV vs $9.7k status quo.</div></div>
-  <div class="card"><div class="k">Items flagged for review</div><div class="v" id="flagcount">25</div>
-    <div class="n">Data irregularities &amp; unverified values — <a href="pages/flagged.html">open list</a>.</div></div>
-</div>
+<section class="stats">
+  <article><small>Federal estate and gift exclusion (2026)</small><strong>$15,000,000</strong><span class="src-line"><a class="src official" href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" target="_blank" rel="noopener" title="IRS releases tax inflation adjustments for tax year 2026 (IR-2025-103)">IRS <span class="sid">S01</span></a> <a class="src official" href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax" target="_blank" rel="noopener" title="Estate tax (filing thresholds, portability, Form 706)">IRS <span class="sid">S02</span></a></span></article>
+  <article><small>California inheritance or estate tax</small><strong>None</strong><span class="src-line"><a class="src official" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=13301" target="_blank" rel="noopener" title="Revenue and Taxation Code section 13301 (no state gift, inheritance, estate, or death-transfer tax)">California Legislature <span class="sid">S09</span></a></span></article>
+  <article><small>Prop 19 value limit (family-home transfers)</small><strong>$1,044,586</strong><span class="src-line"><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2025/009: Proposition 19 value limit $1,044,586">California State Board of Equalization <span class="sid">S04</span></a></span></article>
+  <article><small>Prop 19 repeal initiative (May 2026)</small><strong>Failed to qualify</strong><span class="src-line"><a class="src official" href="https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf" target="_blank" rel="noopener" title="Initiative 25-0017 (Prop 19 repeal) certification memo, May 18, 2026">California Secretary of State <span class="sid">S07</span></a></span></article>
+</section>
 
-<div class="panel">
-  <h4>Where to start</h4>
-  <div class="tablewrap"><table>
-    <tr><th>Question</th><th>Page</th></tr>
-    <tr><td>What do we actually own/owe, year by year?</td><td><a href="pages/properties.html">Property Data &amp; Tax History</a></td></tr>
-    <tr><td>What does the law say about inheriting (federal, CA, local)?</td><td><a href="pages/estate-tax.html">Inheritance &amp; Estate Tax</a></td></tr>
-    <tr><td>What happens to property tax when the house is inherited?</td><td><a href="pages/property-tax.html">Property Tax &amp; Prop 19</a></td></tr>
-    <tr><td>What do insurance and utilities cost?</td><td><a href="pages/costs.html">Insurance &amp; Utilities</a></td></tr>
-    <tr><td>What rules govern the SF rental income?</td><td><a href="pages/rental.html">Rental &amp; Rent Control</a></td></tr>
-    <tr><td>What will values/taxes be in 2030–2050?</td><td><a href="pages/projections.html">Projections</a></td></tr>
-    <tr><td>Live there vs rent it out vs sell and invest?</td><td><a href="pages/analysis.html">Live · Rent · Sell analysis</a></td></tr>
-    <tr><td>How does the inheritance actually work, step by step?</td><td><a href="pages/process.html">Inheritance Process Guide</a></td></tr>
-    <tr><td>What laws might change?</td><td><a href="pages/watchlist.html">Law Change Watchlist</a></td></tr>
-    <tr><td>What couldn't be verified?</td><td><a href="pages/flagged.html">Flagged for Review</a></td></tr>
-    <tr><td>Every source used</td><td><a href="pages/sources.html">Sources Index</a></td></tr>
-  </table></div>
-</div>
+<section class="panel">
+  <h2>Base-case result (inheritance in 2045, end value in 2026 dollars at 2060)</h2>
+  <div class="tablewrap"><table class=""><thead><tr><th>Property</th><th>Option</th><th>End value (real 2026 $)</th><th>Note</th><th>Source</th></tr></thead><tbody><tr><td>A · Cupertino</td><td>Sell and invest net proceeds</td><td>$4,494,502</td><td>Net proceeds at 2045: $4,702,573</td><td><a class="src official" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=11911" target="_blank" rel="noopener" title="Revenue and Taxation Code section 11911 (county documentary transfer tax, $0.55 per $500)">California Legislature <span class="sid">S25</span></a> <a class="flagref" href="flagged/#FL-15">FL-15</a> <a class="flagref" href="flagged/#FL-13">FL-13</a></td></tr><tr><td>A · Cupertino</td><td>Live in the home (Prop 19 path)</td><td>$2,130,211</td><td>Net annual economic cost of living there: $205,363 (base, 2045)</td><td><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2025/009: Proposition 19 value limit $1,044,586">California State Board of Equalization <span class="sid">S04</span></a> <a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)">California State Board of Equalization <span class="sid">S06</span></a> <a class="src official" href="https://www.boe.ca.gov/proptaxes/homeowners_exemption.htm" target="_blank" rel="noopener" title="Homeowners&#x27; exemption ($7,000 reduction; BOE-266 deadlines)">California State Board of Equalization <span class="sid">S13</span></a> <a class="flagref" href="flagged/#FL-01">FL-01</a> <a class="flagref" href="flagged/#FL-02">FL-02</a> <a class="flagref" href="flagged/#FL-05">FL-05</a></td></tr><tr><td>B · San Francisco</td><td>Sell and invest net proceeds</td><td>$2,609,711</td><td>Modeled wealth from net proceeds</td><td><a class="src official" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=11911" target="_blank" rel="noopener" title="Revenue and Taxation Code section 11911 (county documentary transfer tax, $0.55 per $500)">California Legislature <span class="sid">S25</span></a> <a class="flagref" href="flagged/#FL-01">FL-01</a> <a class="flagref" href="flagged/#FL-13">FL-13</a></td></tr><tr><td>B · San Francisco</td><td>Heir lives in 1 unit; rent 2 units</td><td>$2,006,999</td><td>Prop 19 on one unit is worth about $175,583 vs. no occupancy</td><td><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)">California State Board of Equalization <span class="sid">S06</span></a> <a class="src official" href="https://www.sf.gov/reports--current-rates-including-rent-increase-relocation-sec-deposit" target="_blank" rel="noopener" title="Current rates: allowable rent increase 1.6% (3/1/2026 to 2/28/2027)">City and County of San Francisco <span class="sid">S15</span></a> <a class="flagref" href="flagged/#FL-03">FL-03</a> <a class="flagref" href="flagged/#FL-16">FL-16</a> <a class="flagref" href="flagged/#FL-17">FL-17</a></td></tr><tr><td>B · San Francisco</td><td>Keep renting 2 units; no occupancy</td><td>$1,831,416</td><td>Full reassessment of the whole property</td><td><a class="src official" href="https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf" target="_blank" rel="noopener" title="Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)">California State Board of Equalization <span class="sid">S06</span></a> <a class="flagref" href="flagged/#FL-17">FL-17</a></td></tr></tbody></table></div>
+  <p class="muted">Client figures (market values, tax history, water, electricity, insurance, rent) are unverified inputs. Assumptions are labeled on the Projections page. See the <a href="flagged/">Flagged for Review</a> list before relying on any number.</p>
+</section>
 
-<div class="note model"><strong>Model, not prophecy.</strong> All forward-looking numbers are projections built from
-the assumption register on the <a href="pages/projections.html">Projections</a> page. Re-run
-<code>docs/research/build_projections.py</code> to regenerate them.</div>
+<section class="panel">
+  <h2>Where to look</h2>
+  <div class="cards">
+    <a class="card" href="facts/"><b>Facts register</b><span>39 verified rows, 12 unverified rows. Each row links to its official source.</span></a>
+    <a class="card" href="property/"><b>Property data</b><span>Anonymized profiles, tax history, and what Prop 19 does to each property.</span></a>
+    <a class="card" href="costs/"><b>Carrying costs</b><span>Property tax, water, electricity, insurance, upkeep, with utility sources.</span></a>
+    <a class="card" href="projections/"><b>Projections 2026–2050</b><span>Inflation, appreciation, and tax-law assumptions with three stress cases.</span></a>
+    <a class="card" href="decision/"><b>Decision</b><span>Live, rent, or sell at 2040, 2045 and 2050, with break-even rent and recommendation.</span></a>
+    <a class="card" href="process/"><b>Inheritance process</b><span>Step-by-step trust administration, filings and deadlines with sources.</span></a>
+    <a class="card" href="law/"><b>Law changes</b><span>Enacted, pending and failed measures that could change the answer.</span></a>
+    <a class="card warn" href="flagged/"><b>Flagged for review</b><span>25 items, 7 high severity: irregularities, unverified values, and what would resolve them.</span></a>
+  </div>
+</section>
 
 </main>
-<footer class="site">
-  Built by session d8a9b67c · Source data &amp; audit: <code>docs/research/</code> ·
-  Not tax/legal advice — verify every figure at the linked official source before acting.
+<footer>
+  <p>Anonymized planning dashboard. No names, addresses, parcel numbers or precise ZIP codes are published. Client figures are labeled as client inputs and are unverified. Projections are modeled outcomes, not forecasts. Not legal, tax, insurance or investment advice; confirm with qualified professionals.</p>
+  <p>Other analyses in this repository (separate sessions, different assumptions, not reconciled): <a href="docs/index.html">/docs/ analysis</a> · <a href="guide/index.html">guide analysis</a>.</p>
+  <p>Built from <code>data/ia/*.json</code> by <code>scripts/build_site.py</code>. Model: <code>scripts/model.py</code>. Checks: <code>scripts/validate.py</code>.</p>
 </footer>
-</body>
-</html>
+<script src="assets/site.js"></script>
+</body></html>

@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "rule": "Nothing on this site is asserted as fact unless it was read from an official source during this pass. Anything that could not be confirmed is listed here with the follow-up needed to close it. Items marked 'irregularity' are contradictions found in the supplied data, not merely gaps."
+  },
+  "items": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "kind": "irregularity",
+      "title": "Property B property tax is roughly double what San Francisco's official rate implies",
+      "detail": "The owner's figures show 2025 tax of 2,439 USD on a 2025 assessment of 114,248 USD, an implied effective rate of 2.13%. San Francisco's verified combined secured ad valorem rate for FY2025-26 is 1.18268325% (SF Board of Supervisors Resolution 447-25), which would produce roughly 1,351 USD on that assessment. The 2025-26 gap is about 1,088 USD. The gap is present in every year of the supplied series and ranges from 1.73% to 2.10%.",
+      "possible_explanations": [
+        "The tax figure includes direct charges and special assessments that are not ad valorem.",
+        "The assessment figure is incomplete, for example land only, or a single unit's share.",
+        "The tax figure is an escrow or aggregator number that bundles something else."
+      ],
+      "action": "Read the line items off the actual SF secured property tax bill and compare the ad valorem portion to 1.18268325% of the net taxable value. Then correct the assessment figure if it is incomplete.",
+      "impact": "Every Property B holding-cost projection on this site inherits this error. Until it is resolved, treat Property B cost figures as unreliable.",
+      "source_url": "https://sfbos.archive.sf.gov/sites/default/files/r0447-25.pdf",
+      "source_name": "SF Board of Supervisors Resolution No. 447-25"
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "kind": "irregularity",
+      "title": "Property A implied effective rate is above the range typically quoted for Santa Clara County",
+      "detail": "The owner's figures show 2025 tax of 7,207 USD on a 2025 assessment of 539,743 USD, an implied effective rate of 1.335%. Secondary sources describe Santa Clara County totals as generally between about 1.12% and 1.24%. The implied rate drifts down over the supplied series, from about 1.41% in 2016 to about 1.34% in 2025, which is what you would expect as voter-approved bonds are paid off.",
+      "possible_explanations": [
+        "The parcel is in a tax rate area with above-average voter-approved debt.",
+        "The bill includes direct assessments, for example a water district or vector control charge.",
+        "The assessment figure is gross rather than net of the Homeowners' Exemption, which would make the true rate higher still."
+      ],
+      "action": "Pull the parcel's tax rate area from the Santa Clara County Assessor and read the rate off the Controller-Treasurer's annual Compilation of Tax Rates.",
+      "impact": "Property A tax projections use the derived 1.33% rate. A one-point error here moves the 2045 tax projection by tens of thousands of dollars a year.",
+      "source_url": "https://files.santaclaracounty.gov/exjcpb1521/2025-11/annual_report_2025-2026.pdf",
+      "source_name": "Santa Clara County Assessor, Annual Report 2025"
+    },
+    {
+      "id": "F3",
+      "severity": "high",
+      "kind": "unverified",
+      "title": "Market rent for Property A is a placeholder, and it drives the entire recommendation",
+      "detail": "No official source publishes a rent for an individual single-family home. The rent-versus-sell comparison on the Scenarios page turns almost entirely on this number.",
+      "action": "Obtain a written broker opinion of rent, or three comparable rentals, for Property A before acting.",
+      "impact": "The scenario comparison is published with a low, base, and high rent so the sensitivity is visible, but the answer is not robust until this is replaced.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F4",
+      "severity": "high",
+      "kind": "unverified",
+      "title": "Which Net Energy Metering rule governs Property A's solar system is unknown",
+      "detail": "The owner reports a net credit of 10 to 20 USD a month. Systems interconnected under the older NEM 2.0 rules earn near-retail export credits for 20 years from interconnection. Systems under the current Net Billing Tariff earn hourly avoided-cost values and, per secondary sources describing the CPUC decision, about 75% less. Whether the reported credit is sustainable into the 2040s depends entirely on which regime the system is in and, if NEM 2.0, on when the 20-year term expires.",
+      "action": "Locate the PG&E interconnection agreement or the original installer paperwork and read the interconnection date and the NEM vintage.",
+      "impact": "Electricity is a small line item, so the direct effect is modest. The indirect effect is large: if the system is on a legacy NEM term that expires mid-hold, the holding cost jumps.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F5",
+      "severity": "high",
+      "kind": "unverified",
+      "title": "No insurance premium could be verified for either ZIP code",
+      "detail": "The owner asked for researched insurance costs for an owner-occupied home in the Cupertino area and a three-unit rental in San Francisco. No official source publishes premiums at ZIP level. The California Department of Insurance publishes statewide market data, which is on the Insurance page, and two conflicting average-premium figures circulate in secondary sources, so neither was used.",
+      "action": "Obtain live quotes from two or three admitted carriers for each property, and price earthquake cover separately.",
+      "impact": "Insurance is a modest line item relative to property tax, so the recommendation does not turn on it, but the absolute holding cost is understated until it is known.",
+      "source_url": "https://www.insurance.ca.gov/01-consumers/120-company/04-mrktshare/2023/",
+      "source_name": "California Department of Insurance, 2023 P&C Market Share"
+    },
+    {
+      "id": "F6",
+      "severity": "medium",
+      "kind": "unverified",
+      "title": "Property A's water provider has not been identified",
+      "detail": "Cupertino is served by three separate water systems: California Water Service in the northeast, San Jose Water Company in the southeast, and the city's own system in the west, which San Jose Water operates under a lease running to 2036. A ZIP code does not determine which one serves a given parcel.",
+      "action": "Look the address up privately on the City's Water Service Provider GIS map, then pull that utility's current tariff.",
+      "impact": "Water is a small line item. The risk is that the wrong tariff is used and the projection is built on the wrong rate structure.",
+      "source_url": "https://www.cupertino.gov/Residents/Utilities/Water",
+      "source_name": "City of Cupertino, Water"
+    },
+    {
+      "id": "F7",
+      "severity": "medium",
+      "kind": "unverified",
+      "title": "Whether Property B is rent-controlled depends on its certificate-of-occupancy date",
+      "detail": "San Francisco's verified allowable increase is 1.6% for 2026-03-01 through 2027-02-28, but that applies only to covered units. The coverage rule, commonly tied to a certificate of occupancy on or before 1979-06-13 with single-family homes and condos exempt under Costa-Hawkins, was not retrieved from the Rent Ordinance in this pass. If the building is not covered, the statewide AB 1482 cap governs instead, and that cap is 5% plus regional CPI up to 10%, materially higher.",
+      "action": "Get the certificate-of-occupancy date from the SF Department of Building Inspection, then confirm coverage with the Rent Board.",
+      "impact": "Determines whether Property B rental income grows at roughly 1.6% or roughly 8.8% a year. Over twenty years that is a very large difference.",
+      "source_url": "https://www.sf.gov/news--annual-rent-increase-3126-22827-announced",
+      "source_name": "City and County of San Francisco, Rent Board"
+    },
+    {
+      "id": "F8",
+      "severity": "medium",
+      "kind": "unverified",
+      "title": "Federal and California capital gains rates were not confirmed",
+      "detail": "The after-tax return on reinvested sale proceeds depends on both. California taxes capital gains as ordinary income, but the applicable bracket percentages were not retrieved from the Franchise Tax Board. The federal long-term capital gains structure for 2026 was not confirmed line by line from Rev. Proc. 2025-32.",
+      "action": "Confirm the 2026 federal long-term capital gains thresholds and rates from the IRS, and the California rate from the Franchise Tax Board, using the taxpayer's expected bracket.",
+      "impact": "Changes the after-tax return used in the sell-and-reinvest scenario.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F9",
+      "severity": "medium",
+      "kind": "unverified",
+      "title": "Transfer tax rates on a future sale were not confirmed",
+      "detail": "San Francisco imposes a documentary transfer tax on recorded transfers and Santa Clara County and its cities have their own. Neither rate was retrieved from an official source.",
+      "action": "Confirm with the SF Treasurer & Tax Collector and Santa Clara County before modelling net sale proceeds.",
+      "impact": "Net sale proceeds in the sell scenario are modelled with a flat 6% assumption instead of the actual rates.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F11",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "The federal repeal of the Credit for State Death Taxes was not cited",
+      "detail": "The conclusion that California's R&T Code 13302 estate tax computes to zero rests on the statutory text plus the federal repeal of the credit. The repeal citation was not retrieved from an official source in this pass.",
+      "action": "Cite the federal repeal directly.",
+      "impact": "None on the numbers. The conclusion is correct; only the citation chain is incomplete.",
+      "source_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=13302",
+      "source_name": "California Legislative Information, R&T Code 13302"
+    },
+    {
+      "id": "F12",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "Absence of a California inheritance tax is not cited to an official source",
+      "detail": "Widely reported as repealed by Proposition 6 in 1982, but no official California source was located. The practical conclusion is independently supported by R&T Code 13302, which is the only death tax on the books and computes to zero.",
+      "action": "Confirm with the Franchise Tax Board.",
+      "impact": "None on the numbers.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F13",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "No official source confirmed the absence of a local death tax",
+      "detail": "Neither Cupertino, Santa Clara County, nor San Francisco was checked for a local estate or inheritance tax.",
+      "action": "Confirm with each jurisdiction.",
+      "impact": "None expected. Listed for completeness.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F14",
+      "severity": "medium",
+      "kind": "unverified",
+      "title": "PG&E rates and the fixed monthly charge were not confirmed",
+      "detail": "Aggregator sites publish figures around 0.33 to 0.55 USD/kWh and describe an income-graduated fixed Base Services Charge, but none of it was traced to a PG&E tariff or a CPUC document.",
+      "action": "Pull the current PG&E electric tariff sheets, or the CPUC Public Advocates Office quarterly rate report.",
+      "impact": "Electricity is a small line item at both properties. The fixed charge matters more than the rate, because solar exports cannot offset it.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F15",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "SFPUC stormwater component rates were not located",
+      "detail": "SFPUC confirms the charge exists and that residential customers are billed on a simplified three-tier structure based on net parcel size, but the tier dollar amounts were not in the retrieved pages.",
+      "action": "Read Schedule C or D of the SFPUC rate schedule, or use the SFPUC stormwater bill calculator.",
+      "impact": "Means the cross-check of the owner's 330-400 USD/mo Property B water figure is incomplete by the stormwater amount.",
+      "source_url": "https://www.sfpuc.gov/sites/default/files/accounts-and-services/Rates_Schedule_Water_Sewer_2026-7.pdf",
+      "source_name": "SFPUC Rate Schedules & Fees FY2026-27 / FY2027-28"
+    },
+    {
+      "id": "F16",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "Status of California property tax bills SCA 4, SB 890, ACA 9, and SB 974 was not confirmed",
+      "detail": "SCA 4, SB 890, and ACA 9 appear on the BOE's own Proposition 19 legislation table, which establishes that they were introduced, but their current status and text were not retrieved from California Legislative Information. SB 974 is reported by practitioner sources as chaptered, but the chapter was not retrieved.",
+      "action": "Check the current status of each on leginfo.legislature.ca.gov.",
+      "impact": "Any of these could soften Proposition 19. Track them annually.",
+      "source_url": "https://www.boe.ca.gov/prop19/",
+      "source_name": "California State Board of Equalization, Proposition 19"
+    },
+    {
+      "id": "F17",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "Exit-polling detail on earlier Prop 19 repeal attempts",
+      "detail": "The 2022 and 2024 repeal efforts are reported by news coverage as having fallen short, but only the 2026 failure was confirmed from a Secretary of State document.",
+      "action": "Check the Secretary of State's failed-to-qualify list.",
+      "impact": "None on the numbers. Relevant only to judging whether a future repeal is likely.",
+      "source_url": "https://www.sos.ca.gov/elections/ballot-measures/initiative-and-referendum-status/failed-qualify",
+      "source_name": "California Secretary of State"
+    },
+    {
+      "id": "F18",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "2026 annual gift tax exclusion and unified credit amounts",
+      "detail": "Rev. Proc. 2025-32 sets them, but only section 2.14, the basic exclusion amount, was verified line by line in this pass.",
+      "action": "Read the relevant sections of Rev. Proc. 2025-32 if annual gifting is part of the plan.",
+      "impact": "None on the inheritance analysis itself.",
+      "source_url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "source_name": "IRS Revenue Procedure 2025-32"
+    },
+    {
+      "id": "F19",
+      "severity": "low",
+      "kind": "unverified",
+      "title": "Earthquake insurance is not priced in the holding-cost model",
+      "detail": "Earthquake damage is excluded from standard California homeowners policies and is normally bought separately. No rate was retrieved.",
+      "action": "Price it, or make an explicit decision to self-insure, for both properties.",
+      "impact": "Understates the true cost of holding either property. Both are in a high-seismic-risk region.",
+      "source_url": "",
+      "source_name": ""
+    },
+    {
+      "id": "F20",
+      "severity": "medium",
+      "kind": "risk",
+      "title": "The Prop 19 indexed exclusion amount for 2045 is unknowable",
+      "detail": "The amount is adjusted every two years to the FHFA House Price Index for California. It is 1,044,586 USD for transfers from 2025-02-16 through 2027-02-15. Whatever it is in 2045 will not be known until shortly before then.",
+      "action": "Re-run the projection with the then-current BOE figure at the time of transfer.",
+      "impact": "Surprisingly small. Because Property A's projected market value in 2045 is several times the value cap, the indexed amount affects only the margin. The recommendation is not sensitive to it.",
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "source_name": "BOE Letter To Assessors No. 2025/009"
+    }
+  ],
+  "resolved": [
+    {
+      "id": "F10",
+      "title": "Homeowners' Exemption dollar amount",
+      "resolution": "Closed during the build. The Board of Equalization states that the California Constitution provides a $7,000 reduction in taxable value for a qualifying owner-occupied home. Now a verified row on the Property Tax Law page.",
+      "resolved_on": "2026-11-06",
+      "source_url": "https://www.boe.ca.gov/proptaxes/homeowners_exemption.htm",
+      "source_name": "California State Board of Equalization"
+    }
+  ]
+}

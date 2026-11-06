@@ -1,7 +1,7 @@
 # Research Notes (internal — session d8a9b67c)
 
 PII rule: no names, street addresses, APNs, or account identifiers appear in this repo or the site.
-Property references use labels "Property A" (Cupertino, CA 95014) and "Property B" (San Francisco, CA 94122).
+Property references use labels "Property A" (Cupertino, CA) and "Property B" (San Francisco, CA).
 
 ## Verification status legend
 - **VERIFIED**: value read directly from an official source fetched this session.
@@ -173,8 +173,8 @@ Provider map (official): https://www.cupertino.gov/Residents/Utilities — Calif
 | Condo (pooled) | $537 | same |
 | Renters (pooled) | $190 | same |
 | Statewide avg Coverage A (2018→2023) | $230,138 → $324,973 | SB 824 xlsx (fetched) |
-| ZIP 95014 avg premium | NOT EXTRACTED — left blank + FLAGGED | report page (above) |
-| ZIP 94122 avg premium | NOT EXTRACTED — left blank + FLAGGED | report page (above) |
+| Cupertino ZIP avg premium | NOT EXTRACTED — left blank + FLAGGED | report page (above) |
+| Sunset ZIP avg premium | NOT EXTRACTED — left blank + FLAGGED | report page (above) |
 | 2026 comparison tool | https://interactive.web.insurance.ca.gov/apex_extprd/f?p=111:20 (official quote tool; wildfire surcharges 15%–300%+ not shown) | CDI |
 | User estimates | ~$1,500/yr each property → USER-PROVIDED, UNVERIFIED | — |
 
@@ -229,7 +229,7 @@ Projection scenarios used on site (clearly labeled ASSUMPTIONS):
 
 ## 16. User-provided data — internal consistency audit (computed this session)
 
-### Property A (Cupertino 95014) — USER-PROVIDED
+### Property A (Cupertino) — USER-PROVIDED
 - Value Nov 2026: $3,100,000.
 - Assessment history: matches BOE factors exactly every year 2015→2026 (VERIFIED consistency).
 - Tax history YoY % as printed by user vs computed:
@@ -239,7 +239,7 @@ Projection scenarios used on site (clearly labeled ASSUMPTIONS):
 - 2026 tax: blank ("—") — left blank, FLAG (FY26-27 bill expected; fill from bill when available).
 - Implied 2025 effective rate 1.335% vs county TRA range 1.039–1.241% — FLAG (direct charges likely; exact TRA unresolvable without parcel ID).
 
-### Property B (SF 94122) — USER-PROVIDED
+### Property B (SF Sunset) — USER-PROVIDED
 - Value: $1,800,000 (Nov 2026); 3 units; ~$7,150/mo from 2 units; 3rd unit owner-occupied.
 - Assessment history: matches BOE factors except 2021→2022 1.957% vs 2.0% (≈$45) — minor FLAG.
 - Tax history YoY as printed vs computed:

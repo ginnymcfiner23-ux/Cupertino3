@@ -8,7 +8,7 @@ SRC = ROOT / "site" / "src"
 PAGES_DIR = ROOT / "pages"
 
 PAGES = [
-    ("index.html",         "Dashboard",         "index.html"),
+    ("index.html",         "Dashboard",         "pages/index.html"),
     ("summary.html",       "Executive Summary", "pages/summary.html"),
     ("properties.html",    "Property Data",     "pages/properties.html"),
     ("estate-tax.html",    "Estate & Gift Tax", "pages/estate-tax.html"),

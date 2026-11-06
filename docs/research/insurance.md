@@ -28,12 +28,12 @@ File: Residential-Property-Coverage-Amounts-Wildfire-Risk-and-Losses.xlsx (fetch
 
 (Intermediate years in workbook; 2018 and 2023 endpoints recorded.)
 
-## ZIP-level data (95014 / 94122)
+## ZIP-level data (Cupertino / Sunset ZIPs)
 
 | Item | Value | Status |
 |---|---|---|
-| ZIP 95014 avg premium / loss data | — | **NOT EXTRACTED — left blank, FLAGGED** (report page linked for manual review) |
-| ZIP 94122 avg premium / loss data | — | **NOT EXTRACTED — left blank, FLAGGED** |
+| Cupertino ZIP avg premium / loss data | — | **NOT EXTRACTED — left blank, FLAGGED** (report page linked for manual review) |
+| Sunset ZIP avg premium / loss data | — | **NOT EXTRACTED — left blank, FLAGGED** |
 
 Manual-review link: https://www.insurance.ca.gov/0400-news/0200-studies-reports/0250-homeowners-study/
 

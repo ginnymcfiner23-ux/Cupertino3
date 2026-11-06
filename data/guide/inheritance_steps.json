@@ -1,0 +1,83 @@
+{
+  "steps": [
+    {
+      "n": 1,
+      "title": "Confirm the decedent's principal residence status and the trust terms",
+      "detail": "Revocable trust transfer is excluded, but CIO occurs when the trust becomes irrevocable unless the trustor remains the sole present beneficiary. Distribution provisions (sprinkle powers) can affect exclusions.",
+      "sources": [
+        "S04",
+        "S35"
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Obtain the parcel's tax bills and assessed value from the County Assessor",
+      "detail": "Reconcile client-provided history with bills (see irregularity IR01). Do not rely on unverified history.",
+      "sources": [
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Decide whether the heir will move in (Prop 19 family home) or not",
+      "detail": "Move-in within one year and file homeowners' exemption within one year. Property B: only an owner-occupied unit qualifies.",
+      "sources": [
+        "S02",
+        "S03",
+        "S05"
+      ]
+    },
+    {
+      "n": 4,
+      "title": "File the BOE-19-P (parent-child claim) within 3 years of transfer and before any third-party transfer",
+      "detail": "Failure to file on time can affect the exclusion and assessment timing.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Estimate estate size against the federal basic exclusion ($15,000,000 in 2026)",
+      "detail": "Federal return threshold is based on the estate's total value. Two properties at client values are well below the 2026 figure; other assets matter.",
+      "sources": [
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Heir's basis steps up to fair market value at death",
+      "detail": "Gain is measured from the date-of-death value. Keep appraisals and records.",
+      "sources": [
+        "S12"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Hold, rent, or sell decision",
+      "detail": "Sale proceeds: county transfer tax $1.10 per $1,000 (city taxes unverified). Home-sale exclusion under section 121 may apply if the heir lives in the home 2 of 5 years.",
+      "sources": [
+        "S13",
+        "S29"
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Plan for California income tax on income from inherited assets",
+      "detail": "Inheritance itself is not CA income. Rental income and investment gains are taxable. No state estate or inheritance tax.",
+      "sources": [
+        "S15",
+        "S19"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Plan for the 3.8% NIIT if investment or rental income exceeds thresholds",
+      "detail": "Single threshold $200,000 (MAGI).",
+      "sources": [
+        "S14"
+      ]
+    }
+  ]
+}

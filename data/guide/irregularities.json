@@ -1,0 +1,186 @@
+{
+  "irregularities": [
+    {
+      "id": "IR01",
+      "severity": "high",
+      "property": "A and B",
+      "title": "Implied effective tax rates in the client's tax history exceed official rates",
+      "detail": "Property A 2025: $7,207 / $539,743 assessed = 1.335%. Sampled official TRA totals (S06) run 1.1258%-1.2409%. Property B 2025: $2,439 / $114,248 = 2.135%, versus the SF FY 2026-27 secured rate of 1.18162182% (S07). Possible causes: direct charges, special assessments, or a different value. Reconcile with the actual bills before relying on the history.",
+      "sources": [
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "IR02",
+      "severity": "high",
+      "property": "B",
+      "title": "Prop 19 covers only an owner-occupied unit in a multi-unit building",
+      "detail": "BOE LTA 2026/026 says each unit of a multi-unit property must qualify separately. Two rented units cannot use the family-home exclusion. Model reassesses the rented portion to market value.",
+      "sources": [
+        "S03"
+      ]
+    },
+    {
+      "id": "IR03",
+      "severity": "high",
+      "property": "A and B",
+      "title": "Prop 19 treatment requires the parent's principal residence at the time of transfer",
+      "detail": "Projections assume the decedent's principal residence status for Property A and the owner-occupied unit of B. If this is not so, a full reassessment to market value applies.",
+      "sources": [
+        "S02",
+        "S05"
+      ]
+    },
+    {
+      "id": "IR04",
+      "severity": "medium",
+      "property": "A",
+      "title": "ACC Plus eligibility wording conflicts across sources",
+      "detail": "PG&E tariff text (S24) says ACC Plus is for customers interconnecting during the first five years of the tariff. A secondary source says the window closes around end of 2027. The final decision text was not fetched. Treat as unresolved; do not rely on ACC Plus in projections.",
+      "sources": [
+        "S24"
+      ]
+    },
+    {
+      "id": "IR05",
+      "severity": "medium",
+      "property": "A",
+      "title": "Solar 'profit' of $10-20/mo is a bill credit, not guaranteed cash income",
+      "detail": "Under net billing, exports are credited at ACC values (S24) and non-bypassable charges still apply to imports. The model treats the client figure as a credit. Verify with PG&E/SVCE statements.",
+      "sources": [
+        "S24"
+      ]
+    },
+    {
+      "id": "IR06",
+      "severity": "medium",
+      "property": "B",
+      "title": "Third-party article attributes the H.R. 1301 Death Tax Repeal Act to a Senate leader; congress.gov lists a House sponsor",
+      "detail": "congress.gov (S27) lists Rep. Randy Feenstra as sponsor, introduced 02/13/2025. Attribution in the secondary article is not supported by congress.gov. Use congress.gov.",
+      "sources": [
+        "S27"
+      ]
+    },
+    {
+      "id": "IR07",
+      "severity": "medium",
+      "property": "A and B",
+      "title": "Cupertino and SF city-level transfer taxes not verified",
+      "detail": "No official rate page fetched for SF city transfer tax (third-party tiers conflict) or Cupertino city transfer tax. Left blank. Sale scenarios exclude these taxes.",
+      "sources": [
+        "S29"
+      ]
+    },
+    {
+      "id": "IR08",
+      "severity": "medium",
+      "property": "A",
+      "title": "Cupertino TRA composite not located",
+      "detail": "The parcel's TRA composite rate was not found in the rate-book pages reviewed. Projections use a planning midpoint (1.18%) and flag the uncertainty.",
+      "sources": [
+        "S06"
+      ]
+    },
+    {
+      "id": "IR09",
+      "severity": "medium",
+      "property": "A",
+      "title": "Cupertino sewer and stormwater charges not verified",
+      "detail": "Cupertino sewer provider and rate not verified. City stormwater fee page exists (S33) but the amount was not confirmed.",
+      "sources": [
+        "S33"
+      ]
+    },
+    {
+      "id": "IR10",
+      "severity": "medium",
+      "property": "B",
+      "title": "Rent-control coverage of rented units not verified",
+      "detail": "Rent Board 1.6% cap applies only to covered units (S25). Coverage depends on construction date and exemptions; not verified for this building.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "IR11",
+      "severity": "medium",
+      "property": "A and B",
+      "title": "Insurance premiums are client estimates; no official average found",
+      "detail": "CDI (S30) provides tools but no published average premium for Cupertino or SF on the page reviewed. $1,500/yr is a client estimate, unverified.",
+      "sources": [
+        "S30"
+      ]
+    },
+    {
+      "id": "IR12",
+      "severity": "low",
+      "property": "A and B",
+      "title": "Client electricity and water ranges not reconciled to utility bills",
+      "detail": "Water: 10 ccf/month at SJW tariff = $138.13 (within the client's $100-150 range). SF electricity rates not verified.",
+      "sources": [
+        "S20"
+      ]
+    },
+    {
+      "id": "IR13",
+      "severity": "low",
+      "property": "A and B",
+      "title": "Small rounding differences in client assessed-value percentages",
+      "detail": "Cupertino 2021 assessed value shows +1% while the values imply +1.04%. SF 2021 shows +1% and the values imply +1.04%.",
+      "sources": [
+        "S08"
+      ]
+    },
+    {
+      "id": "IR14",
+      "severity": "low",
+      "property": "A",
+      "title": "Pending SJW general rate case: proposed future rates not approved",
+      "detail": "CPUC application shows proposed quantity charges for 2028-2031 (S34). Not used in projections.",
+      "sources": [
+        "S34"
+      ]
+    },
+    {
+      "id": "IR15",
+      "severity": "low",
+      "property": "B",
+      "title": "SFPUC multi-family water (W-1B) applies per dwelling unit; meter type unknown",
+      "detail": "Client water range ($330-400/mo) is used as an input; tariff rates shown for reference only.",
+      "sources": [
+        "S22"
+      ]
+    },
+    {
+      "id": "IR16",
+      "severity": "low",
+      "property": "All",
+      "title": "Federal portability election and state probate thresholds not verified",
+      "detail": "Not included as verified values. Confirm with an estate attorney.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "IR17",
+      "severity": "low",
+      "property": "All",
+      "title": "Federal and California 2026 values: CA 2026 bracket schedule not fetched",
+      "detail": "Only the 2025 FTB schedule was verified (S17). Not used as a verified 2026 value.",
+      "sources": [
+        "S17"
+      ]
+    },
+    {
+      "id": "IR18",
+      "severity": "high",
+      "property": "All",
+      "title": "Two analyses in this repository disagree on some results",
+      "detail": "The root site (session c1b5796b, merged with PR #4) and the docs/ analysis (session 340c906c) use different assumptions from this guide. Examples: the root site's headline says selling is the strongest plan for both properties; this guide says selling beats holding Property A and that the Property B result is close in the base case. The 2045 Property A tax and break-even rent also differ. Do not combine the figures. Reconcile the assumptions before relying on any single number.",
+      "sources": [
+        "S06"
+      ]
+    }
+  ]
+}

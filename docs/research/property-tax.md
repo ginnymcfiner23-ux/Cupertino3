@@ -19,7 +19,7 @@ Verification date: 2026-11-06.
 
 ## Assessment histories (user-provided) — consistency audit vs official BOE factors
 
-### Property A — Cupertino 95014 (USER-PROVIDED; year-over-year changes VERIFIED against BOE factor table)
+### Property A — Cupertino (USER-PROVIDED; year-over-year changes VERIFIED against BOE factor table)
 
 | Year | Tax (user) | Δ tax | Assessment (user) | Δ AV | Official BOE factor | Match? |
 |---|---|---|---|---|---|---|
@@ -39,7 +39,7 @@ Verification date: 2026-11-06.
 
 Assessment column: **all 11 YoY changes match official BOE inflation factors exactly** (±$1 rounding) — VERIFIED consistency.
 
-### Property B — SF 94122 (USER-PROVIDED)
+### Property B — SF Sunset (USER-PROVIDED)
 
 | Year | Tax (user) | Δ tax | Assessment (user) | Δ AV | BOE factor | Match? |
 |---|---|---|---|---|---|---|

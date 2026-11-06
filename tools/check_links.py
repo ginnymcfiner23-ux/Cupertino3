@@ -28,6 +28,8 @@ for f in html_files:
         else:
             path, frag = href, None
         target = (f.parent / path).resolve() if path else f.resolve()
+        if path and target.is_dir():
+            target = target / "index.html"  # directory links resolve to their index
         if path and not target.exists():
             internal_bad.append((str(f.relative_to(ROOT)), href))
         elif frag:

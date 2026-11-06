@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard | Inheritance decision guide</title>
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f9;color:#1d2530;line-height:1.45}
+header{background:#1f3a5f;color:#fff;padding:14px 22px}
+header h1{margin:0;font-size:20px;font-weight:600}
+header .sub{font-size:12px;opacity:.85;margin-top:2px}
+nav{background:#2a4d7a;padding:8px 22px}
+nav a{color:#fff;text-decoration:none;margin-right:14px;font-size:13px;display:inline-block;padding:3px 0}
+nav a:hover{text-decoration:underline}
+main{padding:18px 22px;max-width:1280px}
+h2{font-size:18px;color:#1f3a5f;margin:26px 0 8px;border-bottom:2px solid #d5deea;padding-bottom:4px}
+h3{font-size:15px;color:#2a4d7a;margin:18px 0 6px}
+.cards{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 14px}
+.card{background:#fff;border:1px solid #d5deea;border-radius:6px;padding:12px 14px;min-width:200px;flex:1}
+.card .k{font-size:12px;color:#55657a;text-transform:uppercase;letter-spacing:.03em}
+.card .v{font-size:22px;font-weight:700;color:#1f3a5f;margin-top:4px}
+.card .n{font-size:12px;color:#55657a;margin-top:4px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;margin:6px 0 16px}
+th{background:#e7edf5;color:#1f3a5f;text-align:left;padding:7px 8px;border-bottom:1px solid #c5d1e2;vertical-align:bottom}
+td{padding:6px 8px;border-bottom:1px solid #edf1f6;vertical-align:top}
+tr:nth-child(even) td{background:#fafbfd}
+td.num,th.num{text-align:right;white-space:nowrap}
+.badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:10px;font-weight:600;white-space:nowrap}
+.ver{background:#d8f0df;color:#14532d}
+.unv{background:#fde9c4;color:#7a4b00}
+.warn{background:#fff3cd;border:1px solid #f0d37a;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:13px}
+.note{background:#eef4fb;border:1px solid #c9d9ee;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:13px}
+.sev-high{color:#9b1c1c;font-weight:700}.sev-medium{color:#7a4b00;font-weight:700}.sev-low{color:#55657a;font-weight:700}
+a{color:#1d5fa8}
+small,.small{font-size:12px;color:#55657a}
+footer{padding:14px 22px;font-size:12px;color:#55657a;border-top:1px solid #d5deea;margin-top:24px}
+.blank{color:#9aa6b5;font-style:italic}
+</style></head>
+<body>
+<header><h1>Inheritance decision guide: Cupertino (A) and San Francisco (B)</h1>
+<div class="sub">Source-linked analysis and projections. Not legal or tax advice. Last updated 2026-11-06.</div></header>
+<nav><a href="index.html" style="font-weight:700">Dashboard</a><a href="executive-summary.html">Executive summary</a><a href="property-tax.html">Property tax &amp; Prop 19</a><a href="federal-estate.html">Federal estate</a><a href="california-tax.html">California tax</a><a href="utilities.html">Water &amp; electricity</a><a href="insurance.html">Insurance</a><a href="rental-sf.html">Property B (SF rental)</a><a href="projections.html">Projections</a><a href="decision-guide.html">Decision guide</a><a href="legislation.html">Pending law</a><a href="inheritance-steps.html">Inheritance steps</a><a href="flagged.html">Flagged for Review</a><a href="sources.html">Sources</a></nav>
+<main>
+<h2>Dashboard</h2>
+
+<div class="cards">
+ <div class="card"><div class="k">Property A projected value at 2045 (base)</div><div class="v">$4,643,984</div><div class="n">Projection; client estimate $3.1M in 2026 (UNVERIFIED), 2.15%/yr reference.</div></div>
+ <div class="card"><div class="k">A tax at 2045 if heir lives in (Prop 19)</div><div class="v">$42,473</div><div class="n">vs $54,799 if reassessed to market</div></div>
+ <div class="card"><div class="k">Property B projected value at 2045 (base)</div><div class="v">$2,696,507</div><div class="n">Projection; client estimate $1.8M in 2026 (UNVERIFIED).</div></div>
+ <div class="card"><div class="k">Federal estate headroom at 2045 (illustrative)</div><div class="v">$14,511,676</div><div class="n">Exclusion indexed at 2%/yr (assumption) minus A+B value.</div></div>
+ <div class="card"><div class="k">Verified rows / unverified rows</div><div class="v">48 / 12</div><div class="n">Unverified values are left blank and listed on the Flagged page.</div></div>
+ <div class="card"><div class="k">Flagged for review</div><div class="v">18</div><div class="n">Irregularities and open items.</div></div>
+</div>
+<div class="note"><strong>How to read this site.</strong> Verified rows link to official sources (.gov, state legislature, BOE, county, utilities, IRS). Client-provided values (labelled UNVERIFIED) are used only as inputs to projections and are never shown as verified facts. Projections are not forecasts.</div>
+<h2>Start here</h2>
+<div class="cards">
+ <div class="card"><div class="k">Read first</div><div class="v" style="font-size:16px"><a href="executive-summary.html">Executive summary</a></div><div class="n">Key findings, the decision, and the caveats.</div></div>
+ <div class="card"><div class="k">Decision</div><div class="v" style="font-size:16px"><a href="decision-guide.html">Live, rent, or sell</a></div><div class="n">Side-by-side comparison of options.</div></div>
+ <div class="card"><div class="k">Projections</div><div class="v" style="font-size:16px"><a href="projections.html">Year-by-year 2026-2050</a></div><div class="n">Value, assessed value, tax, and costs.</div></div>
+ <div class="card"><div class="k">Review</div><div class="v" style="font-size:16px"><a href="flagged.html">Flagged for Review</a></div><div class="n">Items that need confirmation before use.</div></div>
+</div>
+<h2>Categories</h2>
+<table><thead><tr><th>Category</th><th>What it covers</th><th>Page</th></tr></thead><tbody><tr><td>Property tax & Prop 19</td><td>Prop 13 / Prop 19 rules, tax rates, client tax history (unverified)</td><td><a href="property-tax.html">property-tax.html</a></td></tr><tr><td>Federal estate & gift</td><td>2026 exclusion, rates, basis step-up, income-tax thresholds</td><td><a href="federal-estate.html">federal-estate.html</a></td></tr><tr><td>California tax</td><td>No state estate/inheritance tax; income and capital gains rules</td><td><a href="california-tax.html">california-tax.html</a></td></tr><tr><td>Water & electricity</td><td>SJW (Cupertino), SFPUC (SF), PG&E / SVCE, net billing</td><td><a href="utilities.html">utilities.html</a></td></tr><tr><td>Insurance</td><td>CDI tools; premium data not verified</td><td><a href="insurance.html">insurance.html</a></td></tr><tr><td>Property B (SF rental)</td><td>Rent Board, owner-occupied unit rules, rental scenarios</td><td><a href="rental-sf.html">rental-sf.html</a></td></tr><tr><td>Projections</td><td>Year-by-year model 2026-2050 and sensitivity</td><td><a href="projections.html">projections.html</a></td></tr><tr><td>Decision guide</td><td>Live, rent, or sell comparison</td><td><a href="decision-guide.html">decision-guide.html</a></td></tr><tr><td>Pending law</td><td>Watchlist with status</td><td><a href="legislation.html">legislation.html</a></td></tr><tr><td>Inheritance steps</td><td>Step-by-step process</td><td><a href="inheritance-steps.html">inheritance-steps.html</a></td></tr><tr><td>Flagged for Review</td><td>Irregularities, unverified values, open questions</td><td><a href="flagged.html">flagged.html</a></td></tr><tr><td>Sources</td><td>Full list with official links</td><td><a href="sources.html">sources.html</a></td></tr></tbody></table>
+<div class="warn"><strong>Privacy.</strong> This site contains no personal identifiers. Parcel numbers, owner names, addresses, and ZIP codes are not included. Property locations are given at city and county level only.</div>
+</main>
+<footer>Projections use labelled assumptions and client inputs (marked UNVERIFIED). Official sources are linked in each table. Source list: <a href="sources.html">sources.html</a>. Model: <code>model/guide_project.py</code>. Generated by <code>scripts/guide_build_site.py</code>.</footer>
+</body></html>

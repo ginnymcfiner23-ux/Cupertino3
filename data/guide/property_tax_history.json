@@ -1,0 +1,183 @@
+{
+  "status": "UNVERIFIED - client-provided values, not checked against an assessor record (no APN/parcel lookup performed). Shown for reference only; the verified column is blank.",
+  "property_A_cupertino": [
+    {
+      "year": 2014,
+      "assessed": 440305,
+      "assessed_change": "+0.5%",
+      "tax": 5965,
+      "tax_change": null,
+      "source": "client"
+    },
+    {
+      "year": 2016,
+      "assessed": 455949,
+      "assessed_change": "+1.5%",
+      "tax": 6414,
+      "tax_change": null,
+      "source": "client"
+    },
+    {
+      "year": 2017,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 6383,
+      "tax_change": "-0.5%",
+      "source": "client"
+    },
+    {
+      "year": 2018,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 6383,
+      "tax_change": null,
+      "source": "client"
+    },
+    {
+      "year": 2019,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 6565,
+      "tax_change": "+2.8%",
+      "source": "client"
+    },
+    {
+      "year": 2020,
+      "assessed": 493530,
+      "assessed_change": null,
+      "tax": 6565,
+      "tax_change": null,
+      "source": "client"
+    },
+    {
+      "year": 2021,
+      "assessed": 498642,
+      "assessed_change": "+1%",
+      "tax": 6662,
+      "tax_change": "+1.5%",
+      "source": "client"
+    },
+    {
+      "year": 2022,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 6755,
+      "tax_change": "+1.4%",
+      "source": "client"
+    },
+    {
+      "year": 2023,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 6917,
+      "tax_change": "+2.4%",
+      "source": "client"
+    },
+    {
+      "year": 2024,
+      "assessed": 529161,
+      "assessed_change": null,
+      "tax": 7003,
+      "tax_change": "+1.2%",
+      "source": "client"
+    },
+    {
+      "year": 2025,
+      "assessed": 539743,
+      "assessed_change": null,
+      "tax": 7207,
+      "tax_change": "+2.9%",
+      "source": "client"
+    },
+    {
+      "year": 2026,
+      "assessed": 550537,
+      "assessed_change": "+2%",
+      "tax": null,
+      "tax_change": null,
+      "source": "client"
+    }
+  ],
+  "property_B_sf": [
+    {
+      "year": 2016,
+      "assessed": 96557,
+      "assessed_change": "+1.5%",
+      "tax": 1675,
+      "tax_change": "+1.6%",
+      "source": "client"
+    },
+    {
+      "year": 2017,
+      "assessed": 98488,
+      "assessed_change": "+2%",
+      "tax": 1740,
+      "tax_change": "+3.9%",
+      "source": "client"
+    },
+    {
+      "year": 2018,
+      "assessed": 100456,
+      "assessed_change": "+2%",
+      "tax": 2061,
+      "tax_change": "+18.4%",
+      "source": "client"
+    },
+    {
+      "year": 2019,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 2134,
+      "tax_change": "+3.5%",
+      "source": "client"
+    },
+    {
+      "year": 2020,
+      "assessed": 104513,
+      "assessed_change": null,
+      "tax": 2197,
+      "tax_change": "+3%",
+      "source": "client"
+    },
+    {
+      "year": 2021,
+      "assessed": 105595,
+      "assessed_change": "+1%",
+      "tax": 2066,
+      "tax_change": "-5.9%",
+      "source": "client"
+    },
+    {
+      "year": 2022,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 2107,
+      "tax_change": "+2%",
+      "source": "client"
+    },
+    {
+      "year": 2023,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 2179,
+      "tax_change": "+3.4%",
+      "source": "client"
+    },
+    {
+      "year": 2024,
+      "assessed": null,
+      "assessed_change": null,
+      "tax": 2315,
+      "tax_change": "+6.2%",
+      "source": "client"
+    },
+    {
+      "year": 2025,
+      "assessed": 114248,
+      "assessed_change": "+2%",
+      "tax": 2439,
+      "tax_change": "+5.3%",
+      "source": "client"
+    }
+  ]
+}

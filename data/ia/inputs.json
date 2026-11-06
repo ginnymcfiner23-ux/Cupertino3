@@ -1,0 +1,64 @@
+{
+  "valuation_year": 2026,
+  "horizon_end": 2060,
+  "inheritance_years": [2040, 2045, 2050],
+  "base_illustration_year": 2045,
+  "note": "Client inputs are provided by the account holder. They are NOT verified against official sources and are used only as labeled modeling inputs. Assumptions are planning choices, not facts. Every published projection shows which is which.",
+  "properties": {
+    "A": {
+      "label": "Property A (Cupertino, Santa Clara County, CA)",
+      "market_value_2026": {"value": 3100000, "status": "client input (UNVERIFIED)", "flag": "FL-01"},
+      "assessed_value_2025": {"value": 539743, "status": "client input (UNVERIFIED)", "flag": "FL-02"},
+      "tax_2025": {"value": 7207, "status": "client input (UNVERIFIED)", "flag": "FL-02"},
+      "assessed_value_2026_projection": {"value": 550537, "status": "client projection (+2%); official 2026-27 roll not provided", "flag": "FL-02"},
+      "water_monthly": {"low": 100, "high": 150, "mid": 125, "status": "client range (UNVERIFIED); SJW advice letter reference at 10 CCF = $141.73 (S14)", "flag": "FL-11"},
+      "electricity_solar_credit_monthly": {"low": 10, "high": 20, "mid": 15, "status": "client claim (UNVERIFIED); conflicts with fixed-charge rules (FL-05)", "flag": "FL-05"},
+      "fixed_charge_monthly": {"value": 24.15, "status": "CPUC document (S28)", "flag": ""},
+      "insurance_annual": {"value": 1500, "status": "client estimate (UNVERIFIED)", "flag": "FL-04"},
+      "maintenance_pct_of_value": {"value": 0.005, "status": "planning assumption (no official source)", "flag": "FL-15"},
+      "units": 1
+    },
+    "B": {
+      "label": "Property B (San Francisco, CA; 3 livable units)",
+      "market_value_2026": {"value": 1800000, "status": "client input (UNVERIFIED)", "flag": "FL-01"},
+      "assessed_value_2025": {"value": 114248, "status": "client input (UNVERIFIED)", "flag": "FL-03"},
+      "tax_2025": {"value": 2439, "status": "client input (UNVERIFIED)", "flag": "FL-03"},
+      "water_sewer_monthly": {"low": 330, "high": 400, "mid": 365, "status": "client range (UNVERIFIED); SFPUC average single-family bill is $171/mo (S29), different building type", "flag": "FL-11"},
+      "electricity_monthly": {"low": 30, "high": 70, "mid": 50, "status": "client range (UNVERIFIED)", "flag": "FL-11"},
+      "insurance_annual": {"value": 1500, "status": "client estimate (UNVERIFIED); landlord policy may differ", "flag": "FL-04"},
+      "rent_monthly_total_two_units": {"value": 7150, "status": "client input (UNVERIFIED)", "flag": "FL-16"},
+      "units": 3,
+      "units_rented": 2,
+      "units_owner_usable": 1,
+      "maintenance_pct_of_value": {"value": 0.01, "status": "planning assumption (no official source)", "flag": "FL-15"}
+    }
+  },
+  "assumptions": {
+    "unit_share_occupied_when_one_unit_lived_in": {"value": 0.3333, "status": "assumption: equal split among 3 units; assessor determines allocation", "flag": "FL-17"},
+    "prop13_growth": {"value": 0.02, "status": "official cap: 1.02 factor (S11)"},
+    "prop19_value_limit_2025": {"value": 1044586, "status": "official (S04)"},
+    "prop19_limit_index_follows_inflation": {"value": true, "status": "assumption (the limit is CCPI-adjusted per BOE; future indexing rule not final)", "flag": "FL-18"},
+    "homeowners_exemption": {"value": 7000, "status": "official (S13)"},
+    "county_transfer_tax_rate": {"value": 0.0011, "status": "official county rate $1.10 per $1,000 (S25); city taxes excluded (FL-13)"},
+    "sale_brokerage_pct": {"value": 0.05, "status": "planning assumption (no official source)", "flag": "FL-15"},
+    "stepped_up_basis_gain_at_sale": {"value": 0, "status": "assumes sale right after inheritance at date-of-death value (IRC 1014; see FL-07)"},
+    "investment_yield_taxable_share": {"value": 0.02, "status": "planning assumption"},
+    "federal_ltcg_rate": {"value": 0.15, "status": "2026 threshold band (S10); rate for the typical middle band"},
+    "niit_rate": {"value": 0.038, "status": "official (S23)"},
+    "ca_marginal_rate_for_heir": {"value": 0.093, "status": "official rate bracket (S24); heir's actual bracket not known"},
+    "federal_ordinary_rate_for_heir": {"value": 0.24, "status": "planning assumption; heir's bracket not known"},
+    "rental_marginal_tax_rate": {"value": 0.371, "status": "sum of 24% federal + 9.3% CA + 3.8% NIIT (assumed heir profile)", "flag": "FL-19"},
+    "depreciation_building_share": {"value": 0.8, "status": "planning assumption (land share not known)"},
+    "depreciation_years": {"value": 27.5, "status": "residential rental useful life (IRS Pub 527, S21)"},
+    "federal_estate_tax_applies": {"value": false, "status": "combined estate assumed below $15M basic exclusion (other assets unknown; FL-20)"}
+  },
+  "scenarios": {
+    "low":  {"label": "Low-growth stress", "inflation": 0.02, "appreciation": 0.0,   "investment_return": 0.04, "rent_growth_sf": 0.016, "status": "assumption"},
+    "base": {"label": "Base case",         "inflation": 0.025, "appreciation": 0.025, "investment_return": 0.06, "rent_growth_sf": 0.016, "status": "assumption (inflation 2% Fed goal to 3.7% CPI range; S17, S18)"},
+    "high": {"label": "High-inflation stress", "inflation": 0.037, "appreciation": 0.04, "investment_return": 0.08, "rent_growth_sf": 0.037, "status": "assumption (CPI 3.7% in Sep 2026, S17)"}
+  },
+  "electricity_modes": {
+    "official_floor": {"label": "Fixed charge not offset (CPUC $24.15) and client credit applies to energy only", "monthly_net_cost": 9.15},
+    "client_claim": {"label": "Client claim taken at face value (credit of $15/mo net)", "monthly_net_cost": -15}
+  }
+}
