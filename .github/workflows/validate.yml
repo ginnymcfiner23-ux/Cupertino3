@@ -1,0 +1,15 @@
+name: Validate static site
+on:
+  push:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate links, source citations, and document structure
+        run: python3 scripts/validate_site.py
