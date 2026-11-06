@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Projection model for the two anonymized properties (standard library only).
 
-Reads  data/inputs.json   (client inputs are UNVERIFIED; assumptions are labeled)
-Writes data/projections.json
+Reads  data/ia/inputs.json   (client inputs are UNVERIFIED; assumptions are labeled)
+Writes data/ia/projections.json
 
 Method (every step is a modeling choice unless an official source is cited in inputs.json):
   * Prop 13 path (no transfer): assessed value grows 2%/yr (BOE factor 1.02, S11).
@@ -26,7 +26,7 @@ import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-INP = json.loads((ROOT / "data/inputs.json").read_text())
+INP = json.loads((ROOT / "data/ia/inputs.json").read_text())
 
 V0 = INP["valuation_year"]              # 2026 valuation date
 END = INP["horizon_end"]                # 2060 common end date for comparisons
@@ -381,6 +381,6 @@ def build():
 
 if __name__ == "__main__":
     result = build()
-    path = ROOT / "data/projections.json"
+    path = ROOT / "data/ia/projections.json"
     path.write_text(json.dumps(result, indent=2) + "\n")
     print("wrote", path)

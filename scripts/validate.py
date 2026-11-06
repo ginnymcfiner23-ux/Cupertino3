@@ -12,6 +12,7 @@ Exit code 0 only if every check passes. Checks:
      precise ZIP codes, e-mail addresses, owner or location details).
   8. Projection sanity: sell beats keep for every test year and case (same assertion as the build).
 """
+import hashlib
 import html.parser
 import json
 import pathlib
@@ -19,6 +20,15 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+# SHA-256 digests of lower-cased owner/location terms (the terms themselves are not stored in the repository)
+PERSONAL_DIGESTS = {
+    "ae16e3e7a45d4a88b998b2ee95a8b6f3fe1fc68b493dfaf2fab88f9a5f150f30",
+    "fc15d22c9db9957ba867cd618f5ef0cba3c58097295fe48ed2858e922586ac40",
+    "63c8807c2fd92b19aaf72de8e65052e29fb918197ee33e3aafcbfe1d0347a436",
+    "1843653496800edfd0d30326c82f53b0338ed408468cca4a2f1b52f2f6395fc9",
+    "5843d8f2dc746d1ceff22fdd8dc2927c4a71cfcf6641567112c84fef3eb7667a",
+    "7932c4cf48786698998f177ad4b0a4af50ace723b0a64d572e643e49aefd2d4f",
+}
 errors, warnings = [], []
 
 
@@ -27,18 +37,18 @@ def err(msg):
 
 
 # ---------- 1-3: data ----------
-sources = json.loads((ROOT / "data/sources.json").read_text())["sources"]
+sources = json.loads((ROOT / "data/ia/sources.json").read_text())["sources"]
 ids = [s["id"] for s in sources]
 if len(ids) != len(set(ids)):
     err("duplicate source IDs")
 src_by_id = {s["id"]: s for s in sources}
 src_urls = {s["url"] for s in sources}
 
-facts = json.loads((ROOT / "data/facts.json").read_text())
-flags = json.loads((ROOT / "data/flags.json").read_text())["flags"]
+facts = json.loads((ROOT / "data/ia/facts.json").read_text())
+flags = json.loads((ROOT / "data/ia/flags.json").read_text())["flags"]
 flag_ids = {f["id"] for f in flags}
-inputs = json.loads((ROOT / "data/inputs.json").read_text())
-proj = json.loads((ROOT / "data/projections.json").read_text())
+inputs = json.loads((ROOT / "data/ia/inputs.json").read_text())
+proj = json.loads((ROOT / "data/ia/projections.json").read_text())
 
 fact_ids = []
 for cat in facts["categories"]:
@@ -90,7 +100,8 @@ for T in proj["meta"]["inheritance_years_tested"]:
             err(f"projection: B sell not above keep at {T}/{sk}")
 
 # ---------- 4-7: built site ----------
-PAGES = [p for p in ROOT.rglob("index.html") if "archive" not in p.relative_to(ROOT).parts]
+OWN_DIRS = {"facts", "property", "costs", "projections", "decision", "process", "law", "flagged", "sources"}
+PAGES = [ROOT / "index.html"] + [ROOT / d / "index.html" for d in sorted(OWN_DIRS)]
 page_set = {p.relative_to(ROOT).as_posix() for p in PAGES}
 
 
@@ -149,20 +160,22 @@ for p in PAGES:
         if not r["link"]:
             err(f"{rel}: table row without a source/flag link: {r['text'][:80]!r}")
 
-    # personal-information scan (visible text + link targets)
+    # personal-information scan (visible text). Owner/location terms are stored as SHA-256 digests,
+    # so the literal strings never appear in the repository.
     visible = re.sub(r"<[^>]+>", " ", text)
     patterns = {
         "street address": r"\b\d{1,5}\s+[A-Z][a-zA-Z]+\s+(St|Street|Ave|Avenue|Road|Rd|Way|Drive|Dr|Blvd|Lane|Ln|Court|Ct|Place|Pl)\b",
         "parcel/APN": r"\b\d{3}-\d{3}-\d{3}\b",
-        "precise ZIP": r"\b(95014|94122|94123|94116)\b",
+        "CA ZIP code": r"\b9[0-6]\d{3}\b",
         "e-mail": r"[\w.+-]+@[\w-]+\.[\w.]+",
-        "location of the account holder": r"Naaldwijk|South Holland|Netherlands|\bNL\b",
-        "owner name fragments": r"[Gg]inny|[Mm]c[Ff]iner",
-        "account-holder location (country)": r"\bNetherlands\b|\bNL\b",
     }
     for label, pat in patterns.items():
         if re.search(pat, visible):
             err(f"{rel}: personal-information pattern found ({label})")
+    for tok in re.findall(r"[A-Za-z][A-Za-z0-9-]*", visible):
+        if hashlib.sha256(tok.lower().encode()).hexdigest() in PERSONAL_DIGESTS:
+            err(f"{rel}: personal-information term found")
+            break
 
     # links
     for href in sc.links:
@@ -172,7 +185,7 @@ for p in PAGES:
                 err(f"{rel}: missing in-page anchor {href}")
             continue
         if href.startswith("http://") or href.startswith("https://"):
-            if href not in src_urls and not href.startswith("https://github.com/ginnymcfiner23-ux/Cupertino3"):
+            if href not in src_urls:
                 err(f"{rel}: external link not registered in sources.json: {href}")
             continue
         target, _, frag = href.partition("#")

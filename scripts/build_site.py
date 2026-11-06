@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Build the static GitHub Pages site from data/*.json (standard library only).
+"""Build the static GitHub Pages site from data/ia/*.json (standard library only).
 
 Writes (relative to repo root):
   index.html, facts/, property/, costs/, projections/, decision/, process/, law/,
   flagged/, sources/, assets/site.css, assets/site.js
 
-All numbers come from data/projections.json (scripts/model.py) or the register files.
-Every table row carries a source link: an official URL from data/sources.json, or a link
+All numbers come from data/ia/projections.json (scripts/model.py) or the register files.
+Every table row carries a source link: an official URL from data/ia/sources.json, or a link
 to the matching Flagged-for-Review entry when the value is UNVERIFIED.
 """
 import html
@@ -15,7 +15,7 @@ import pathlib
 import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-D = ROOT / "data"
+D = ROOT / "data" / "ia"
 BUILD_DATE = "2026-11-06"
 
 SOURCES = {s["id"]: s for s in json.loads((D / "sources.json").read_text())["sources"]}
@@ -115,7 +115,7 @@ def page(title, depth, active, body, desc=""):
 </main>
 <footer>
   <p>Anonymized planning dashboard. No names, addresses, parcel numbers or precise ZIP codes are published. Client figures are labeled as client inputs and are unverified. Projections are modeled outcomes, not forecasts. Not legal, tax, insurance or investment advice; confirm with qualified professionals.</p>
-  <p>Built from <code>data/*.json</code> by <code>scripts/build_site.py</code>. Model: <code>scripts/model.py</code>. Checks: <code>scripts/validate.py</code>.</p>
+  <p>Built from <code>data/ia/*.json</code> by <code>scripts/build_site.py</code>. Model: <code>scripts/model.py</code>. Checks: <code>scripts/validate.py</code>.</p>
 </footer>
 <script src="{prefix}assets/site.js"></script>
 </body></html>
