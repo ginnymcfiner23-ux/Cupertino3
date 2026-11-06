@@ -171,6 +171,16 @@
       "sources": [
         "S17"
       ]
+    },
+    {
+      "id": "IR18",
+      "severity": "high",
+      "property": "All",
+      "title": "Two analyses in this repository disagree on some results",
+      "detail": "The root site (session c1b5796b, merged with PR #4) and the docs/ analysis (session 340c906c) use different assumptions from this guide. Examples: the root site's headline says selling is the strongest plan for both properties; this guide says selling beats holding Property A and that the Property B result is close in the base case. The 2045 Property A tax and break-even rent also differ. Do not combine the figures. Reconcile the assumptions before relying on any single number.",
+      "sources": [
+        "S06"
+      ]
     }
   ]
 }
