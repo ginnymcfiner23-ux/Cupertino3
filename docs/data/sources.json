@@ -1,0 +1,284 @@
+{
+  "retrieved_on": "2026-11-06",
+  "status_legend": {
+    "verified": "Official page or document was fetched and the cited figure was read from it.",
+    "partially_verified": "Official URL appeared in search results with matching text, or only part of the document was read. Re-check before relying on it.",
+    "pending": "Official source identified but not yet read; any figure is NOT used in calculations.",
+    "secondary_only": "Only non-official sources found. Never used in a table cell; shown only on the Flagged for Review page.",
+    "user": "Supplied by the site owner. Not independently verified."
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "CA State Board of Equalization (BOE)",
+      "title": "LTA 2026/002 - 2026-27 California Consumer Price Index (inflation factor 1.02 and full factor table 1976-2026)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta26002.pdf",
+      "status": "verified",
+      "used_for": "Prop 13 2% cap; annual factor for each roll year; AV check"
+    },
+    {
+      "id": "S02",
+      "publisher": "CA State Board of Equalization (BOE)",
+      "title": "LTA 2025/009 - Prop 19 $1 million amount adjusted to $1,044,586 (2/16/2025-2/15/2027)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "status": "verified",
+      "used_for": "Prop 19 value-cap add-on"
+    },
+    {
+      "id": "S03",
+      "publisher": "CA State Board of Equalization (BOE)",
+      "title": "LTA 2026/026 - Prop 19 intergenerational transfer FAQ (occupancy, trusts, LLCs, multi-unit, filing rules)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "status": "partially_verified",
+      "used_for": "Prop 19 eligibility rules; read chunks 0-2, 5, 6 of 11"
+    },
+    {
+      "id": "S04",
+      "publisher": "CA State Board of Equalization (BOE)",
+      "title": "Proposition 19 - Parent-Child and Grandparent-Grandchild Transfers (FAQ, including value-limit example)",
+      "url": "https://www.boe.ca.gov/prop19/",
+      "status": "verified",
+      "used_for": "Value-limit example; continuous occupancy; not retroactive; date of death"
+    },
+    {
+      "id": "S05",
+      "publisher": "CA State Board of Equalization (BOE)",
+      "title": "Homeowners' Exemption ($7,000 reduction; file BOE-266 with assessor)",
+      "url": "https://www.boe.ca.gov/proptaxes/homeowners_exemption.htm",
+      "status": "partially_verified",
+      "used_for": "Homeowners' exemption amount and claim process (text seen in search results)"
+    },
+    {
+      "id": "S06",
+      "publisher": "CA State Board of Equalization (BOE), Legislative Division",
+      "title": "Senate Bill 974 (Seyarto) - Legislative Bill Analysis, amended March 25 2026, analysis dated April 17 2026 (RTC 63.2 trust definition; Prop 19 value-limit formula)",
+      "url": "https://boe.ca.gov/legdiv/pdf/0974sb032526rd.pdf",
+      "status": "verified",
+      "used_for": "Prop 19 value-limit formula; $1 million HPI adjustment; pending bill"
+    },
+    {
+      "id": "S07",
+      "publisher": "IRS",
+      "title": "IR-2025-103 - IRS releases tax inflation adjustments for tax year 2026 (estate exclusion $15,000,000; gift exclusion $19,000; brackets)",
+      "url": "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+      "status": "verified",
+      "used_for": "2026 federal exclusion and gift exclusion"
+    },
+    {
+      "id": "S08",
+      "publisher": "IRS",
+      "title": "Rev. Proc. 2025-32 (2026 inflation adjustments; capital gain thresholds s.4.03; basic exclusion s.2.14)",
+      "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "status": "verified",
+      "used_for": "2026 long-term capital gain thresholds; basic exclusion indexed from 2027"
+    },
+    {
+      "id": "S09",
+      "publisher": "IRS",
+      "title": "Estate Tax (filing threshold table: 2026 = $15,000,000)",
+      "url": "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax",
+      "status": "verified",
+      "used_for": "Estate tax filing threshold by year"
+    },
+    {
+      "id": "S10",
+      "publisher": "IRS",
+      "title": "Publication 551 (12/2025) - Basis of Assets (inherited property basis = FMV at date of death)",
+      "url": "https://www.irs.gov/publications/p551",
+      "status": "partially_verified",
+      "used_for": "Inherited-property basis; community property rule (read chunks 0, 3, 10, 11 of 17)"
+    },
+    {
+      "id": "S11",
+      "publisher": "IRS",
+      "title": "Topic No. 409 - Capital Gains and Losses (collectibles 28%; unrecaptured s.1250 gain 25%)",
+      "url": "https://www.irs.gov/taxtopics/tc409",
+      "status": "partially_verified",
+      "used_for": "Special-rate gain categories. The page's 2025 bracket figures are NOT used; 2026 figures come from S08."
+    },
+    {
+      "id": "S12",
+      "publisher": "IRS",
+      "title": "Topic No. 559 - Net Investment Income Tax (3.8%; $200,000 single threshold)",
+      "url": "https://www.irs.gov/taxtopics/tc559",
+      "status": "verified",
+      "used_for": "NIIT rate and threshold"
+    },
+    {
+      "id": "S13",
+      "publisher": "IRS",
+      "title": "Topic No. 703 - Basis of Assets",
+      "url": "https://www.irs.gov/taxtopics/tc703",
+      "status": "verified",
+      "used_for": "Basis rules for inherited property"
+    },
+    {
+      "id": "S14",
+      "publisher": "IRS",
+      "title": "Instructions for Form 706 (Rev. July 2026) - Form 706 due 9 months after date of death; Form 4768 6-month extension",
+      "url": "https://www.irs.gov/instructions/i706",
+      "status": "partially_verified",
+      "used_for": "Form 706 deadline; estate tax top rate reference"
+    },
+    {
+      "id": "S15",
+      "publisher": "Franchise Tax Board (FTB)",
+      "title": "2026 Form 540 Tax Rate Schedules (PDF)",
+      "url": "https://www.ftb.ca.gov/forms/2026/2026-540-tax-rate-schedules.pdf",
+      "status": "pending",
+      "used_for": "NOT USED. Not yet read. Bracket figures are not shown on this site."
+    },
+    {
+      "id": "S16",
+      "publisher": "Franchise Tax Board (FTB)",
+      "title": "Capital Gains and Losses (California taxes gains as ordinary income)",
+      "url": "https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html",
+      "status": "partially_verified",
+      "used_for": "No separate California capital-gains rate"
+    },
+    {
+      "id": "S17",
+      "publisher": "Franchise Tax Board (FTB)",
+      "title": "Summary of Federal Income Tax Changes (California rates 1% to 12.3%; non-conformity to OBBBA individual rates)",
+      "url": "https://www.ftb.ca.gov/about-ftb/data-reports-plans/summary-of-federal-income-tax-changes/index.html",
+      "status": "partially_verified",
+      "used_for": "California rate range"
+    },
+    {
+      "id": "S18",
+      "publisher": "Legislative Analyst's Office (LAO)",
+      "title": "California's Tax System - Tax Primer (1982 Prop 6 repealed the inheritance tax; pickup estate tax inapplicable after 2005)",
+      "url": "https://lao.ca.gov/2007/tax_primer/tax_primer_040907.aspx",
+      "status": "partially_verified",
+      "used_for": "No California inheritance or estate tax (historic source; current confirmation pending)"
+    },
+    {
+      "id": "S19",
+      "publisher": "California State Assembly, Revenue and Taxation Committee",
+      "title": "Glossary of Terms, Chapter 8 (inheritance tax repealed June 1982; federal state-death-tax credit repealed 2005)",
+      "url": "https://arev.assembly.ca.gov/sites/arev.assembly.ca.gov/files/publications/Chapter_8.pdf",
+      "status": "partially_verified",
+      "used_for": "No California inheritance or estate tax (historic source)"
+    },
+    {
+      "id": "S20",
+      "publisher": "California Department of Insurance (CDI)",
+      "title": "Home / Residential insurance consumer page (links to Compare Premiums, Home Insurance Finder, FAIR Plan). No premium averages on this page.",
+      "url": "https://www.insurance.ca.gov/01-consumers/105-type/5-residential/index.cfm",
+      "status": "verified",
+      "used_for": "Official starting point for premium checks; no premium figure on the page"
+    },
+    {
+      "id": "S21",
+      "publisher": "California FAIR Plan Association",
+      "title": "Dwelling Fire Policy (owner-occupied 1-4 unit dwellings and 1-4 unit rentals are eligible; named perils)",
+      "url": "https://www.cfpnet.com/policies/dwelling/",
+      "status": "verified",
+      "used_for": "FAIR Plan dwelling eligibility"
+    },
+    {
+      "id": "S22",
+      "publisher": "California Public Utilities Commission (CPUC)",
+      "title": "Net Energy Metering and Net Billing (NEM 2.0 customers may remain on the tariff for 20 years from interconnection; D.14-03-041)",
+      "url": "https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing",
+      "status": "partially_verified",
+      "used_for": "Legacy solar tariff term"
+    },
+    {
+      "id": "S23",
+      "publisher": "San Jose Water Company (CPUC-filed tariff)",
+      "title": "Schedule No. 1B - General Metered Service, residential quantity rates per Ccf, revised July 2026 (Advice Letter 629A)",
+      "url": "https://www.sjwater.com/media/2ubbkexp/schedule-1b-al629a-july-2026.pdf",
+      "status": "partially_verified",
+      "used_for": "Residential water tiers (Property A's water utility; confirm the parcel's provider)"
+    },
+    {
+      "id": "S24",
+      "publisher": "San Francisco Public Utilities Commission (SFPUC)",
+      "title": "Proposed Water and Sewer Rates 2026 - Proposition 218 Notice (average household +$21/month FY2027 and +$23/month FY2028; proposed, effective July 1 2026 if approved)",
+      "url": "https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026/what-proposition-218",
+      "status": "partially_verified",
+      "used_for": "SF water and sewer rate proposal (adoption status to be confirmed)"
+    },
+    {
+      "id": "S25",
+      "publisher": "US Bureau of Labor Statistics (BLS)",
+      "title": "Consumer Price Index Summary - September 2026 (all items +3.7% over 12 months; electricity +4.4%)",
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "status": "verified",
+      "used_for": "Latest inflation and electricity escalator"
+    },
+    {
+      "id": "S26",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "title": "Monetary Policy Report, July 2026 (Statement on Longer-Run Goals: 2 percent PCE inflation)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-statement.htm",
+      "status": "partially_verified",
+      "used_for": "Base inflation assumption (2% longer-run goal)"
+    },
+    {
+      "id": "S27",
+      "publisher": "City and County of San Francisco - Rent Board",
+      "title": "Annual Rent Increase for 3/1/26 - 2/28/27 Announced (1.6% allowable increase for rent-controlled units)",
+      "url": "https://www.sf.gov/news--annual-rent-increase-3126-22827-announced",
+      "status": "verified",
+      "used_for": "SF rent growth ceiling for rent-controlled units"
+    },
+    {
+      "id": "S28",
+      "publisher": "City and County of San Francisco - Assessor-Recorder",
+      "title": "Assessor-Recorder (2026-2027 Assessment Roll released July 17 2026; Prop 19 information)",
+      "url": "https://www.sf.gov/departments--assessor-recorder",
+      "status": "verified",
+      "used_for": "Official SF assessment lookup and Prop 19 information"
+    },
+    {
+      "id": "S29",
+      "publisher": "County of Santa Clara - Office of the Assessor",
+      "title": "Assessor home (Property Search; Assessment Look-Up)",
+      "url": "https://asr.santaclaracounty.gov/home",
+      "status": "verified",
+      "used_for": "Official Cupertino assessment lookup"
+    },
+    {
+      "id": "S30",
+      "publisher": "California Secretary of State",
+      "title": "Initiatives and Referenda Withdrawn or Failed to Qualify (lists the last 60 days only)",
+      "url": "https://www.sos.ca.gov/elections/ballot-measures/initiative-and-referendum-status/failed-qualify",
+      "status": "partially_verified",
+      "used_for": "Ballot status check. Does not show the Prop 19 repeal initiative (outside the 60-day window); see flags."
+    },
+    {
+      "id": "S31",
+      "publisher": "US Congress (congress.gov)",
+      "title": "S.587 - Death Tax Repeal Act of 2025 (introduced 02/13/2025; referred to Senate Finance; latest action 02/13/2025)",
+      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/587/all-info",
+      "status": "verified",
+      "used_for": "Federal repeal proposal status"
+    },
+    {
+      "id": "S32",
+      "publisher": "US Congress (congress.gov)",
+      "title": "H.R.1301 - Death Tax Repeal Act (introduced 02/13/2025; referred to House Ways and Means)",
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/1301/text",
+      "status": "partially_verified",
+      "used_for": "Federal repeal proposal status (House companion)"
+    },
+    {
+      "id": "S34",
+      "publisher": "US Department of Housing and Urban Development (HUD)",
+      "title": "Fair Market Rents (FMR) data portal - not yet read; reserved for a Property A rent benchmark",
+      "url": "https://www.huduser.gov/portal/datasets/fmr.html",
+      "status": "pending",
+      "used_for": "NOT USED. Placeholder for a future official rent check."
+    },
+    {
+      "id": "S33",
+      "publisher": "User (site owner)",
+      "title": "User (site owner): property tax tables, assessed values, market estimates, rent, utility and insurance figures (supplied in the session; anonymized). Assessed values checked against S01; county figures can be checked at S29 and S28.",
+      "url": "https://asr.santaclaracounty.gov/home",
+      "status": "user",
+      "used_for": "All user-supplied figures. Each one is labelled UNVERIFIED unless a row says otherwise."
+    }
+  ]
+}

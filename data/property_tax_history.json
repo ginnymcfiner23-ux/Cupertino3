@@ -1,0 +1,823 @@
+{
+  "generated_from": "tools/build_data.py (user tables; BOE LTA 2026/002 factors)",
+  "boe_factors_used": {
+    "2014": 1.00454,
+    "2015": 1.01998,
+    "2016": 1.01525,
+    "2017": 1.02,
+    "2018": 1.02,
+    "2019": 1.02,
+    "2020": 1.02,
+    "2021": 1.01036,
+    "2022": 1.02,
+    "2023": 1.02,
+    "2024": 1.02,
+    "2025": 1.02,
+    "2026": 1.02
+  },
+  "derived_effective_rates": {
+    "A": {
+      "year": 2025,
+      "tax": 7207,
+      "av": 539743,
+      "rate_pct": 1.335
+    },
+    "B": {
+      "year": 2025,
+      "tax": 2439,
+      "av": 114248,
+      "rate_pct": 2.135
+    }
+  },
+  "rows": [
+    {
+      "property": "A",
+      "year": 2014,
+      "measure": "assessed_value",
+      "value": 440305,
+      "stated_pct": 0.5,
+      "calc_pct": null,
+      "boe_factor": 1.00454,
+      "boe_expected_value": null,
+      "check": "no prior year in table",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2015,
+      "measure": "assessed_value",
+      "value": 449101,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.01998,
+      "boe_expected_value": 449102,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 1.998% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2016,
+      "measure": "assessed_value",
+      "value": 455949,
+      "stated_pct": 1.5,
+      "calc_pct": 1.52,
+      "boe_factor": 1.01525,
+      "boe_expected_value": 455950,
+      "check": "matches BOE factor (within $5); stated 1.5% consistent with BOE 1.525% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2017,
+      "measure": "assessed_value",
+      "value": 465067,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 465068,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2018,
+      "measure": "assessed_value",
+      "value": 474368,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 474368,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2019,
+      "measure": "assessed_value",
+      "value": 483854,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 483855,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2020,
+      "measure": "assessed_value",
+      "value": 493530,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 493531,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2021,
+      "measure": "assessed_value",
+      "value": 498642,
+      "stated_pct": 1,
+      "calc_pct": 1.04,
+      "boe_factor": 1.01036,
+      "boe_expected_value": 498643,
+      "check": "matches BOE factor (within $5); stated 1% consistent with BOE 1.036% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2022,
+      "measure": "assessed_value",
+      "value": 508614,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 508615,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2023,
+      "measure": "assessed_value",
+      "value": 518786,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 518786,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2024,
+      "measure": "assessed_value",
+      "value": 529161,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 529162,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2025,
+      "measure": "assessed_value",
+      "value": 539743,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 539744,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2026,
+      "measure": "assessed_value",
+      "value": 550537,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 550538,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "A",
+      "year": 2014,
+      "measure": "property_tax",
+      "value": 5965,
+      "stated_pct": null,
+      "calc_pct": null,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.355
+    },
+    {
+      "property": "A",
+      "year": 2015,
+      "measure": "property_tax",
+      "value": 6130,
+      "stated_pct": 2.8,
+      "calc_pct": 2.77,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.365
+    },
+    {
+      "property": "A",
+      "year": 2016,
+      "measure": "property_tax",
+      "value": 6414,
+      "stated_pct": 4.6,
+      "calc_pct": 4.63,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.407
+    },
+    {
+      "property": "A",
+      "year": 2017,
+      "measure": "property_tax",
+      "value": 6383,
+      "stated_pct": -0.5,
+      "calc_pct": -0.48,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.372
+    },
+    {
+      "property": "A",
+      "year": 2018,
+      "measure": "property_tax",
+      "value": 6383,
+      "stated_pct": null,
+      "calc_pct": 0.0,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "no % given; identical to prior year",
+      "flags": [
+        "TAX-IDENTICAL"
+      ],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.346
+    },
+    {
+      "property": "A",
+      "year": 2019,
+      "measure": "property_tax",
+      "value": 6565,
+      "stated_pct": 2.8,
+      "calc_pct": 2.85,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.357
+    },
+    {
+      "property": "A",
+      "year": 2020,
+      "measure": "property_tax",
+      "value": 6565,
+      "stated_pct": null,
+      "calc_pct": 0.0,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "no % given; identical to prior year",
+      "flags": [
+        "TAX-IDENTICAL"
+      ],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.33
+    },
+    {
+      "property": "A",
+      "year": 2021,
+      "measure": "property_tax",
+      "value": 6662,
+      "stated_pct": 1.5,
+      "calc_pct": 1.48,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.336
+    },
+    {
+      "property": "A",
+      "year": 2022,
+      "measure": "property_tax",
+      "value": 6755,
+      "stated_pct": 1.4,
+      "calc_pct": 1.4,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.328
+    },
+    {
+      "property": "A",
+      "year": 2023,
+      "measure": "property_tax",
+      "value": 6917,
+      "stated_pct": 2.4,
+      "calc_pct": 2.4,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.333
+    },
+    {
+      "property": "A",
+      "year": 2024,
+      "measure": "property_tax",
+      "value": 7003,
+      "stated_pct": 1.2,
+      "calc_pct": 1.24,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.323
+    },
+    {
+      "property": "A",
+      "year": 2025,
+      "measure": "property_tax",
+      "value": 7207,
+      "stated_pct": 2.9,
+      "calc_pct": 2.91,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.335
+    },
+    {
+      "property": "A",
+      "year": 2026,
+      "measure": "property_tax",
+      "value": null,
+      "stated_pct": null,
+      "calc_pct": null,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "not yet billed (user table shows '--')",
+      "flags": [
+        "TAX-MISSING"
+      ],
+      "source_ids": [
+        "S29"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2016,
+      "measure": "assessed_value",
+      "value": 96557,
+      "stated_pct": 1.5,
+      "calc_pct": null,
+      "boe_factor": 1.01525,
+      "boe_expected_value": null,
+      "check": "no prior year in table",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2017,
+      "measure": "assessed_value",
+      "value": 98488,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 98488,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2018,
+      "measure": "assessed_value",
+      "value": 100456,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 100458,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2019,
+      "measure": "assessed_value",
+      "value": 102465,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 102465,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2020,
+      "measure": "assessed_value",
+      "value": 104513,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 104514,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2021,
+      "measure": "assessed_value",
+      "value": 105595,
+      "stated_pct": 1,
+      "calc_pct": 1.04,
+      "boe_factor": 1.01036,
+      "boe_expected_value": 105596,
+      "check": "matches BOE factor (within $5); stated 1% consistent with BOE 1.036% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2022,
+      "measure": "assessed_value",
+      "value": 107662,
+      "stated_pct": 2,
+      "calc_pct": 1.96,
+      "boe_factor": 1.02,
+      "boe_expected_value": 107707,
+      "check": "differs from BOE factor by $-45; stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [
+        "AV-BOE-DIFF"
+      ],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2023,
+      "measure": "assessed_value",
+      "value": 109814,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 109815,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2024,
+      "measure": "assessed_value",
+      "value": 112008,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 112010,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2025,
+      "measure": "assessed_value",
+      "value": 114248,
+      "stated_pct": 2,
+      "calc_pct": 2.0,
+      "boe_factor": 1.02,
+      "boe_expected_value": 114248,
+      "check": "matches BOE factor (within $5); stated 2% consistent with BOE 2.0% at one-decimal rounding",
+      "flags": [],
+      "source_ids": [
+        "S01",
+        "S28"
+      ],
+      "status": "user-supplied"
+    },
+    {
+      "property": "B",
+      "year": 2016,
+      "measure": "property_tax",
+      "value": 1675,
+      "stated_pct": 1.6,
+      "calc_pct": null,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.735
+    },
+    {
+      "property": "B",
+      "year": 2017,
+      "measure": "property_tax",
+      "value": 1740,
+      "stated_pct": 3.9,
+      "calc_pct": 3.88,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.767
+    },
+    {
+      "property": "B",
+      "year": 2018,
+      "measure": "property_tax",
+      "value": 2061,
+      "stated_pct": 18.4,
+      "calc_pct": 18.45,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 2.052
+    },
+    {
+      "property": "B",
+      "year": 2019,
+      "measure": "property_tax",
+      "value": 2134,
+      "stated_pct": 3.5,
+      "calc_pct": 3.54,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 2.083
+    },
+    {
+      "property": "B",
+      "year": 2020,
+      "measure": "property_tax",
+      "value": 2197,
+      "stated_pct": 3,
+      "calc_pct": 2.95,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 2.102
+    },
+    {
+      "property": "B",
+      "year": 2021,
+      "measure": "property_tax",
+      "value": 2066,
+      "stated_pct": -5.9,
+      "calc_pct": -5.96,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.957
+    },
+    {
+      "property": "B",
+      "year": 2022,
+      "measure": "property_tax",
+      "value": 2107,
+      "stated_pct": 2,
+      "calc_pct": 1.98,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.957
+    },
+    {
+      "property": "B",
+      "year": 2023,
+      "measure": "property_tax",
+      "value": 2179,
+      "stated_pct": 3.4,
+      "calc_pct": 3.42,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 1.984
+    },
+    {
+      "property": "B",
+      "year": 2024,
+      "measure": "property_tax",
+      "value": 2315,
+      "stated_pct": 6.2,
+      "calc_pct": 6.24,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 2.067
+    },
+    {
+      "property": "B",
+      "year": 2025,
+      "measure": "property_tax",
+      "value": 2439,
+      "stated_pct": 5.3,
+      "calc_pct": 5.36,
+      "boe_factor": null,
+      "boe_expected_value": null,
+      "check": "matches stated change (rounding)",
+      "flags": [],
+      "source_ids": [
+        "S28"
+      ],
+      "status": "user-supplied",
+      "tax_to_av_pct": 2.135
+    }
+  ]
+}
