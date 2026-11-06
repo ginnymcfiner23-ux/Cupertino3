@@ -1,0 +1,1665 @@
+{
+  "meta": {
+    "valuation_year": 2026,
+    "horizon_end": 2060,
+    "inheritance_years_tested": [
+      2040,
+      2045,
+      2050
+    ],
+    "base_illustration_year": 2045,
+    "effective_tax_rates": {
+      "A_implied": 0.013352651169167548,
+      "B_implied": 0.02134829493732932,
+      "B_floor_1pct": 0.01
+    },
+    "sale_costs": 0.0511,
+    "after_tax_return_drag": 0.005620000000000001,
+    "note": "Client inputs are UNVERIFIED. Values are modeled outcomes, not forecasts or advice."
+  },
+  "scenarios": {
+    "low": {
+      "label": "Low-growth stress",
+      "inflation": 0.02,
+      "appreciation": 0.0,
+      "investment_return": 0.04,
+      "rent_growth_sf": 0.016,
+      "status": "assumption"
+    },
+    "base": {
+      "label": "Base case",
+      "inflation": 0.025,
+      "appreciation": 0.025,
+      "investment_return": 0.06,
+      "rent_growth_sf": 0.016,
+      "status": "assumption (inflation 2% Fed goal to 3.7% CPI range; S17, S18)"
+    },
+    "high": {
+      "label": "High-inflation stress",
+      "inflation": 0.037,
+      "appreciation": 0.04,
+      "investment_return": 0.08,
+      "rent_growth_sf": 0.037,
+      "status": "assumption (CPI 3.7% in Sep 2026, S17)"
+    }
+  },
+  "summary": [
+    {
+      "property": "A",
+      "T": 2040,
+      "scenario": "low",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 1604066,
+      "end_real_2026": 818119
+    },
+    {
+      "property": "A",
+      "T": 2040,
+      "scenario": "low",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 5783416,
+      "end_real_2026": 2949705,
+      "net_proceeds_at_T": 2941590
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "low",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 2980693,
+      "end_real_2026": 1520237
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "low",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 2683162,
+      "end_real_2026": 1368488
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "low",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 3358113,
+      "end_real_2026": 1712732,
+      "net_proceeds_at_T": 1708020
+    },
+    {
+      "property": "A",
+      "T": 2045,
+      "scenario": "low",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 2085709,
+      "end_real_2026": 1063770
+    },
+    {
+      "property": "A",
+      "T": 2045,
+      "scenario": "low",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 4884092,
+      "end_real_2026": 2491025,
+      "net_proceeds_at_T": 2941590
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "low",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 2656035,
+      "end_real_2026": 1354652
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "low",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 2462937,
+      "end_real_2026": 1256167
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "low",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 2835925,
+      "end_real_2026": 1446401,
+      "net_proceeds_at_T": 1708020
+    },
+    {
+      "property": "A",
+      "T": 2050,
+      "scenario": "low",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 2456148,
+      "end_real_2026": 1252705
+    },
+    {
+      "property": "A",
+      "T": 2050,
+      "scenario": "low",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 4124614,
+      "end_real_2026": 2103669,
+      "net_proceeds_at_T": 2941590
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "low",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 2333135,
+      "end_real_2026": 1189965
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "low",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 2221812,
+      "end_real_2026": 1133187
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "low",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 2394937,
+      "end_real_2026": 1221485,
+      "net_proceeds_at_T": 1708020
+    },
+    {
+      "property": "A",
+      "T": 2040,
+      "scenario": "base",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 4123092,
+      "end_real_2026": 1780786
+    },
+    {
+      "property": "A",
+      "T": 2040,
+      "scenario": "base",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 11985591,
+      "end_real_2026": 5176641,
+      "net_proceeds_at_T": 4156390
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "base",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 4999748,
+      "end_real_2026": 2159418
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "base",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 4472412,
+      "end_real_2026": 1931659
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "base",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 6959375,
+      "end_real_2026": 3005791,
+      "net_proceeds_at_T": 2413388
+    },
+    {
+      "property": "A",
+      "T": 2045,
+      "scenario": "base",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 4932124,
+      "end_real_2026": 2130211
+    },
+    {
+      "property": "A",
+      "T": 2045,
+      "scenario": "base",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 10406219,
+      "end_real_2026": 4494502,
+      "net_proceeds_at_T": 4702573
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "base",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 4646848,
+      "end_real_2026": 2006999
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "base",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 4240319,
+      "end_real_2026": 1831416
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "base",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 6042321,
+      "end_real_2026": 2609711,
+      "net_proceeds_at_T": 2730526
+    },
+    {
+      "property": "A",
+      "T": 2050,
+      "scenario": "base",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 5641158,
+      "end_real_2026": 2436446
+    },
+    {
+      "property": "A",
+      "T": 2050,
+      "scenario": "base",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 9034966,
+      "end_real_2026": 3902250,
+      "net_proceeds_at_T": 5320530
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "base",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 4365389,
+      "end_real_2026": 1885435
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "base",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 4077442,
+      "end_real_2026": 1761069
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "base",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 5246109,
+      "end_real_2026": 2265823,
+      "net_proceeds_at_T": 3089340
+    },
+    {
+      "property": "A",
+      "T": 2040,
+      "scenario": "high",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 6883849,
+      "end_real_2026": 2001491
+    },
+    {
+      "property": "A",
+      "T": 2040,
+      "scenario": "high",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 21389823,
+      "end_real_2026": 6219128,
+      "net_proceeds_at_T": 5093882
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "high",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 9027235,
+      "end_real_2026": 2624684
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "high",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 8230623,
+      "end_real_2026": 2393068
+    },
+    {
+      "property": "B",
+      "T": 2040,
+      "scenario": "high",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 12419897,
+      "end_real_2026": 3611106,
+      "net_proceeds_at_T": 2957738
+    },
+    {
+      "property": "A",
+      "T": 2045,
+      "scenario": "high",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 8153691,
+      "end_real_2026": 2370700
+    },
+    {
+      "property": "A",
+      "T": 2045,
+      "scenario": "high",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 18179600,
+      "end_real_2026": 5285750,
+      "net_proceeds_at_T": 6197486
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "high",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 8206347,
+      "end_real_2026": 2386009
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "high",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 7637069,
+      "end_real_2026": 2220491
+    },
+    {
+      "property": "B",
+      "T": 2045,
+      "scenario": "high",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 10555897,
+      "end_real_2026": 3069145,
+      "net_proceeds_at_T": 3598541
+    },
+    {
+      "property": "A",
+      "T": 2050,
+      "scenario": "high",
+      "option": "Live in the home (Prop 19 path)",
+      "end_nominal": 9273021,
+      "end_real_2026": 2696147
+    },
+    {
+      "property": "A",
+      "T": 2050,
+      "scenario": "high",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 15451172,
+      "end_real_2026": 4492455,
+      "net_proceeds_at_T": 7540190
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "high",
+      "option": "Heir lives in 1 unit, rent 2 units (Prop 19 on 1 unit)",
+      "end_nominal": 7525432,
+      "end_real_2026": 2188032
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "high",
+      "option": "No occupancy, keep renting 2 units (full reassessment)",
+      "end_nominal": 7161945,
+      "end_real_2026": 2082348
+    },
+    {
+      "property": "B",
+      "T": 2050,
+      "scenario": "high",
+      "option": "Sell at inheritance, invest net proceeds",
+      "end_nominal": 8971648,
+      "end_real_2026": 2608522,
+      "net_proceeds_at_T": 4378175
+    }
+  ],
+  "breakeven_rent_A": [
+    {
+      "T": 2040,
+      "scenario": "low",
+      "annual_rent_2026_dollars": 113042,
+      "monthly_rent_at_T_nominal": 12430,
+      "monthly_rent_2026_dollars": 9420
+    },
+    {
+      "T": 2045,
+      "scenario": "low",
+      "annual_rent_2026_dollars": 105731,
+      "monthly_rent_at_T_nominal": 12836,
+      "monthly_rent_2026_dollars": 8811
+    },
+    {
+      "T": 2050,
+      "scenario": "low",
+      "annual_rent_2026_dollars": 99122,
+      "monthly_rent_at_T_nominal": 13286,
+      "monthly_rent_2026_dollars": 8260
+    },
+    {
+      "T": 2040,
+      "scenario": "base",
+      "annual_rent_2026_dollars": 152241,
+      "monthly_rent_at_T_nominal": 17926,
+      "monthly_rent_2026_dollars": 12687
+    },
+    {
+      "T": 2045,
+      "scenario": "base",
+      "annual_rent_2026_dollars": 150533,
+      "monthly_rent_at_T_nominal": 20054,
+      "monthly_rent_2026_dollars": 12544
+    },
+    {
+      "T": 2050,
+      "scenario": "base",
+      "annual_rent_2026_dollars": 148661,
+      "monthly_rent_at_T_nominal": 22407,
+      "monthly_rent_2026_dollars": 12388
+    },
+    {
+      "T": 2040,
+      "scenario": "high",
+      "annual_rent_2026_dollars": 187099,
+      "monthly_rent_at_T_nominal": 25929,
+      "monthly_rent_2026_dollars": 15592
+    },
+    {
+      "T": 2045,
+      "scenario": "high",
+      "annual_rent_2026_dollars": 187104,
+      "monthly_rent_at_T_nominal": 31096,
+      "monthly_rent_2026_dollars": 15592
+    },
+    {
+      "T": 2050,
+      "scenario": "high",
+      "annual_rent_2026_dollars": 186604,
+      "monthly_rent_at_T_nominal": 37190,
+      "monthly_rent_2026_dollars": 15550
+    }
+  ],
+  "sensitivities": [
+    {
+      "label": "A live: Prop 19 limit indexed with inflation (base)",
+      "end_real_2026": 2130211
+    },
+    {
+      "label": "A live: Prop 19 limit NOT indexed (stays $1,044,586)",
+      "end_real_2026": 2039263
+    },
+    {
+      "label": "A live: electricity at client claim (net credit $15/mo, no fixed charge)",
+      "end_real_2026": 2135418
+    },
+    {
+      "label": "B hybrid: tax at 1% levy only (lower bound)",
+      "end_real_2026": 2190166
+    },
+    {
+      "label": "B hybrid: tax at implied 2.13% rate (base)",
+      "end_real_2026": 2006999
+    },
+    {
+      "label": "B hybrid: rent grows with inflation instead of 1.6% cap",
+      "end_real_2026": 2201566
+    },
+    {
+      "label": "B hybrid BEST CASE for keeping (1% levy only, 0.5% upkeep, rent grows with inflation)",
+      "end_real_2026": 2506450
+    },
+    {
+      "label": "B full-reassessment BEST CASE for keeping (no occupancy)",
+      "end_real_2026": 2431956
+    },
+    {
+      "label": "B sell at inheritance (base, for comparison)",
+      "end_real_2026": 2609711
+    }
+  ],
+  "yearly": {
+    "A": [
+      {
+        "year": 2026,
+        "fcv": 3100000,
+        "av_no_transfer": 550538,
+        "tax_no_transfer": 7351
+      },
+      {
+        "year": 2027,
+        "fcv": 3177500,
+        "av_no_transfer": 561549,
+        "tax_no_transfer": 7498
+      },
+      {
+        "year": 2028,
+        "fcv": 3256937,
+        "av_no_transfer": 572780,
+        "tax_no_transfer": 7648
+      },
+      {
+        "year": 2029,
+        "fcv": 3338361,
+        "av_no_transfer": 584235,
+        "tax_no_transfer": 7801
+      },
+      {
+        "year": 2030,
+        "fcv": 3421820,
+        "av_no_transfer": 595920,
+        "tax_no_transfer": 7957
+      },
+      {
+        "year": 2031,
+        "fcv": 3507365,
+        "av_no_transfer": 607838,
+        "tax_no_transfer": 8116
+      },
+      {
+        "year": 2032,
+        "fcv": 3595050,
+        "av_no_transfer": 619995,
+        "tax_no_transfer": 8279
+      },
+      {
+        "year": 2033,
+        "fcv": 3684926,
+        "av_no_transfer": 632395,
+        "tax_no_transfer": 8444
+      },
+      {
+        "year": 2034,
+        "fcv": 3777049,
+        "av_no_transfer": 645043,
+        "tax_no_transfer": 8613
+      },
+      {
+        "year": 2035,
+        "fcv": 3871475,
+        "av_no_transfer": 657944,
+        "tax_no_transfer": 8785
+      },
+      {
+        "year": 2036,
+        "fcv": 3968262,
+        "av_no_transfer": 671103,
+        "tax_no_transfer": 8961
+      },
+      {
+        "year": 2037,
+        "fcv": 4067469,
+        "av_no_transfer": 684525,
+        "tax_no_transfer": 9140
+      },
+      {
+        "year": 2038,
+        "fcv": 4169155,
+        "av_no_transfer": 698215,
+        "tax_no_transfer": 9323
+      },
+      {
+        "year": 2039,
+        "fcv": 4273384,
+        "av_no_transfer": 712179,
+        "tax_no_transfer": 9509
+      },
+      {
+        "year": 2040,
+        "fcv": 4380219,
+        "av_no_transfer": 726423,
+        "tax_no_transfer": 9700
+      },
+      {
+        "year": 2041,
+        "fcv": 4489724,
+        "av_no_transfer": 740951,
+        "tax_no_transfer": 9894
+      },
+      {
+        "year": 2042,
+        "fcv": 4601967,
+        "av_no_transfer": 755771,
+        "tax_no_transfer": 10092
+      },
+      {
+        "year": 2043,
+        "fcv": 4717017,
+        "av_no_transfer": 770886,
+        "tax_no_transfer": 10293
+      },
+      {
+        "year": 2044,
+        "fcv": 4834942,
+        "av_no_transfer": 786304,
+        "tax_no_transfer": 10499
+      },
+      {
+        "year": 2045,
+        "fcv": 4955816,
+        "av_no_transfer": 802030,
+        "tax_no_transfer": 10709,
+        "av_live_after_transfer": 3285888,
+        "tax_live": 43782,
+        "water": 2398,
+        "electricity": 176,
+        "insurance": 2398,
+        "maintenance": 24779,
+        "live_annual_cost": 73532
+      },
+      {
+        "year": 2046,
+        "fcv": 5079711,
+        "av_no_transfer": 818070,
+        "tax_no_transfer": 10923,
+        "av_live_after_transfer": 3351606,
+        "tax_live": 44659,
+        "water": 2458,
+        "electricity": 180,
+        "insurance": 2458,
+        "maintenance": 25399,
+        "live_annual_cost": 75154
+      },
+      {
+        "year": 2047,
+        "fcv": 5206704,
+        "av_no_transfer": 834432,
+        "tax_no_transfer": 11142,
+        "av_live_after_transfer": 3418638,
+        "tax_live": 45554,
+        "water": 2519,
+        "electricity": 184,
+        "insurance": 2519,
+        "maintenance": 26034,
+        "live_annual_cost": 76811
+      },
+      {
+        "year": 2048,
+        "fcv": 5336871,
+        "av_no_transfer": 851120,
+        "tax_no_transfer": 11365,
+        "av_live_after_transfer": 3487011,
+        "tax_live": 46467,
+        "water": 2582,
+        "electricity": 189,
+        "insurance": 2582,
+        "maintenance": 26684,
+        "live_annual_cost": 78505
+      },
+      {
+        "year": 2049,
+        "fcv": 5470293,
+        "av_no_transfer": 868143,
+        "tax_no_transfer": 11592,
+        "av_live_after_transfer": 3556751,
+        "tax_live": 47399,
+        "water": 2647,
+        "electricity": 194,
+        "insurance": 2647,
+        "maintenance": 27351,
+        "live_annual_cost": 80238
+      },
+      {
+        "year": 2050,
+        "fcv": 5607050,
+        "av_no_transfer": 885506,
+        "tax_no_transfer": 11824,
+        "av_live_after_transfer": 3627886,
+        "tax_live": 48348,
+        "water": 2713,
+        "electricity": 199,
+        "insurance": 2713,
+        "maintenance": 28035,
+        "live_annual_cost": 82008
+      },
+      {
+        "year": 2051,
+        "fcv": 5747227,
+        "av_no_transfer": 903216,
+        "tax_no_transfer": 12060,
+        "av_live_after_transfer": 3700444,
+        "tax_live": 49317,
+        "water": 2781,
+        "electricity": 204,
+        "insurance": 2781,
+        "maintenance": 28736,
+        "live_annual_cost": 83819
+      },
+      {
+        "year": 2052,
+        "fcv": 5890907,
+        "av_no_transfer": 921280,
+        "tax_no_transfer": 12302,
+        "av_live_after_transfer": 3774452,
+        "tax_live": 50305,
+        "water": 2850,
+        "electricity": 209,
+        "insurance": 2850,
+        "maintenance": 29455,
+        "live_annual_cost": 85670
+      },
+      {
+        "year": 2053,
+        "fcv": 6038180,
+        "av_no_transfer": 939706,
+        "tax_no_transfer": 12548,
+        "av_live_after_transfer": 3849941,
+        "tax_live": 51313,
+        "water": 2922,
+        "electricity": 214,
+        "insurance": 2922,
+        "maintenance": 30191,
+        "live_annual_cost": 87562
+      },
+      {
+        "year": 2054,
+        "fcv": 6189135,
+        "av_no_transfer": 958500,
+        "tax_no_transfer": 12799,
+        "av_live_after_transfer": 3926940,
+        "tax_live": 52342,
+        "water": 2995,
+        "electricity": 219,
+        "insurance": 2995,
+        "maintenance": 30946,
+        "live_annual_cost": 89496
+      },
+      {
+        "year": 2055,
+        "fcv": 6343863,
+        "av_no_transfer": 977670,
+        "tax_no_transfer": 13054,
+        "av_live_after_transfer": 4005479,
+        "tax_live": 53390,
+        "water": 3070,
+        "electricity": 225,
+        "insurance": 3070,
+        "maintenance": 31719,
+        "live_annual_cost": 91474
+      },
+      {
+        "year": 2056,
+        "fcv": 6502459,
+        "av_no_transfer": 997223,
+        "tax_no_transfer": 13316,
+        "av_live_after_transfer": 4085589,
+        "tax_live": 54460,
+        "water": 3146,
+        "electricity": 230,
+        "insurance": 3146,
+        "maintenance": 32512,
+        "live_annual_cost": 93495
+      },
+      {
+        "year": 2057,
+        "fcv": 6665021,
+        "av_no_transfer": 1017168,
+        "tax_no_transfer": 13582,
+        "av_live_after_transfer": 4167300,
+        "tax_live": 55551,
+        "water": 3225,
+        "electricity": 236,
+        "insurance": 3225,
+        "maintenance": 33325,
+        "live_annual_cost": 95562
+      },
+      {
+        "year": 2058,
+        "fcv": 6831647,
+        "av_no_transfer": 1037511,
+        "tax_no_transfer": 13854,
+        "av_live_after_transfer": 4250646,
+        "tax_live": 56664,
+        "water": 3306,
+        "electricity": 242,
+        "insurance": 3306,
+        "maintenance": 34158,
+        "live_annual_cost": 97675
+      },
+      {
+        "year": 2059,
+        "fcv": 7002438,
+        "av_no_transfer": 1058261,
+        "tax_no_transfer": 14131,
+        "av_live_after_transfer": 4335659,
+        "tax_live": 57799,
+        "water": 3388,
+        "electricity": 248,
+        "insurance": 3388,
+        "maintenance": 35012,
+        "live_annual_cost": 99836
+      },
+      {
+        "year": 2060,
+        "fcv": 7177499,
+        "av_no_transfer": 1079426,
+        "tax_no_transfer": 14413
+      }
+    ],
+    "B": [
+      {
+        "year": 2026,
+        "fcv": 1800000,
+        "av_no_transfer": 116533,
+        "tax_no_transfer": 2488
+      },
+      {
+        "year": 2027,
+        "fcv": 1845000,
+        "av_no_transfer": 118864,
+        "tax_no_transfer": 2538
+      },
+      {
+        "year": 2028,
+        "fcv": 1891125,
+        "av_no_transfer": 121241,
+        "tax_no_transfer": 2588
+      },
+      {
+        "year": 2029,
+        "fcv": 1938403,
+        "av_no_transfer": 123666,
+        "tax_no_transfer": 2640
+      },
+      {
+        "year": 2030,
+        "fcv": 1986863,
+        "av_no_transfer": 126139,
+        "tax_no_transfer": 2693
+      },
+      {
+        "year": 2031,
+        "fcv": 2036535,
+        "av_no_transfer": 128662,
+        "tax_no_transfer": 2747
+      },
+      {
+        "year": 2032,
+        "fcv": 2087448,
+        "av_no_transfer": 131235,
+        "tax_no_transfer": 2802
+      },
+      {
+        "year": 2033,
+        "fcv": 2139634,
+        "av_no_transfer": 133860,
+        "tax_no_transfer": 2858
+      },
+      {
+        "year": 2034,
+        "fcv": 2193125,
+        "av_no_transfer": 136537,
+        "tax_no_transfer": 2915
+      },
+      {
+        "year": 2035,
+        "fcv": 2247953,
+        "av_no_transfer": 139268,
+        "tax_no_transfer": 2973
+      },
+      {
+        "year": 2036,
+        "fcv": 2304152,
+        "av_no_transfer": 142053,
+        "tax_no_transfer": 3033
+      },
+      {
+        "year": 2037,
+        "fcv": 2361756,
+        "av_no_transfer": 144894,
+        "tax_no_transfer": 3093
+      },
+      {
+        "year": 2038,
+        "fcv": 2420800,
+        "av_no_transfer": 147792,
+        "tax_no_transfer": 3155
+      },
+      {
+        "year": 2039,
+        "fcv": 2481320,
+        "av_no_transfer": 150748,
+        "tax_no_transfer": 3218
+      },
+      {
+        "year": 2040,
+        "fcv": 2543353,
+        "av_no_transfer": 153763,
+        "tax_no_transfer": 3283
+      },
+      {
+        "year": 2041,
+        "fcv": 2606937,
+        "av_no_transfer": 156838,
+        "tax_no_transfer": 3348
+      },
+      {
+        "year": 2042,
+        "fcv": 2672110,
+        "av_no_transfer": 159975,
+        "tax_no_transfer": 3415
+      },
+      {
+        "year": 2043,
+        "fcv": 2738913,
+        "av_no_transfer": 163174,
+        "tax_no_transfer": 3483
+      },
+      {
+        "year": 2044,
+        "fcv": 2807386,
+        "av_no_transfer": 166438,
+        "tax_no_transfer": 3553
+      },
+      {
+        "year": 2045,
+        "fcv": 2877570,
+        "av_no_transfer": 169767,
+        "tax_no_transfer": 3624,
+        "av_hybrid": 1975059,
+        "tax_hybrid": 42015,
+        "rent": 116003,
+        "water": 7002,
+        "electricity": 959,
+        "insurance": 2398,
+        "maintenance": 28776,
+        "hybrid_net_cash": 32594,
+        "av_full": 2877570,
+        "tax_full": 61431,
+        "full_net_cash": 15436
+      },
+      {
+        "year": 2046,
+        "fcv": 2949510,
+        "av_no_transfer": 173162,
+        "tax_no_transfer": 3697,
+        "av_hybrid": 2014561,
+        "tax_hybrid": 42858,
+        "rent": 117859,
+        "water": 7177,
+        "electricity": 983,
+        "insurance": 2458,
+        "maintenance": 29495,
+        "hybrid_net_cash": 32390,
+        "av_full": 2935122,
+        "tax_full": 62660,
+        "full_net_cash": 15085
+      },
+      {
+        "year": 2047,
+        "fcv": 3023247,
+        "av_no_transfer": 176625,
+        "tax_no_transfer": 3771,
+        "av_hybrid": 2054852,
+        "tax_hybrid": 43718,
+        "rent": 119744,
+        "water": 7357,
+        "electricity": 1008,
+        "insurance": 2519,
+        "maintenance": 30232,
+        "hybrid_net_cash": 32174,
+        "av_full": 2993824,
+        "tax_full": 63913,
+        "full_net_cash": 14715
+      },
+      {
+        "year": 2048,
+        "fcv": 3098829,
+        "av_no_transfer": 180158,
+        "tax_no_transfer": 3846,
+        "av_hybrid": 2095949,
+        "tax_hybrid": 44595,
+        "rent": 121660,
+        "water": 7540,
+        "electricity": 1033,
+        "insurance": 2582,
+        "maintenance": 30988,
+        "hybrid_net_cash": 31945,
+        "av_full": 3053701,
+        "tax_full": 65191,
+        "full_net_cash": 14325
+      },
+      {
+        "year": 2049,
+        "fcv": 3176299,
+        "av_no_transfer": 183761,
+        "tax_no_transfer": 3923,
+        "av_hybrid": 2137868,
+        "tax_hybrid": 45490,
+        "rent": 123607,
+        "water": 7729,
+        "electricity": 1059,
+        "insurance": 2647,
+        "maintenance": 31763,
+        "hybrid_net_cash": 31703,
+        "av_full": 3114775,
+        "tax_full": 66495,
+        "full_net_cash": 13914
+      },
+      {
+        "year": 2050,
+        "fcv": 3255707,
+        "av_no_transfer": 187436,
+        "tax_no_transfer": 4001,
+        "av_hybrid": 2180625,
+        "tax_hybrid": 46403,
+        "rent": 125585,
+        "water": 7922,
+        "electricity": 1085,
+        "insurance": 2713,
+        "maintenance": 32557,
+        "hybrid_net_cash": 31447,
+        "av_full": 3177070,
+        "tax_full": 67825,
+        "full_net_cash": 13482
+      },
+      {
+        "year": 2051,
+        "fcv": 3337099,
+        "av_no_transfer": 191185,
+        "tax_no_transfer": 4081,
+        "av_hybrid": 2224238,
+        "tax_hybrid": 47334,
+        "rent": 127594,
+        "water": 8120,
+        "electricity": 1112,
+        "insurance": 2781,
+        "maintenance": 33371,
+        "hybrid_net_cash": 31177,
+        "av_full": 3240612,
+        "tax_full": 69182,
+        "full_net_cash": 13028
+      },
+      {
+        "year": 2052,
+        "fcv": 3420527,
+        "av_no_transfer": 195008,
+        "tax_no_transfer": 4163,
+        "av_hybrid": 2268722,
+        "tax_hybrid": 48284,
+        "rent": 129635,
+        "water": 8323,
+        "electricity": 1140,
+        "insurance": 2850,
+        "maintenance": 34205,
+        "hybrid_net_cash": 30892,
+        "av_full": 3305424,
+        "tax_full": 70565,
+        "full_net_cash": 12551
+      },
+      {
+        "year": 2053,
+        "fcv": 3506040,
+        "av_no_transfer": 198909,
+        "tax_no_transfer": 4246,
+        "av_hybrid": 2314097,
+        "tax_hybrid": 49253,
+        "rent": 131710,
+        "water": 8531,
+        "electricity": 1169,
+        "insurance": 2922,
+        "maintenance": 35060,
+        "hybrid_net_cash": 30593,
+        "av_full": 3371532,
+        "tax_full": 71976,
+        "full_net_cash": 12051
+      },
+      {
+        "year": 2054,
+        "fcv": 3593691,
+        "av_no_transfer": 202887,
+        "tax_no_transfer": 4331,
+        "av_hybrid": 2360379,
+        "tax_hybrid": 50241,
+        "rent": 133817,
+        "water": 8745,
+        "electricity": 1198,
+        "insurance": 2995,
+        "maintenance": 35937,
+        "hybrid_net_cash": 30277,
+        "av_full": 3438963,
+        "tax_full": 73416,
+        "full_net_cash": 11527
+      },
+      {
+        "year": 2055,
+        "fcv": 3683533,
+        "av_no_transfer": 206944,
+        "tax_no_transfer": 4418,
+        "av_hybrid": 2407586,
+        "tax_hybrid": 51248,
+        "rent": 135958,
+        "water": 8963,
+        "electricity": 1228,
+        "insurance": 3070,
+        "maintenance": 36835,
+        "hybrid_net_cash": 29946,
+        "av_full": 3507742,
+        "tax_full": 74884,
+        "full_net_cash": 10978
+      },
+      {
+        "year": 2056,
+        "fcv": 3775622,
+        "av_no_transfer": 211083,
+        "tax_no_transfer": 4506,
+        "av_hybrid": 2455738,
+        "tax_hybrid": 52276,
+        "rent": 138133,
+        "water": 9187,
+        "electricity": 1259,
+        "insurance": 3146,
+        "maintenance": 37756,
+        "hybrid_net_cash": 29598,
+        "av_full": 3577897,
+        "tax_full": 76382,
+        "full_net_cash": 10403
+      },
+      {
+        "year": 2057,
+        "fcv": 3870012,
+        "av_no_transfer": 215305,
+        "tax_no_transfer": 4596,
+        "av_hybrid": 2504853,
+        "tax_hybrid": 53325,
+        "rent": 140343,
+        "water": 9417,
+        "electricity": 1290,
+        "insurance": 3225,
+        "maintenance": 38700,
+        "hybrid_net_cash": 29233,
+        "av_full": 3649455,
+        "tax_full": 77910,
+        "full_net_cash": 9802
+      },
+      {
+        "year": 2058,
+        "fcv": 3966762,
+        "av_no_transfer": 219611,
+        "tax_no_transfer": 4688,
+        "av_hybrid": 2554950,
+        "tax_hybrid": 54394,
+        "rent": 142589,
+        "water": 9652,
+        "electricity": 1322,
+        "insurance": 3306,
+        "maintenance": 39668,
+        "hybrid_net_cash": 28850,
+        "av_full": 3722444,
+        "tax_full": 79468,
+        "full_net_cash": 9173
+      },
+      {
+        "year": 2059,
+        "fcv": 4065932,
+        "av_no_transfer": 224003,
+        "tax_no_transfer": 4782,
+        "av_hybrid": 2606049,
+        "tax_hybrid": 55485,
+        "rent": 144870,
+        "water": 9894,
+        "electricity": 1355,
+        "insurance": 3388,
+        "maintenance": 40659,
+        "hybrid_net_cash": 28449,
+        "av_full": 3796893,
+        "tax_full": 81057,
+        "full_net_cash": 8517
+      },
+      {
+        "year": 2060,
+        "fcv": 4167580,
+        "av_no_transfer": 228483,
+        "tax_no_transfer": 4878
+      }
+    ]
+  },
+  "pre_transfer": {
+    "A": [
+      {
+        "year": 2026,
+        "fcv": 3100000,
+        "av_no_transfer": 550538,
+        "tax_no_transfer": 7351
+      },
+      {
+        "year": 2027,
+        "fcv": 3177500,
+        "av_no_transfer": 561549,
+        "tax_no_transfer": 7498
+      },
+      {
+        "year": 2028,
+        "fcv": 3256937,
+        "av_no_transfer": 572780,
+        "tax_no_transfer": 7648
+      },
+      {
+        "year": 2029,
+        "fcv": 3338361,
+        "av_no_transfer": 584235,
+        "tax_no_transfer": 7801
+      },
+      {
+        "year": 2030,
+        "fcv": 3421820,
+        "av_no_transfer": 595920,
+        "tax_no_transfer": 7957
+      },
+      {
+        "year": 2031,
+        "fcv": 3507365,
+        "av_no_transfer": 607838,
+        "tax_no_transfer": 8116
+      },
+      {
+        "year": 2032,
+        "fcv": 3595050,
+        "av_no_transfer": 619995,
+        "tax_no_transfer": 8279
+      },
+      {
+        "year": 2033,
+        "fcv": 3684926,
+        "av_no_transfer": 632395,
+        "tax_no_transfer": 8444
+      },
+      {
+        "year": 2034,
+        "fcv": 3777049,
+        "av_no_transfer": 645043,
+        "tax_no_transfer": 8613
+      },
+      {
+        "year": 2035,
+        "fcv": 3871475,
+        "av_no_transfer": 657944,
+        "tax_no_transfer": 8785
+      },
+      {
+        "year": 2036,
+        "fcv": 3968262,
+        "av_no_transfer": 671103,
+        "tax_no_transfer": 8961
+      },
+      {
+        "year": 2037,
+        "fcv": 4067469,
+        "av_no_transfer": 684525,
+        "tax_no_transfer": 9140
+      },
+      {
+        "year": 2038,
+        "fcv": 4169155,
+        "av_no_transfer": 698215,
+        "tax_no_transfer": 9323
+      },
+      {
+        "year": 2039,
+        "fcv": 4273384,
+        "av_no_transfer": 712179,
+        "tax_no_transfer": 9509
+      },
+      {
+        "year": 2040,
+        "fcv": 4380219,
+        "av_no_transfer": 726423,
+        "tax_no_transfer": 9700
+      },
+      {
+        "year": 2041,
+        "fcv": 4489724,
+        "av_no_transfer": 740951,
+        "tax_no_transfer": 9894
+      },
+      {
+        "year": 2042,
+        "fcv": 4601967,
+        "av_no_transfer": 755771,
+        "tax_no_transfer": 10092
+      },
+      {
+        "year": 2043,
+        "fcv": 4717017,
+        "av_no_transfer": 770886,
+        "tax_no_transfer": 10293
+      },
+      {
+        "year": 2044,
+        "fcv": 4834942,
+        "av_no_transfer": 786304,
+        "tax_no_transfer": 10499
+      },
+      {
+        "year": 2045,
+        "fcv": 4955816,
+        "av_no_transfer": 802030,
+        "tax_no_transfer": 10709
+      },
+      {
+        "year": 2046,
+        "fcv": 5079711,
+        "av_no_transfer": 818070,
+        "tax_no_transfer": 10923
+      },
+      {
+        "year": 2047,
+        "fcv": 5206704,
+        "av_no_transfer": 834432,
+        "tax_no_transfer": 11142
+      },
+      {
+        "year": 2048,
+        "fcv": 5336871,
+        "av_no_transfer": 851120,
+        "tax_no_transfer": 11365
+      },
+      {
+        "year": 2049,
+        "fcv": 5470293,
+        "av_no_transfer": 868143,
+        "tax_no_transfer": 11592
+      },
+      {
+        "year": 2050,
+        "fcv": 5607050,
+        "av_no_transfer": 885506,
+        "tax_no_transfer": 11824
+      },
+      {
+        "year": 2051,
+        "fcv": 5747227,
+        "av_no_transfer": 903216,
+        "tax_no_transfer": 12060
+      },
+      {
+        "year": 2052,
+        "fcv": 5890907,
+        "av_no_transfer": 921280,
+        "tax_no_transfer": 12302
+      },
+      {
+        "year": 2053,
+        "fcv": 6038180,
+        "av_no_transfer": 939706,
+        "tax_no_transfer": 12548
+      },
+      {
+        "year": 2054,
+        "fcv": 6189135,
+        "av_no_transfer": 958500,
+        "tax_no_transfer": 12799
+      },
+      {
+        "year": 2055,
+        "fcv": 6343863,
+        "av_no_transfer": 977670,
+        "tax_no_transfer": 13054
+      },
+      {
+        "year": 2056,
+        "fcv": 6502459,
+        "av_no_transfer": 997223,
+        "tax_no_transfer": 13316
+      },
+      {
+        "year": 2057,
+        "fcv": 6665021,
+        "av_no_transfer": 1017168,
+        "tax_no_transfer": 13582
+      },
+      {
+        "year": 2058,
+        "fcv": 6831647,
+        "av_no_transfer": 1037511,
+        "tax_no_transfer": 13854
+      },
+      {
+        "year": 2059,
+        "fcv": 7002438,
+        "av_no_transfer": 1058261,
+        "tax_no_transfer": 14131
+      },
+      {
+        "year": 2060,
+        "fcv": 7177499,
+        "av_no_transfer": 1079426,
+        "tax_no_transfer": 14413
+      }
+    ],
+    "B": [
+      {
+        "year": 2026,
+        "fcv": 1800000,
+        "av_no_transfer": 116533,
+        "tax_no_transfer": 2488
+      },
+      {
+        "year": 2027,
+        "fcv": 1845000,
+        "av_no_transfer": 118864,
+        "tax_no_transfer": 2538
+      },
+      {
+        "year": 2028,
+        "fcv": 1891125,
+        "av_no_transfer": 121241,
+        "tax_no_transfer": 2588
+      },
+      {
+        "year": 2029,
+        "fcv": 1938403,
+        "av_no_transfer": 123666,
+        "tax_no_transfer": 2640
+      },
+      {
+        "year": 2030,
+        "fcv": 1986863,
+        "av_no_transfer": 126139,
+        "tax_no_transfer": 2693
+      },
+      {
+        "year": 2031,
+        "fcv": 2036535,
+        "av_no_transfer": 128662,
+        "tax_no_transfer": 2747
+      },
+      {
+        "year": 2032,
+        "fcv": 2087448,
+        "av_no_transfer": 131235,
+        "tax_no_transfer": 2802
+      },
+      {
+        "year": 2033,
+        "fcv": 2139634,
+        "av_no_transfer": 133860,
+        "tax_no_transfer": 2858
+      },
+      {
+        "year": 2034,
+        "fcv": 2193125,
+        "av_no_transfer": 136537,
+        "tax_no_transfer": 2915
+      },
+      {
+        "year": 2035,
+        "fcv": 2247953,
+        "av_no_transfer": 139268,
+        "tax_no_transfer": 2973
+      },
+      {
+        "year": 2036,
+        "fcv": 2304152,
+        "av_no_transfer": 142053,
+        "tax_no_transfer": 3033
+      },
+      {
+        "year": 2037,
+        "fcv": 2361756,
+        "av_no_transfer": 144894,
+        "tax_no_transfer": 3093
+      },
+      {
+        "year": 2038,
+        "fcv": 2420800,
+        "av_no_transfer": 147792,
+        "tax_no_transfer": 3155
+      },
+      {
+        "year": 2039,
+        "fcv": 2481320,
+        "av_no_transfer": 150748,
+        "tax_no_transfer": 3218
+      },
+      {
+        "year": 2040,
+        "fcv": 2543353,
+        "av_no_transfer": 153763,
+        "tax_no_transfer": 3283
+      },
+      {
+        "year": 2041,
+        "fcv": 2606937,
+        "av_no_transfer": 156838,
+        "tax_no_transfer": 3348
+      },
+      {
+        "year": 2042,
+        "fcv": 2672110,
+        "av_no_transfer": 159975,
+        "tax_no_transfer": 3415
+      },
+      {
+        "year": 2043,
+        "fcv": 2738913,
+        "av_no_transfer": 163174,
+        "tax_no_transfer": 3483
+      },
+      {
+        "year": 2044,
+        "fcv": 2807386,
+        "av_no_transfer": 166438,
+        "tax_no_transfer": 3553
+      },
+      {
+        "year": 2045,
+        "fcv": 2877570,
+        "av_no_transfer": 169767,
+        "tax_no_transfer": 3624
+      },
+      {
+        "year": 2046,
+        "fcv": 2949510,
+        "av_no_transfer": 173162,
+        "tax_no_transfer": 3697
+      },
+      {
+        "year": 2047,
+        "fcv": 3023247,
+        "av_no_transfer": 176625,
+        "tax_no_transfer": 3771
+      },
+      {
+        "year": 2048,
+        "fcv": 3098829,
+        "av_no_transfer": 180158,
+        "tax_no_transfer": 3846
+      },
+      {
+        "year": 2049,
+        "fcv": 3176299,
+        "av_no_transfer": 183761,
+        "tax_no_transfer": 3923
+      },
+      {
+        "year": 2050,
+        "fcv": 3255707,
+        "av_no_transfer": 187436,
+        "tax_no_transfer": 4001
+      },
+      {
+        "year": 2051,
+        "fcv": 3337099,
+        "av_no_transfer": 191185,
+        "tax_no_transfer": 4081
+      },
+      {
+        "year": 2052,
+        "fcv": 3420527,
+        "av_no_transfer": 195008,
+        "tax_no_transfer": 4163
+      },
+      {
+        "year": 2053,
+        "fcv": 3506040,
+        "av_no_transfer": 198909,
+        "tax_no_transfer": 4246
+      },
+      {
+        "year": 2054,
+        "fcv": 3593691,
+        "av_no_transfer": 202887,
+        "tax_no_transfer": 4331
+      },
+      {
+        "year": 2055,
+        "fcv": 3683533,
+        "av_no_transfer": 206944,
+        "tax_no_transfer": 4418
+      },
+      {
+        "year": 2056,
+        "fcv": 3775622,
+        "av_no_transfer": 211083,
+        "tax_no_transfer": 4506
+      },
+      {
+        "year": 2057,
+        "fcv": 3870012,
+        "av_no_transfer": 215305,
+        "tax_no_transfer": 4596
+      },
+      {
+        "year": 2058,
+        "fcv": 3966762,
+        "av_no_transfer": 219611,
+        "tax_no_transfer": 4688
+      },
+      {
+        "year": 2059,
+        "fcv": 4065932,
+        "av_no_transfer": 224003,
+        "tax_no_transfer": 4782
+      },
+      {
+        "year": 2060,
+        "fcv": 4167580,
+        "av_no_transfer": 228483,
+        "tax_no_transfer": 4878
+      }
+    ]
+  },
+  "economic_cost_A": {
+    "year": 2045,
+    "scenario": "base",
+    "cash_costs_nominal": 73532,
+    "forgone_after_tax_return_on_sale_proceeds": 255726,
+    "expected_appreciation": 123895,
+    "net_annual_economic_cost": 205363,
+    "note": "Living value is not counted. Compare the net figure with the market rent for a comparable home (not verified here)."
+  },
+  "yearly_meta": {
+    "T": 2045,
+    "scenario": "base",
+    "note": "Post-transfer columns start in the inheritance year; earlier years show the status-quo Prop 13 path only."
+  }
+}
