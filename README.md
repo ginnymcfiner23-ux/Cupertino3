@@ -55,3 +55,27 @@ Standard library only; no packages to install.
 ## Privacy
 
 Only the anonymized references above are used. No names, addresses, ZIP codes or the owner's location appear in the repository, and `tools/check_site.py` enforces this. This is not legal, tax or investment advice.
+
+---
+
+## Inheritance decision guide (session 64308d3a)
+
+A second, separate analysis lives in `guide/` (served at `/guide/` of the same Pages site). It covers the same two properties with a different scope: verified facts with official links (`data/guide/facts.json`), client inputs (UNVERIFIED, labelled), a 2026-2050 projection model (`model/guide_project.py`), inheritance steps, pending law, and a Flagged for Review page. Unverified values are blank.
+
+| Path | What it is |
+|---|---|
+| `guide/` | Generated static site: landing page, category pages, Flagged for Review, sources. Inline styles; no external resources. |
+| `data/guide/` | Facts, sources, client inputs, irregularities, legislation, inheritance steps, projections. |
+| `model/guide_project.py` | Projection model. Writes `data/guide/projections.json` and CSVs. |
+| `scripts/guide_build_site.py` | Builds `guide/` from `data/guide/`. |
+| `scripts/guide_check_site.py` | Checks internal links, rows with official links, no external resources, verified rows have sources, privacy patterns. |
+
+Rebuild:
+
+```bash
+python3 model/guide_project.py
+python3 scripts/guide_build_site.py
+python3 scripts/guide_check_site.py
+```
+
+Standard library only. Privacy rule: no personal information in the repo or site. Properties are referred to by city and county only. This is informational analysis, not legal or tax advice.

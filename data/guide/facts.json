@@ -1,0 +1,669 @@
+{
+  "note": "Every row is either VERIFIED (official source linked) or UNVERIFIED (value left blank in the verified column). Client-provided numbers appear only in data/guide/property_tax_history.json and data/guide/assumptions.json, labelled UNVERIFIED.",
+  "rows": [
+    {
+      "id": "PT01",
+      "category": "property-tax",
+      "item": "Base property tax rate: 1% levy plus voter-approved bonds",
+      "value": "1% + bonds",
+      "status": "VERIFIED",
+      "sources": [
+        "S06",
+        "S08"
+      ],
+      "note": "Santa Clara County Tax Rate Book FY 2025-26 lists the 1% maximum levy plus voter-approved debt; SF Assessor notes the 1% base."
+    },
+    {
+      "id": "PT02",
+      "category": "property-tax",
+      "item": "Annual assessed-value increase while owned (Prop 13 cap)",
+      "value": "lesser of 2% or CPI",
+      "status": "VERIFIED",
+      "sources": [
+        "S08"
+      ],
+      "note": "Per SF Assessor-Recorder page. Model uses 2% (upper bound)."
+    },
+    {
+      "id": "PT03",
+      "category": "property-tax",
+      "item": "Reassessment on change in ownership (base reset to market value)",
+      "value": "Yes - to market value",
+      "status": "VERIFIED",
+      "sources": [
+        "S08"
+      ],
+      "note": "Applies unless an exclusion (e.g., Prop 19 family home) applies."
+    },
+    {
+      "id": "PT04",
+      "category": "property-tax",
+      "item": "San Francisco FY 2026-27 secured property tax rate",
+      "value": "1.18162182%",
+      "status": "VERIFIED",
+      "sources": [
+        "S07"
+      ],
+      "note": "Rate applied to assessed value; direct charges and special assessments are billed separately."
+    },
+    {
+      "id": "PT05",
+      "category": "property-tax",
+      "item": "SF secured tax installment and delinquency dates",
+      "value": "1st: delinquent after 5pm Dec 10 (10% penalty); 2nd: Apr 10; tax-defaulted June 30 (1.5%/month plus fee)",
+      "status": "VERIFIED",
+      "sources": [
+        "S07"
+      ],
+      "note": "Bills mailed in October for the Oct 1-31 cycle."
+    },
+    {
+      "id": "PT06",
+      "category": "property-tax",
+      "item": "Santa Clara County installment and delinquency dates",
+      "value": "Installments Nov 1 and Feb 1; delinquent after Dec 10 and Apr 10; 10% penalty; 1.5%/month redemption penalty after July 1",
+      "status": "VERIFIED",
+      "sources": [
+        "S06"
+      ],
+      "note": "Source: FY 2025-26 Tax Rate Book."
+    },
+    {
+      "id": "PT07",
+      "category": "property-tax",
+      "item": "Cupertino (Santa Clara County) total tax rate for the parcel's TRA",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S06"
+      ],
+      "note": "Cupertino TRA composite not located in the rate-book pages reviewed. Left blank. Sampled official TRA totals in the same book range from 1.1258% to 1.2409%."
+    },
+    {
+      "id": "PT08",
+      "category": "property-tax",
+      "item": "Prop 19 family-home value cap (factored base year value + amount), transfers Feb 16, 2025 - Feb 15, 2027",
+      "value": "$1,044,586",
+      "status": "VERIFIED",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "note": "Amount is added to the parent's factored base year value. Amount is adjusted every two years."
+    },
+    {
+      "id": "PT09",
+      "category": "property-tax",
+      "item": "Prop 19 value cap, prior period (Feb 16, 2023 - Feb 15, 2025)",
+      "value": "$1,022,600",
+      "status": "VERIFIED",
+      "sources": [
+        "S01"
+      ],
+      "note": "Shown for history."
+    },
+    {
+      "id": "PT10",
+      "category": "property-tax",
+      "item": "Prop 19 family-home requirements (parent-child)",
+      "value": "Transferor's principal residence; transferee moves in within 1 year and files homeowners' or disabled veterans' exemption within 1 year",
+      "status": "VERIFIED",
+      "sources": [
+        "S02",
+        "S05"
+      ],
+      "note": "Family home = dwelling eligible for homeowners' exemption due to transferor's ownership and occupation."
+    },
+    {
+      "id": "PT11",
+      "category": "property-tax",
+      "item": "Multi-unit property: each unit must qualify separately for the intergenerational exclusion",
+      "value": "Each unit tested separately",
+      "status": "VERIFIED",
+      "sources": [
+        "S03"
+      ],
+      "note": "Relevant to Property B: only an owner-occupied unit can qualify; rented units are not family homes."
+    },
+    {
+      "id": "PT12",
+      "category": "property-tax",
+      "item": "BOE-19-P claim deadline (parent-child)",
+      "value": "Within 3 years of transfer, or before a third-party transfer, whichever comes first",
+      "status": "VERIFIED",
+      "sources": [
+        "S02"
+      ],
+      "note": "Form BOE-19-P per BOE Pub 801."
+    },
+    {
+      "id": "PT13",
+      "category": "property-tax",
+      "item": "Revocable trust: transfer to trust excluded; change in ownership occurs when trust becomes irrevocable unless trustor remains sole present beneficiary",
+      "value": "See note",
+      "status": "VERIFIED",
+      "sources": [
+        "S04"
+      ],
+      "note": "Trust distribution terms (e.g., sprinkle powers) can affect the exclusion; see BOE letter 220.0821."
+    },
+    {
+      "id": "PT14",
+      "category": "property-tax",
+      "item": "County documentary transfer tax (sale)",
+      "value": "$1.10 per $1,000 of value (= $0.55 per $500)",
+      "status": "VERIFIED",
+      "sources": [
+        "S29"
+      ],
+      "note": "Statute sets the county rate; cities may add their own tax."
+    },
+    {
+      "id": "PT15",
+      "category": "property-tax",
+      "item": "San Francisco city documentary transfer tax (sale)",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S07"
+      ],
+      "note": "No official rate-table page fetched. Third-party tiers conflict. Left blank."
+    },
+    {
+      "id": "PT16",
+      "category": "property-tax",
+      "item": "Cupertino city documentary transfer tax (sale)",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S29",
+        "S23"
+      ],
+      "note": "Not verified. Left blank."
+    },
+    {
+      "id": "PT17",
+      "category": "property-tax",
+      "item": "Santa Clara County - Cupertino and Prop 13 context",
+      "value": "Cupertino is in Santa Clara County; county tax levy and bonds apply",
+      "status": "VERIFIED",
+      "sources": [
+        "S06"
+      ],
+      "note": "Parcel-level composite still needed (PT07)."
+    },
+    {
+      "id": "FE01",
+      "category": "federal",
+      "item": "2026 federal basic exclusion amount (estate and gift), per person",
+      "value": "$15,000,000",
+      "status": "VERIFIED",
+      "sources": [
+        "S10"
+      ],
+      "note": "Rev. Proc. 2025-32 (P.L. 119-21)."
+    },
+    {
+      "id": "FE02",
+      "category": "federal",
+      "item": "2026 estate tax filing threshold",
+      "value": "$15,000,000",
+      "status": "VERIFIED",
+      "sources": [
+        "S09"
+      ],
+      "note": "2025 comparison: $13,990,000."
+    },
+    {
+      "id": "FE03",
+      "category": "federal",
+      "item": "Top federal estate and gift tax rate",
+      "value": "40%",
+      "status": "VERIFIED",
+      "sources": [
+        "S11"
+      ],
+      "note": "26 U.S.C. section 2001(c) rate schedule."
+    },
+    {
+      "id": "FE04",
+      "category": "federal",
+      "item": "2026 GST exemption",
+      "value": "$15,000,000",
+      "status": "VERIFIED",
+      "sources": [
+        "S10"
+      ],
+      "note": "Rev. Proc. 2025-32."
+    },
+    {
+      "id": "FE05",
+      "category": "federal",
+      "item": "2026 annual gift exclusion, per recipient",
+      "value": "$19,000",
+      "status": "VERIFIED",
+      "sources": [
+        "S10"
+      ],
+      "note": "Rev. Proc. 2025-32 section 4.42(1)."
+    },
+    {
+      "id": "FE06",
+      "category": "federal",
+      "item": "2026 exclusion for gifts to a non-citizen spouse",
+      "value": "$194,000",
+      "status": "VERIFIED",
+      "sources": [
+        "S10"
+      ],
+      "note": "Rev. Proc. 2025-32 section 4.42(2)."
+    },
+    {
+      "id": "FE07",
+      "category": "federal",
+      "item": "Heir's basis in inherited property",
+      "value": "Fair market value at date of death",
+      "status": "VERIFIED",
+      "sources": [
+        "S12"
+      ],
+      "note": "26 U.S.C. section 1014 (basis step-up)."
+    },
+    {
+      "id": "FE08",
+      "category": "federal",
+      "item": "Home-sale gain exclusion (principal residence): single / joint",
+      "value": "$250,000 / $500,000 (2 of last 5 years)",
+      "status": "VERIFIED",
+      "sources": [
+        "S13"
+      ],
+      "note": "26 U.S.C. section 121."
+    },
+    {
+      "id": "FE09",
+      "category": "federal",
+      "item": "Net investment income tax (NIIT) rate and single threshold",
+      "value": "3.8%; $200,000 (single)",
+      "status": "VERIFIED",
+      "sources": [
+        "S14"
+      ],
+      "note": "Principal residence gain excluded under section 121 is not NIIT."
+    },
+    {
+      "id": "FE10",
+      "category": "federal",
+      "item": "2026 long-term capital gains thresholds (single): 0% up to / 15% up to / 20% above",
+      "value": "$49,450 / $545,500 / above",
+      "status": "VERIFIED",
+      "sources": [
+        "S10"
+      ],
+      "note": "Rev. Proc. 2025-32 section 4.03. MFJ: $98,900 / $613,700. Estates and trusts: $3,300 / $16,250."
+    },
+    {
+      "id": "FE11",
+      "category": "federal",
+      "item": "2026 top ordinary income bracket (single): 37% above",
+      "value": "$640,600",
+      "status": "VERIFIED",
+      "sources": [
+        "S10"
+      ],
+      "note": "MFJ top 37% above $768,700."
+    },
+    {
+      "id": "FE12",
+      "category": "federal",
+      "item": "Federal longer-run inflation goal (PCE)",
+      "value": "2%",
+      "status": "VERIFIED",
+      "sources": [
+        "S28"
+      ],
+      "note": "Used as the base inflation reference for cost growth."
+    },
+    {
+      "id": "CA01",
+      "category": "california",
+      "item": "California estate, inheritance or gift tax",
+      "value": "None",
+      "status": "VERIFIED",
+      "sources": [
+        "S15"
+      ],
+      "note": "Revenue and Taxation Code section 13301."
+    },
+    {
+      "id": "CA02",
+      "category": "california",
+      "item": "Inherited assets: are they California income?",
+      "value": "No. Income produced by inherited assets is taxable",
+      "status": "VERIFIED",
+      "sources": [
+        "S19"
+      ],
+      "note": "FTB gifts and inheritance page."
+    },
+    {
+      "id": "CA03",
+      "category": "california",
+      "item": "California capital gains rate",
+      "value": "No lower rate; taxed as ordinary income",
+      "status": "VERIFIED",
+      "sources": [
+        "S18"
+      ],
+      "note": "FTB capital gains page."
+    },
+    {
+      "id": "CA04",
+      "category": "california",
+      "item": "Top CA personal income tax rate (single, 2025 schedule)",
+      "value": "12.30% above $742,953",
+      "status": "VERIFIED",
+      "sources": [
+        "S17"
+      ],
+      "note": "2025 schedule. The 2026 schedule is not verified and is not used as a verified value."
+    },
+    {
+      "id": "CA05",
+      "category": "california",
+      "item": "Additional 1% tax on taxable income over $1,000,000",
+      "value": "1% above $1,000,000",
+      "status": "VERIFIED",
+      "sources": [
+        "S16"
+      ],
+      "note": "Revenue and Taxation Code section 17043 (the 1% Mental Health Services surcharge)."
+    },
+    {
+      "id": "WA01",
+      "category": "utilities",
+      "item": "San Jose Water (Cupertino territory) residential quantity rate, 0-6 ccf per month (eff. 7/1/2026)",
+      "value": "$4.9692 per ccf",
+      "status": "VERIFIED",
+      "sources": [
+        "S20"
+      ],
+      "note": "Schedule No. 1, approved advice letter 628-A. Territory: portions of Cupertino."
+    },
+    {
+      "id": "WA02",
+      "category": "utilities",
+      "item": "San Jose Water quantity rate, 6-12 ccf per month (eff. 7/1/2026)",
+      "value": "$7.4167 per ccf",
+      "status": "VERIFIED",
+      "sources": [
+        "S20"
+      ],
+      "note": ""
+    },
+    {
+      "id": "WA03",
+      "category": "utilities",
+      "item": "San Jose Water quantity rate, over 12 ccf per month (eff. 7/1/2026)",
+      "value": "$14.1659 per ccf",
+      "status": "VERIFIED",
+      "sources": [
+        "S20"
+      ],
+      "note": ""
+    },
+    {
+      "id": "WA04",
+      "category": "utilities",
+      "item": "San Jose Water service charge, 5/8 x 3/4-inch meter (eff. 7/1/2026)",
+      "value": "$78.64 per meter per month",
+      "status": "VERIFIED",
+      "sources": [
+        "S20"
+      ],
+      "note": "1 ccf = 748 gallons."
+    },
+    {
+      "id": "WA05",
+      "category": "utilities",
+      "item": "San Jose Water 2026 rate revision (advice letter 621-A, eff. 1/1/2026)",
+      "value": "Approximately $3.75/month increase for a typical 10 ccf residential customer (per tariff letter)",
+      "status": "VERIFIED",
+      "sources": [
+        "S21"
+      ],
+      "note": "Approved in D.24-12-077. Figure from advice letter text; confirm with the letter if quoting."
+    },
+    {
+      "id": "WA06",
+      "category": "utilities",
+      "item": "San Jose Water proposed future rates (general rate case application)",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S34"
+      ],
+      "note": "Application lists proposed quantity charges for 2028-2031 (proposed only; NOT approved). Left blank. Not used in projections."
+    },
+    {
+      "id": "WA07",
+      "category": "utilities",
+      "item": "SFPUC residential water (W-1A) service charge, 5/8-inch meter, FY 2026-27 (eff. 7/1/2026)",
+      "value": "$19.65 per month",
+      "status": "VERIFIED",
+      "sources": [
+        "S22"
+      ],
+      "note": "Schedule W-1A."
+    },
+    {
+      "id": "WA08",
+      "category": "utilities",
+      "item": "SFPUC residential water (W-1A) quantity rates, FY 2026-27",
+      "value": "First 4 ccf per month: $12.20 per ccf; additional ccf: $13.55 per ccf",
+      "status": "VERIFIED",
+      "sources": [
+        "S22"
+      ],
+      "note": "Schedule W-1A, read from the rate PDF."
+    },
+    {
+      "id": "WA09",
+      "category": "utilities",
+      "item": "SFPUC multi-family water (W-1B), FY 2026-27 quantity rates",
+      "value": "First 3 units per dwelling: $12.03 per ccf; additional: $12.91 per ccf",
+      "status": "VERIFIED",
+      "sources": [
+        "S22"
+      ],
+      "note": "Schedule W-1B. Confirm the building's meter type with SFPUC."
+    },
+    {
+      "id": "WA10",
+      "category": "utilities",
+      "item": "SFPUC residential sewer (Schedule A), FY 2026-27: monthly service charge",
+      "value": "$6.62 per month",
+      "status": "VERIFIED",
+      "sources": [
+        "S22"
+      ],
+      "note": "Effective 7/1/2026."
+    },
+    {
+      "id": "WA11",
+      "category": "utilities",
+      "item": "SFPUC residential sewer volume charge, FY 2026-27",
+      "value": "$20.74 per discharge unit (1 unit = 1 ccf of discharge)",
+      "status": "VERIFIED",
+      "sources": [
+        "S22"
+      ],
+      "note": "Discharge = metered use x flow factor (90% single-family; 95% multi-family by default)."
+    },
+    {
+      "id": "WA12",
+      "category": "utilities",
+      "item": "Cupertino sewer provider and rate",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S33"
+      ],
+      "note": "Not verified. Left blank."
+    },
+    {
+      "id": "WA13",
+      "category": "utilities",
+      "item": "SF stormwater charge",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S22"
+      ],
+      "note": "Not verified. Left blank."
+    },
+    {
+      "id": "WA14",
+      "category": "utilities",
+      "item": "Cupertino Clean Water and Storm Protection Fee (amount)",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S33"
+      ],
+      "note": "The City page exists. The fee amount was not confirmed. Left blank."
+    },
+    {
+      "id": "EL01",
+      "category": "utilities",
+      "item": "Cupertino electricity: delivery provider",
+      "value": "PG&E",
+      "status": "VERIFIED",
+      "sources": [
+        "S23"
+      ],
+      "note": "City of Cupertino energy page."
+    },
+    {
+      "id": "EL02",
+      "category": "utilities",
+      "item": "Cupertino electricity: default generation provider",
+      "value": "Silicon Valley Clean Energy (SVCE); customers may opt out to PG&E generation",
+      "status": "VERIFIED",
+      "sources": [
+        "S23"
+      ],
+      "note": ""
+    },
+    {
+      "id": "EL03",
+      "category": "utilities",
+      "item": "Net billing (NEM 3.0): residential export credit basis",
+      "value": "Avoided Cost Calculator (ACC) export values; ACC Plus adder for customers who interconnect during the first five years of the tariff",
+      "status": "VERIFIED",
+      "sources": [
+        "S24"
+      ],
+      "note": "Per PG&E tariff text quoting D.22-12-056. Final-decision text not fetched; the 'first five years' eligibility conflicts with a secondary-source claim (flagged)."
+    },
+    {
+      "id": "EL04",
+      "category": "utilities",
+      "item": "PG&E or SVCE residential electricity price per kWh",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S23"
+      ],
+      "note": "Not verified. Left blank."
+    },
+    {
+      "id": "EL05",
+      "category": "utilities",
+      "item": "NEM 3.0 export credit - specific cents per kWh",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S24"
+      ],
+      "note": "Secondary sources only. Left blank."
+    },
+    {
+      "id": "IN01",
+      "category": "insurance",
+      "item": "Average homeowners premium - Cupertino or Santa Clara County",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S30"
+      ],
+      "note": "CDI provides shop-around tools (Home Insurance Finder, Compare Premiums) and no published averages on this page. Left blank."
+    },
+    {
+      "id": "IN02",
+      "category": "insurance",
+      "item": "Average homeowners premium - San Francisco",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S30"
+      ],
+      "note": "Same as IN01. Left blank."
+    },
+    {
+      "id": "IN03",
+      "category": "insurance",
+      "item": "CA FAIR Plan availability (insurer of last resort)",
+      "value": "Fire, lightning, internal explosion, smoke; extended coverage and DIC by endorsement or separate policy",
+      "status": "VERIFIED",
+      "sources": [
+        "S30"
+      ],
+      "note": "Relevant if standard market coverage is declined."
+    },
+    {
+      "id": "RN01",
+      "category": "rental",
+      "item": "SF Rent Board allowable annual increase for covered units (Mar 1, 2026 - Feb 28, 2027)",
+      "value": "1.6%",
+      "status": "VERIFIED",
+      "sources": [
+        "S25"
+      ],
+      "note": "Applies only to units covered by the Rent Ordinance. Coverage of Property B is UNVERIFIED (depends on construction date and exemptions)."
+    },
+    {
+      "id": "RN02",
+      "category": "rental",
+      "item": "Rent-controlled coverage of Property B's rented units",
+      "value": "",
+      "status": "UNVERIFIED",
+      "sources": [
+        "S25"
+      ],
+      "note": "Requires the building's certificate of occupancy date and unit status. Left blank."
+    },
+    {
+      "id": "MC01",
+      "category": "macro",
+      "item": "Federal longer-run inflation goal used for projections",
+      "value": "2% (PCE)",
+      "status": "VERIFIED",
+      "sources": [
+        "S28"
+      ],
+      "note": ""
+    },
+    {
+      "id": "MC02",
+      "category": "macro",
+      "item": "FHFA California house price index, 2024 change (basis for Prop 19 amount adjustment)",
+      "value": "2.15%",
+      "status": "VERIFIED",
+      "sources": [
+        "S01"
+      ],
+      "note": "Cited in BOE LTA 2025/009. Used as a reference for property appreciation scenarios only."
+    }
+  ]
+}
