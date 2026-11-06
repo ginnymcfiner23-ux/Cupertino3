@@ -1,732 +1,661 @@
 #!/usr/bin/env python3
-"""Builds the docs/ GitHub Pages site from data/projections.json + verified content."""
-import json, html, datetime
+"""Build the static GitHub Pages site from data/ia/*.json (standard library only).
 
-with open("data/projections.json") as fp:
-    P = json.load(fp)
+Writes (relative to repo root):
+  index.html, facts/, property/, costs/, projections/, decision/, process/, law/,
+  flagged/, sources/, assets/site.css, assets/site.js
 
-A = P["assumptions"]
-AS = html.escape
-TODAY = "2026-11-06"
-
-CUP_TAX_2025 = 7207
-SF_TAX_2025 = 2439
-CUP_INS_YR = 1300
-CUP_WATER_MO = 120
-CUP_MAINT_YR = 31000
-SF_RENT_MO = 7150
-MID45 = [r for r in P["tax_table"] if r["growth"] == "moderate" and r["year"] == 2045][0]
-SC45 = [r for r in P["scenario_table"] if r["growth"] == "moderate" and r["year"] == 2045][0]
-TOTAL_MIN = min(r["A"]["total_tax"] for r in P["tax_table"])
-TOTAL_MAX = max(r["A"]["total_tax"] for r in P["tax_table"])
-
-def money(n):
-    return f"${n:,}"
-
-def pct(n, digits=2):
-    return f"{n:.{digits}f}%"
-
-def esc(s):
-    return html.escape(str(s))
-
-CSS = """
-:root{--bg:#f5f7fa;--card:#fff;--ink:#1a2433;--muted:#5b6b7f;--brand:#0b6e4f;--brand2:#0d4f7c;--accent:#b3541e;--line:#e2e8f0;--red:#a3341e;--amber:#9a6a00;--green:#0b6e4f}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
-a{color:var(--brand2);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-header{background:linear-gradient(120deg,#0d4f7c 0%,#0b6e4f 100%);color:#fff;padding:26px 0 22px}
-header h1{font-size:1.55rem;font-weight:700;letter-spacing:.2px}
-header .sub{opacity:.85;margin-top:6px;font-size:.95rem}
-header .meta{opacity:.7;font-size:.8rem;margin-top:10px}
-.layout{display:flex;gap:26px;padding:26px 0 60px}
-nav{flex:0 0 230px;position:sticky;top:20px;align-self:flex-start}
-nav .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(16,24,40,.06)}
-nav h3{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
-nav a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);font-size:.92rem;margin-bottom:2px}
-nav a:hover{background:#eef4f2;text-decoration:none}
-nav a.active{background:var(--brand);color:#fff;font-weight:600}
-main{flex:1;min-width:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 3px rgba(16,24,40,.05)}
-.card h2{font-size:1.15rem;margin-bottom:10px;color:var(--brand2)}
-.card h3{font-size:1rem;margin:18px 0 8px;color:var(--ink)}
-.card p{margin-bottom:10px;color:#2c3a4c}
-.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:20px;margin-right:6px;letter-spacing:.3px}
-.tag.ok{background:#e3f2ec;color:var(--green)}
-.tag.flag{background:#fdf0e4;color:var(--amber)}
-.tag.bad{background:#fdeae4;color:var(--red)}
-.tag.info{background:#e8eff8;color:var(--brand2)}
-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:12px 0}
-th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
-th{background:#f0f4f8;font-weight:600;color:#26364a}
-tr:nth-child(even) td{background:#fafcfe}
-td.num{text-align:right;font-variant-numeric:tabular-nums}
-.src{font-size:.72rem;color:var(--muted);margin-top:10px}
-.src a{word-break:break-all}
-.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0}
-.kpi .item{background:#f7faf8;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.kpi .item .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
-.kpi .item .value{font-size:1.25rem;font-weight:700;margin-top:4px;color:var(--brand)}
-.kpi .item .note{font-size:.75rem;color:var(--muted);margin-top:3px}
-.callout{border-left:4px solid var(--accent);background:#fdf7f1;padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0}
-.callout.green{border-color:var(--green);background:#eff8f2}
-.callout.blue{border-color:var(--brand2);background:#eef4f9}
-.callout h4{font-size:.92rem;margin-bottom:6px}
-.callout p{margin-bottom:0;font-size:.92rem}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:900px){.layout{flex-direction:column}nav{position:static;width:100%}.grid2{grid-template-columns:1fr}}
-.step{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px;background:#fafcfe}
-.step h4{font-size:.95rem;color:var(--brand2)}
-.step p{font-size:.9rem;margin-top:4px}
-footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:.8rem}
-ul,ol{margin:8px 0 12px 22px}
-li{margin-bottom:6px}
-.toc{background:#f7faf8;border:1px dashed var(--line);border-radius:10px;padding:14px 18px;margin-bottom:20px}
-.toc h3{margin-bottom:8px}
+All numbers come from data/ia/projections.json (scripts/model.py) or the register files.
+Every table row carries a source link: an official URL from data/ia/sources.json, or a link
+to the matching Flagged-for-Review entry when the value is UNVERIFIED.
 """
+import html
+import json
+import pathlib
+import re
 
-def nav(active):
-    items = [
-        ("index", "Executive Summary", "index.html"),
-        ("properties", "Properties & Tax Data", "properties.html"),
-        ("tax-law", "Law & Tax Research", "tax-law.html"),
-        ("inheritance", "Inheritance Process", "inheritance.html"),
-        ("projections", "Projections 2026-2055", "projections.html"),
-        ("costs", "Utilities & Insurance", "costs.html"),
-        ("scenarios", "Decision Analysis", "scenarios.html"),
-        ("flagged", "Flagged for Review", "flagged.html"),
-        ("sources", "Sources", "sources.html"),
-    ]
-    lis = "".join(
-        f'<a class="{"active" if k == active else ""}" href="{u}">{esc(t)}</a>' for k, t, u in items)
-    return f"""
-<nav><div class="card"><h3>Navigation</h3>{lis}
-<p style="font-size:.72rem;color:var(--muted);margin-top:12px">Verified {TODAY}<br>No personal data in this product</p>
-</div></nav>"""
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+D = ROOT / "data" / "ia"
+BUILD_DATE = "2026-11-06"
 
-def page(active, title, subtitle, body, footer_extra=""):
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} — Cupertino3 Inheritance Decision</title>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<header><div class="wrap">
-<h1>Cupertino &amp; San Francisco House Inheritance — Decision Dashboard</h1>
-<div class="sub">Executive analysis for trust-based inheritance (target 2040–2050)</div>
-<div class="meta">Research verified {TODAY} · all table rows carry source links · unverified values flagged</div>
-</div></header>
-<div class="wrap layout">
-{nav(active)}
-<main>{body}</main>
-</div>
-<footer><div class="wrap">
-Cupertino3 · Internal decision-support product · All figures are estimates for planning; verify before acting.
-{footer_extra}
-</div></footer>
-</body></html>"""
+SOURCES = {s["id"]: s for s in json.loads((D / "sources.json").read_text())["sources"]}
+FACTS = json.loads((D / "facts.json").read_text())
+INPUTS = json.loads((D / "inputs.json").read_text())
+FLAGS = json.loads((D / "flags.json").read_text())["flags"]
+PROJ = json.loads((D / "projections.json").read_text())
+FLAG_IDS = {f["id"] for f in FLAGS}
 
-# ---------- table builders ----------
-def tbl(headers, rows, classes=None):
-    h = "".join(f"<th>{esc(x)}</th>" for x in headers)
-    r = ""
-    for row in rows:
-        cells = "".join(f"<td class=\"{classes[i]}\">{c}</td>" if classes and i < len(classes) and classes[i] == "num" else f"<td>{c}</td>" for i, c in enumerate(row))
-        r += f"<tr>{cells}</tr>"
-    return f"<table><thead><tr>{h}</tr></thead><tbody>{r}</tbody></table>"
-
-def src(*links):
-    return '<div class="src">Sources: ' + " · ".join(f'<a href="{esc(u)}">{esc(t)}</a>' for t, u in links) + "</div>"
-
-def kpi(label, value, note):
-    return f'<div class="item"><div class="label">{esc(label)}</div><div class="value">{esc(value)}</div><div class="note">{esc(note)}</div></div>'
-
-# ---------- Executive summary page ----------
-def page_index():
-    t = P["tax_table"]
-    mid = [r for r in t if r["growth"] == "moderate" and r["year"] == 2045][0]
-    sc = [r for r in P["scenario_table"] if r["growth"] == "moderate" and r["year"] == 2045][0]
-    est2045 = [r for r in P["estate_table"] if r["year"] == 2045][0]
-    body = f"""
-<div class="toc"><h3>Executive Summary</h3>
-<p>This dashboard supports one decision: <b>what to do with the Cupertino house when it is inherited around 2040–2050</b> — live in it, rent it, or sell it and reinvest — alongside the San Francisco house (3 units, $7,150/mo rent) and a cash inheritance.</p>
-</div>
-
-<div class="kpi">
-{kpi("Federal estate tax exemption (2026)", "$15,000,000 / person", "IRS — indexed for inflation from 2027 (OBBB, permanent)")}
-{kpi("California inheritance / estate tax", "None", "Repealed 1982 (Prop 6); pick-up tax = $0")}
-{kpi("Cupertino property tax at inheritance (2045, moderate)", money(mid["A"]["cup_tax"]) + "/yr", "Full Prop 19 reassessment (rental house)")}
-{kpi("Sell Cupertino → annual after-tax income (2045)", money(sc["sell"]["after_tax_income"]), "Reinvested portfolio, moderate growth")}
-{kpi("Rent Cupertino → net operating income (2045)", "−" + money(abs(sc["rent"]["noi"])) + "/yr", "Property tax reset exceeds net rent")}
-{kpi("Estate exemption projected 2045", money(est2045["exemption_person"]) + "/person", "Assumption: +2.5%/yr indexing")}
-</div>
-
-<div class="card">
-<h2>The decision in one paragraph</h2>
-<p><b>Recommendation: Sell the Cupertino house at inheritance and reinvest the proceeds in the stock market; keep the San Francisco house (either live in the third unit or keep renting all three units).</b>
-Under Proposition 19 (in effect since Feb 16, 2021), an inherited <b>rental property</b> is reassessed to full market value — the Cupertino house's property tax would jump from ~{money(CUP_TAX_2025)} today to about <b>{money(mid['A']['cup_tax'])} per year</b> by 2045 (moderate growth scenario), which exceeds any plausible net rental income (projected net operating income is about <b>−{money(abs(sc['rent']['noi']))}/yr</b>). Because inherited assets receive a <b>stepped-up basis</b> at date of death, selling the house immediately after inheritance produces <b>$0 capital gains tax</b>, and the proceeds (~{money(sc['sell']['net'])} net by 2045) invested at a 6% nominal return generate roughly <b>{money(sc['sell']['after_tax_income'])}/yr</b> after tax — without property tax, insurance, maintenance, or vacancy risk. The SF house keeps its Prop 19 capped exclusion if the heir moves into it within one year (and files the homeowner's exemption), or its $7,150/mo rent covers a full reassessment.</p>
-</div>
-
-<div class="card">
-<h2>Key findings</h2>
-<h3>1. There is no California inheritance tax — the only estate tax is federal</h3>
-<p>California repealed its inheritance tax in 1982 and has no state estate tax (the old "pick-up" tax collects $0). The only inheritance tax exposure is the federal estate tax: <b>$15,000,000 per person ($30M per married couple with portability) in 2026</b>, made permanent by the One Big Beautiful Bill Act (signed July 4, 2025) and indexed for inflation from 2027. Estate tax is <b>40% on the amount above the exemption</b> and is paid by the estate (Form 706, due 9 months after death), not by heirs. Inheritances themselves are not income to recipients.</p>
-{src(("IRS estate tax page", "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax"), ("IRS IR-2025-103 (2026 inflation adjustments)", "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill"), ("California FTB — estate tax history", "https://www.ftb.ca.gov/tax-pros/law/legislation/2019-2020/SB378-032519.pdf"))}
-
-<h3>2. Proposition 19 is the single biggest cost driver at inheritance</h3>
-<p>Prop 19 (effective Feb 16, 2021) eliminated the parent-child property-tax exclusion for anything other than the <b>family home</b>. Inherited rental/investment property is reassessed to full market value; inherited principal residences get the factored base year value plus an inflation-adjusted <b>$1,044,586</b> allowance (2025–2027 period) — but only if the heir occupies it as their primary residence within <b>one year</b> and files the homeowner's exemption. The claim form is <b>BOE-19-P</b>, due within <b>3 years</b> of the transfer (date of death). A repeal initiative failed to qualify for the November 2026 ballot; Prop 19 remains in effect.</p>
-{src(("BOE Taxpayers' Rights Advocate (official Prop 19 guidance)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"), ("CA Secretary of State — repeal initiative failed", "https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf"))}
-
-<h3>3. Total property tax at inheritance: ~$96K/yr by 2045 (both houses kept)</h3>
-<p>Today the two houses cost about {money(CUP_TAX_2025)} + {money(SF_TAX_2025)} = <b>{money(CUP_TAX_2025 + SF_TAX_2025)}/yr</b> in property tax. Under Prop 19 at a 2045 inheritance (moderate 3.5% growth), keeping both houses costs roughly <b>{money(mid['A']['total_tax'])}/yr</b> (Cupertino fully reassessed; SF with the capped exclusion). The result is nearly identical if the parents instead make the Cupertino house their principal residence — the $1M-capped exclusion simply shifts between the two houses.</p>
-
-<h3>4. Selling is tax-free; renting is a net loss; living in Cupertino costs ~$80K/yr</h3>
-<p>Stepped-up basis means <b>$0 capital gains tax</b> if the inherited house is sold at market value (IRS Topic 409). Renting it out after the reassessment produces a projected net operating loss of about {money(abs(sc['rent']['noi']))}/yr by 2045. Living in it avoids rent but still carries ~{money(mid['A']['cup_tax'])} in property tax plus insurance, utilities and maintenance — roughly $79K/yr of housing cost. The SF house's rent ($7,150/mo = $85,800/yr) comfortably absorbs its own reassessment.</p>
-{src(("IRS Topic 409 — capital gains & stepped-up basis", "https://www.irs.gov/taxtopics/tc409"), ("IRS Pub 551 — basis of assets", "https://www.irs.gov/forms-pubs/about-publication-551"))}
-
-<h3>5. Planning actions to take now (before 2040)</h3>
-<ol>
-<li><b>Fund the trust</b> with both houses (a trust only avoids probate for assets titled into it).</li>
-<li><b>Decide which house is the parents' principal residence</b> — it determines which house gets the Prop 19 capped exclusion and which is fully reassessed.</li>
-<li><b>Verify all user-provided figures</b> against official tax bills, assessor records, leases and quotes (see Flagged for Review).</li>
-<li><b>If the estate may exceed ~$30M (couple)</b>, plan with an estate attorney: lifetime gifting ($19,000/recipient annual exclusion in 2026), portability, and trust structure.</li>
-<li><b>Heirs must move into the excluded house within 1 year</b> of inheritance and file the homeowner's exemption, or the exclusion is lost permanently.</li>
-</ol>
-</div>
-
-<div class="card">
-<h2>How to use this site</h2>
-<ul>
-<li><b>Properties &amp; Tax Data</b> — both houses' history, market values, and flagged irregularities.</li>
-<li><b>Law &amp; Tax Research</b> — every verified fact with its official source.</li>
-<li><b>Inheritance Process</b> — the step-by-step trust → reassessment → sale/rent timeline.</li>
-<li><b>Projections 2026–2055</b> — values, property tax, estate exemption, and costs under three growth scenarios.</li>
-<li><b>Decision Analysis</b> — live vs rent vs sell, side by side, with the recommendation.</li>
-<li><b>Flagged for Review</b> — unverified values, irregularities, and what needs confirmation.</li>
-<li><b>Sources</b> — every link used.</li>
-</ul>
-<p style="color:var(--muted);font-size:.85rem">Projection assumptions (growth rates, portfolio return, maintenance) are labeled assumptions, not verified facts. Verified law/rates carry official source links on every table row.</p>
-</div>
-"""
-    return page("index", "Executive Summary", "", body)
-
-# ---------- Properties page ----------
-def page_properties():
-    rows = []
-    for y, tax, av, rate, src_status in [
-        ("2026", None, 550537, None, "User-provided"),
-        ("2025", 7207, 539743, 1.335, "User-provided"),
-        ("2024", 7003, 529161, 1.323, "User-provided"),
-        ("2023", 6917, 518786, 1.333, "User-provided"),
-        ("2022", 6755, 508614, 1.328, "User-provided"),
-        ("2021", 6662, 498642, 1.336, "User-provided"),
-        ("2020", 6565, 493530, 1.331, "User-provided"),
-        ("2019", 6565, 483854, 1.357, "User-provided"),
-        ("2018", 6383, 474368, 1.346, "User-provided"),
-        ("2017", 6383, 465067, 1.372, "User-provided"),
-        ("2016", 6414, 455949, 1.407, "User-provided"),
-        ("2015", 6130, 449101, 1.365, "User-provided"),
-        ("2014", 5965, 440305, 1.355, "User-provided"),
-    ]:
-        rows.append([f"<b>{y}</b>", money(tax) if tax is not None else "--", money(av), f"{rate:.2f}%" if rate else "--", "User-provided (flag)"])
-    body = f"""
-<div class="card">
-<h2>Cupertino house — 95014</h2>
-<p><span class="tag flag">USER-PROVIDED</span> Market value (Nov 2026): <b>{money(3100000)}</b> — <b>not verified</b>; obtain an appraisal or assessor market value.
-Assessed value shown is the Prop 13 factored base year value (AV), not market value. Estimated value and solar credits are user-provided (flag).</p>
-{tbl(["Year", "Property taxes", "Tax assessment (AV)", "Implied effective rate", "Source status"], rows, ["", "num", "num", "num", ""])}
-{src(("Santa Clara County tax rate book 2025-26 (official)", "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf"), ("BOE Prop 13 / Prop 19 rules", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"))}
-<div class="callout"><h4>Irregularity</h4><p>Implied effective rate 1.32%–1.41% exceeds the published Cupertino composite range (~1.15%–1.22%). Likely cause: special assessments/direct charges on this parcel. Verify on the official tax bill.</p></div>
-</div>
-
-<div class="card">
-<h2>San Francisco house — 94122 (Outer Sunset)</h2>
-<p><span class="tag flag">USER-PROVIDED</span> Market value (Nov 2026): <b>{money(1800000)}</b> — <b>not verified</b>. 3 livable units; 2 rented at $7,150/mo; unit 3 available as principal residence.</p>
-{tbl(["Year", "Property taxes", "Tax assessment (AV)", "Implied effective rate", "Source status"], [
- ["<b>2025</b>", money(2439), money(114248), "2.13%", "User-provided (flag)"],
- ["<b>2024</b>", money(2315), money(112008), "2.07%", "User-provided (flag)"],
- ["<b>2023</b>", money(2179), money(109814), "1.98%", "User-provided (flag)"],
- ["<b>2022</b>", money(2107), money(107662), "1.96%", "User-provided (flag)"],
- ["<b>2021</b>", money(2066), money(105595), "1.96%", "User-provided (flag)"],
- ["<b>2020</b>", money(2197), money(104513), "2.10%", "User-provided (flag)"],
- ["<b>2019</b>", money(2134), money(102465), "2.08%", "User-provided (flag)"],
- ["<b>2018</b>", money(2061), money(100456), "2.05%", "User-provided (flag)"],
- ["<b>2017</b>", money(1740), money(98488), "1.77%", "User-provided (flag)"],
- ["<b>2016</b>", money(1675), money(96557), "1.74%", "User-provided (flag)"],
-], ["", "num", "num", "num", ""])}
-{src(("SF Treasurer & Tax Collector — secured property taxes (official)", "https://sftreasurer.org/property/secured-property-taxes"))}
-<div class="callout"><h4>Irregularity</h4><p>Implied effective rate 1.73%–2.14% exceeds the published SF secured rate of 1.18% (FY 2026-27: 1.18162182%). Likely cause: SF direct charges (sewer capacity charge based on land value/ERU) and special assessments. Verify on the official bill.</p></div>
-</div>
-
-<div class="card">
-<h2>Property facts summary</h2>
-{tbl(["Property", "Market value (est., user)", "Current property tax", "Use", "Rental income", "Occupancy status"], [
- ["Cupertino 95014", money(3100000), money(CUP_TAX_2025) + "/yr (2025)", "Rental / investment (to confirm)", "Not provided", "To confirm"],
- ["SF 94122", money(1800000), money(SF_TAX_2025) + "/yr (2025)", "Owner-occupied rental (3 units)", "$7,150/mo (2 units, user)", "Parents can live in unit 3"],
-], ["", "num", "num", "", "", ""])}
-<div class="callout blue"><h4>Note</h4><p>The Cupertino house's current occupancy/rent status must be confirmed: under Prop 19 the analysis changes materially if the Cupertino house is (a) the parents' principal residence vs (b) a rental. See Flagged for Review.</p></div>
-</div>
-"""
-    return page("properties", "Properties & Tax Data", "", body)
-
-# ---------- Law & Tax page ----------
-def page_tax_law():
-    body = f"""
-<div class="card">
-<h2>Federal estate tax — the only inheritance tax that can apply</h2>
-{tbl(["Item", "2026 value", "Source"], [
- ["Basic exclusion amount (per person)", "$15,000,000", "IRS estate tax page"],
- ["2025 exclusion amount", "$13,990,000", "IRS estate tax page / IR-2025-103"],
- ["Combined married (portability)", "$30,000,000", "Derived (2 × per-person); IRS portability rule"],
- ["Top rate on excess", "40%", "IRS estate tax page"],
- ["Annual gift exclusion", "$19,000 / recipient", "IRS IR-2025-103"],
- ["Return", "Form 706, 9 months after death", "IRS Form 706 instructions"],
- ["Indexing", "Inflation-indexed from 2027 (permanent, no sunset)", "IRS IR-2025-103 / Rev. Proc. 2025-32"],
-], ["", "num", ""])}
-{src(("IRS — Estate tax", "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax"), ("IRS — 2026 inflation adjustments (IR-2025-103)", "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill"), ("IRS — Rev. Proc. 2025-32", "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"), ("IRS — Form 706 instructions", "https://www.irs.gov/instructions/i706"))}
-<p><b>Inheritance process note:</b> The estate pays the tax before distribution; heirs never pay "inheritance tax" out of pocket. Inherited cash and property are not income to the recipient. Stepped-up basis applies to inherited assets.</p>
-{src(("IRS — Pub 559 (survivors, executors)", "https://www.irs.gov/forms-pubs/about-publication-559"))}
-</div>
-
-<div class="card">
-<h2>California — no inheritance tax, no state estate tax</h2>
-{tbl(["Item", "Status", "Source"], [
- ["California inheritance tax", "None — repealed by Prop 6 (June 1982)", "California FTB analyses"],
- ["California state estate tax", "None — 'pick-up' tax tied to federal credit; credit repealed for deaths after 2004 → $0", "California FTB analyses"],
- ["Statute still on books", "Rev. &amp; Tax. Code §13302 (collects nothing)", "California FTB analyses"],
- ["Exposure for CA residents", "Federal estate tax only, above $15M/person (2026)", "IRS estate tax page"],
-], ["", "", ""])}
-{src(("California FTB — SB 378 analysis", "https://www.ftb.ca.gov/tax-pros/law/legislation/2019-2020/SB378-032519.pdf"), ("California FTB — SB 726 analysis", "https://www.ftb.ca.gov/tax-pros/law/legislation/2017-2018/sb726-032317.pdf"))}
-<div class="callout green"><h4>Bottom line for this estate</h4><p>California will collect <b>nothing</b> on the inheritance. If the total estate (houses + money + other assets) stays under the federal exemption for the year of death (~$15M/person in 2026, indexed), <b>no federal estate tax is owed at all</b>. If it exceeds the exemption, 40% is owed only on the excess, paid by the estate.</p></div>
-</div>
-
-<div class="card">
-<h2>Proposition 13 — how the property tax base works</h2>
-{tbl(["Rule", "Value", "Source"], [
- ["Base property tax rate", "1% of assessed value (Cal. Const. Art. XIII A)", "BOE"],
- ["Max annual assessed-value increase", "2% per year (factored base year value)", "BOE"],
- ["Reassessment trigger", "Change of ownership / new construction → market value", "BOE"],
- ["Total rate", "1% + voter-approved bonds + special assessments (varies by TRA)", "Santa Clara County / SF Treasurer"],
- ["SF secured rate FY 2026-27", "1.18162182% of AV", "SF Treasurer"],
- ["Cupertino composite range", "~1.15%–1.22% (published; parcel bills imply 1.32%–1.41% incl. special assessments — flagged)", "Santa Clara County rate book"],
-], ["", "", ""])}
-{src(("BOE — Taxpayers' Rights Advocate (official)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"), ("SF Treasurer — secured property taxes", "https://sftreasurer.org/property/secured-property-taxes"), ("Santa Clara County — Compilation of Tax Rates 2025-26", "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf"))}
-</div>
-
-<div class="card">
-<h2>Proposition 19 — intergenerational transfer exclusion (the decisive rule)</h2>
-{tbl(["Rule", "Detail", "Source"], [
- ["Family home only", "Exclusion applies only if the property was the principal residence of the transferor (parent)", "BOE"],
- ["Heir must move in", "Within 1 year of transfer, as primary residence + file homeowner's exemption", "BOE"],
- ["Value cap", "New taxable value = market value − inflation-adjusted $1M allowance (above factored base + allowance)", "BOE"],
- ["Allowance 2025-2027", "$1,044,586 (BOE inflation adjustment)", "BOE (via legal summaries)"],
- ["Rental / investment property", "NO exclusion — fully reassessed to market value at date of death", "BOE"],
- ["Claim form / deadline", "BOE-19-P within 3 years of transfer (date of death), or before sale", "BOE"],
- ["Trust transfers", "Same rules as outright inheritance (transfer at date of death)", "BOE"],
- ["If heir later rents it out", "Exclusion removed; new value set as of Jan 1 lien date after move-out", "BOE"],
-], ["", "", ""])}
-{src(("BOE — Taxpayers' Rights Advocate (official Prop 19 guidance)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"))}
-<h3>What this means for these two houses</h3>
-<ul>
-<li><b>Cupertino (rental):</b> inherited → reassessed to full market value. Property tax rises from ~{money(CUP_TAX_2025)} to ~{money(MID45['A']['cup_tax'])}/yr by 2045 (moderate scenario).</li>
-<li><b>SF (principal residence):</b> inherited → factored base + $1M-capped exclusion if the heir moves in within 1 year and files the exemption. New taxable value ≈ market value − allowance → ~{money(MID45['A']['sf_tax'])}/yr by 2045 (moderate scenario).</li>
-<li>Either arrangement (SF as family home vs Cupertino as family home) yields nearly the same combined property tax (~{money(MID45['A']['total_tax'])} vs {money(MID45['B']['total_tax'])}/yr in 2045) — the capped exclusion simply shifts between the two houses.</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Law changes in progress (as of Nov 2026)</h2>
-{tbl(["Item", "Status", "Source"], [
- ["Prop 19 repeal initiative (3rd attempt, Initiative 25-0017)", "FAILED to qualify for Nov 2026 ballot (SOS confirmed 2026-05-04)", "CA Secretary of State"],
- ["SCA 4 (Seyarto) — reinstate Prop 58/193", "Introduced in legislature; not enacted", "CA Senate"],
- ["Prop 19 rules", "Remain fully in effect", "BOE"],
- ["Federal estate tax exemption", "Permanent $15M/person from 2026 (OBBB), indexed from 2027", "IRS"],
-], ["", "", ""])}
-{src(("CA Secretary of State — failure memo", "https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf"), ("CA Senate — SCA 4", "https://sr32.senate.ca.gov/bill/sca-4-protecting-taxpayers-rights"), ("IRS — IR-2025-103", "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill"))}
-<div class="callout"><h4>Planning implication</h4><p>Prop 19 is not expected to change before the 2040–2050 inheritance window (repeal attempts have failed three times). Plan under current rules, but monitor SCA 4 and future initiatives.</p></div>
-</div>
-
-<div class="card">
-<h2>Capital gains on selling inherited property</h2>
-{tbl(["Rule", "Detail", "Source"], [
- ["Stepped-up basis", "Basis = fair market value at date of death", "IRS Topic 409 / Pub 551"],
- ["Sell at market value soon after inheritance", "$0 taxable gain → no capital gains tax", "IRS Topic 409"],
- ["Holding period", "Inherited property is automatically long-term", "IRS Topic 409"],
- ["Federal LTCG rates", "0% / 15% / 20% by income", "IRS Topic 409"],
- ["NIIT", "3.8% net investment income tax", "IRS Topic 559"],
- ["California", "Gains taxed as ordinary income (up to 12.3% + 1% mental-health surcharge over $1M)", "FTB rate schedules"],
-], ["", "", ""])}
-{src(("IRS — Topic 409 (capital gains)", "https://www.irs.gov/taxtopics/tc409"), ("IRS — Topic 559 (NIIT)", "https://www.irs.gov/taxtopics/tc559"), ("IRS — Pub 551 (basis of assets)", "https://www.irs.gov/forms-pubs/about-publication-551"), ("California FTB — 2025 tax rate schedules", "https://www.ftb.ca.gov/forms/2025/2025-540-tax-rate-schedules.pdf"))}
-</div>
-"""
-    return page("tax-law", "Law & Tax Research", "", body)
-
-# ---------- Inheritance process page ----------
-def page_inheritance():
-    SRC_BOE = '<a href="https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf">BOE LTA 2022/051</a>'
-    SRC_IRS_ET = '<a href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax">IRS estate tax</a>'
-    SRC_IR = '<a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill">IRS IR-2025-103</a>'
-    SRC_409 = '<a href="https://www.irs.gov/taxtopics/tc409">IRS Topic 409</a>'
-    SRC_SF = '<a href="https://sftreasurer.org/property/secured-property-taxes">SF Treasurer</a>'
-    SRC_551 = '<a href="https://www.irs.gov/forms-pubs/about-publication-551">IRS Pub 551</a>'
-    steps = [
-        ("Before death (now → 2040)", [
-            ("1. Fund the revocable living trust with both houses",
-             "A trust only avoids probate for assets actually titled into it. Deed both properties into the trust; name a successor trustee.",
-             'California Probate Code (trusts) — <a href="https://leginfo.legislature.ca.gov/">leginfo.legislature.ca.gov</a> (flag: verify)'),
-            ("2. Decide which house is the parents' principal residence",
-             "Under Prop 19, only the family home qualifies for the capped exclusion at death. The other house (rental) is fully reassessed. This decision shifts ~$18K/yr of tax between the two houses.",
-             SRC_BOE),
-            ("3. Plan estate tax if the estate may be large",
-             "If the estate may exceed the federal exemption (~$15M/person 2026, indexed), consider lifetime gifting ($19,000/recipient annual exclusion in 2026), portability election, and trust structure with an estate attorney.",
-             SRC_IR + "; " + SRC_IRS_ET),
-            ("4. Do NOT sell the houses before death to 'avoid' taxes",
-             "Selling before death triggers capital gains tax on appreciation since purchase. Inheriting first gives heirs a stepped-up basis — selling after inheritance at market value = $0 gain.",
-             SRC_409),
-        ]),
-        ("At death (2040–2050)", [
-            ("5. Date of death = date of transfer for property tax purposes",
-             "Not the distribution date. The assessor reassesses both houses as of the date of death.",
-             SRC_BOE),
-            ("6. Successor trustee takes control — no probate court",
-             "Trust assets distribute per the trust document. If assets were NOT in a trust, heirs must open probate (public record, statutory fees on gross estate) or use small-estate / AB 2016 tools.",
-             'California Probate Code — <a href="https://leginfo.legislature.ca.gov/">leginfo.legislature.ca.gov</a> (flag: verify)'),
-            ("7. Reassessment: Cupertino fully, SF capped",
-             "Cupertino (rental) → full market value. SF (family home) → factored base + $1M-capped exclusion (new taxable value ≈ market value − allowance), provided the heir occupies it as principal residence within 1 year and files the homeowner's exemption.",
-             SRC_BOE),
-            ("8. File BOE-19-P within 3 years (SF family home)",
-             "Claim for the Prop 19 exclusion. Also file the homeowner's exemption within 1 year. Cupertino needs no claim (no exclusion available).",
-             SRC_BOE),
-            ("9. Pay supplemental tax bills",
-             "The county issues supplemental assessments for the partial fiscal year after reassessment.",
-             SRC_SF + "; " + SRC_BOE),
-            ("10. Form 706 if estate exceeds exemption",
-             "Due 9 months after death; pay 40% estate tax on the excess; elect portability for the surviving spouse if applicable.",
-             SRC_IRS_ET),
-            ("11. Heirs receive stepped-up basis",
-             "FMV at date of death is the new cost basis. Selling inherited real estate at market value soon after inheritance = $0 capital gains tax.",
-             SRC_409 + " / " + SRC_551),
-        ]),
-        ("After inheritance", [
-            ("12. DECIDE: live / rent / sell the Cupertino house",
-             "See the Decision Analysis page. Recommendation: sell at inheritance, reinvest; keep the SF house.",
-             'This analysis — <a href="scenarios.html">Decision Analysis</a>'),
-            ("13. If keeping the SF family home",
-             "The heir must occupy it as primary residence and file the exemption — otherwise the exclusion is lost (full reassessment). If the heir later moves out, the exclusion is removed and a new value is set.",
-             SRC_BOE),
-            ("14. Ongoing obligations",
-             "Pay property taxes (now at reassessed values), insurance, utilities, maintenance; file income tax on rental income; track basis from date of death for future sales.",
-             SRC_409 + " / <a href=\"https://www.ftb.ca.gov/\">California FTB</a>"),
-        ]),
-    ]
-    html_steps = ""
-    for phase, items in steps:
-        html_steps += f'<h3>{esc(phase)}</h3>'
-        for title, desc, srctxt in items:
-            html_steps += f'<div class="step"><h4>{esc(title)}</h4><p>{esc(desc)}</p><p style="font-size:.72rem;color:var(--muted)">Source: {srctxt}</p></div>'
-    body = f"""
-<div class="card">
-<h2>Inheritance process — step by step (via trust)</h2>
-<p>The plan: inherit both houses through a trust around 2040–2050. Below is the verified process, phase by phase, with the key deadlines.</p>
-{html_steps}
-</div>
-
-<div class="card">
-<h2>Key deadlines checklist</h2>
-{tbl(["Deadline", "Action", "Consequence if missed"], [
- ["Before death", "Fund the trust with both houses", "Houses go through probate (public, fees on gross estate)"],
- ["Date of death", "Assessor reassesses both houses (date of death = transfer date)", "—"],
- ["Within 3 years", "File BOE-19-P claim for SF family-home exclusion", "Lose Prop 19 exclusion (full reassessment of SF house)"],
- ["Within 1 year", "File homeowner's exemption; heir moves into SF family home", "Exclusion lost permanently"],
- ["9 months after death", "Form 706 if estate > exemption (portability election)", "Penalties; loss of portability"],
- ["On sale", "Basis = FMV at date of death; sell at market value → $0 gain", "—"],
-], ["", "", ""])}
-</div>
-"""
-    return page("inheritance", "Inheritance Process", "", body)
-
-# ---------- Projections page ----------
-def page_projections():
-    def money_fmt(n):
-        return money(n) if n is not None else "--"
-    body = f"""
-<div class="card">
-<h2>Projections 2026–2055</h2>
-<p>Three market-growth scenarios are shown: <b>Conservative 2.0%/yr</b>, <b>Moderate 3.5%/yr</b>, <b>Aggressive 5.0%/yr</b> (assumptions — see Flagged for Review). Prop 13 assessed values grow at the verified 2% cap. Property tax uses published composite rates (Cupertino 1.20% + est. special assessments; SF 1.1816% + est. direct charges).</p>
-
-<h3>Market value & Prop 13 assessed value — Moderate (3.5%)</h3>
-{tbl(["Year", "Cupertino market value", "SF market value", "Cupertino AV (Prop 13)", "SF AV (Prop 13)"], [
- [str(r["year"]), money(r["cup_mv"]), money(r["sf_mv"]), money(r["cup_av"]), money(r["sf_av"])]
- for r in P["value_table"] if r["growth"] == "moderate" and r["year"] % 5 == 0 or (r["growth"] == "moderate" and r["year"] == 2026)
-], ["", "num", "num", "num", "num"])}
-{src(("User-provided 2026 values (flag)", "#"), ("Santa Clara County rate book", "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf"))}
-</div>
-
-<div class="card">
-<h2>Property tax at inheritance under Prop 19 — all three scenarios</h2>
-<p><b>Scenario A</b> = parents' principal residence is the SF house (base plan): Cupertino fully reassessed; SF capped exclusion. <b>Scenario B</b> = parents make Cupertino their principal residence: Cupertino capped exclusion; SF fully reassessed.</p>
-<h3>Conservative (2.0%/yr)</h3>
-{tbl(["Inheritance year", "Prop 19 allowance", "A: Cupertino AV / tax", "A: SF AV / tax", "A: total", "B: Cupertino AV / tax", "B: SF AV / tax", "B: total"], [
- [str(r["year"]), money(r["cap"]), f'{money(r["A"]["cup_av"])} / {money(r["A"]["cup_tax"])}', f'{money(r["A"]["sf_av"])} / {money(r["A"]["sf_tax"])}', money(r["A"]["total_tax"]), f'{money(r["B"]["cup_av"])} / {money(r["B"]["cup_tax"])}', f'{money(r["B"]["sf_av"])} / {money(r["B"]["sf_tax"])}', money(r["B"]["total_tax"])]
- for r in P["tax_table"] if r["growth"] == "conservative"
-], ["", "num", "", "", "num", "", "", "num"])}
-<h3>Moderate (3.5%/yr)</h3>
-{tbl(["Inheritance year", "Prop 19 allowance", "A: Cupertino AV / tax", "A: SF AV / tax", "A: total", "B: Cupertino AV / tax", "B: SF AV / tax", "B: total"], [
- [str(r["year"]), money(r["cap"]), f'{money(r["A"]["cup_av"])} / {money(r["A"]["cup_tax"])}', f'{money(r["A"]["sf_av"])} / {money(r["A"]["sf_tax"])}', money(r["A"]["total_tax"]), f'{money(r["B"]["cup_av"])} / {money(r["B"]["cup_tax"])}', f'{money(r["B"]["sf_av"])} / {money(r["B"]["sf_tax"])}', money(r["B"]["total_tax"])]
- for r in P["tax_table"] if r["growth"] == "moderate"
-], ["", "num", "", "", "num", "", "", "num"])}
-<h3>Aggressive (5.0%/yr)</h3>
-{tbl(["Inheritance year", "Prop 19 allowance", "A: Cupertino AV / tax", "A: SF AV / tax", "A: total", "B: Cupertino AV / tax", "B: SF AV / tax", "B: total"], [
- [str(r["year"]), money(r["cap"]), f'{money(r["A"]["cup_av"])} / {money(r["A"]["cup_tax"])}', f'{money(r["A"]["sf_av"])} / {money(r["A"]["sf_tax"])}', money(r["A"]["total_tax"]), f'{money(r["B"]["cup_av"])} / {money(r["B"]["cup_tax"])}', f'{money(r["B"]["sf_av"])} / {money(r["B"]["sf_tax"])}', money(r["B"]["total_tax"])]
- for r in P["tax_table"] if r["growth"] == "aggressive"
-], ["", "num", "", "", "num", "", "", "num"])}
-{src(("BOE Prop 19 rules (official)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"), ("BOE $1,044,586 allowance (2025-2027)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"), ("Santa Clara County rate book", "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf"), ("SF Treasurer secured rate", "https://sftreasurer.org/property/secured-property-taxes"))}
-<div class="callout"><h4>Read this carefully</h4><p>Keeping both houses costs roughly <b>{money(TOTAL_MIN)}–{money(TOTAL_MAX)}/yr</b> in combined property tax at inheritance (2040–2050, all scenarios) — versus <b>~{money(CUP_TAX_2025 + SF_TAX_2025)}/yr</b> today. The increase is the Prop 19 reassessment, not the tax rate.</p></div>
-</div>
-
-<div class="card">
-<h2>Federal estate tax exemption projection</h2>
-{tbl(["Year", "Exemption per person", "Married couple (portability)"], [
- [str(r["year"]), money(r["exemption_person"]), money(r["exemption_couple"])]
- for r in P["estate_table"] if r["year"] % 5 == 0 or r["year"] == 2026
-], ["", "num", "num"])}
-{src(("IRS — estate tax filing thresholds", "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax"), ("IRS — IR-2025-103 (indexing from 2027)", "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill"))}
-<p style="font-size:.85rem;color:var(--muted)">Indexing assumption: +2.5%/yr from the 2026 $15M base (labeled assumption; IRS states the exemption is indexed for inflation starting 2027).</p>
-</div>
-
-<div class="card">
-<h2>Decision comparison at inheritance (Cupertino house)</h2>
-<p>Sell = proceeds at market value, $0 capital gains (stepped-up basis), ~6% closing costs, reinvested at 6% nominal return (assumption). Rent = gross rent minus property tax, insurance, maintenance, utilities, management (8% of rent), vacancy (5%). Rent estimate: Cupertino 3-bed house median ~$5,005/mo (Homes.com, 2026 — third-party estimate, flag).</p>
-<h3>Moderate (3.5%/yr)</h3>
-{tbl(["Inheritance year", "Market value", "Sell: net proceeds", "Sell: annual income (after tax)", "Rent: gross", "Rent: opex", "Rent: net operating income"], [
- [str(r["year"]), money(r["cup_mv"]), money(r["sell"]["net"]), money(r["sell"]["after_tax_income"]), money(r["rent"]["gross"]), money(r["rent"]["opex"]), "−" + money(abs(r["rent"]["noi"])) if r["rent"]["noi"] < 0 else money(r["rent"]["noi"])]
- for r in P["scenario_table"] if r["growth"] == "moderate"
-], ["", "num", "num", "num", "num", "num", "num"])}
-{src(("IRS Topic 409 (stepped-up basis)", "https://www.irs.gov/taxtopics/tc409"), ("Homes.com — Cupertino 3-bed rent (third-party)", "https://www.homes.com/cupertino-ca/homes-for-rent/3-bedroom/"))}
-<div class="callout green"><h4>Recommendation</h4><p>Sell the Cupertino house at inheritance and reinvest. Renting it after the Prop 19 reassessment produces a net loss; living in it costs ~$79K/yr; selling produces roughly <b>{money(300_000)}/yr</b> of after-tax investment income by 2045 (moderate scenario) with no property tax drag.</p></div>
-</div>
-"""
-    return page("projections", "Projections 2026-2055", "", body)
-
-# ---------- Costs page ----------
-def page_costs():
-    rows = []
-    for r in P["cost_table"]:
-        if r["year"] % 5 == 0 or r["year"] == 2026:
-            rows.append([str(r["year"]), money(r["cup_water"]), money(r["cup_ins"]), money(r["cup_maint"]), money(r["sf_water"]), money(r["sf_elec"]), money(r["sf_ins"]), money(r["sf_maint"]), money(r["sf_rent"])])
-    body = f"""
-<div class="card">
-<h2>Utilities &amp; insurance — verified rates and planning estimates</h2>
-<h3>Official rate structures</h3>
-<h4>City of Cupertino water / sewer / stormwater (effective Jan 1, 2026)</h4>
-{tbl(["Component", "Rate", "Notes"], [
- ["Water Tier I (0–5,000 gal)", "$5.80 per 1,000 gal", "City of Cupertino"],
- ["Water Tier II (5,001–10,000 gal)", "$7.30 per 1,000 gal", "City of Cupertino"],
- ["Water Tier III (10,001–19,999 gal)", "$10.42 per 1,000 gal", "City of Cupertino"],
- ["Water Tier IV (20,000+ gal)", "$14.60 per 1,000 gal", "City of Cupertino"],
- ["Sewer usage", "$5.46 per 1,000 gal", "City of Cupertino"],
- ["Storm drain base", "$12.18/mo", "City of Cupertino"],
- ["Water base charge (5/8&quot;–3/4&quot;)", "$15.69/mo", "City of Cupertino"],
-], ["", "", ""])}
-{src(("City of Cupertino — 2026 rates table (official PDF)", "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Residents/Water/PDFs/Billing/2026/2026%20Rates%20Table%20Summary%20Final_accessible%20(1).pdf"))}
-<h4>SFPUC water &amp; sewer (effective July 1, 2026 — FY 2026-27)</h4>
-{tbl(["Item", "Value", "Source"], [
- ["Average single-family combined water+sewer bill (before increase)", "~$171/mo", "SFPUC"],
- ["After July 1, 2026 increase (~10.5%)", "~$189/mo", "SFPUC / ABC7"],
- ["After July 1, 2027 (~12.5%)", "~$212/mo", "SFPUC"],
- ["Water service charge (5/8&quot;)", "$19.65/mo", "SFPUC rate schedules"],
- ["Rate increase approved (Apr 2026)", "~23% over two years", "SFPUC"],
-], ["", "num", ""])}
-{src(("SFPUC — water & sewer rates 2026", "https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026"), ("SFPUC — rate schedules PDF", "https://www.sfpuc.gov/sites/default/files/accounts-and-services/Rates_Schedule_Water_Sewer_2026-7.pdf"))}
-<h4>PG&amp;E electricity (2026)</h4>
-{tbl(["Item", "Value", "Source"], [
- ["PG&E average residential bundled rate (Jun 2026)", "~33.7¢/kWh", "CPUC Public Advocates Office / PG&E Advice Letter 7846-E"],
- ["Example bill: 500 kWh/mo", "~$203.54/mo (incl. ~$24 base charge)", "PG&E"],
- ["Cupertino house (solar, net-metered)", "~$0/mo; credit $10–20/mo (user)", "User — flag"],
- ["SF house", "$30–$70/mo (user)", "User — flag"],
-], ["", "", ""])}
-{src(("PG&E Advice Letter 7846-E", "https://www.pge.com/"), ("CPUC Public Advocates Office rate reports", "https://www.cpuc.ca.gov/"))}
-</div>
-
-<div class="card">
-<h2>Insurance — planning estimates (third-party, flagged)</h2>
-{tbl(["Item", "Estimate", "Source"], [
- ["California average homeowner premium", "$1,571/yr", "CA Dept. of Insurance (Feb 2026 snapshot)"],
- ["NAIC 2023 HO-3: CA vs US", "$1,655 vs $1,737", "NAIC Homeowners Report"],
- ["CDI 2025 experience-year average (all forms)", "$2,339.99/yr (6,052,334 policies)", "CDI data call"],
- ["Cupertino 95014 average HO-3", "~$1,189–$1,229/yr", "Third-party estimates — flag"],
- ["SF landlord (rental) policy", "~$2,235/yr", "Third-party estimate — flag"],
- ["Earthquake coverage", "Separate endorsement (not in HO-3)", "CDI"],
-], ["", "", ""])}
-{src(("California Dept. of Insurance (via aegishomesre.com)", "https://aegishomesre.com/home-insurance-cost-statistics/"), ("NAIC (via coverageclassroom.com)", "https://coverageclassroom.com/learn/california-homeowners-insurance-cost"), ("Third-party Cupertino quotes", "https://www.gethomeinsurancequotes.com/california/95014-home-insurance-rates.php"))}
-<p style="font-size:.85rem;color:var(--muted)">User's $1,500/yr guess is plausible and in line with these estimates. Obtain actual quotes for both properties before inheritance.</p>
-</div>
-
-<div class="card">
-<h2>Annual cost projections (inflation-adjusted, 2.5%/yr)</h2>
-{tbl(["Year", "Cupertino water", "Cupertino ins.", "Cupertino maint.", "SF water", "SF elec.", "SF ins.", "SF maint.", "SF rent"], rows, ["", "num", "num", "num", "num", "num", "num", "num", "num"])}
-{src(("User-provided baseline estimates (flag)", "#"), ("City of Cupertino rates", "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Residents/Water/PDFs/Billing/2026/2026%20Rates%20Table%20Summary%20Final_accessible%20(1).pdf"), ("SFPUC rates", "https://www.sfpuc.gov/sites/default/files/accounts-and-services/Rates_Schedule_Water_Sewer_2026-7.pdf"))}
-<p style="font-size:.85rem;color:var(--muted)">Maintenance at 1% of value/yr is a rule-of-thumb planning assumption, not a verified figure.</p>
-</div>
-"""
-    return page("costs", "Utilities & Insurance", "", body)
-
-# ---------- Scenarios page ----------
-def page_scenarios():
-    mid = [r for r in P["tax_table"] if r["growth"] == "moderate" and r["year"] == 2045][0]
-    sc = [r for r in P["scenario_table"] if r["growth"] == "moderate" and r["year"] == 2045][0]
-    body = f"""
-<div class="card">
-<h2>Decision analysis — Cupertino house at inheritance</h2>
-<p>Four options for the Cupertino house after inheritance (2045, moderate 3.5% growth scenario shown; all scenarios on the Projections page).</p>
-<h3>Option 1 — Sell at inheritance and reinvest <span class="tag ok">RECOMMENDED</span></h3>
-<ul>
-<li>Proceeds at market value ≈ <b>{money(sc['cup_mv'])}</b>; closing costs ~6% → net <b>{money(sc['sell']['net'])}</b></li>
-<li><b>$0 capital gains tax</b> (stepped-up basis = FMV at date of death)</li>
-<li>Reinvested at 6% nominal → ~<b>{money(sc['sell']['after_tax_income'])}/yr</b> after-tax income (dividend drag at ~33% combined)</li>
-<li>Eliminates: property tax ({money(mid['A']['cup_tax'])}/yr), insurance, maintenance, utilities, vacancy/management risk</li>
-<li>Liquidity: funds available for other opportunities, education, emergencies</li>
-</ul>
-<h3>Option 2 — Keep as a rental</h3>
-<ul>
-<li>Property tax resets to full market value: <b>{money(mid['A']['cup_tax'])}/yr</b></li>
-<li>Gross rent ~{money(sc['rent']['gross'])}/yr (3-bed median ~$5,005/mo — third-party estimate, flag)</li>
-<li>Operating expenses ≈ {money(sc['rent']['opex'])}/yr (tax, insurance, maintenance, utilities, management, vacancy)</li>
-<li><b>Net operating income ≈ −{money(abs(sc['rent']['noi']))}/yr</b> → a net loss every year, taxed as ordinary income</li>
-</ul>
-<h3>Option 3 — Live in it</h3>
-<ul>
-<li>Property tax still resets to <b>{money(mid['A']['cup_tax'])}/yr</b> (no Prop 19 exclusion — it was never the parents' principal residence)</li>
-<li>Plus insurance, utilities, maintenance ≈ {money(CUP_INS_YR + CUP_WATER_MO*12 + CUP_MAINT_YR)}/yr → total housing cost ≈ <b>{money(mid['A']['cup_tax'] + CUP_INS_YR + CUP_WATER_MO*12 + CUP_MAINT_YR)}/yr</b></li>
-<li>Value: you own the asset (appreciates) and live in Cupertino (schools/location) — but the tax reset makes it an expensive place to live</li>
-</ul>
-<h3>Option 4 — Sell both houses, rent elsewhere, invest everything</h3>
-<ul>
-<li>Both houses sold at stepped-up basis → $0 capital gains on both</li>
-<li>Eliminates ~{money(mid['A']['total_tax'])}/yr of combined property tax</li>
-<li>Loses SF rental income ($7,150/mo = $85,800/yr user-provided, flag) and the SF house's housing value</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Recommendation</h2>
-<div class="callout green"><h4>Sell the Cupertino house at inheritance; keep the San Francisco house</h4>
-<p>1. <b>Sell Cupertino</b> immediately after inheritance → $0 capital gains (stepped-up basis) → reinvest ~{money(sc['sell']['net'])} at 6% → ~{money(sc['sell']['after_tax_income'])}/yr after tax with no property-tax drag.</p>
-<p>2. <b>Keep the SF house</b> — either live in unit 3 (claim the Prop 19 capped exclusion: new taxable value ≈ {money(mid['A']['sf_av'])}, tax ≈ {money(mid['A']['sf_tax'])}/yr) or rent all 3 units (rent $85,800/yr comfortably covers a full reassessment of {money(mid['B']['sf_tax'])}/yr).</p>
-<p>3. <b>Why not keep Cupertino?</b> The Prop 19 reassessment alone (~{money(mid['A']['cup_tax'])}/yr by 2045) exceeds plausible net rental income; keeping it destroys wealth versus reinvesting. Living in it costs ~$79K/yr — the worst pure-financial option.</p>
-<p>4. <b>Before 2040:</b> fund the trust, decide which house is the parents' principal residence, and if the estate may exceed the federal exemption (~{money(24_000_000)}/person projected 2045), engage estate counsel (lifetime gifting at $19K/recipient/yr, portability, trust structure).</p>
-</div>
-{src(("BOE Prop 19 rules", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"), ("IRS Topic 409 — stepped-up basis / $0 gain on immediate sale", "https://www.irs.gov/taxtopics/tc409"), ("IRS estate tax page", "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax"))}
-</div>
-
-<div class="card">
-<h2>SF house — how to keep it</h2>
-{tbl(["Option", "Prop 19 status", "Projected property tax (2045, moderate)", "Notes"], [
- ["Heir moves into unit 3 as primary residence (file homeowner's exemption)", "Capped exclusion: new taxable = market value − $1M-allowance", money(mid["A"]["sf_tax"]) + "/yr", "Must happen within 1 year of inheritance"],
- ["Keep renting all 3 units", "Exclusion lost (house becomes non-primary residence) → full reassessment", money(mid["B"]["sf_tax"]) + "/yr", "Rent $85,800/yr covers tax + costs"],
- ["Sell SF house", "$0 capital gains (stepped-up basis)", "$0", "Loses $85,800/yr income and housing"],
-], ["", "", "num", ""])}
-{src(("BOE Prop 19 rules (official)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"), ("SF Treasurer secured rate", "https://sftreasurer.org/property/secured-property-taxes"))}
-</div>
-"""
-    return page("scenarios", "Decision Analysis", "", body)
-
-# ---------- Flagged page ----------
-def page_flagged():
-    body = f"""
-<div class="card">
-<h2>Flagged for Review — unverified values &amp; irregularities</h2>
-<p>These items could not be confirmed from official sources or contain inconsistencies. They are shown for planning only and must be verified before acting. Unverified values are never used as verified facts.</p>
-{tbl(["#", "Item", "Status", "What to do", "Source"], [
- ["1", "Cupertino market value $3.1M (Nov 2026)", "User-provided — not verified", "Obtain appraisal or assessor market value", "—"],
- ["2", "SF market value $1.8M (Nov 2026)", "User-provided — not verified", "Obtain appraisal or assessor market value", "—"],
- ["3", "Cupertino tax history (2014–2026)", "User-provided — not verified", "Verify against Santa Clara County tax bills", '<a href="https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf">Santa Clara rate book</a>'],
- ["4", "SF tax history (2016–2025)", "User-provided — not verified", "Verify against SF Treasurer bills", '<a href="https://sftreasurer.org/property/secured-property-taxes">SF Treasurer</a>'],
- ["5", "Cupertino implied effective rate 1.32%–1.41% vs published 1.15%–1.22%", "Irregularity", "Check special assessments/direct charges on the official bill", '<a href="https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf">Santa Clara rate book</a>'],
- ["6", "SF implied effective rate 1.73%–2.14% vs published 1.18% secured", "Irregularity", "Check direct charges (sewer/ERU) and special assessments on the official bill", '<a href="https://sftreasurer.org/property/secured-property-taxes">SF Treasurer</a>'],
- ["7", "Cupertino current occupancy/rent status", "Unknown — affects Prop 19 analysis", "Confirm whether parents live there or it is rented", '<a href="https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf">BOE Prop 19</a>'],
- ["8", "SF rent $7,150/mo", "User-provided — not verified", "Verify leases", "—"],
- ["9", "SF water $330–$400/mo; electricity $30–$70/mo", "User-provided — not verified", "Verify on bills", '<a href="https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026">SFPUC</a>'],
- ["10", "Cupertino water $100–$150/mo; solar credits $10–$20/mo", "User-provided — not verified", "Verify on bills; confirm PG&E NEM program", '<a href="https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Residents/Water/PDFs/Billing/2026/2026%20Rates%20Table%20Summary%20Final_accessible%20(1).pdf">City of Cupertino rates</a>'],
- ["11", "Home insurance figures (Cupertino ~$1,200; SF landlord ~$2,235)", "Third-party estimates — not official", "Obtain actual quotes from insurers", '<a href="https://aegishomesre.com/home-insurance-cost-statistics/">CDI snapshot</a>'],
- ["12", "Maintenance costs (1% of value rule of thumb)", "Assumption — not official", "Get contractor estimates / reserve study", "—"],
- ["13", "Market-value growth scenarios (2.0/3.5/5.0%)", "Assumptions — not verified", "Use for sensitivity; not a forecast", "—"],
- ["14", "Portfolio return 6% nominal, tax drag 33.1%", "Assumptions — not verified", "Confirm with financial advisor", "—"],
- ["15", "Estate exemption indexing +2.5%/yr", "Assumption (IRS: indexed from 2027)", "Monitor IRS inflation adjustments", '<a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill">IRS IR-2025-103</a>'],
- ["16", "Prop 19 $1M allowance 2025-2027 = $1,044,586", "BOE — cited via legal summaries", "Verify current adjustment notice on boe.ca.gov", '<a href="https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf">BOE</a>'],
- ["17", "Probate Code details (TOD deed, AB 2016, fees)", "Statute text not fetched directly", "Verify on leginfo.legislature.ca.gov", '<a href="https://leginfo.legislature.ca.gov/">CA Legislature</a>'],
- ["18", "Cupertino 2026 property tax", "Missing (not provided)", "Add from the official 2026 bill", "—"],
-], ["", "", "", "", ""])}
-</div>
-"""
-    return page("flagged", "Flagged for Review", "", body)
-
-# ---------- Sources page ----------
-def page_sources():
-    srcs = [
-        ("IRS — Estate tax (filing thresholds, portability, Form 706)", "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax"),
-        ("IRS — IR-2025-103: 2026 inflation adjustments (OBBB)", "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill"),
-        ("IRS — Rev. Proc. 2025-32", "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"),
-        ("IRS — Topic 409: Capital gains and losses (stepped-up basis)", "https://www.irs.gov/taxtopics/tc409"),
-        ("IRS — Topic 559: Net investment income tax", "https://www.irs.gov/taxtopics/tc559"),
-        ("IRS — Publication 551: Basis of Assets", "https://www.irs.gov/forms-pubs/about-publication-551"),
-        ("IRS — Publication 559: Survivors, Executors, and Administrators", "https://www.irs.gov/forms-pubs/about-publication-559"),
-        ("IRS — Form 706 instructions", "https://www.irs.gov/instructions/i706"),
-        ("BOE — Taxpayers' Rights Advocate: Prop 19 intergenerational transfers (official)", "https://www.boe.ca.gov/proptaxes/pdf/lta22051.pdf"),
-        ("BOE — Property Tax Annotations 625 (parent-child transfers)", "https://www.boe.ca.gov/lawguides/property/current/ptlg/annt/625-0000-all.html"),
-        ("California FTB — SB 378 analysis (no state estate tax)", "https://www.ftb.ca.gov/tax-pros/law/legislation/2019-2020/SB378-032519.pdf"),
-        ("California FTB — SB 726 analysis (estate tax history)", "https://www.ftb.ca.gov/tax-pros/law/legislation/2017-2018/sb726-032317.pdf"),
-        ("California FTB — 2025 tax rate schedules", "https://www.ftb.ca.gov/forms/2025/2025-540-tax-rate-schedules.pdf"),
-        ("SF Treasurer & Tax Collector — Secured property taxes (rate, due dates)", "https://sftreasurer.org/property/secured-property-taxes"),
-        ("Santa Clara County — Compilation of Tax Rates 2025-26 (official)", "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf"),
-        ("SF Assessor-Recorder — real property assessments (Prop 13)", "https://www.sf.gov/information--learn-about-real-property-assessments"),
-        ("City of Cupertino — 2026 water/sewer/stormwater rates (official PDF)", "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Residents/Water/PDFs/Billing/2026/2026%20Rates%20Table%20Summary%20Final_accessible%20(1).pdf"),
-        ("SFPUC — Water & sewer rates 2026 (official)", "https://www.sfpuc.gov/accounts-services/water-power-sewer-rates/proposed-water-sewer-rates-2026"),
-        ("SFPUC — Rate schedules & fees PDF (official)", "https://www.sfpuc.gov/sites/default/files/accounts-and-services/Rates_Schedule_Water_Sewer_2026-7.pdf"),
-        ("PG&E — Advice Letter 7846-E (March 2026 rates)", "https://www.pge.com/"),
-        ("CPUC — Public Advocates Office quarterly rate reports", "https://www.cpuc.ca.gov/"),
-        ("California Dept. of Insurance — Homeowners Insurance Market Snapshot (Feb 2026)", "https://www.cdii.ca.gov/"),
-        ("CA Secretary of State — Prop 19 repeal initiative failure memo (May 2026)", "https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf"),
-        ("CA Senate — SCA 4 (reinstate Prop 58/193)", "https://sr32.senate.ca.gov/bill/sca-4-protecting-taxpayers-rights"),
-        ("California Legislature — Probate Code (leginfo.legislature.ca.gov)", "https://leginfo.legislature.ca.gov/"),
-        ("RentCafe — Cupertino rent trends (Aug 2026)", "https://www.rentcafe.com/average-rent-market-trends/us/ca/santa-clara-county/cupertino/"),
-        ("Homes.com — Cupertino 3-bedroom rents (2026)", "https://www.homes.com/cupertino-ca/homes-for-rent/3-bedroom/"),
-    ]
-    lis = "".join(f'<li><a href="{esc(u)}" target="_blank" rel="noopener">{esc(t)}</a></li>' for t, u in srcs)
-    body = f"""
-<div class="card">
-<h2>Sources</h2>
-<p>Official sources are prioritized. Third-party estimates used for planning (rents, insurance quotes, growth assumptions) are flagged on the pages where they appear.</p>
-<ul style="columns:2;column-gap:40px">{lis}</ul>
-</div>
-"""
-    return page("sources", "Sources", "", body)
-
-# ---------- build all ----------
-pages = [
-    page_index(),
-    page_properties(),
-    page_tax_law(),
-    page_inheritance(),
-    page_projections(),
-    page_costs(),
-    page_scenarios(),
-    page_flagged(),
-    page_sources(),
+NAV = [
+    ("Overview", "", "index.html"),
+    ("Facts", "facts/", "facts/index.html"),
+    ("Property", "property/", "property/index.html"),
+    ("Costs", "costs/", "costs/index.html"),
+    ("Projections", "projections/", "projections/index.html"),
+    ("Decision", "decision/", "decision/index.html"),
+    ("Process", "process/", "process/index.html"),
+    ("Law", "law/", "law/index.html"),
+    ("Flagged", "flagged/", "flagged/index.html"),
+    ("Sources", "sources/", "sources/index.html"),
 ]
 
-import os
-os.makedirs("docs", exist_ok=True)
-os.makedirs("docs/assets", exist_ok=True)
-with open("docs/assets/style.css", "w") as fp:
-    fp.write(CSS)
-names = ["index", "properties", "tax-law", "inheritance", "projections", "costs", "scenarios", "flagged", "sources"]
-for name, content in zip(names, pages):
-    with open(f"docs/{name}.html", "w") as fp:
-        fp.write(content)
-    print(f"Wrote docs/{name}.html")
-print("Site build complete.")
+
+# ---------- helpers ----------
+def esc(x):
+    return html.escape(str(x), quote=True)
+
+
+def money(x, dec=0):
+    return f"${x:,.{dec}f}"
+
+
+def pct(x, dec=2):
+    return f"{x*100:.{dec}f}%"
+
+
+def src_link(sid, prefix):
+    s = SOURCES.get(sid)
+    if not s:
+        return esc(sid)
+    tag = "official" if s["tier"] == "official" else "secondary"
+    return (f'<a class="src {tag}" href="{esc(s["url"])}" target="_blank" rel="noopener" '
+            f'title="{esc(s["title"])}">{esc(s["publisher"].split(" (")[0])} <span class="sid">{sid}</span></a>')
+
+
+def flag_link(fid, prefix):
+    return f'<a class="flagref" href="{prefix}flagged/#{fid}">{fid}</a>'
+
+
+def srcs_cell(ids, prefix, flags=None):
+    parts = [src_link(i, prefix) for i in ids]
+    parts += [flag_link(f, prefix) for f in (flags or [])]
+    return " ".join(parts) if parts else '<span class="muted">none</span>'
+
+
+def status_badge(status):
+    s = status.lower()
+    if s.startswith("verified"):
+        return '<span class="badge ok">VERIFIED</span>'
+    if "unverified" in s:
+        return '<span class="badge warn">UNVERIFIED</span>'
+    if "assumption" in s or "planning" in s:
+        return '<span class="badge mute">ASSUMPTION</span>'
+    if "client" in s:
+        return '<span class="badge client">CLIENT INPUT</span>'
+    return f'<span class="badge mute">{esc(status)}</span>'
+
+
+def table(headers, rows, cls="", filterable=True):
+    head = "".join(f"<th>{esc(h)}</th>" for h in headers)
+    body = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
+    f = ' data-filter="1"' if filterable else ""
+    return (f'<div class="tablewrap"><table class="{cls}"{f}><thead><tr>{head}</tr></thead>'
+            f"<tbody>{body}</tbody></table></div>")
+
+
+def page(title, depth, active, body, desc=""):
+    prefix = "../" * depth
+    nav = "".join(
+        f'<a href="{prefix}{href}"{" class=active" if label == active else ""}>{esc(label)}</a>'
+        for label, _, href in NAV
+    )
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{esc(desc or 'Source-linked decision analysis for inherited California property.')}">
+<title>{esc(title)} · Inheritance Decision Analysis</title>
+<link rel="stylesheet" href="{prefix}assets/site.css">
+</head><body>
+<header class="top">
+  <div class="brand"><span class="mark">IDA</span><span>Inheritance Decision Analysis<small>Two California properties · source-linked · anonymized</small></span></div>
+  <span class="asof">Data as of {BUILD_DATE}</span>
+</header>
+<nav class="nav">{nav}</nav>
+<main>
+{body}
+</main>
+<footer>
+  <p>Anonymized planning dashboard. No names, addresses, parcel numbers or precise ZIP codes are published. Client figures are labeled as client inputs and are unverified. Projections are modeled outcomes, not forecasts. Not legal, tax, insurance or investment advice; confirm with qualified professionals.</p>
+  <p>Other analyses in this repository (separate sessions, different assumptions, not reconciled): <a href="{prefix}docs/index.html">/docs/ analysis</a> · <a href="{prefix}guide/index.html">guide analysis</a>.</p>
+  <p>Built from <code>data/ia/*.json</code> by <code>scripts/build_site.py</code>. Model: <code>scripts/model.py</code>. Checks: <code>scripts/validate.py</code>.</p>
+</footer>
+<script src="{prefix}assets/site.js"></script>
+</body></html>
+"""
+
+
+def write(path, content):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content, encoding="utf-8")
+
+
+# ---------- numbers pulled from the model ----------
+def summary(prop, T, scen, option_prefix):
+    for r in PROJ["summary"]:
+        if r["property"] == prop and r["T"] == T and r["scenario"] == scen and r["option"].startswith(option_prefix):
+            return r
+    raise KeyError((prop, T, scen, option_prefix))
+
+
+def be_rent(T, scen):
+    for r in PROJ["breakeven_rent_A"]:
+        if r["T"] == T and r["scenario"] == scen:
+            return r
+    raise KeyError((T, scen))
+
+
+def sens(label_prefix):
+    for r in PROJ["sensitivities"]:
+        if r["label"].startswith(label_prefix):
+            return r["end_real_2026"]
+    raise KeyError(label_prefix)
+
+
+BASE = "base"
+BT = PROJ["meta"]["base_illustration_year"]
+RATE_A = PROJ["meta"]["effective_tax_rates"]["A_implied"]
+RATE_B = PROJ["meta"]["effective_tax_rates"]["B_implied"]
+ECON = PROJ["economic_cost_A"]
+A_LIVE = summary("A", BT, BASE, "Live")["end_real_2026"]
+A_SELL = summary("A", BT, BASE, "Sell")["end_real_2026"]
+A_PROCEEDS = summary("A", BT, BASE, "Sell")["net_proceeds_at_T"]
+B_HYB = summary("B", BT, BASE, "Heir lives")["end_real_2026"]
+B_FULL = summary("B", BT, BASE, "No occupancy")["end_real_2026"]
+B_SELL = summary("B", BT, BASE, "Sell")["end_real_2026"]
+B_BEST_KEEP = sens("B hybrid BEST CASE")
+PROP19_B_VALUE = B_HYB - B_FULL
+BE = be_rent(BT, BASE)
+
+# verify the recommendation is consistent with the model before writing it
+for T in PROJ["meta"]["inheritance_years_tested"]:
+    for sk in PROJ["scenarios"]:
+        assert summary("A", T, sk, "Sell")["end_real_2026"] > summary("A", T, sk, "Live")["end_real_2026"], ("A", T, sk)
+        assert summary("B", T, sk, "Sell")["end_real_2026"] > summary("B", T, sk, "Heir lives")["end_real_2026"], ("B-hyb", T, sk)
+        assert summary("B", T, sk, "Sell")["end_real_2026"] > summary("B", T, sk, "No occupancy")["end_real_2026"], ("B-full", T, sk)
+
+
+# ---------- pages ----------
+def page_overview():
+    fr = FACTS["categories"]
+    verified = sum(1 for c in fr for r in c["rows"] if r["status"] == "verified")
+    unverified = sum(1 for c in fr for r in c["rows"] if r["status"] == "UNVERIFIED")
+    flags_high = sum(1 for f in FLAGS if f["severity"] == "high")
+    body = f"""
+<section class="hero">
+  <p class="eyebrow">Executive summary</p>
+  <h1>Sell at inheritance is the strongest modeled plan for both properties</h1>
+  <p class="lede">Two California properties may pass through a trust around 2040–2050. Under current law the
+  state takes no inheritance tax, and federal estate tax applies only above a large threshold. The main choices are
+  to sell, keep and rent, or keep and live in the home. In the base case, selling and investing the proceeds beats
+  keeping either property in every inheritance year and stress case tested. The gap is wide for Property A and narrower for Property B in the low-growth case.</p>
+  <div class="cta">
+    <a class="btn" href="decision/">See the decision analysis</a>
+    <a class="btn ghost" href="flagged/">Flagged for review ({len(FLAGS)} items)</a>
+  </div>
+</section>
+
+<section class="stats">
+  <article><small>Federal estate and gift exclusion (2026)</small><strong>$15,000,000</strong><span class="src-line">{src_link('S01','')} {src_link('S02','')}</span></article>
+  <article><small>California inheritance or estate tax</small><strong>None</strong><span class="src-line">{src_link('S09','')}</span></article>
+  <article><small>Prop 19 value limit (family-home transfers)</small><strong>$1,044,586</strong><span class="src-line">{src_link('S04','')}</span></article>
+  <article><small>Prop 19 repeal initiative (May 2026)</small><strong>Failed to qualify</strong><span class="src-line">{src_link('S07','')}</span></article>
+</section>
+
+<section class="panel">
+  <h2>Base-case result (inheritance in {BT}, end value in 2026 dollars at 2060)</h2>
+  {table(["Property", "Option", "End value (real 2026 $)", "Note", "Source"], [
+     ["A · Cupertino", "Sell and invest net proceeds", money(A_SELL), f"Net proceeds at {BT}: {money(A_PROCEEDS)}", srcs_cell(["S25"], "", ["FL-15", "FL-13"])],
+     ["A · Cupertino", "Live in the home (Prop 19 path)", money(A_LIVE), f"Net annual economic cost of living there: {money(ECON['net_annual_economic_cost'])} (base, {ECON['year']})", srcs_cell(["S04", "S06", "S13"], "", ["FL-01", "FL-02", "FL-05"])],
+     ["B · San Francisco", "Sell and invest net proceeds", money(B_SELL), "Modeled wealth from net proceeds", srcs_cell(["S25"], "", ["FL-01", "FL-13"])],
+     ["B · San Francisco", "Heir lives in 1 unit; rent 2 units", money(B_HYB), f"Prop 19 on one unit is worth about {money(PROP19_B_VALUE)} vs. no occupancy", srcs_cell(["S06", "S15"], "", ["FL-03", "FL-16", "FL-17"])],
+     ["B · San Francisco", "Keep renting 2 units; no occupancy", money(B_FULL), "Full reassessment of the whole property", srcs_cell(["S06"], "", ["FL-17"])],
+  ], filterable=False)}
+  <p class="muted">Client figures (market values, tax history, water, electricity, insurance, rent) are unverified inputs. Assumptions are labeled on the Projections page. See the <a href="flagged/">Flagged for Review</a> list before relying on any number.</p>
+</section>
+
+<section class="panel">
+  <h2>Where to look</h2>
+  <div class="cards">
+    <a class="card" href="facts/"><b>Facts register</b><span>{verified} verified rows, {unverified} unverified rows. Each row links to its official source.</span></a>
+    <a class="card" href="property/"><b>Property data</b><span>Anonymized profiles, tax history, and what Prop 19 does to each property.</span></a>
+    <a class="card" href="costs/"><b>Carrying costs</b><span>Property tax, water, electricity, insurance, upkeep, with utility sources.</span></a>
+    <a class="card" href="projections/"><b>Projections 2026–2050</b><span>Inflation, appreciation, and tax-law assumptions with three stress cases.</span></a>
+    <a class="card" href="decision/"><b>Decision</b><span>Live, rent, or sell at 2040, 2045 and 2050, with break-even rent and recommendation.</span></a>
+    <a class="card" href="process/"><b>Inheritance process</b><span>Step-by-step trust administration, filings and deadlines with sources.</span></a>
+    <a class="card" href="law/"><b>Law changes</b><span>Enacted, pending and failed measures that could change the answer.</span></a>
+    <a class="card warn" href="flagged/"><b>Flagged for review</b><span>{len(FLAGS)} items, {flags_high} high severity: irregularities, unverified values, and what would resolve them.</span></a>
+  </div>
+</section>
+"""
+    return page("Overview", 0, "Overview", body,
+                desc="Inheritance decision analysis for two anonymized California properties: sources, projections, and recommendation.")
+
+
+def page_facts():
+    prefix = "../"
+    body = [f'<section class="panel"><p class="eyebrow">Facts register</p><h1>Facts with official sources</h1>'
+            f'<p class="muted">{esc(FACTS["rule"])}</p>'
+            f'<div class="filterbar"><input type="search" placeholder="Filter rows (e.g. Prop 19, UNVERIFIED, 2026)" aria-label="Filter"></div></section>']
+    for c in FACTS["categories"]:
+        rows = []
+        for r in c["rows"]:
+            flags = re.findall(r"FL-\d+", r.get("note", ""))
+            if r["status"] == "UNVERIFIED":
+                value = '<span class="muted">blank (unverified)</span>'
+                srcs = srcs_cell([], prefix, flags or ["FL-21"])
+            else:
+                value = esc(r["value"])
+                srcs = srcs_cell(r["sources"], prefix)
+            rows.append([
+                f'<code>{esc(r["id"])}</code>', esc(r["item"]), value, status_badge(r["status"]),
+                esc(r.get("as_of", "")), srcs, esc(r.get("note", "")),
+            ])
+        body.append(f'<section class="panel" id="{esc(c["id"])}"><h2>{esc(c["title"])}</h2>'
+                    + table(["ID", "Item", "Value", "Status", "As of", "Official source", "Note"], rows) + "</section>")
+    return page("Facts", 1, "Facts", "\n".join(body),
+                desc="Verified facts register for federal, California, Prop 13/19, deadlines, rent, utilities, insurance, macro, and pending law.")
+
+
+def page_property():
+    prefix = "../"
+    A, B = INPUTS["properties"]["A"], INPUTS["properties"]["B"]
+
+    def val(x):
+        return esc(x)
+
+    rowsA = [
+        ["Location", "Cupertino, Santa Clara County, CA (ZIP omitted)", "client", "", "FL-01"],
+        ["Estimated market value (Nov 2026)", money(A["market_value_2026"]["value"]), "client input", "UNVERIFIED", "FL-01"],
+        ["Assessed value, 2025 roll", money(A["assessed_value_2025"]["value"]), "client input", "UNVERIFIED", "FL-02"],
+        ["Property tax, 2025", money(A["tax_2025"]["value"]), "client input", "UNVERIFIED", "FL-02"],
+        ["Effective tax rate (computed from the above)", pct(RATE_A, 3), "derived from client input", "UNVERIFIED", "FL-02"],
+        ["Assessed value, 2026 (+2% projection)", money(A["assessed_value_2026_projection"]["value"]), "client projection", "UNVERIFIED", "FL-02, FL-22"],
+        ["Occupancy / units", "1 home; solar installed (client)", "client input", "UNVERIFIED", "FL-05"],
+    ]
+    rowsB = [
+        ["Location", "San Francisco, CA (ZIP omitted)", "client", "", "FL-01"],
+        ["Estimated market value (Nov 2026)", money(B["market_value_2026"]["value"]), "client input", "UNVERIFIED", "FL-01"],
+        ["Assessed value, 2025 roll", money(B["assessed_value_2025"]["value"]), "client input", "UNVERIFIED", "FL-03"],
+        ["Property tax, 2025", money(B["tax_2025"]["value"]), "client input", "UNVERIFIED", "FL-03"],
+        ["Effective tax rate (computed from the above)", pct(RATE_B, 3), "derived from client input", "UNVERIFIED", "FL-03"],
+        ["Livable units", "3 (2 rented; 1 usable by the owner)", "client input", "UNVERIFIED", "FL-16, FL-17"],
+        ["Rent, two rented units (total per month)", money(B["rent_monthly_total_two_units"]["value"]), "client input", "UNVERIFIED", "FL-16"],
+    ]
+
+    def tbl(rows):
+        out = []
+        for item, value, kind, status, fl in rows:
+            ids = [x.strip() for x in fl.split(",")]
+            out.append([esc(item), esc(value), esc(kind), '<span class="badge warn">UNVERIFIED</span>' if status else '<span class="muted">n/a</span>',
+                        " ".join(flag_link(i, prefix) for i in ids), srcs_cell([], prefix, ids)])
+        return table(["Item", "Value", "Basis", "Status", "Flag", "Official source"], out)
+
+    prop19 = [
+        ["Parent-child exclusion applies only if the transferee makes the property a principal residence within 1 year", "Property A: yes if occupied. Property B: only the unit occupied qualifies.", ["S03", "S06"]],
+        ["Rented or unoccupied units are fully reassessed at full cash value on transfer", "Property B: 2 rented units reassessed; allocation is decided by the assessor (FL-17).", ["S06"]],
+        ["Limit: value above factored base-year value plus $1,044,586 is reassessed", "Model: Property A live case uses the limit; values above it are reassessed.", ["S04", "S06"]],
+        ["Trust holding is looked through; LLC transfer disqualifies", "Plan to transfer title directly from the trust, not via an LLC.", ["S06"]],
+        ["Homeowners' exemption: $7,000 reduction; file BOE-266 by February 15", "Included as a reduction in the living-case tax.", ["S13"]],
+        ["Assessment inflation factor 2026-27 is 1.02", "Prop 13 growth in the no-transfer path (2% per year).", ["S11"]],
+    ]
+    prop19_rows = [[esc(a), esc(b), srcs_cell(ids, prefix)] for a, b, ids in prop19]
+
+    body = f"""
+<section class="panel">
+  <p class="eyebrow">Property data</p>
+  <h1>Two anonymized properties</h1>
+  <p class="muted">Identities, addresses, parcel numbers and owner details are omitted by design. Figures are client inputs, not verified values. They appear only as modeling inputs and are flagged UNVERIFIED.</p>
+</section>
+<section class="panel"><h2>Property A · Cupertino (Santa Clara County)</h2>{tbl(rowsA)}</section>
+<section class="panel"><h2>Property B · San Francisco (3 livable units)</h2>{tbl(rowsB)}</section>
+<section class="panel"><h2>What Prop 19 does to each property</h2>
+  {table(["Rule", "How it applies here", "Source"], prop19_rows)}
+  <p class="muted">Model formula: after a qualifying transfer, assessed value = min(full cash value, base-year value + max(0, full cash value − base-year value − limit)). Without qualification, assessed value = full cash value at transfer.</p>
+</section>
+"""
+    return page("Property", 1, "Property", body, desc="Anonymized property profiles, client tax history, and Prop 19 mechanics.")
+
+
+def page_costs():
+    prefix = "../"
+    A, B = INPUTS["properties"]["A"], INPUTS["properties"]["B"]
+    rows = [
+        ["Property tax (effective rate × assessed value)", pct(RATE_A, 3) + " (client-derived)", pct(RATE_B, 3) + " (client-derived)", "UNVERIFIED", srcs_cell(["S11", "S13"], prefix, ["FL-02", "FL-03"])],
+        ["Homeowners' exemption (living case)", "$7,000 reduction", "$7,000 reduction (owner-occupied unit)", "verified rule", srcs_cell(["S13"], prefix)],
+        ["Water and sewer, per month", f'{money(A["water_monthly"]["mid"])} (client range $100–$150)', f'{money(B["water_sewer_monthly"]["mid"])} (client range $330–$400)', "UNVERIFIED", srcs_cell(["S14", "S29"], prefix, ["FL-11", "FL-12"])],
+        ["Water reference (official, as filed)", "$141.73 per month at 10 CCF (July 1, 2026, as filed)", "$171 per month average single-family, FY26 (SFPUC)", "verified (filed / proposed)", srcs_cell(["S14", "S29"], prefix)],
+        ["Electricity, per month", f'Fixed charge {money(A["fixed_charge_monthly"]["value"], 2)} less client credit $15 = {money(9.15, 2)} net (base case)', f'{money(B["electricity_monthly"]["mid"])} (client range $30–$70)', "UNVERIFIED", srcs_cell(["S28"], prefix, ["FL-05", "FL-11"])],
+        ["Homeowners / landlord insurance, per year", money(A["insurance_annual"]["value"]) + " (client estimate)", money(B["insurance_annual"]["value"]) + " (client estimate; landlord policy may differ)", "UNVERIFIED", srcs_cell(["S16", "S34"], prefix, ["FL-04"])],
+        ["Upkeep and maintenance, share of value per year", pct(A["maintenance_pct_of_value"]["value"], 1) + " (assumption)", pct(B["maintenance_pct_of_value"]["value"], 1) + " (assumption)", "ASSUMPTION", srcs_cell([], prefix, ["FL-15"])],
+        ["Rent cap (rent-controlled units, 2026-27)", "Not applicable (no rent figure); statewide AB 1482 cap 5% + CPI, max 10%", "1.6% for March 1, 2026 to February 28, 2027", "verified", srcs_cell(["S27", "S15"], prefix, ["FL-16"])],
+        ["Sale transfer tax (county)", "$1.10 per $1,000 (0.11%)", "$1.10 per $1,000 (0.11%)", "verified; city tax UNVERIFIED", srcs_cell(["S25"], prefix, ["FL-13"])],
+        ["Santa Clara first installment (2026-27)", "Due Nov 1; paid or postmarked by Dec 10, 2026", "—", "verified (Santa Clara)", srcs_cell(["S12"], prefix)],
+        ["San Francisco installments (2026-27)", "—", "Nov 1 / Dec 10 and Feb 1 / Apr 10 are secondary only", "UNVERIFIED", srcs_cell([], prefix, ["FL-09"])],
+    ]
+    body = f"""
+<section class="panel"><p class="eyebrow">Carrying costs</p><h1>What it costs to hold each property</h1>
+  <p class="muted">Official values appear only when a source confirms them. Other values are client inputs or labeled assumptions, and each is flagged.</p></section>
+<section class="panel"><h2>Operating cost lines</h2>
+  {table(["Cost line", "Property A · Cupertino", "Property B · San Francisco", "Status", "Source"], rows)}
+</section>
+<section class="panel"><h2>Solar: what the official rule says versus the client claim</h2>
+  <p>The CPUC states the residential fixed charge is about $24.15 per month for the standard rate. Solar credits are reported not to offset it. The client reports a net credit of $10–$20 per month, which is consistent only if the credit is on energy charges alone, or if the fixed charge is not on the bill. Both cases are modeled, and the base case uses the stricter one ({money(9.15, 2)} net monthly cost).</p>
+  <p class="muted">Resolve with 12 months of bills and the interconnection date (see <a href="../flagged/#FL-05">FL-05</a>).</p>
+</section>
+"""
+    return page("Costs", 1, "Costs", body, desc="Property tax, water, electricity, insurance, and upkeep with sources and flags.")
+
+
+def yearly_tables():
+    base = PROJ["yearly"]
+    prefix = "../"
+    A_rows, B_rows = [], []
+    for r in base["A"]:
+        if r["year"] > 2050:
+            continue
+        post = "live_annual_cost" in r
+        src = srcs_cell(["S11", "S04", "S06"], prefix, ["FL-01", "FL-02", "FL-15"])
+        A_rows.append([
+            str(r["year"]), money(r["fcv"]), money(r["av_no_transfer"]), money(r["tax_no_transfer"]),
+            money(r["av_live_after_transfer"]) if post else "—",
+            money(r["tax_live"]) if post else "—",
+            money(r["water"]) if post else "—",
+            money(r["electricity"]) if post else "—",
+            money(r["insurance"]) if post else "—",
+            money(r["maintenance"]) if post else "—",
+            money(r["live_annual_cost"]) if post else "—",
+            src,
+        ])
+    for r in base["B"]:
+        if r["year"] > 2050:
+            continue
+        post = "av_hybrid" in r
+        src = srcs_cell(["S11", "S06", "S15"], prefix, ["FL-01", "FL-03", "FL-16", "FL-17"])
+        B_rows.append([
+            str(r["year"]), money(r["fcv"]), money(r["av_no_transfer"]), money(r["tax_no_transfer"]),
+            money(r["av_hybrid"]) if post else "—",
+            money(r["tax_hybrid"]) if post else "—",
+            money(r["rent"]) if post else "—",
+            money(r["hybrid_net_cash"]) if post else "—",
+            money(r["av_full"]) if post else "—",
+            money(r["tax_full"]) if post else "—",
+            money(r["full_net_cash"]) if post else "—",
+            src,
+        ])
+    return A_rows, B_rows
+
+
+def page_projections():
+    prefix = "../"
+    scen = PROJ["scenarios"]
+    srows = []
+    for k in ["low", "base", "high"]:
+        s = scen[k]
+        srows.append([esc(s["label"]), pct(s["inflation"], 1), pct(s["appreciation"], 1), pct(s["investment_return"], 1),
+                      pct(s["rent_growth_sf"], 1), '<span class="badge mute">ASSUMPTION</span>', srcs_cell(["S17", "S18"], prefix, ["FL-15"])])
+    A_rows, B_rows = yearly_tables()
+    arows = [[esc(x) for x in r[:-1]] + [r[-1]] for r in A_rows]
+    brows = [[esc(x) for x in r[:-1]] + [r[-1]] for r in B_rows]
+    # highlight the base year rows for the decision year
+    A_head = ["Year", "Market value", "Assessed (no transfer)", "Tax (no transfer)", f"Assessed after {BT} (live)",
+              "Tax live", "Water", "Electricity (net)", "Insurance", "Upkeep", "Live annual cash cost", "Source"]
+    B_head = ["Year", "Market value", "Assessed (no transfer)", "Tax (no transfer)", f"Assessed after {BT} (1 unit lived in)",
+              "Tax (hybrid)", "Rent (2 units)", "Net cash (hybrid)", "Assessed (no occupancy)", "Tax (no occupancy)",
+              "Net cash (no occupancy)", "Source"]
+    def sens_src(label):
+        if "Prop 19 limit" in label:
+            return srcs_cell(["S04"], prefix, ["FL-18"])
+        if "electricity" in label:
+            return srcs_cell(["S28"], prefix, ["FL-05"])
+        if "1% levy" in label or "2.13%" in label:
+            return srcs_cell(["S24"], prefix, ["FL-03"])
+        if "rent grows" in label or "BEST" in label and "rent" in label:
+            return srcs_cell(["S15"], prefix, ["FL-16"])
+        if "BEST CASE" in label:
+            return srcs_cell(["S15"], prefix, ["FL-15", "FL-03"])
+        return srcs_cell(["S25"], prefix, ["FL-13", "FL-15"])
+    sens_rows = [[esc(s["label"]), money(s["end_real_2026"]), sens_src(s["label"])] for s in PROJ["sensitivities"]]
+    body = f"""
+<section class="panel"><p class="eyebrow">Projections</p><h1>Assumptions, scenarios and year-by-year results</h1>
+<p class="muted">Client inputs are used as given and are unverified. Growth rates are labeled assumptions. Three stress cases move inflation, appreciation and returns together; they are not probabilities. Projections run 2026–2050 in the table; the decision compares every option at a common end date of {PROJ['meta']['horizon_end']}.</p>
+</section>
+<section class="panel"><h2>Scenarios</h2>
+{table(["Case", "Inflation", "Home appreciation", "Investment return (nominal)", "SF rent growth", "Status", "Source"], srows)}
+<p class="muted">Inflation anchors: CPI-U was 3.7% for the 12 months ending Sept 2026 ({src_link('S17', prefix)}); the Fed's longer-run goal is 2% ({src_link('S18', prefix)}). Prop 13 growth is capped at 2% per year ({src_link('S11', prefix)}).</p>
+</section>
+<section class="panel"><h2>Sensitivities (base case, inheritance in {BT}, real 2026 $ at {PROJ['meta']['horizon_end']})</h2>
+{table(["Sensitivity", "End value (real 2026 $)", "Source"], sens_rows)}
+</section>
+<section class="panel"><h2>Property A · Cupertino, year by year (base case, inheritance in {BT})</h2>
+{table(A_head, arows)}
+<p class="muted">Live case after transfer: assessed value = min(full cash value, base-year value + max(0, FCV − base-year value − limit)), then 2% per year. Homeowners' exemption reduces tax by $7,000 × rate. Upkeep = {pct(INPUTS['properties']['A']['maintenance_pct_of_value']['value'],1)} of value (assumption).</p>
+</section>
+<section class="panel"><h2>Property B · San Francisco, year by year (base case, inheritance in {BT})</h2>
+{table(B_head, brows)}
+<p class="muted">Hybrid: one unit occupied (one-third of value under Prop 19 limit rules), two rented units reassessed at two-thirds of value. No occupancy: whole property reassessed. Rent starts at the client figure and grows at {pct(scen['base']['rent_growth_sf'],1)} (1.6% cap; assumption beyond 2026-27). Net cash is after property tax, costs, and income tax on rent.</p>
+</section>
+"""
+    return page("Projections", 1, "Projections", body, desc="Inflation, appreciation, and tax-law projections for two properties, 2026–2050, with sensitivities.")
+
+
+def page_decision():
+    prefix = "../"
+    rows = []
+    for T in PROJ["meta"]["inheritance_years_tested"]:
+        for sk in ["low", "base", "high"]:
+            a_live = summary("A", T, sk, "Live")["end_real_2026"]
+            a_sell = summary("A", T, sk, "Sell")["end_real_2026"]
+            b_h = summary("B", T, sk, "Heir lives")["end_real_2026"]
+            b_f = summary("B", T, sk, "No occupancy")["end_real_2026"]
+            b_s = summary("B", T, sk, "Sell")["end_real_2026"]
+            rb = be_rent(T, sk)
+            rows.append([
+                str(T), PROJ["scenarios"][sk]["label"],
+                f"{money(a_live)} vs {money(a_sell)}", "Sell",
+                f"{money(rb['monthly_rent_2026_dollars'])} / mo (2026 $)",
+                f"{money(b_h)} / {money(b_f)} vs {money(b_s)}", "Sell",
+                srcs_cell(["S06", "S25"], prefix, ["FL-15", "FL-17"]),
+            ])
+    best_rows = [[esc(r[0]), esc(r[1]), esc(r[2]), esc(r[3]), esc(r[4]), esc(r[5]), esc(r[6]), r[7]] for r in rows]
+    econ = ECON
+    rec = f"""
+<section class="panel hero-small">
+  <p class="eyebrow">Recommendation</p>
+  <h2>Sell both properties promptly after inheritance, unless the checks below change the answer</h2>
+  <ol class="reasons">
+    <li><b>Wealth comes out ahead in every case tested.</b> In all three inheritance years and all three stress cases, selling and investing the net proceeds beat living in Property A and keeping either property in Property B (table above). This holds at the base-case end date of {PROJ['meta']['horizon_end']}.</li>
+    <li><b>Property A has little net yield once carrying costs are counted.</b> In {econ['year']} (base), cash costs are about {money(econ['cash_costs_nominal'])} per year, while the after-tax return forgone on about {money(A_PROCEEDS)} of sale proceeds is about {money(econ['forgone_after_tax_return_on_sale_proceeds'])}. Expected appreciation offsets about {money(econ['expected_appreciation'])}, leaving a net annual economic cost of about {money(econ['net_annual_economic_cost'])}. Living value is not counted; compare it with a market rent for a comparable home.</li>
+    <li><b>Property A rent only works above break-even.</b> To rent instead of sell, rent must reach about {money(BE['monthly_rent_2026_dollars'])} per month in 2026 dollars (base case, {BT}; about {money(BE['monthly_rent_at_T_nominal'])} per month in {BT} dollars). Verified market rent data were not available, so this is a threshold to test, not a result.</li>
+    <li><b>Property B keeps the rent but loses to selling.</b> Keeping the two rented units and having the heir live in one (Prop 19) is worth about {money(PROP19_B_VALUE)} in real terms compared with no occupancy. Even the best case for keeping (1% levy only, 0.5% upkeep, rent growing with inflation) reaches about {money(B_BEST_KEEP)}, against {money(B_SELL)} for selling.</li>
+    <li><b>Sale right after inheritance should carry little capital-gain tax.</b> Inherited property generally takes a basis equal to its value at death (IRC 1014). Confirm the rule with Publication 551 (see <a href="../flagged/#FL-07">FL-07</a>).</li>
+    <li><b>Selling reduces exposure to law changes and to unverified inputs.</b> It removes annual rent-cap and Prop 19 indexing risk, the unresolved SF tax-rate question (<a href="../flagged/#FL-03">FL-03</a>), the unverified solar and insurance figures, and the risk of a future change to Prop 19 (the 2026 repeal initiative failed, but rules can change again).</li>
+  </ol>
+  <h3>Checks that would change the answer (verify before acting)</h3>
+  <ul>
+    <li>Property A: if an heir wants to live there, complete the Prop 19 steps (occupy within one year; BOE-266; BOE-19-P) and compare the net annual cost with comparable market rent (<a href="../flagged/#FL-01">FL-01</a>).</li>
+    <li>Property B: keep only if the SF bill shows the 2.13% rate is mostly a 1% levy, upkeep is well below 1%, rents track the cap, and the occupied unit is confirmed as qualifying (<a href="../flagged/#FL-03">FL-03</a>, <a href="../flagged/#FL-16">FL-16</a>, <a href="../flagged/#FL-17">FL-17</a>).</li>
+    <li>Replace client figures with appraisals, 12 months of bills, and written insurance quotes, then re-run <code>scripts/model.py</code>.</li>
+  </ul>
+</section>
+"""
+    body = f"""
+<section class="panel"><p class="eyebrow">Decision analysis</p><h1>Live, rent, or sell</h1>
+<p class="muted">Each option is valued as end wealth at {PROJ['meta']['horizon_end']}, in real 2026 dollars. The sell option invests the net proceeds at an after-tax return; the keep options include net cash flows and the property value at the end date. Property A's rent option is shown as a break-even rent, because no verified rent is available.</p>
+</section>
+<section class="panel"><h2>Results by inheritance year and stress case</h2>
+{table(["Inheritance year", "Stress case", "A · Live vs sell (end value)", "A · Best", "A · Break-even rent (rent option)", "B · Hybrid / no-occupancy vs sell", "B · Best", "Source"], best_rows)}
+<p class="muted">A "Best" column reads "Sell" in every row. Ranking uses real end value at {PROJ['meta']['horizon_end']}. Rents are quoted per month in 2026 dollars.</p>
+</section>
+{rec}
+"""
+    return page("Decision", 1, "Decision", body, desc="Live, rent, or sell decision for two properties, with break-even rent and recommendation.")
+
+
+def page_process():
+    prefix = "../"
+    steps = [
+        ["1", "Trust becomes irrevocable at the settlor's death: trustee sends notice to beneficiaries and heirs.", "Within 60 days of the event (Probate Code 16061.7).", ["S26"], []],
+        ["2", "Identify and inventory trust assets; secure both properties; check that insurance matches the actual use (occupied or rented).", "Immediately after death.", [], ["FL-04"]],
+        ["3", "Obtain date-of-death appraisals for each property (basis and estate values).", "As of death date; keep records for the sale and for Form 8971.", ["S30"], ["FL-01", "FL-07"]],
+        ["4", "Decide whether the estate must file Form 706 (gross estate plus adjusted taxable gifts above $15M in 2026). If it does, report property values to beneficiaries on Form 8971.", "Form 706 filing date is not stated here; check the IRS instructions (not verified in this build).", ["S01", "S02", "S22"], ["FL-20"]],
+        ["5", "If a child will live in a property, make it their principal residence and file for the Prop 19 exclusion.", "Move in within 1 year; BOE-266 within 1 year; BOE-19-P within 3 years or before a third-party transfer.", ["S03", "S05", "S06"], ["FL-17"]],
+        ["6", "Transfer title from the trust directly to the qualifying beneficiary. Do not use an LLC.", "Trust is looked through; LLC disqualifies.", ["S06"], []],
+        ["7", "Watch the property-tax calendar: Santa Clara 2026-27 first installment by Dec 10, 2026 (postmark counts); SF dates need confirmation.", "Santa Clara verified; SF unverified.", ["S12"], ["FL-09", "FL-10"]],
+        ["8", "Trust files its income tax return and reports net investment income; check the NIIT rules for trusts.", "Form 1041; NIIT 3.8% above the trust threshold.", ["S23"], ["FL-19"]],
+        ["9", "If selling: confirm the county transfer tax and any city tax at closing; check basis documentation.", "County tax $1.10 per $1,000; city tax unverified.", ["S25"], ["FL-13"]],
+        ["10", "If renting an SF unit: confirm rent-control coverage and use the current allowable increase.", "1.6% (March 1, 2026 to Feb 28, 2027).", ["S15", "S27"], ["FL-16"]],
+        ["11", "Re-check federal and state law before each filing; review pending measures.", "Recheck at each step.", ["S07", "S08", "S19"], ["FL-14", "FL-23"]],
+    ]
+    rows = [[esc(a), esc(b), esc(c), srcs_cell(d, prefix, e)] for a, b, c, d, e in steps]
+    body = f"""
+<section class="panel"><p class="eyebrow">Inheritance process</p><h1>Step-by-step through the trust</h1>
+<p class="muted">Order matters: notices and appraisals come first, and the Prop 19 filing clock starts at the transfer. Dates are as stated in the cited sources. This is a checklist, not legal advice; the trust's attorney and tax preparer must confirm each step.</p></section>
+<section class="panel">{table(["Step", "Action", "Timing or rule", "Source / flags"], rows)}</section>
+"""
+    return page("Process", 1, "Process", body, desc="Step-by-step trust administration and Prop 19 filing sequence with sources.")
+
+
+def page_law():
+    prefix = "../"
+    items = [
+        ["Prop 19 (parent-child exclusion) in effect; $1,044,586 limit for 2/16/2025 to 2/15/2027", "In effect", "Adjusted every two years; next adjustment Feb 2027", ["S04", "S03"], ["FL-18"]],
+        ["Prop 19 repeal initiative (25-0017)", "Failed to qualify", "May 18, 2026 memo", ["S07"], []],
+        ["SB 974: special needs trusts eligible for the Prop 19 transfer", "Chaptered; effective Jan 1, 2027", "Effective 1/1/2027", ["S08"], []],
+        ["Federal estate and gift exclusion $15,000,000 (2026)", "In effect", "Indexed for inflation from 2027 under current law", ["S01", "S02"], ["FL-20"]],
+        ["Death Tax Repeal Act of 2025 (S.587; H.R.1301)", "Introduced; referred to committee; not enacted", "Feb 13, 2025 (latest snapshot)", ["S19", "S19b"], ["FL-23"]],
+        ["Assessment inflation factor (Prop 13)", "In effect (1.02 for 2026-27)", "Annual; 2% cap on growth absent ownership change", ["S11"], []],
+        ["SF allowable rent increase", "1.6% (March 1, 2026 to Feb 28, 2027)", "Set annually by the Rent Board", ["S15"], ["FL-16"]],
+        ["Statewide rent cap (AB 1482 / Civ. Code 1947.12)", "In effect", "5% + CPI, max 10% per 12 months", ["S27"], []],
+        ["CPUC residential fixed charge (Base Services Charge)", "In effect (about $24.15 standard)", "Applies to residential bills (CPUC document; roll-out dates not verified)", ["S28"], ["FL-05"]],
+        ["SFPUC water and sewer increases", "Proposed FY27 and FY28; adoption reported (secondary)", "July 1, 2026 and July 1, 2027", ["S29"], ["FL-12"]],
+        ["Prop 40 (billionaire tax), early returns", "Not certified; early returns only", "Nov 3, 2026 (secondary)", ["S37"], ["FL-14"]],
+        ["California Mental Health Services Tax (1% over $1M)", "Unverified on an official page", "—", ["S24"], ["FL-08"]],
+    ]
+    rows = [[esc(a), esc(b), esc(c), srcs_cell(d, prefix, e)] for a, b, c, d, e in items]
+    body = f"""
+<section class="panel"><p class="eyebrow">Law and pending changes</p><h1>What could change the answer</h1>
+<p class="muted">Enacted, pending and failed measures with their status as of this build. Any item marked flagged should be checked before relying on it.</p></section>
+<section class="panel">{table(["Measure", "Status", "Timing", "Source / flags"], rows)}</section>
+<section class="panel"><h2>How to use this page</h2>
+<ul>
+<li>Prop 19 is the largest swing factor for Property A if it is occupied. Track the February 2027 limit adjustment.</li>
+<li>Estate-tax thresholds are high enough that the two properties alone do not trigger federal estate tax on current law; other estate assets could.</li>
+<li>California has no state estate or inheritance tax under current law (R&amp;TC 13301).</li>
+</ul></section>
+"""
+    return page("Law", 1, "Law", body, desc="Enacted, pending and failed federal and state changes relevant to inherited California property.")
+
+
+def page_flagged():
+    prefix = "../"
+    sev_rank = {"high": 0, "medium": 1, "low": 2}
+    rows = []
+    for f in sorted(FLAGS, key=lambda x: (sev_rank[x["severity"]], x["id"])):
+        sev = f'<span class="badge {"warn" if f["severity"]=="high" else "mute"}">{f["severity"].upper()}</span>'
+        rows.append([
+            f'<a id="{esc(f["id"])}"></a><code>{esc(f["id"])}</code>', sev, esc(f["topic"]), esc(f["title"]),
+            esc(f["detail"]), esc(f["action"]), srcs_cell(f["sources"], prefix),
+        ])
+    counts = {k: sum(1 for f in FLAGS if f["severity"] == k) for k in ["high", "medium", "low"]}
+    body = f"""
+<section class="panel review"><p class="eyebrow">Flagged for review</p><h1>Irregularities, unverified values and open questions</h1>
+<p class="muted">Flags do not block publication. Each entry says what is unverified or irregular, what the workspace shows, and what would resolve it. Totals: {counts['high']} high, {counts['medium']} medium, {counts['low']} low.</p>
+</section>
+<section class="panel"><div class="filterbar"><input type="search" placeholder="Filter flags (e.g. FL-03, insurance, SF)" aria-label="Filter flags"></div>
+{table(["ID", "Severity", "Topic", "Issue", "Detail", "Action to resolve", "Source"], rows)}</section>
+"""
+    return page("Flagged for review", 1, "Flagged", body, desc="Irregularities, unverified values, and open items for review, with source links.")
+
+
+def page_sources():
+    prefix = "../"
+    rows = []
+    for s in SOURCES.values():
+        tag = '<span class="badge ok">OFFICIAL</span>' if s["tier"] == "official" else '<span class="badge warn">SECONDARY</span>'
+        rows.append([f'<code>{esc(s["id"])}</code>', tag, esc(s["publisher"]), esc(s["title"]),
+                     f'<a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(s["url"])}</a>', esc(s["retrieval"])])
+    body = f"""
+<section class="panel"><p class="eyebrow">Sources</p><h1>Source register</h1>
+<p class="muted">Official sources are used for verified values. Secondary sources were used only to locate items for review and are never the sole basis of a verified value. Accessed {BUILD_DATE}.</p></section>
+<section class="panel"><div class="filterbar"><input type="search" placeholder="Filter sources" aria-label="Filter sources"></div>
+{table(["ID", "Tier", "Publisher", "Title", "Link", "How checked"], rows)}</section>
+"""
+    return page("Sources", 1, "Sources", body, desc="Register of official and secondary sources with retrieval status.")
+
+
+CSS = """
+:root{--ink:#17202a;--muted:#5b6774;--line:#dfe5ec;--bg:#f6f8fa;--card:#fff;--brand:#0f5c8c;--ok:#1f7a4d;--warn:#a25b00;--client:#1d5fa6;--mute:#6c7782}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--brand)}code{font-size:.9em;background:#eef2f6;padding:0 .25em;border-radius:3px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:#0f2a3d;color:#fff;flex-wrap:wrap;gap:8px}
+.brand{display:flex;gap:12px;align-items:center}.mark{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:8px;background:#2b8bc4;font-weight:700}
+.brand small{display:block;color:#b8cbd9;font-size:12px}.asof{color:#b8cbd9;font-size:13px}
+.nav{display:flex;gap:4px;flex-wrap:wrap;padding:8px 16px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav a{padding:6px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14px}.nav a:hover{background:#eef4f9}.nav a.active{background:var(--brand);color:#fff}
+main{max-width:1200px;margin:0 auto;padding:18px 16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 16px}
+.panel h2{margin:0 0 10px;font-size:19px}.panel h1{margin:4px 0 8px;font-size:26px}
+.hero{background:linear-gradient(135deg,#0f2a3d,#1e5a80);color:#fff;border-radius:12px;padding:26px 26px;margin-bottom:16px}
+.hero h1{font-size:30px;margin:6px 0 10px;max-width:900px}.hero .lede{max-width:860px;color:#dde8f1;font-size:16px}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--muted);margin:0 0 4px}.hero .eyebrow{color:#a9c6da}
+.cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}.btn{background:#fff;color:var(--brand);padding:9px 14px;border-radius:7px;font-weight:600;text-decoration:none}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #cfe0ec}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+.stats article{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.stats small{color:var(--muted);display:block}.stats strong{font-size:22px;display:block;margin:4px 0}
+.src-line{font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.card{display:block;background:#fbfdfe;border:1px solid var(--line);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink)}
+.card b{display:block;margin-bottom:4px;color:var(--brand)}.card span{color:var(--muted);font-size:14px}.card.warn{border-color:#f0c48a;background:#fffaf2}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f1f5f9;position:sticky;top:0;font-weight:600;color:#334}tr:nth-child(even) td{background:#fbfcfd}tr:hover td{background:#f0f7fc}
+td a.src{white-space:nowrap}.sid{font-size:11px;background:#eef2f6;border-radius:3px;padding:0 3px;color:#345}
+a.src.secondary{color:#8a5a00}a.flagref{background:#fff1dc;color:#7a4300;padding:0 4px;border-radius:3px;text-decoration:none;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.badge.ok{background:#e4f5ec;color:var(--ok)}.badge.warn{background:#fff1dc;color:var(--warn)}.badge.client{background:#e6f0fb;color:var(--client)}.badge.mute{background:#eef1f4;color:var(--mute)}
+.muted{color:var(--muted);font-size:14px}
+.filterbar{margin:4px 0 8px}.filterbar input{width:100%;max-width:420px;padding:8px 10px;border:1px solid #c9d3dd;border-radius:7px;font:inherit}
+.hero-small{border-color:#9cc3dc;background:#f7fbfe}
+.reasons li{margin-bottom:8px}
+footer{max-width:1200px;margin:24px auto;padding:0 16px 30px;color:var(--muted);font-size:12.5px}
+@media (max-width:700px){.hero h1{font-size:24px}.panel h1{font-size:22px}}
+"""
+
+JS = """// Progressive enhancement: live text filter for tables and search boxes.
+(function(){
+  function norm(s){return (s||'').toString().toLowerCase();}
+  function applyFilter(input){
+    var q=norm(input.value);
+    var scope=input.closest('section')||document;
+    var tables=scope.querySelectorAll('table');
+    tables.forEach(function(t){
+      t.querySelectorAll('tbody tr').forEach(function(tr){
+        tr.style.display = !q || norm(tr.textContent).indexOf(q)>-1 ? '' : 'none';
+      });
+    });
+  }
+  document.querySelectorAll('.filterbar input[type=search]').forEach(function(inp){
+    inp.addEventListener('input', function(){applyFilter(inp);});
+  });
+})();
+"""
+
+
+def main():
+    write(ROOT / "index.html", page_overview())
+    write(ROOT / "facts/index.html", page_facts())
+    write(ROOT / "property/index.html", page_property())
+    write(ROOT / "costs/index.html", page_costs())
+    write(ROOT / "projections/index.html", page_projections())
+    write(ROOT / "decision/index.html", page_decision())
+    write(ROOT / "process/index.html", page_process())
+    write(ROOT / "law/index.html", page_law())
+    write(ROOT / "flagged/index.html", page_flagged())
+    write(ROOT / "sources/index.html", page_sources())
+    write(ROOT / "assets/site.css", CSS)
+    write(ROOT / "assets/site.js", JS)
+    print("site written")
+
+
+if __name__ == "__main__":
+    main()

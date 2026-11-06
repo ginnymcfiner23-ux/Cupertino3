@@ -1,34 +1,94 @@
-# Cupertino3 — Cupertino & San Francisco House Inheritance Decision
+# Cupertino3
 
-Decision-support project for inheriting two California houses (Cupertino 95014 and
-San Francisco 94122) through a trust around 2040–2050, with a live GitHub Pages
-dashboard.
+Anonymized analysis and GitHub Pages site comparing two ways of holding a home over 2040–2050:
 
-## What's here
+- **Property A** — Cupertino, Santa Clara County, CA (to be inherited through [Trust] by [Beneficiary]).
+- **Property B** — San Francisco, CA (held).
 
-- `docs/` — the live dashboard site (GitHub Pages, deployed from `/docs` on `main`)
-  - `index.html` — Executive Summary
-  - `properties.html` — property & tax data with irregularities
-  - `tax-law.html` — verified law & tax research with official sources
-  - `inheritance.html` — step-by-step inheritance process
-  - `projections.html` — 2026–2055 projections (values, taxes, estate exemption)
-  - `costs.html` — utilities, insurance, maintenance
-  - `scenarios.html` — live / rent / sell decision analysis + recommendation
-  - `flagged.html` — unverified values and irregularities for review
-  - `sources.html` — full source list
-- `data/` — verified research notes and `projections.json` (projection engine output)
-- `scripts/` — `projections.py` (engine) and `build_site.py` (site builder)
-- `COORDINATION.md` — task board and verification log
+Covers property tax and assessment history (checked against BOE factors), insurance, water, electricity and solar, maintenance, federal / California / local law, the inheritance threshold, pending law changes, the live / rent / sell decision, and an inheritance process checklist.
 
-## Rebuild the site
+**Published sites (one GitHub Pages site, two analyses):**
+
+- **Root site** (`index.html` and folders `facts/`, `property/`, `costs/`, `projections/`, `decision/`, `process/`, `law/`, `flagged/`, `sources/`, shared `assets/`). Built by `scripts/build_site.py` from `data/ia/*.json`. Checked by `scripts/validate.py`. Session c1b5796b.
+- **`/docs/` site** (`docs/`). Built by `tools/build_site.py` from `data/*.json`. Checked by `tools/check_site.py`. Session 340c906c.
+- **`/docs/analysis/` section** (`docs/analysis/`). Built by `scripts/analysis_build_site.py` from `data/projections.analysis.json`. Session 41b64714. Adds the full 2014–2026 tax/assessment history, rate-gap irregularity analysis, and 3-scenario Prop 19 projections.
+
+The two analyses use different assumptions and do not yet agree on every figure. Neither is verified; both are labelled as assumption-based projections. See FL-25 on the root site's Flagged for Review page and the cross-session note in `COORDINATION.md`. The earlier dashboard (session aed145d8) is archived unchanged in `archive/previous-dashboard/`.
+
+## Layout
+
+| Path | What it is |
+|------|-----------|
+| `docs/` | The published site (static HTML, CSS, and downloadable CSV/JSON). |
+| `docs/analysis/` | Additional analysis section (session 41b64714): dashboard pages with own assets; cross-linked from `docs/index.html`. |
+| `data/` | Files for the `/docs/` site (session 340c906c): sources, tax law, cost inputs, flags, process steps, projections. |
+| `data/*.md` | Verified research notes (session 41b64714): law-tax, properties, costs, inheritance. |
+| `data/projections.analysis.json` | Projection output for the `docs/analysis/` section. |
+| `scripts/analysis_projections.py` | Projection engine for the analysis section. Writes `data/projections.analysis.json`. |
+| `scripts/analysis_build_site.py` | Generates `docs/analysis/` from `data/projections.analysis.json`. |
+| `data/ia/` | Files for the root site (session c1b5796b): sources, facts, client inputs, history, flags, projections. |
+| `scripts/model.py` | Projection model for the root site. Writes `data/ia/projections.json`. |
+| `scripts/build_site.py` | Generates the root site from `data/ia/`. |
+| `scripts/validate.py` | Checks the root site: sourcing, links, personal-information scan, projection sanity. |
+| `index.html`, category folders | The root site (landing page and category pages). |
+| `model/project.py` | Projection model. Writes `data/projections.json`. All assumptions are labelled. |
+| `tools/build_data.py` | Builds the property tax history and BOE factor checks from the user tables. |
+| `tools/build_site.py` | Generates `docs/` from `data/`. No numbers are typed into the HTML by hand. |
+| `tools/check_site.py` | Checks: JSON parses; every table row links to an official domain; internal links resolve; every flag and row cites a source; privacy patterns absent. |
+| `COORDINATION.md` | Task board and session log. |
+
+## Rebuild
 
 ```bash
-python3 scripts/projections.py   # writes data/projections.json
-python3 scripts/build_site.py    # writes docs/*.html
+python3 tools/build_data.py
+python3 model/project.py
+python3 tools/build_site.py
+python3 tools/check_site.py
+python3 scripts/model.py
+python3 scripts/build_site.py
+python3 scripts/validate.py
 ```
+
+Root site: `scripts/model.py` → `scripts/build_site.py` → `scripts/validate.py`.
+
+Analysis section (session 41b64714):
+
+```bash
+python3 scripts/analysis_projections.py
+python3 scripts/analysis_build_site.py
+```
+
+Standard library only; no packages to install.
+
+## Status rules
+
+- **Verified**: read from an official page. **Partly verified**: official URL or partial read. **Pending**: identified, not read, not used. **UNVERIFIED / user figure**: supplied by the owner; blank in verified columns and used only in labelled projections. **Assumption**: a model input, not a fact.
+- Anything not verified is left blank and listed on the *Flagged for Review* page. Flagged items do not block publication.
 
 ## Privacy
 
-No personal information appears in this product. All user-provided figures are
-anonymized placeholders and are flagged for verification on the Flagged for Review
-page.
+Only the anonymized references above are used. No names, addresses, ZIP codes or the owner's location appear in the repository, and `tools/check_site.py` enforces this. This is not legal, tax or investment advice.
+
+---
+
+## Inheritance decision guide (session 64308d3a)
+
+A second, separate analysis lives in `guide/` (served at `/guide/` of the same Pages site). It covers the same two properties with a different scope: verified facts with official links (`data/guide/facts.json`), client inputs (UNVERIFIED, labelled), a 2026-2050 projection model (`model/guide_project.py`), inheritance steps, pending law, and a Flagged for Review page. Unverified values are blank.
+
+| Path | What it is |
+|---|---|
+| `guide/` | Generated static site: landing page, category pages, Flagged for Review, sources. Inline styles; no external resources. |
+| `data/guide/` | Facts, sources, client inputs, irregularities, legislation, inheritance steps, projections. |
+| `model/guide_project.py` | Projection model. Writes `data/guide/projections.json` and CSVs. |
+| `scripts/guide_build_site.py` | Builds `guide/` from `data/guide/`. |
+| `scripts/guide_check_site.py` | Checks internal links, rows with official links, no external resources, verified rows have sources, privacy patterns. |
+
+Rebuild:
+
+```bash
+python3 model/guide_project.py
+python3 scripts/guide_build_site.py
+python3 scripts/guide_check_site.py
+```
+
+Standard library only. Privacy rule: no personal information in the repo or site. Properties are referred to by city and county only. This is informational analysis, not legal or tax advice.

@@ -1,0 +1,18 @@
+{
+  "note": "Client-provided tax history, UNVERIFIED (see FL-02 and FL-03). Only the 2025 values and the 2026 projection are kept. Other years were not retained and must be re-supplied from the county rolls before use.",
+  "properties": {
+    "A": {
+      "label": "Property A (Cupertino area, Santa Clara County)",
+      "years": {
+        "2025": {"assessed_value": 539743, "tax": 7207, "status": "UNVERIFIED client input", "flags": ["FL-01", "FL-02"], "sources": ["S12", "S38"]},
+        "2026": {"assessed_value": 550537, "status": "PROJECTION (client applied +2% Prop 13 factor; not a published roll value)", "flags": ["FL-02"], "sources": ["S11"]}
+      }
+    },
+    "B": {
+      "label": "Property B (San Francisco)",
+      "years": {
+        "2025": {"assessed_value": 114248, "tax": 2439, "status": "UNVERIFIED client input; implied effective rate 2.1348% is irregular", "flags": ["FL-01", "FL-03"], "sources": ["S38", "S39"]}
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
-# PROPERTY DATA — Cupertino 95014 & San Francisco 94122
+# PROPERTY DATA — Cupertino (Santa Clara County, CA) & San Francisco (San Francisco, CA)
 
-## Property 1: Cupertino house (zip 95014)
+## Property 1: Cupertino house (Santa Clara County, CA)
 
 Source of assessed values & taxes: user-provided (to be verified against official Santa Clara County tax bills).
 Status: USER-PROVIDED → flagged for review.
@@ -24,7 +24,7 @@ Status: USER-PROVIDED → flagged for review.
 Cupertino market value (Nov 2026): $3,100,000 — USER-PROVIDED estimate, NOT verified (flag).
 Assessed value 2026 ($550,537) is the Prop 13 Factored Base Year Value — NOT market value.
 
-## Property 2: San Francisco house (zip 94122, Outer Sunset)
+## Property 2: San Francisco house (San Francisco, CA)
 
 Source: user-provided (to be verified against official SF tax bills). STATUS: USER-PROVIDED → flagged.
 

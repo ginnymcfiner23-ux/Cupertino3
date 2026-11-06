@@ -28,7 +28,7 @@
 |---|---|---|
 | California average homeowner premium | $1,571/yr (CDI, Feb 2026) | CDI Homeowners Insurance Market Snapshot — via https://aegishomesre.com/home-insurance-cost-statistics/ (flag: verify cdii.ca.gov) |
 | NAIC 2023 HO-3: CA vs US | $1,655 vs $1,737 | NAIC Homeowners Report (flag) |
-| Cupertino 95014 average HO-3 | ~$1,189–$1,229/yr | Third-party (gethomeinsurancequotes.com, baysano.com) — FLAG |
+| Cupertino average HO-3 (Santa Clara County, CA) | ~$1,189–$1,229/yr | Third-party (gethomeinsurancequotes.com, baysano.com) — FLAG |
 | SF landlord (rental) policy | ~$2,235/yr | Third-party (insurance8020.com) — FLAG |
 | User's guess | $1,500/yr — plausible, in line with third-party estimates | User input — FLAG |
 | Earthquake coverage | Separate optional endorsement; standard HO-3 excludes quake | CDI — flag: verify cdii.ca.gov |

@@ -1,0 +1,334 @@
+{
+  "accessed": "2026-11-06",
+  "note": "Tier 'official' = government, regulator, court, or utility-tariff primary document. 'secondary' = commentary/news/law-firm pages; never used as the sole source of a verified value. 'retrieval' records how the page was checked: fetched (full page read), snippet (search result text from the official URL), not-retrieved (official page could not be opened; flagged).",
+  "sources": [
+    {
+      "id": "S01",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "IRS releases tax inflation adjustments for tax year 2026 (IR-2025-103)",
+      "url": "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S02",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "Estate tax (filing thresholds, portability, Form 706)",
+      "url": "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S03",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Publication 801: Proposition 19 fact sheet",
+      "url": "https://www.boe.ca.gov/pdf/pub801.pdf",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S04",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Letter to Assessors 2025/009: Proposition 19 value limit $1,044,586",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S05",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Publication 800-1: Transfers of parent-child real property (Prop 19 information sheet)",
+      "url": "https://www.boe.ca.gov/pdf/pub800-1.pdf",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S06",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Letter to Assessors 2026/026: Proposition 19 FAQ (Aug 3, 2026)",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta26026.pdf",
+      "retrieval": "fetched (chunks 0-7 of 11; grandparent section and appeals not read)"
+    },
+    {
+      "id": "S07",
+      "tier": "official",
+      "publisher": "California Secretary of State",
+      "title": "Initiative 25-0017 (Prop 19 repeal) certification memo, May 18, 2026",
+      "url": "https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S08",
+      "tier": "official",
+      "publisher": "California Legislature",
+      "title": "SB 974 (2025-26) chaptered bill text (effective 1/1/2027)",
+      "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB974",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S09",
+      "tier": "official",
+      "publisher": "California Legislature",
+      "title": "Revenue and Taxation Code section 13301 (no state gift, inheritance, estate, or death-transfer tax)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=13301",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S10",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "Revenue Procedure 2025-32 (2026 inflation-adjusted items)",
+      "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "retrieval": "fetched (chunks 0-2 of 7)"
+    },
+    {
+      "id": "S11",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Letter to Assessors 2026/002: 2026-27 assessment inflation factor 1.02",
+      "url": "https://www.boe.ca.gov/proptaxes/pdf/lta26002.pdf",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S12",
+      "tier": "official",
+      "publisher": "Santa Clara County Department of Tax and Collections",
+      "title": "DTAC home page (2026/27 first installment deadline)",
+      "url": "https://dtac.santaclaracounty.gov/home",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S13",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Homeowners' exemption ($7,000 reduction; BOE-266 deadlines)",
+      "url": "https://www.boe.ca.gov/proptaxes/homeowners_exemption.htm",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S14",
+      "tier": "official",
+      "publisher": "San Jose Water Company (CPUC-regulated utility)",
+      "title": "Advice Letter AL 628-A: proposed residential rates effective July 1, 2026",
+      "url": "https://www.sjwater.com/media/qeeh013c/adv-628a_web.pdf",
+      "retrieval": "snippet (approval status not confirmed)"
+    },
+    {
+      "id": "S15",
+      "tier": "official",
+      "publisher": "City and County of San Francisco (sf.gov)",
+      "title": "Current rates: allowable rent increase 1.6% (3/1/2026 to 2/28/2027)",
+      "url": "https://www.sf.gov/reports--current-rates-including-rent-increase-relocation-sec-deposit",
+      "retrieval": "snippet"
+    },
+    {
+      "id": "S16",
+      "tier": "official",
+      "publisher": "California Department of Insurance",
+      "title": "2026 Homeowners Insurance premium comparison tool",
+      "url": "https://interactive.web.insurance.ca.gov/apex_extprd/f?p=111:21:::NO:::",
+      "retrieval": "fetched (tool loaded; premium results did not render)"
+    },
+    {
+      "id": "S17",
+      "tier": "official",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "title": "Consumer Price Index news release, September 2026 (12-month change 3.7%)",
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "retrieval": "snippet"
+    },
+    {
+      "id": "S18",
+      "tier": "official",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "title": "Inflation (PCE): 2 percent longer-run goal",
+      "url": "https://www.federalreserve.gov/economy-at-a-glance-inflation-pce.htm",
+      "retrieval": "snippet"
+    },
+    {
+      "id": "S19",
+      "tier": "official",
+      "publisher": "U.S. Congress (congress.gov)",
+      "title": "S.587 Death Tax Repeal Act of 2025 (introduced 2/13/2025; referred to Senate Finance)",
+      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/587/text/is",
+      "retrieval": "snippet"
+    },
+    {
+      "id": "S19b",
+      "tier": "official",
+      "publisher": "U.S. Congress (congress.gov)",
+      "title": "H.R.1301 Death Tax Repeal Act (introduced 2/13/2025; referred to Ways and Means)",
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/1301/text",
+      "retrieval": "snippet"
+    },
+    {
+      "id": "S20",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "Publication 523: Selling Your Home (2-of-5-year test; exclusion)",
+      "url": "https://www.irs.gov/publications/p523",
+      "retrieval": "fetched (table of contents only; dollar limits from a secondary copy of the 2016 edition, flagged)"
+    },
+    {
+      "id": "S21",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "Publication 527: Residential Rental Property (depreciation)",
+      "url": "https://www.irs.gov/publications/p527",
+      "retrieval": "fetched (table of contents only)"
+    },
+    {
+      "id": "S22",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "About Form 8971 (beneficiary basis reporting)",
+      "url": "https://www.irs.gov/forms-pubs/about-form-8971",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S23",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "Topic 559: Net investment income tax",
+      "url": "https://www.irs.gov/taxtopics/tc559",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S24",
+      "tier": "official",
+      "publisher": "California Franchise Tax Board",
+      "title": "2026 California tax rate schedules (Form 540)",
+      "url": "https://www.ftb.ca.gov/forms/2026/2026-540-tax-rate-schedules.pdf",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S25",
+      "tier": "official",
+      "publisher": "California Legislature",
+      "title": "Revenue and Taxation Code section 11911 (county documentary transfer tax, $0.55 per $500)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=11911",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S26",
+      "tier": "official",
+      "publisher": "California Legislature",
+      "title": "Probate Code section 16061.7 (trustee notification within 60 days)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16061.7",
+      "retrieval": "fetched (chunk 0 of 2)"
+    },
+    {
+      "id": "S27",
+      "tier": "official",
+      "publisher": "California Legislature",
+      "title": "Civil Code section 1947.12 (AB 1482 statewide cap; exemptions)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1947.12",
+      "retrieval": "fetched (chunk 0 of 3)"
+    },
+    {
+      "id": "S28",
+      "tier": "official",
+      "publisher": "California Public Utilities Commission",
+      "title": "CPUC document on residential fixed charge (approx. $24.15/month PG&E; $6 CARE; $12 FERA)",
+      "url": "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M555/K816/555816677.pdf",
+      "retrieval": "snippet"
+    },
+    {
+      "id": "S29",
+      "tier": "official",
+      "publisher": "San Francisco Public Utilities Commission",
+      "title": "Proposed water and sewer rate adjustments, Rate Fairness Board presentation (Mar 19, 2026)",
+      "url": "https://www.sfpuc.gov/sites/default/files/agendas-minutes-rate-fairness-board/6a-Rates-Presentation.pdf",
+      "retrieval": "snippet (proposal; adoption status not confirmed here)"
+    },
+    {
+      "id": "S30",
+      "tier": "official",
+      "publisher": "IRS",
+      "title": "Topic 703: Basis of assets (inherited property basis: see Publication 551)",
+      "url": "https://www.irs.gov/taxtopics/tc703",
+      "retrieval": "fetched"
+    },
+    {
+      "id": "S31",
+      "tier": "official",
+      "publisher": "California State Board of Equalization",
+      "title": "Publication 800-5 (basic rate and assessed-value system)",
+      "url": "https://boe.ca.gov/pdf/pub800-5.pdf",
+      "retrieval": "not-retrieved (cited by earlier session; not re-read)"
+    },
+    {
+      "id": "S32",
+      "tier": "official",
+      "publisher": "San Francisco Treasurer & Tax Collector (sftreasurer.org)",
+      "title": "Secured property tax due dates",
+      "url": "https://sftreasurer.org/property-tax-due-dates",
+      "retrieval": "not-retrieved (404 on fetch)"
+    },
+    {
+      "id": "S33",
+      "tier": "official",
+      "publisher": "Franchise Tax Board",
+      "title": "Tax rates landing page",
+      "url": "https://www.ftb.ca.gov/file/personal/tax-rates.html",
+      "retrieval": "not-retrieved (404 on fetch)"
+    },
+    {
+      "id": "S34",
+      "tier": "official",
+      "publisher": "California Department of Insurance",
+      "title": "Homeowners Insurance Market Snapshot (Feb 2026)",
+      "url": "https://www.insurance.ca.gov/",
+      "retrieval": "not-retrieved (statewide premium figure seen only in a secondary summary)"
+    },
+    {
+      "id": "S35",
+      "tier": "official",
+      "publisher": "PG&E",
+      "title": "Solar Billing Plan and Base Services Charge pages",
+      "url": "https://www.pge.com/",
+      "retrieval": "not-retrieved (solar-billing page returned 404)"
+    },
+    {
+      "id": "S36",
+      "tier": "secondary",
+      "publisher": "Secondary commentary (not official)",
+      "title": "Insurance, solar, Prop 40, and other secondary summaries used only to locate items for review",
+      "url": "https://aegishomesre.com/home-insurance-cost-statistics/",
+      "retrieval": "snippet (never used as a verified value)"
+    },
+    {
+      "id": "S37",
+      "tier": "secondary",
+      "publisher": "Mercury News (secondary)",
+      "title": "Prop 40/41/42 early returns, Nov 3, 2026 (not certified)",
+      "url": "https://www.mercurynews.com/",
+      "retrieval": "snippet (never used as a verified value)"
+    },
+    {
+      "id": "S38",
+      "tier": "official",
+      "publisher": "Santa Clara County Assessor",
+      "title": "Assessor property search and assessed-value records (reference for verifying the 2026-27 roll)",
+      "url": "https://www.sccassessor.org/",
+      "retrieval": "not-retrieved (reference only; no property-level lookup performed)"
+    },
+    {
+      "id": "S39",
+      "tier": "official",
+      "publisher": "San Francisco Assessor-Recorder",
+      "title": "Assessor property search and assessed-value records (reference for verifying the 2026-27 roll)",
+      "url": "https://www.sfassessor.org/",
+      "retrieval": "not-retrieved (reference only; no property-level lookup performed)"
+    },
+    {
+      "id": "S40",
+      "tier": "internal",
+      "publisher": "Project repository (internal rule)",
+      "title": "COORDINATION.md: privacy and verification rules for this project",
+      "url": "../COORDINATION.md",
+      "retrieval": "repository file (relative link; no account identifiers published)"
+    }
+  ]
+}
