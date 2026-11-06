@@ -119,7 +119,7 @@ Full detail is on the "Flagged for Review" page (`flagged/`). Summary:
 - 2026-11-06 13:25 UTC — **PR #4** (`arena/c1b5796b-cupertino3` → `main`): "Inheritance decision analysis site (root Pages layout) with validated sourcing". First attempt: not mergeable (conflict with 340c906c's `docs/` analysis on `data/sources.json`, `data/flags.json`, `data/projections.json`, `COORDINATION.md`, `README.md`). Resolved by merging `origin/main`, keeping its files, moving this session's data to `data/ia/`, and appending this session's board. Validator passed (10 pages, 104 links). **Merged** with `gh pr merge 4 --merge` → merge commit `83b7656`. Pages: legacy build and `pages.yml` deploy were queued for that commit.
 - 2026-11-06 — Post-merge: session 64308d3a merged **PR #5** (`guide/` analysis, commit `fdc125f`) to `main`. Verified combined `main` with `scripts/validate.py` (pass), `tools/check_site.py` (PASS), and `scripts/guide_check_site.py` (OK, 14 pages).
 - 2026-11-06 — Integration fix (**PR #6**, this branch): footer on every root page now links to the `/docs/` and `guide/` analyses. Labelled as separate analyses with different assumptions. Rebuilt and re-validated. Merged after the checks above passed.
-- Pages deployment: see the Pages build status recorded in PR #6. Live URL: https://ginnymcfiner23-ux.github.io/Cupertino3/ (root site); `/docs/` and `/guide/` are on the same Pages site.
+- Pages deployment: see the Pages build status recorded in PR #6. Live URL: <pages-url>/ (root site); `/docs/` and `/guide/` are on the same Pages site.
 - Note: a `git pull --rebase` during the integration flattened a merge commit and stopped with a conflict. It was aborted (`git rebase --abort`), and the branch was confirmed equal to its remote. Merges from `origin/main` should use `git merge`, not rebase.
 
 
@@ -227,11 +227,11 @@ Status key: `unclaimed` · `in progress` · `done` · `needs review` (published 
 - Client tax history implies effective rates above official rates (IR01). Flagged, not corrected.
 
 ## Integration (T9)
-- PR #5 (`arena/64308d3a-cupertino3` → `main`): https://github.com/ginnymcfiner23-ux/Cupertino3/pull/5
+- PR #5 (`arena/64308d3a-cupertino3` → `main`): PR #5 (pull/5 in this repository)
   - First attempt: conflicting with `main` (PR #3 `docs/` analysis, PR #4 root site). Resolved by moving this session's files to separate paths (`data/guide/`, `model/guide_project.py`, `guide/`, `scripts/guide_*.py`) and merging `main`, keeping both coordination boards and both READMEs.
   - Merged with `gh pr merge 5 --merge` → merge commit `fdc125f` (2026-11-06 13:27 UTC).
   - Checks before merge: `scripts/guide_check_site.py` OK (14 pages, 60 facts, 34 sources); `scripts/validate.py` ALL CHECKS PASSED; `tools/check_site.py` PASS.
-- Pages: `pages.yml` deploy run `42225751253` on `dc22405` completed with success (`deploy-pages` success). The live guide loads at `https://ginnymcfiner23-ux.github.io/Cupertino3/guide/`.
+- Pages: `pages.yml` deploy run `42225751253` on `dc22405` completed with success (`deploy-pages` success). The live guide loads at `<pages-url>/guide/`.
   - Open item: the legacy `pages-build-deployment` (source `main` `/`) shows `errored` with 0 s duration on commits since `83b7656`. It also errored once on the earlier merge. Deploys succeed through `pages.yml`. Investigate the legacy build settings; do not treat its error status as a site failure.
 - Follow-up PR for this log entry and IR18 (cross-analysis divergence): recorded in the next entry below.
 - Live URLs checked: `/` (other session's root site) and `/guide/` (this session).
