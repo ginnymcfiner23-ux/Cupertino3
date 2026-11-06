@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "warning": "Every value in this file is a MODELLING ASSUMPTION, not a verified fact. None of them has an official source. They exist only so the projections and scenarios on this site are reproducible and so the sensitivity of the answer to each one can be tested. Changing any of them changes the answer."
+  },
+  "rows": [
+    {
+      "id": "inheritance-year",
+      "label": "Assumed year of transfer",
+      "value": 2045,
+      "unit": "year",
+      "rationale": "Midpoint of the owner's stated 2040-2050 window.",
+      "sensitivity": "The site also reports 2040 and 2050."
+    },
+    {
+      "id": "appreciation-base",
+      "label": "Assumed annual market appreciation, Property A and Property B, base case",
+      "value": 4.0,
+      "unit": "percent",
+      "rationale": "Long-run nominal appreciation assumption. No official source forecasts this. Chosen as a mid-range round number for a supply-constrained coastal California market.",
+      "sensitivity": "Also modelled at 3.0% and 5.0%."
+    },
+    {
+      "id": "appreciation-low",
+      "label": "Low appreciation case",
+      "value": 3.0,
+      "unit": "percent",
+      "rationale": "Downside sensitivity.",
+      "sensitivity": ""
+    },
+    {
+      "id": "appreciation-high",
+      "label": "High appreciation case",
+      "value": 5.0,
+      "unit": "percent",
+      "rationale": "Upside sensitivity.",
+      "sensitivity": ""
+    },
+    {
+      "id": "prop13-growth",
+      "label": "Annual growth in factored base year value after reassessment",
+      "value": 2.0,
+      "unit": "percent",
+      "rationale": "The Prop 13 cap. This one is not a free assumption: the 2% maximum is verified from the Board of Equalization, and the Santa Clara Assessor confirms the 2% cap governed for 2025-26 because California CPI (2.514%) exceeded it.",
+      "sensitivity": "Verified, so no sensitivity band is offered."
+    },
+    {
+      "id": "prop19-cap-index",
+      "label": "Assumed annual growth in the Prop 19 indexed $1 million amount",
+      "value": 1.1,
+      "unit": "percent",
+      "rationale": "The amount is indexed every two years to the FHFA House Price Index for California. The 2023-2025 and 2025-2027 adjustments worked out to roughly 1.1% a year. For an inheritance in 2045 the actual figure is unknowable.",
+      "sensitivity": "The scenarios show the exclusion with and without indexing to show how little difference it makes."
+    },
+    {
+      "id": "rate-a",
+      "label": "Property tax rate used for Property A",
+      "value": 1.33,
+      "unit": "percent",
+      "rationale": "Derived from the owner's own figures: 2025 tax of 7,207 USD divided by the 2025 assessment of 539,743 USD = 1.3353%. Used because the official Santa Clara County tax-rate-area rate could not be retrieved. This substitution is flagged on the Flagged for Review page.",
+      "sensitivity": "Shown alongside a 1.18% alternative."
+    },
+    {
+      "id": "rate-b",
+      "label": "Property tax rate used for Property B",
+      "value": 2.14,
+      "unit": "percent",
+      "rationale": "Derived from the owner's own figures: 2025 tax of 2,439 USD divided by the 2025 assessment of 114,248 USD = 2.1348%. This is far above San Francisco's verified FY2025-26 rate of 1.18268325% and is flagged as an irregularity. It is used only for continuity with the owner's data, not because it is believed correct.",
+      "sensitivity": "The scenarios that depend on Property B costs are labelled as unreliable until this is resolved."
+    },
+    {
+      "id": "insurance-a",
+      "label": "Annual insurance, Property A, if owner-occupied",
+      "value": 1500,
+      "unit": "USD/yr",
+      "rationale": "Owner estimate. Not verified — no official premium data is available by ZIP.",
+      "sensitivity": "Inflated at the general inflation rate."
+    },
+    {
+      "id": "insurance-b",
+      "label": "Annual insurance, Property B, three-unit rental",
+      "value": 1500,
+      "unit": "USD/yr",
+      "rationale": "Owner estimate. Not verified.",
+      "sensitivity": "Inflated at the general inflation rate."
+    },
+    {
+      "id": "maintenance-a",
+      "label": "Annual maintenance and repairs, Property A",
+      "value": 0.5,
+      "unit": "percent of value",
+      "rationale": "Commonly used rule of thumb for a single-family home. No official source. The owner stated Property A costs less to maintain than Property B.",
+      "sensitivity": "Also shown at 1.0%."
+    },
+    {
+      "id": "maintenance-b",
+      "label": "Annual maintenance and repairs, Property B",
+      "value": 1.0,
+      "unit": "percent of value",
+      "rationale": "Higher than Property A because it is an older, three-unit, fully occupied rental. No official source. The owner stated Property B costs more to maintain than Property A.",
+      "sensitivity": "Also shown at 0.5%."
+    },
+    {
+      "id": "general-inflation",
+      "label": "General inflation applied to insurance, utilities, and maintenance",
+      "value": 2.5,
+      "unit": "percent",
+      "rationale": "Round-number long-run assumption. No official forecast was retrieved.",
+      "sensitivity": ""
+    },
+    {
+      "id": "water-a",
+      "label": "Monthly water, Property A",
+      "value": 125,
+      "unit": "USD/mo",
+      "rationale": "Midpoint of the owner's stated 100-150 USD/mo range. Not verified.",
+      "sensitivity": ""
+    },
+    {
+      "id": "electric-a",
+      "label": "Net monthly electricity, Property A",
+      "value": -15,
+      "unit": "USD/mo",
+      "rationale": "Midpoint of the owner's stated 10-20 USD/mo net credit, entered as a negative cost. Depends on the unresolved NEM 2.0 versus Net Billing Tariff question.",
+      "sensitivity": "A sensitivity case sets this to the PG&E fixed monthly charge, which solar cannot offset, but that charge is itself unverified."
+    },
+    {
+      "id": "water-b",
+      "label": "Monthly water, Property B, all three units",
+      "value": 365,
+      "unit": "USD/mo",
+      "rationale": "Midpoint of the owner's stated 330-400 USD/mo range. Corroborated against verified SFPUC FY2026-27 rates at roughly 9 CCF a month, but the stormwater component is missing from that cross-check.",
+      "sensitivity": ""
+    },
+    {
+      "id": "electric-b",
+      "label": "Monthly electricity, Property B, all three units",
+      "value": 50,
+      "unit": "USD/mo",
+      "rationale": "Midpoint of the owner's stated 30-70 USD/mo range. Not verified.",
+      "sensitivity": ""
+    },
+    {
+      "id": "selling-costs",
+      "label": "Total cost of selling Property A (commission, escrow, transfer tax, closing)",
+      "value": 6.0,
+      "unit": "percent of sale price",
+      "rationale": "Round-number assumption. The true figure depends on the negotiated commission and on transfer taxes that were not verified from official sources.",
+      "sensitivity": "Also shown at 5.0% and 7.0%."
+    },
+    {
+      "id": "portfolio-return",
+      "label": "Nominal annual return on reinvested sale proceeds",
+      "value": 7.0,
+      "unit": "percent",
+      "rationale": "Commonly used long-run nominal assumption for a diversified equity portfolio. No official source forecasts this.",
+      "sensitivity": "Also shown at 5.0% and 8.0%."
+    },
+    {
+      "id": "reinvestment-yield",
+      "label": "Annual income component of the reinvested portfolio (dividends and interest)",
+      "value": 1.5,
+      "unit": "percent",
+      "rationale": "Assumption. The rest of the return is appreciation, which is not taxed until realised.",
+      "sensitivity": ""
+    },
+    {
+      "id": "combined-tax-on-income",
+      "label": "Combined federal and California marginal rate applied to portfolio income and to rental income",
+      "value": 35.0,
+      "unit": "percent",
+      "rationale": "Assumption. The actual combined marginal rates were not retrieved from official sources in this pass — the IRS 2026 brackets are published in Rev. Proc. 2025-32 and the California brackets were not retrieved.",
+      "sensitivity": "Also shown at 30.0% and 40.0%."
+    },
+    {
+      "id": "vacancy",
+      "label": "Vacancy and credit loss allowance on rental income",
+      "value": 5.0,
+      "unit": "percent of gross rent",
+      "rationale": "Assumption. No official source.",
+      "sensitivity": ""
+    },
+    {
+      "id": "rent-growth-b",
+      "label": "Annual growth in Property B rent",
+      "value": 1.6,
+      "unit": "percent",
+      "rationale": "Set equal to the verified current San Francisco allowable annual increase. If the building turns out not to be rent-controlled, the correct input is the higher AB 1482 figure, which is unverified. Check the certificate-of-occupancy date.",
+      "sensitivity": "Also shown at 3.0%."
+    },
+    {
+      "id": "third-unit-rent",
+      "label": "Monthly rent obtainable from the Property B unit the owner currently occupies",
+      "value": 2600,
+      "unit": "USD/mo",
+      "rationale": "PLACEHOLDER ASSUMPTION. No official source and no appraisal. This figure drives the 'move into Property A and rent the third unit' scenario. Replace it with a broker opinion of rent before relying on that scenario.",
+      "sensitivity": "Shown at 2,000 and 3,200 USD/mo."
+    },
+    {
+      "id": "rent-a",
+      "label": "Monthly rent obtainable for Property A",
+      "value": 9000,
+      "unit": "USD/mo",
+      "rationale": "PLACEHOLDER ASSUMPTION. No official source and no appraisal. A single-family home of this value does not have a published market rent. This is the single largest uncertainty in the rent-versus-sell comparison.",
+      "sensitivity": "Shown at 6,000 and 12,000 USD/mo."
+    }
+  ]
+}

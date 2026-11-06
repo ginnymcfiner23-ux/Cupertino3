@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "scope": "Homeowners and landlord insurance. The owner asked for researched costs for an owner-occupied home in the Cupertino area and a three-unit rental in San Francisco.",
+    "finding": "No official source in this pass published an average premium for either ZIP code, so no premium figure is asserted for either property. California Department of Insurance publishes statewide market data, which is reproduced below, and the owner's own estimate is recorded as owner input. Everything else is blank and flagged."
+  },
+  "rows": [
+    {
+      "id": "cdi-homeowners-wp-2023",
+      "property": "Statewide",
+      "label": "California homeowners direct written premium, 2023",
+      "value": 13200000000,
+      "unit": "USD",
+      "period": "2023",
+      "source_name": "California Department of Insurance, 2023 CA Property & Casualty Market Share",
+      "source_url": "https://www.insurance.ca.gov/01-consumers/120-company/04-mrktshare/2023/",
+      "status": "verified",
+      "note": "Up from $12.1B in 2022. This is total premium statewide, not a per-policy average."
+    },
+    {
+      "id": "cdi-homeowners-loss-ratio-2023",
+      "property": "Statewide",
+      "label": "California homeowners loss ratio, 2023",
+      "value": 63.34,
+      "unit": "percent",
+      "period": "2023",
+      "source_name": "California Department of Insurance, 2023 CA Property & Casualty Market Share",
+      "source_url": "https://www.insurance.ca.gov/01-consumers/120-company/04-mrktshare/2023/",
+      "status": "verified",
+      "note": "Up from 55.17% in 2022. A rising loss ratio is a leading indicator of continued rate pressure."
+    },
+    {
+      "id": "cdi-avg-premium",
+      "property": "Statewide",
+      "label": "Average California homeowners premium per policy",
+      "value": "",
+      "unit": "USD/yr",
+      "period": "current",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Two different figures circulate in secondary sources citing CDI and NAIC (roughly $1,571 and roughly $2,340, for different years and different policy populations). Because they conflict and neither was traced to a live CDI page in this pass, no value is published. Retrieve from the CDI data call or the NAIC Homeowners Report directly."
+    },
+    {
+      "id": "c-insurance-owner",
+      "property": "Property A",
+      "label": "Owner estimate, owner-occupied home insurance in the Cupertino area",
+      "value": "about 1500",
+      "unit": "USD/yr",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "owner-input",
+      "note": "Owner asked for this to be researched. It could not be confirmed from an official source. Note that a premium is driven by replacement cost, not market value; a $3.1M-market-value home in Cupertino has a replacement cost materially below its land-driven market value, so the owner's estimate may be reasonable, but that is an observation, not a verified figure."
+    },
+    {
+      "id": "s-insurance-owner",
+      "property": "Property B",
+      "label": "Owner estimate, insurance on the three-unit rental in San Francisco",
+      "value": "about 1500",
+      "unit": "USD/yr",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "owner-input",
+      "note": "A landlord policy on a three-unit building is a different product from an owner-occupied HO-3 and is normally priced higher per dwelling. Not confirmed from an official source."
+    },
+    {
+      "id": "c-insurance-researched",
+      "property": "Property A",
+      "label": "Researched annual premium for an owner-occupied policy in the Cupertino area",
+      "value": "",
+      "unit": "USD/yr",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Requested by the owner. Not available from an official source. Obtain two or three live quotes from admitted carriers, or a broker quote, before finalising any holding-cost projection."
+    },
+    {
+      "id": "s-insurance-researched",
+      "property": "Property B",
+      "label": "Researched annual premium for a three-unit rental policy in San Francisco",
+      "value": "",
+      "unit": "USD/yr",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Requested by the owner. Not available from an official source. Obtain live quotes."
+    },
+    {
+      "id": "earthquake",
+      "property": "Both",
+      "label": "Earthquake coverage",
+      "value": "",
+      "unit": "USD/yr",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Earthquake damage is excluded from standard homeowners policies in California and is normally bought separately, often through the California Earthquake Authority. The session did not retrieve CEA rates. Flagged as a material omission from the holding-cost model, because both properties sit in a high-seismic-risk region."
+    },
+    {
+      "id": "fair-plan-note",
+      "property": "Both",
+      "label": "FAIR Plan as insurer of last resort",
+      "value": "",
+      "unit": "text",
+      "period": "2026",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Referenced widely in secondary coverage of the California market, with ZIP-level premium data reported by news organisations from FAIR Plan disclosures. Not confirmed from an official FAIR Plan source in this pass. Listed so the owner knows to check it if an admitted carrier declines to quote."
+    }
+  ]
+}

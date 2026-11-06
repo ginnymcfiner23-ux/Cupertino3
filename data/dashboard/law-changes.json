@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "scope": "Changes already enacted, and proposals under discussion, that could alter the analysis between now and the 2040-2050 inheritance window.",
+    "rule": "A proposal is only listed here if its status is confirmed by an official source. Rumoured or merely discussed items are not given values."
+  },
+  "enacted": [
+    {
+      "id": "fed-permanent-15m",
+      "level": "Federal",
+      "topic": "Estate tax",
+      "label": "Basic exclusion amount made permanent at $15,000,000 with no sunset",
+      "value": "Enacted 2025-07-04 (P.L. 119-21, section 70106), effective for deaths and gifts after 2025-12-31",
+      "unit": "text",
+      "period": "2026+",
+      "source_name": "IRS Revenue Procedure 2025-32, section 2.14",
+      "source_url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+      "status": "verified",
+      "note": "The previously scheduled 2026 drop to roughly $7 million per person was repealed. Indexing for inflation resumes in 2027."
+    },
+    {
+      "id": "ca-sb974",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "SB 974 — special needs trusts added as an eligible medium of transfer for the Prop 19 parent-child exclusion",
+      "value": "",
+      "unit": "text",
+      "period": "2027-01-01 (reported)",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Reported by practitioner sources as Stats. 2026, ch. 665, effective 2027-01-01, amending R&T Code 63.2(e)(9). This session did not retrieve the chaptered bill from California Legislative Information, so no value or link is asserted. Relevance to this project is limited: it addresses court-established special needs trusts under Probate Code 3604, and the residence, occupancy, value, and filing requirements of Prop 19 still apply in full."
+    }
+  ],
+  "failed_or_inactive": [
+    {
+      "id": "ca-prop19-repeal-2026",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Third initiative to repeal the inherited-property provisions of Proposition 19",
+      "value": "FAILED — the petition did not qualify. Signature total filed with counties was less than 100% of the number required.",
+      "unit": "text",
+      "period": "2026-05-18",
+      "source_name": "California Secretary of State, County Clerk/Registrar of Voters Memorandum #26138",
+      "source_url": "https://elections.cdn.sos.ca.gov/ccrov/2026/may/26138jh.pdf",
+      "status": "verified",
+      "note": "Initiative title: 'Repeals voter-enacted changes to property tax rules for transfers between family members. Initiative constitutional amendment.' Proponent: Gina Tse-Louie. Summary date 2025-11-06. Had it qualified and passed, it would have restored much of the pre-2021 Prop 58/193 system. It did not qualify, so Prop 19 stands unchanged."
+    },
+    {
+      "id": "ca-prop19-repeal-history",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Earlier repeal attempts (2022 and 2024)",
+      "value": "",
+      "unit": "text",
+      "period": "2022, 2024",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Reported by news coverage as also having fallen short of the signature requirement. Not confirmed from a Secretary of State document in this pass, so no value asserted. Flagged for follow-up at https://www.sos.ca.gov/elections/ballot-measures/initiative-and-referendum-status/failed-qualify"
+    }
+  ],
+  "pending_or_discussed": [
+    {
+      "id": "ca-sca4",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Senate Constitutional Amendment 4 (Seyarto) — property taxation, principal residence and family home transfers",
+      "value": "",
+      "unit": "text",
+      "period": "2023-24 session",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Listed by the Board of Equalization on its Proposition 19 legislation table, which establishes that such a measure was introduced. Its current status and text were not retrieved from California Legislative Information, so no value is asserted. Track it because any relaxation of the Prop 19 occupancy or value tests would change the recommendation on this site. BOE's table: https://www.boe.ca.gov/prop19/"
+    },
+    {
+      "id": "ca-sb890",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Senate Bill 890 — change of ownership and base year value transfers",
+      "value": "",
+      "unit": "text",
+      "period": "2023-24 session",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Listed on the BOE Proposition 19 legislation table. Status and text not retrieved."
+    },
+    {
+      "id": "ca-aca9",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Assembly Constitutional Amendment 9 (Kiley) — transfers of principal residences",
+      "value": "",
+      "unit": "text",
+      "period": "2021-22 session",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "Listed on the BOE Proposition 19 legislation table. Status and text not retrieved."
+    },
+    {
+      "id": "ca-split-roll",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Split-roll property tax proposal (repeal of Prop 13 protection for commercial property)",
+      "value": "",
+      "unit": "text",
+      "period": "unknown",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "No official source confirmed a live or scheduled measure in this pass. Deliberately left blank. Relevant only indirectly: Property B is a residential three-unit building, so a commercial split-roll would not reach it, but any broader change to Article XIII A would."
+    },
+    {
+      "id": "fed-future-legislation",
+      "level": "Federal",
+      "topic": "Estate tax",
+      "label": "Risk that a future Congress lowers the exclusion below $15,000,000",
+      "value": "",
+      "unit": "text",
+      "period": "unknown",
+      "source_name": "",
+      "source_url": "",
+      "status": "unverified",
+      "note": "No official source can forecast this. Stated here as an explicit risk without a value. OBBBA removed the scheduled sunset, so no automatic reduction is written into current law, but statute can always be amended. IRS final regulations under T.D. 9884 confirm the anti-clawback rule for gifts made under a higher exemption."
+    },
+    {
+      "id": "ca-indexing-prop19-cap",
+      "level": "California",
+      "topic": "Property tax",
+      "label": "Next biennial adjustment of the Prop 19 $1 million amount",
+      "value": "2027-02-16",
+      "unit": "date",
+      "period": "2027",
+      "source_name": "California State Board of Equalization, Letter To Assessors No. 2025/009",
+      "source_url": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "status": "verified",
+      "note": "The BOE states: 'The next adjustment of the $1 million amount will occur in February 2027.' The amount is indexed to the FHFA House Price Index for California. For any inheritance in the 2040-2050 window the applicable amount will be whatever the BOE has most recently published, which is unknowable today."
+    }
+  ]
+}
